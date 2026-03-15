@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian — Consolidated Readiness</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+    --text: #e0e0e8; --text-dim: #8888a0; --accent: #6c8cff;
+    --domain: #4ade80; --infra: #818cf8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 16px;
+  }
+  .header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; }
+  .header .subtitle {
+    font-size: 13px; color: var(--text-dim); margin-top: 4px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .header .subtitle .status-badge {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 600; padding: 2px 8px; border-radius: 3px;
+  }
+  .header .updated { font-size: 13px; color: var(--text-dim); }
+  .header .nav { font-size: 13px; color: var(--text-dim); }
+
+  /* Readiness banner */
+  .readiness {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px; margin-bottom: 24px;
+    display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start;
+  }
+  .readiness-left {
+    display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 100px;
+  }
+  .readiness-gauge { position: relative; width: 100px; height: 100px; }
+  .readiness-gauge canvas { width: 100px !important; height: 100px !important; }
+  .readiness-pct {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 22px; font-weight: 700;
+  }
+  .readiness-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+    font-weight: 600; padding: 3px 10px; border-radius: 4px;
+  }
+
+  /* Time hero */
+  .time-hero {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 24px;
+  }
+  .time-hero-metrics {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 16px;
+  }
+  .time-metric .label {
+    font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .time-metric .value {
+    font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums;
+  }
+  .time-metric .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .time-hero canvas { width: 100%; max-height: 160px; }
+
+  /* Instance cards */
+  .inst-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px;
+  }
+  .inst-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; text-decoration: none !important; color: var(--text);
+    transition: border-color 0.2s, transform 0.15s; display: flex; flex-direction: column; gap: 12px;
+  }
+  .inst-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .inst-header { display: flex; justify-content: space-between; align-items: center; }
+  .inst-header h3 { font-size: 18px; font-weight: 600; }
+  .inst-status {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 600; padding: 2px 8px; border-radius: 3px;
+  }
+  .inst-metrics { display: flex; gap: 20px; flex-wrap: wrap; }
+  .inst-metric { text-align: center; }
+  .inst-metric-val { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .inst-metric-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.4px; }
+  .inst-areas { font-size: 12px; color: var(--text-dim); }
+  .inst-arrow { font-size: 12px; color: var(--border); transition: color 0.15s; align-self: flex-end; }
+  .inst-card:hover .inst-arrow { color: var(--accent); }
+
+  /* Charts */
+  .charts {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px;
+  }
+  .chart-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+  }
+  .chart-box h3 {
+    font-size: 14px; font-weight: 600; margin-bottom: 14px; color: var(--text-dim);
+  }
+  .chart-box canvas { max-height: 260px; }
+  .wide { grid-column: 1 / -1; }
+
+  .footer {
+    text-align: center; padding: 24px; font-size: 12px; color: var(--text-dim);
+    border-top: 1px solid var(--border); margin-top: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .charts, .inst-grid { grid-template-columns: 1fr; }
+    .time-hero-metrics { grid-template-columns: repeat(3, 1fr); }
+    .readiness { grid-template-columns: 1fr; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Meridian — Consolidated Readiness</h1>
+    <div class="subtitle">
+      <span>2 instances</span>
+      <span class="status-badge" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</span>
+    </div>
+  </div>
+  <div style="text-align: right">
+    <div class="nav"><a href="index.html">&#8592; Admin Home</a></div>
+    <div class="updated">Generated 2026-03-15 19:26</div>
+  </div>
+</div>
+
+<!-- Readiness banner -->
+<div class="readiness">
+  <div class="readiness-left">
+    <div class="readiness-gauge">
+      <canvas id="readinessGauge"></canvas>
+      <div class="readiness-pct" style="color: var(--infra)">44%</div>
+    </div>
+    <span class="readiness-label" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</span>
+  </div>
+  <div class="readiness-right">
+    <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Cross-Instance Domain Time</h2>
+    <div style="font-size: 13px; color: var(--text-dim); line-height: 1.6;">
+      Combined domain time across all Meridian instances. Measures how much
+      of total effort goes toward domain work (client engagements, content,
+      areas of responsibility) versus Meridian infrastructure (protocols,
+      observations, governance). Target: 80%+ to exit prototype phase.
+    </div>
+  </div>
+</div>
+
+<!-- Time hero -->
+<div class="time-hero">
+  <div class="time-hero-metrics">
+    <div class="time-metric">
+      <div class="label">Total Time</div>
+      <div class="value">42h 31m</div>
+      <div class="sub">5 days, 51 sessions</div>
+    </div>
+    <div class="time-metric">
+      <div class="label">Domain Time</div>
+      <div class="value" style="color: var(--domain)">18h 43m</div>
+      <div class="sub">44% of total</div>
+    </div>
+    <div class="time-metric">
+      <div class="label">Infra Time</div>
+      <div class="value" style="color: var(--infra)">23h 47m</div>
+      <div class="sub">56% of total</div>
+    </div>
+    <div class="time-metric">
+      <div class="label">Sessions</div>
+      <div class="value">51</div>
+      <div class="sub">10.2 / day</div>
+    </div>
+    <div class="time-metric">
+      <div class="label">Observations</div>
+      <div class="value" style="color: #fb7185">41</div>
+      <div class="sub">8.2 / day</div>
+    </div>
+  </div>
+  <canvas id="timeHeroChart"></canvas>
+</div>
+
+<!-- Instance cards -->
+<div class="inst-grid">
+
+      <a href="personal.html" class="inst-card" style="border-left: 3px solid #6c8cff">
+        <div class="inst-header">
+          <h3>Personal</h3>
+          <span class="inst-status" style="background: rgba(245,158,11,0.15); color: #f59e0b;">Transitioning</span>
+        </div>
+        <div class="inst-metrics">
+          <div class="inst-metric">
+            <div class="inst-metric-val" style="color: #6c8cff">60%</div>
+            <div class="inst-metric-label">Domain</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">22h 1m</div>
+            <div class="inst-metric-label">Total</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">20</div>
+            <div class="inst-metric-label">Sessions</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">3</div>
+            <div class="inst-metric-label">Days</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">16</div>
+            <div class="inst-metric-label">Observations</div>
+          </div>
+        </div>
+        <div class="inst-areas">Areas: Condo Board, Home Lab, BIRW, TAVR, Church</div>
+        <span class="inst-arrow">&#8599; View dashboard</span>
+      </a>
+
+      <a href="consulting.html" class="inst-card" style="border-left: 3px solid #f59e0b">
+        <div class="inst-header">
+          <h3>Consulting</h3>
+          <span class="inst-status" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</span>
+        </div>
+        <div class="inst-metrics">
+          <div class="inst-metric">
+            <div class="inst-metric-val" style="color: #f59e0b">27%</div>
+            <div class="inst-metric-label">Domain</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">20h 30m</div>
+            <div class="inst-metric-label">Total</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">31</div>
+            <div class="inst-metric-label">Sessions</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">5</div>
+            <div class="inst-metric-label">Days</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">25</div>
+            <div class="inst-metric-label">Observations</div>
+          </div>
+        </div>
+        <div class="inst-areas">Areas: MaAM, Content, Practice</div>
+        <span class="inst-arrow">&#8599; View dashboard</span>
+      </a>
+
+</div>
+
+<!-- Charts -->
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Combined Time Allocation: Domain vs Infrastructure (hours/day)</h3>
+    <canvas id="timeAllocChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Domain Time % by Instance</h3>
+    <canvas id="instCompareChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Cumulative Allocation by Instance</h3>
+    <canvas id="donutChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Combined Domain % Trend</h3>
+    <canvas id="domainPctChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Time by Instance (hours/day)</h3>
+    <canvas id="instHoursChart"></canvas>
+  </div>
+</div>
+
+<div class="footer">
+  Meridian Consolidated Readiness &middot; <a href="index.html">Admin Home</a>
+</div>
+
+<script>
+const labels = ['2026-03-10', '2026-03-11', '2026-03-12', '2026-03-13', '2026-03-14'];
+const scaleDefaults = {
+  x: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' } },
+  y: { ticks: { color: '#8888a0', font: { size: 11 }, callback: v => v + 'h' }, grid: { color: 'rgba(42,45,58,0.6)' }, beginAtZero: true }
+};
+
+// Readiness gauge
+new Chart(document.getElementById('readinessGauge'), {
+  type: 'doughnut',
+  data: { datasets: [{ data: [44, 56],
+    backgroundColor: ['#818cf8', 'rgba(42,45,58,0.4)'], borderWidth: 0 }] },
+  options: { responsive: false, cutout: '75%', plugins: { legend: { display: false }, tooltip: { enabled: false } } }
+});
+
+// Time hero: combined lines
+new Chart(document.getElementById('timeHeroChart'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Total', data: [7.17, 0.17, 10.17, 7.2, 17.82], borderColor: '#e0e0e8', backgroundColor: 'rgba(224,224,232,0.05)', fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#e0e0e8', borderWidth: 2.5 },
+      { label: 'Domain', data: [2.71, 0.0, 6.85, 1.89, 7.28], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#4ade80', borderWidth: 2.5 },
+      { label: 'Infrastructure', data: [4.46, 0.17, 3.32, 5.31, 10.53], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#818cf8', borderWidth: 2.5 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#8888a0', font: { size: 11 }, usePointStyle: true, pointStyle: 'circle' } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + 'h' } }
+    },
+    scales: scaleDefaults
+  }
+});
+
+// Time allocation stacked bar
+new Chart(document.getElementById('timeAllocChart'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Domain', data: [2.71, 0.0, 6.85, 1.89, 7.28], backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 4 },
+      { label: 'Infrastructure', data: [4.46, 0.17, 3.32, 5.31, 10.53], backgroundColor: 'rgba(129,140,248,0.7)', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#8888a0', font: { size: 11 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + 'h' } }
+    },
+    scales: {
+      x: { ...scaleDefaults.x, stacked: true },
+      y: { ...scaleDefaults.y, stacked: true }
+    }
+  }
+});
+
+// Domain % by instance comparison
+new Chart(document.getElementById('instCompareChart'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Personal', data: [null,null,88,46,47], borderColor: '#6c8cff', backgroundColor: '#6c8cff22', fill: false, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#6c8cff', borderWidth: 2.5, spanGaps: true },
+      { label: 'Consulting', data: [38,0,23,14,27], borderColor: '#f59e0b', backgroundColor: '#f59e0b22', fill: false, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#f59e0b', borderWidth: 2.5, spanGaps: true },
+      { label: '80% Target', data: [80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' } },
+      y: { min: 0, max: 100, ticks: { color: '#8888a0', font: { size: 11 }, callback: v => v+'%' }, grid: { color: 'rgba(42,45,58,0.6)' } }
+    }
+  }
+});
+
+// Donut: domain + infra per instance
+new Chart(document.getElementById('donutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Personal Domain', 'Consulting Domain', 'Personal Infra', 'Consulting Infra'],
+    datasets: [{ data: [13.2, 5.6, 8.9, 14.9], backgroundColor: ['#4ade80cc', '#06b6d4cc', '#818cf8cc', '#818cf8cc'], borderWidth: 1, borderColor: '#1a1d27' }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { color: '#8888a0', font: { size: 11 }, padding: 12 } },
+      tooltip: { callbacks: { label: ctx => { var t = ctx.dataset.data.reduce((a,b)=>a+b,0); return ctx.label+': '+ctx.parsed.toFixed(1)+'h ('+Math.round(ctx.parsed/t*100)+'%)'; } } }
+    }
+  }
+});
+
+// Combined domain % trend
+new Chart(document.getElementById('domainPctChart'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Combined Domain %', data: [38, 0, 67, 26, 41], borderColor: 'rgba(74,222,128,0.9)', backgroundColor: 'rgba(74,222,128,0.1)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
+      { label: '80% Target', data: [80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' } },
+      y: { min: 0, max: 100, ticks: { color: '#8888a0', font: { size: 11 }, callback: v => v+'%' }, grid: { color: 'rgba(42,45,58,0.6)' } }
+    }
+  }
+});
+
+// Time by instance stacked bar
+new Chart(document.getElementById('instHoursChart'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Personal', data: [0.0, 0.0, 7.0, 2.7, 12.32], backgroundColor: '#6c8cffaa', borderRadius: 2 },
+      { label: 'Consulting', data: [7.17, 0.17, 3.17, 4.5, 5.5], backgroundColor: '#f59e0baa', borderRadius: 2 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#8888a0', font: { size: 11 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + 'h' } }
+    },
+    scales: {
+      x: { ...scaleDefaults.x, stacked: true },
+      y: { ...scaleDefaults.y, stacked: true }
+    }
+  }
+});
+</script>
+</body>
+</html>
