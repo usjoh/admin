@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Readiness Dashboard — Consulting</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+    --text: #e0e0e8; --text-dim: #8888a0; --accent: #6c8cff;
+    --domain: #4ade80; --infra: #818cf8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5;
+    display: flex; align-items: center; justify-content: center; min-height: 100vh;
+  }
+  .coming-soon {
+    text-align: center; max-width: 480px;
+  }
+  .coming-soon h1 {
+    font-size: 22px; font-weight: 600; margin-bottom: 8px;
+  }
+  .coming-soon .subtitle {
+    font-size: 13px; color: var(--text-dim); margin-bottom: 32px;
+  }
+  .coming-soon .status {
+    display: inline-block; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.6px; font-weight: 600; padding: 3px 10px;
+    border-radius: 4px; background: rgba(129,140,248,0.15);
+    color: var(--infra); margin-bottom: 32px;
+  }
+  .coming-soon .message {
+    font-size: 14px; color: var(--text-dim); line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .coming-soon .steps {
+    text-align: left; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 24px;
+  }
+  .coming-soon .steps h3 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--text-dim); margin-bottom: 12px;
+  }
+  .coming-soon .steps ol {
+    padding-left: 20px; font-size: 13px; color: var(--text-dim);
+  }
+  .coming-soon .steps li { margin-bottom: 6px; }
+  .coming-soon .steps li.done { color: var(--domain); }
+  .coming-soon .steps li.done::marker { content: "✓ "; }
+  .back-link {
+    display: inline-block; margin-top: 24px; font-size: 13px;
+    color: var(--accent); text-decoration: none;
+  }
+  .back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="coming-soon">
+  <h1>Meridian Readiness Dashboard</h1>
+  <div class="subtitle">Domain: <strong style="color: var(--text)">consulting</strong></div>
+  <div class="status">Prototype</div>
+  <div class="message">
+    The consulting instance readiness dashboard will be available once
+    session activity tracking is enabled. The personal instance is the
+    proving ground — consulting follows once the pattern is validated.
+  </div>
+  <div class="steps">
+    <h3>Activation Checklist</h3>
+    <ol>
+      <li class="done">Dashboard generator built (personal)</li>
+      <li class="done">Publishing pipeline established (admin site)</li>
+      <li>Add session-activity-log.md to consulting instance</li>
+      <li>Adapt generator for consulting areas and metrics</li>
+      <li>Wire to consulting's meridian close protocol</li>
+    </ol>
+  </div>
+  <a href="index.html" class="back-link">&larr; Back to Meridian Admin</a>
+</div>
+
+</body>
+</html>
