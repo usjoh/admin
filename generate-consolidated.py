@@ -10,6 +10,7 @@ Usage:
 
 Output:
     consolidated.html (local)
+    index.html (local)
 
 Instances are configured in INSTANCES below. Each entry specifies the
 log path and the number of domain area columns (personal has 5, consulting
@@ -21,6 +22,7 @@ from datetime import datetime
 from pathlib import Path
 
 OUTPUT_FILE = Path(__file__).resolve().parent / "consolidated.html"
+INDEX_FILE = Path(__file__).resolve().parent / "index.html"
 
 # Instance configurations — area columns differ per instance
 INSTANCES = [
@@ -198,6 +200,139 @@ def fmt_hours(minutes: float) -> str:
     return f"{h}h {m}m" if h > 0 else f"{m}m"
 
 
+def generate_consolidated_observations(instances: list, merged: list) -> list:
+    """Generate data-driven narrative observations for the consolidated dashboard."""
+    notes = []
+
+    total_min = sum(d["duration_min"] for d in merged)
+    total_domain_min = sum(d["domain_min"] for d in merged)
+    total_infra_min = sum(d["meridian_min"] for d in merged)
+    domain_pct = round(total_domain_min / total_min * 100) if total_min else 0
+    total_obs = sum(d["mo_count"] for d in merged)
+    total_days = len(merged)
+
+    # Daily domain % series
+    daily_domain_pcts = [
+        round(d["domain_min"] / d["duration_min"] * 100) if d["duration_min"] else 0
+        for d in merged
+    ]
+
+    # Domain % trend
+    if len(daily_domain_pcts) >= 2:
+        if all(daily_domain_pcts[i] <= daily_domain_pcts[i - 1] for i in range(1, len(daily_domain_pcts))):
+            notes.append({
+                "severity": "watch",
+                "text": f"Combined domain % has declined every day tracked "
+                        f"({' > '.join(f'{p}%' for p in daily_domain_pcts)}). "
+                        f"Expected during infrastructure build phase, but this trend must reverse to exit prototype."
+            })
+        elif daily_domain_pcts[-1] > daily_domain_pcts[-2]:
+            delta = daily_domain_pcts[-1] - daily_domain_pcts[-2]
+            notes.append({
+                "severity": "good",
+                "text": f"Combined domain % trending up: {daily_domain_pcts[-2]}% to "
+                        f"{daily_domain_pcts[-1]}% (+{delta}pp) on the most recent day. "
+                        f"Infrastructure investment may be starting to pay off."
+            })
+
+    # Distance to 80% target
+    gap = 80 - domain_pct
+    if gap > 0:
+        notes.append({
+            "severity": "info",
+            "text": f"Cumulative domain time is {domain_pct}%, {gap} points below the 80% exit target. "
+                    f"Need sustained domain-dominant days to close the gap."
+        })
+    else:
+        notes.append({
+            "severity": "good",
+            "text": f"Cumulative domain time is {domain_pct}%, meeting the 80% operational target. "
+                    f"System has exited prototype phase by this metric."
+        })
+
+    # Total infrastructure time cost
+    total_infra_hrs = total_infra_min / 60
+    total_hrs = total_min / 60
+    if total_hrs > 0:
+        notes.append({
+            "severity": "info",
+            "text": f"Total infrastructure time: {total_infra_hrs:.1f}h of {total_hrs:.1f}h total across "
+                    f"{len(instances)} instances. This is the cumulative cost of building Meridian."
+        })
+
+    # Which instance is performing better
+    if len(instances) >= 2:
+        sorted_inst = sorted(instances, key=lambda x: x["domain_pct"], reverse=True)
+        best = sorted_inst[0]
+        worst = sorted_inst[-1]
+        if best["domain_pct"] != worst["domain_pct"]:
+            notes.append({
+                "severity": "info",
+                "text": f"{best['name']} leads at {best['domain_pct']}% domain time vs. "
+                        f"{worst['name']} at {worst['domain_pct']}%. "
+                        f"Protocol maturity in the leading instance should transfer to the other."
+            })
+
+        # Instance divergence
+        spread = best["domain_pct"] - worst["domain_pct"]
+        if spread >= 20:
+            notes.append({
+                "severity": "watch",
+                "text": f"Instance divergence: {spread}pp gap between {best['name']} ({best['domain_pct']}%) "
+                        f"and {worst['name']} ({worst['domain_pct']}%). Large divergence suggests one instance "
+                        f"is still heavily infrastructure-bound while the other is maturing."
+            })
+
+    # Session volume trends
+    if len(merged) >= 2:
+        prev_s, curr_s = merged[-2]["sessions"], merged[-1]["sessions"]
+        if curr_s > prev_s:
+            notes.append({
+                "severity": "info",
+                "text": f"Session throughput increasing: {prev_s} to {curr_s} sessions on the most recent day. "
+                        f"Higher throughput means more context switches across instances."
+            })
+        total_sessions = sum(d["sessions"] for d in merged)
+        avg_sessions = round(total_sessions / total_days, 1)
+        notes.append({
+            "severity": "neutral",
+            "text": f"Averaging {avg_sessions} sessions/day across {total_days} days and {len(instances)} instances."
+        })
+
+    # Observation density
+    if total_obs > 10:
+        obs_per_day = round(total_obs / total_days, 1) if total_days else 0
+        notes.append({
+            "severity": "watch",
+            "text": f"{total_obs} observations logged across all instances ({obs_per_day}/day). "
+                    f"High observation volume means many gaps and patterns surfaced. "
+                    f"Each one costs infra time to document — expect this to taper as patterns stabilize."
+        })
+    elif total_obs > 0:
+        notes.append({
+            "severity": "neutral",
+            "text": f"{total_obs} observations logged across all instances in {total_days} days."
+        })
+
+    return notes
+
+
+def render_observations_html(observations: list) -> str:
+    """Render observation list to HTML items."""
+    sev_colors = {"watch": "#f59e0b", "good": "#4ade80", "info": "#8888a0", "neutral": "#555570"}
+    sev_icons = {"watch": "&#9888;", "good": "&#10003;", "info": "&#8226;", "neutral": "&#8226;"}
+    items = []
+    for obs in observations:
+        color = sev_colors.get(obs["severity"], "#555570")
+        icon = sev_icons.get(obs["severity"], "&#8226;")
+        items.append(
+            f'<div class="obs-item" style="border-left: 3px solid {color}; padding: 4px 10px; '
+            f'margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);">'
+            f'<span style="color: {color}; margin-right: 5px;">{icon}</span>{obs["text"]}</div>'
+        )
+    return "\n    ".join(items)
+
+
 def generate_html(instances: list, merged: list) -> str:
     """Generate consolidated dashboard HTML."""
     total_sessions = sum(d["sessions"] for d in merged)
@@ -274,6 +409,10 @@ def generate_html(instances: list, merged: list) -> str:
         status_color = "var(--infra)"
         gauge_color = "#818cf8"
         pct_color = "var(--infra)"
+
+    # Generate observations
+    observations = generate_consolidated_observations(instances, merged)
+    observations_html = render_observations_html(observations)
 
     # Instance cards HTML
     inst_cards_html = ""
@@ -483,6 +622,10 @@ def generate_html(instances: list, merged: list) -> str:
   .chart-box.clickable {{ cursor: pointer; transition: border-color 0.15s; }}
   .chart-box.clickable:hover {{ border-color: var(--accent); }}
 
+  /* Observation items */
+  .obs-list {{ display: flex; flex-direction: column; gap: 2px; }}
+  .obs-item {{ border-radius: 3px; }}
+
   .footer {{
     text-align: center; padding: 24px; font-size: 12px; color: var(--text-dim);
     border-top: 1px solid var(--border); margin-top: 24px;
@@ -523,11 +666,8 @@ def generate_html(instances: list, merged: list) -> str:
   </div>
   <div class="readiness-right">
     <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Cross-Instance Domain Time</h2>
-    <div style="font-size: 13px; color: var(--text-dim); line-height: 1.6;">
-      Combined domain time across all Meridian instances. Measures how much
-      of total effort goes toward domain work (client engagements, content,
-      areas of responsibility) versus Meridian infrastructure (protocols,
-      observations, governance). Target: 80%+ to exit prototype phase.
+    <div class="obs-list">
+    {observations_html}
     </div>
   </div>
 </div>
@@ -841,6 +981,417 @@ function closeModal(e) {{
     return html
 
 
+def generate_index_html(instances: list, merged: list) -> str:
+    """Generate index.html with data-driven hero section."""
+    total_sessions = sum(d["sessions"] for d in merged)
+    total_min = sum(d["duration_min"] for d in merged)
+    total_domain_min = sum(d["domain_min"] for d in merged)
+    domain_pct = round(total_domain_min / total_min * 100) if total_min else 0
+    total_days = len(merged)
+
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    # Status determination
+    if domain_pct >= 80:
+        status = "Operational"
+        status_bg = "rgba(74,222,128,0.15)"
+        status_color = "#4ade80"
+        gauge_color = "#4ade80"
+    elif domain_pct >= 60:
+        status = "Transitioning"
+        status_bg = "rgba(245,158,11,0.15)"
+        status_color = "#f59e0b"
+        gauge_color = "#f59e0b"
+    else:
+        status = "Prototype"
+        status_bg = "rgba(129,140,248,0.15)"
+        status_color = "#818cf8"
+        gauge_color = "#818cf8"
+
+    # Top observations for hero narrative (pick first 3)
+    observations = generate_consolidated_observations(instances, merged)
+    hero_obs = observations[:3]
+    hero_obs_html = render_observations_html(hero_obs)
+
+    # SVG gauge: a donut ring using stroke-dasharray
+    circumference = 2 * 3.14159 * 24  # r=24
+    filled = circumference * domain_pct / 100
+    gap = circumference - filled
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian — Admin</title>
+<style>
+  :root {{
+    --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+    --text: #e0e0e8; --text-dim: #8888a0; --accent: #6c8cff;
+    --domain: #4ade80; --infra: #818cf8;
+  }}
+  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+  body {{
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+    min-height: 100vh;
+  }}
+
+  /* Hero */
+  .hero {{
+    text-align: center; padding: 60px 24px 40px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(108,140,255,0.06) 0%, transparent 100%);
+  }}
+  .hero h1 {{
+    font-size: 42px; font-weight: 700; letter-spacing: -1px;
+    margin-bottom: 8px;
+  }}
+  .hero h1 span {{ color: var(--accent); }}
+  .hero .tagline {{
+    font-size: 18px; color: var(--text-dim); max-width: 600px;
+    margin: 0 auto 28px; font-weight: 400;
+  }}
+
+  /* Hero metrics bar */
+  .hero-metrics {{
+    display: flex; align-items: center; justify-content: center; gap: 32px;
+    margin-bottom: 28px; flex-wrap: wrap;
+  }}
+  .hero-gauge {{
+    position: relative; width: 60px; height: 60px; flex-shrink: 0;
+  }}
+  .hero-gauge svg {{ width: 60px; height: 60px; transform: rotate(-90deg); }}
+  .hero-gauge .gauge-pct {{
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 15px; font-weight: 700; color: {gauge_color};
+  }}
+  .hero-metric {{ text-align: center; }}
+  .hero-metric .hm-val {{
+    font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums;
+  }}
+  .hero-metric .hm-label {{
+    font-size: 10px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }}
+  .hero-phase {{
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 600; padding: 4px 12px; border-radius: 4px;
+    display: inline-block;
+  }}
+
+  /* Hero narrative */
+  .hero-narrative {{
+    max-width: 640px; margin: 0 auto; text-align: left;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 20px;
+  }}
+  .hero-narrative h3 {{
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--text-dim); margin-bottom: 10px; font-weight: 600;
+  }}
+  .obs-list {{ display: flex; flex-direction: column; gap: 2px; }}
+  .obs-item {{ border-radius: 3px; }}
+
+  .hero-updated {{
+    font-size: 11px; color: var(--border); margin-top: 16px;
+  }}
+
+  /* Accent line under hero */
+  .hero-accent {{
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 0 auto; max-width: 400px;
+  }}
+
+  /* Content */
+  .container {{
+    max-width: 960px; margin: 0 auto; padding: 48px 24px;
+  }}
+
+  /* Section grid */
+  .section-title {{
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px;
+    color: var(--text-dim); font-weight: 600; margin-bottom: 18px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }}
+  .section {{ margin-bottom: 48px; }}
+
+  /* Dashboard cards */
+  .dash-grid {{
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }}
+  .dash-card {{
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px; text-decoration: none;
+    color: var(--text); transition: border-color 0.2s, transform 0.15s;
+    display: flex; flex-direction: column; gap: 8px;
+  }}
+  .dash-card:hover {{
+    border-color: var(--accent); transform: translateY(-2px);
+  }}
+  .dash-card .card-header {{
+    display: flex; justify-content: space-between; align-items: center;
+  }}
+  .dash-card h3 {{ font-size: 18px; font-weight: 600; }}
+  .dash-card .status {{
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 600; padding: 3px 10px; border-radius: 4px;
+  }}
+  .dash-card .desc {{
+    font-size: 13px; color: var(--text-dim); line-height: 1.5;
+  }}
+  .dash-card .metrics {{
+    display: flex; gap: 20px; margin-top: 4px;
+  }}
+  .dash-card .metric-item {{
+    font-size: 12px; color: var(--text-dim);
+  }}
+  .dash-card .metric-item strong {{
+    font-size: 18px; font-weight: 700; display: block;
+    font-variant-numeric: tabular-nums;
+  }}
+  .dash-card .arrow {{
+    font-size: 14px; color: var(--border); transition: color 0.15s;
+  }}
+  .dash-card:hover .arrow {{ color: var(--accent); }}
+
+  /* Article cards */
+  .article-grid {{
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }}
+  .article-card {{
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px; text-decoration: none;
+    color: var(--text); transition: border-color 0.2s, transform 0.15s;
+    display: flex; flex-direction: column; gap: 6px;
+  }}
+  .article-card:hover {{
+    border-color: var(--accent); transform: translateY(-2px);
+  }}
+  .article-card h3 {{ font-size: 16px; font-weight: 600; }}
+  .article-card .article-meta {{
+    font-size: 12px; color: var(--text-dim);
+  }}
+  .article-card .article-desc {{
+    font-size: 13px; color: var(--text-dim); line-height: 1.5;
+    margin-top: 4px;
+  }}
+  .article-card .arrow {{
+    font-size: 14px; color: var(--border); transition: color 0.15s;
+    align-self: flex-end; margin-top: auto;
+  }}
+  .article-card:hover .arrow {{ color: var(--accent); }}
+
+  /* Instance overview */
+  .instance-grid {{
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+  }}
+  .instance-tile {{
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; text-align: center;
+  }}
+  .instance-tile .label {{
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--text-dim); margin-bottom: 6px;
+  }}
+  .instance-tile .value {{
+    font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums;
+  }}
+
+  /* Footer */
+  .footer {{
+    text-align: center; padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-dim);
+  }}
+  .footer a {{ color: var(--accent); text-decoration: none; }}
+  .footer a:hover {{ text-decoration: underline; }}
+
+  @media (max-width: 768px) {{
+    .dash-grid, .article-grid {{ grid-template-columns: 1fr; }}
+    .instance-grid {{ grid-template-columns: 1fr 1fr; }}
+    .hero h1 {{ font-size: 32px; }}
+    .hero-metrics {{ gap: 20px; }}
+  }}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1><span>Meridian</span></h1>
+  <div class="tagline">Know where you are. Move forward with confidence.</div>
+
+  <div class="hero-metrics">
+    <div class="hero-gauge">
+      <svg viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(42,45,58,0.6)" stroke-width="5"/>
+        <circle cx="30" cy="30" r="24" fill="none" stroke="{gauge_color}" stroke-width="5"
+                stroke-dasharray="{filled:.1f} {gap:.1f}" stroke-linecap="round"/>
+      </svg>
+      <div class="gauge-pct">{domain_pct}%</div>
+    </div>
+    <div class="hero-metric">
+      <div class="hm-val" style="color: var(--domain)">{domain_pct}%</div>
+      <div class="hm-label">Domain</div>
+    </div>
+    <div class="hero-metric">
+      <div class="hm-val">{fmt_hours(total_min)}</div>
+      <div class="hm-label">Total Time</div>
+    </div>
+    <div class="hero-metric">
+      <div class="hm-val">{total_sessions}</div>
+      <div class="hm-label">Sessions</div>
+    </div>
+    <span class="hero-phase" style="background: {status_bg}; color: {status_color};">{status}</span>
+  </div>
+
+  <div class="hero-narrative">
+    <h3>System Analysis</h3>
+    <div class="obs-list">
+    {hero_obs_html}
+    </div>
+  </div>
+
+  <div class="hero-updated">Generated {now}</div>
+</div>
+<div class="hero-accent"></div>
+
+<div class="container">
+
+  <!-- System Overview -->
+  <div class="section">
+    <div class="section-title">System Overview</div>
+    <div class="instance-grid">
+      <div class="instance-tile">
+        <div class="label">Instances</div>
+        <div class="value" style="color: var(--accent)">{len(instances)}</div>
+      </div>
+      <div class="instance-tile">
+        <div class="label">Phase</div>
+        <div class="value" style="color: var(--infra); font-size: 16px;">{status}</div>
+      </div>
+      <div class="instance-tile">
+        <div class="label">Architecture</div>
+        <div class="value" style="color: var(--domain); font-size: 14px;">Kernel + Instances</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consolidated Readiness -->
+  <div class="section">
+    <div class="section-title">Consolidated Readiness</div>
+    <div class="dash-grid">
+      <a href="consolidated.html" class="dash-card" style="grid-column: 1 / -1;">
+        <div class="card-header">
+          <h3>Cross-Instance Readiness</h3>
+          <span class="arrow">&#8599;</span>
+        </div>
+        <div class="desc">
+          Combined domain time vs. infrastructure investment across all Meridian instances.
+          Per-instance comparison, merged trends, and system-wide health metrics.
+        </div>
+        <div class="status" style="background: {status_bg}; color: {status_color};">{status}</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Readiness Dashboards -->
+  <div class="section">
+    <div class="section-title">Instance Dashboards</div>
+    <div class="dash-grid">
+      <a href="personal.html" class="dash-card">
+        <div class="card-header">
+          <h3>Personal</h3>
+          <span class="arrow">&#8599;</span>
+        </div>
+        <div class="desc">
+          Life management — areas of responsibility, projects, and structured knowledge.
+          Condo board, BIRW, TAVR, Home Lab, Church.
+        </div>
+        <div class="status" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</div>
+      </a>
+      <a href="consulting.html" class="dash-card">
+        <div class="card-header">
+          <h3>Consulting</h3>
+          <span class="arrow">&#8599;</span>
+        </div>
+        <div class="desc">
+          Practice management — engagements, content pipeline, professional network.
+          Active: MaAM (Milli &amp; Ali Medical).
+        </div>
+        <div class="status" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Articles -->
+  <div class="section">
+    <div class="section-title">Writing</div>
+    <div class="article-grid">
+      <a href="https://usjoh.github.io/writing/the-pattern/" target="_blank" class="article-card">
+        <h3>The Pattern</h3>
+        <div class="article-meta">March 2026 &middot; Essay</div>
+        <div class="article-desc">
+          The foundational essay — what happens when you apply structure to knowledge
+          and let it grow with you. Where Meridian begins.
+        </div>
+        <span class="arrow">&#8599;</span>
+      </a>
+      <a href="https://usjoh.github.io/writing/no-sir-your-policy-doesnt-cover-that/" target="_blank" class="article-card">
+        <h3>No Sir, Your Policy Doesn't Cover That</h3>
+        <div class="article-meta">March 2026 &middot; Article</div>
+        <div class="article-desc">
+          When the rules say one thing and reality says another.
+          A case study in structured reasoning versus institutional defaults.
+        </div>
+        <span class="arrow">&#8599;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Client Dashboards -->
+  <div class="section">
+    <div class="section-title">Client Dashboards</div>
+    <div class="dash-grid">
+      <a href="https://usjoh.github.io/maam-dashboard-site/" target="_blank" class="dash-card">
+        <div class="card-header">
+          <h3>MaAM — Operations</h3>
+          <span class="arrow">&#8599;</span>
+        </div>
+        <div class="desc">
+          Fleet status, AR exceptions, consignment inventory,
+          and transaction activity for Milli &amp; Ali Medical.
+        </div>
+        <div class="status" style="background: rgba(74,222,128,0.15); color: var(--domain);">Active</div>
+      </a>
+      <a href="https://usjoh.github.io/maam-dashboard-site/finance.html" target="_blank" class="dash-card">
+        <div class="card-header">
+          <h3>MaAM — Finance</h3>
+          <span class="arrow">&#8599;</span>
+        </div>
+        <div class="desc">
+          Revenue by period and facility, supply breakdown,
+          billing terms mix, and invoice coverage.
+        </div>
+        <div class="status" style="background: rgba(74,222,128,0.15); color: var(--domain);">Active</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Meridian &middot; A Knowledge Operating System &middot;
+  <a href="https://github.com/usjoh">github.com/usjoh</a>
+</div>
+
+</body>
+</html>"""
+
+    return html
+
+
 def main():
     instances = []
     for inst_config in INSTANCES:
@@ -856,10 +1407,16 @@ def main():
         return
 
     merged = merge_daily(instances)
+
     html = generate_html(instances, merged)
     OUTPUT_FILE.write_text(html)
     print(f"Consolidated dashboard generated: {OUTPUT_FILE}")
-    print(f"  Open with: open {OUTPUT_FILE}")
+
+    index_html = generate_index_html(instances, merged)
+    INDEX_FILE.write_text(index_html)
+    print(f"Index page generated: {INDEX_FILE}")
+
+    print(f"  Open with: open {INDEX_FILE}")
 
 
 if __name__ == "__main__":

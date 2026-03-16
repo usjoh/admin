@@ -19,21 +19,69 @@
 
   /* Hero */
   .hero {
-    text-align: center; padding: 80px 24px 48px;
+    text-align: center; padding: 60px 24px 40px;
     border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(108,140,255,0.06) 0%, transparent 100%);
   }
   .hero h1 {
     font-size: 42px; font-weight: 700; letter-spacing: -1px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   .hero h1 span { color: var(--accent); }
   .hero .tagline {
     font-size: 18px; color: var(--text-dim); max-width: 600px;
-    margin: 0 auto 24px; font-weight: 400;
+    margin: 0 auto 28px; font-weight: 400;
   }
-  .hero .vision {
-    font-size: 14px; color: var(--text-dim); max-width: 520px;
-    margin: 0 auto; font-style: italic; line-height: 1.7;
+
+  /* Hero metrics bar */
+  .hero-metrics {
+    display: flex; align-items: center; justify-content: center; gap: 32px;
+    margin-bottom: 28px; flex-wrap: wrap;
+  }
+  .hero-gauge {
+    position: relative; width: 60px; height: 60px; flex-shrink: 0;
+  }
+  .hero-gauge svg { width: 60px; height: 60px; transform: rotate(-90deg); }
+  .hero-gauge .gauge-pct {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 15px; font-weight: 700; color: #818cf8;
+  }
+  .hero-metric { text-align: center; }
+  .hero-metric .hm-val {
+    font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums;
+  }
+  .hero-metric .hm-label {
+    font-size: 10px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .hero-phase {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 600; padding: 4px 12px; border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* Hero narrative */
+  .hero-narrative {
+    max-width: 640px; margin: 0 auto; text-align: left;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 20px;
+  }
+  .hero-narrative h3 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--text-dim); margin-bottom: 10px; font-weight: 600;
+  }
+  .obs-list { display: flex; flex-direction: column; gap: 2px; }
+  .obs-item { border-radius: 3px; }
+
+  .hero-updated {
+    font-size: 11px; color: var(--border); margin-top: 16px;
+  }
+
+  /* Accent line under hero */
+  .hero-accent {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 0 auto; max-width: 400px;
   }
 
   /* Content */
@@ -144,6 +192,7 @@
     .dash-grid, .article-grid { grid-template-columns: 1fr; }
     .instance-grid { grid-template-columns: 1fr 1fr; }
     .hero h1 { font-size: 32px; }
+    .hero-metrics { gap: 20px; }
   }
 </style>
 </head>
@@ -151,11 +200,44 @@
 
 <div class="hero">
   <h1><span>Meridian</span></h1>
-  <div class="tagline">A copilot, not a tool.</div>
-  <div class="vision">
-    The map and the territory. The pattern, applied to itself, and then beyond.
+  <div class="tagline">Know where you are. Move forward with confidence.</div>
+
+  <div class="hero-metrics">
+    <div class="hero-gauge">
+      <svg viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(42,45,58,0.6)" stroke-width="5"/>
+        <circle cx="30" cy="30" r="24" fill="none" stroke="#818cf8" stroke-width="5"
+                stroke-dasharray="66.4 84.4" stroke-linecap="round"/>
+      </svg>
+      <div class="gauge-pct">44%</div>
+    </div>
+    <div class="hero-metric">
+      <div class="hm-val" style="color: var(--domain)">44%</div>
+      <div class="hm-label">Domain</div>
+    </div>
+    <div class="hero-metric">
+      <div class="hm-val">42h 31m</div>
+      <div class="hm-label">Total Time</div>
+    </div>
+    <div class="hero-metric">
+      <div class="hm-val">51</div>
+      <div class="hm-label">Sessions</div>
+    </div>
+    <span class="hero-phase" style="background: rgba(129,140,248,0.15); color: #818cf8;">Prototype</span>
   </div>
+
+  <div class="hero-narrative">
+    <h3>System Analysis</h3>
+    <div class="obs-list">
+    <div class="obs-item" style="border-left: 3px solid #4ade80; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #4ade80; margin-right: 5px;">&#10003;</span>Combined domain % trending up: 26% to 41% (+15pp) on the most recent day. Infrastructure investment may be starting to pay off.</div>
+    <div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Cumulative domain time is 44%, 36 points below the 80% exit target. Need sustained domain-dominant days to close the gap.</div>
+    <div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Total infrastructure time: 23.8h of 42.5h total across 2 instances. This is the cumulative cost of building Meridian.</div>
+    </div>
+  </div>
+
+  <div class="hero-updated">Generated 2026-03-15 19:55</div>
 </div>
+<div class="hero-accent"></div>
 
 <div class="container">
 
@@ -191,7 +273,7 @@
           Combined domain time vs. infrastructure investment across all Meridian instances.
           Per-instance comparison, merged trends, and system-wide health metrics.
         </div>
-        <div class="status" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</div>
+        <div class="status" style="background: rgba(129,140,248,0.15); color: #818cf8;">Prototype</div>
       </a>
     </div>
   </div>
