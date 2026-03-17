@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIRW Sailing Reunion — Paul Pakos Memorial</title>
+<style>
+  :root {
+    --navy: #1e3a5f;
+    --navy-light: #2c5282;
+    --warm-bg: #faf9f7;
+    --card-bg: #ffffff;
+    --text: #1a202c;
+    --text-light: #4a5568;
+    --border: #e2e8f0;
+    --accent: #2b6cb0;
+    --green: #16a34a;
+    --amber: #d97706;
+    --red: #dc2626;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--warm-bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white;
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.02em;
+  }
+  .header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-style: italic;
+  }
+  .header .memorial {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  .event-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 640px) {
+    .event-cards { grid-template-columns: 1fr; }
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+  }
+  .card h2 {
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--navy);
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+  }
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    font-size: 0.95rem;
+  }
+  .card-row .label {
+    color: var(--text-light);
+    font-size: 0.85rem;
+  }
+  .card-row .value {
+    font-weight: 600;
+    text-align: right;
+  }
+  .summary-bar {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .summary-item {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+    min-width: 120px;
+  }
+  .summary-item .count {
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-family: Arial, sans-serif;
+  }
+  .summary-item .label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .count-green { color: var(--green); }
+  .count-amber { color: var(--amber); }
+  .count-gray { color: #6b7280; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+  thead th {
+    background: var(--navy);
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+  }
+  thead th:not(:first-child) {
+    text-align: center;
+  }
+  .group-header td {
+    background: #edf2f7;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--navy);
+    letter-spacing: 0.03em;
+    border-top: 1px solid var(--border);
+  }
+  tbody tr:not(.group-header) {
+    border-bottom: 1px solid #f1f5f9;
+  }
+  tbody tr:not(.group-header):hover {
+    background: #f8fafc;
+  }
+  .name-cell {
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+  }
+  .note {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 0.15rem;
+  }
+  .status-cell {
+    padding: 0.6rem 0.5rem;
+    text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+    white-space: nowrap;
+  }
+  .footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border);
+  }
+  .footer .updated {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .rsvp-banner {
+    background: #fef3c7;
+    border: 1px solid #fbbf24;
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: #92400e;
+  }
+  .rsvp-banner strong {
+    color: #78350f;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>BIRW Sailing Reunion</h1>
+  <div class="subtitle">In Memory of Paul "Skip" Pakos</div>
+  <div class="memorial">Saturday, March 28, 2026 &mdash; Sudbury, Massachusetts</div>
+</div>
+
+<div class="container">
+
+  <div class="event-cards">
+    <div class="card">
+      <h2>Funeral Mass</h2>
+      <div class="card-row"><span class="label">Date</span><span class="value">Saturday, March 28, 2026</span></div>
+      <div class="card-row"><span class="label">Time</span><span class="value">10:30 AM</span></div>
+      <div class="card-row"><span class="label">Location</span><span class="value">St. Anselm Church</span></div>
+      <div class="card-row"><span class="label">Address</span><span class="value">100 Landham Rd, Sudbury, MA</span></div>
+      <div class="card-row"><span class="label">After</span><span class="value">Reception at the church</span></div>
+    </div>
+    <div class="card">
+      <h2>Reunion Dinner</h2>
+      <div class="card-row"><span class="label">Time</span><span class="value">~6:00 PM (TBD)</span></div>
+      <div class="card-row"><span class="label">Venue</span><span class="value">TBD — Abe selecting restaurant</span></div>
+      <div class="card-row"><span class="label">Format</span><span class="value">Captain's Night Out style, spouses welcome</span></div>
+      <div class="card-row"><span class="label">Cost</span><span class="value">Dutch treat</span></div>
+      <div class="card-row"><span class="label">Organized by</span><span class="value">William 'Abe' Peck</span></div>
+    </div>
+  </div>
+
+  <div class="rsvp-banner">
+    Please RSVP to Abe Peck by <strong>Wednesday, March 18</strong> &mdash;
+    he needs a headcount to secure a private dining room.
+  </div>
+
+  <div class="summary-bar">
+    <div class="summary-item">
+      <div class="count count-green">9</div>
+      <div class="label">Dinner Confirmed</div>
+    </div>
+    <div class="summary-item">
+      <div class="count count-amber">1</div>
+      <div class="label">Friday Only</div>
+    </div>
+    <div class="summary-item">
+      <div class="count count-amber">16</div>
+      <div class="label">Pending</div>
+    </div>
+    <div class="summary-item">
+      <div class="count count-gray">5</div>
+      <div class="label">Not Attending</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Funeral</th>
+        <th>Dinner</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="group-header">
+          <td colspan="4">Core Crew</td>
+        </tr>
+        <tr>
+          <td class="name-cell">William 'Abe' Peck<span class="note">Organizing dinner. Traveling from CO with Mary.</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Mary Peck</td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Fred Burgess<span class="note">Arriving Friday afternoon with Taffy.</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bob Warakomsky<span class="note">Must return to VA after Saturday — caregiver.</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#fef3c7;color:#92400e">Friday Only</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bill O'Halloran</td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Jeff O'Halloran</td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">George Krietemeyer</td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">John Klotz<span class="note">Sent condolences from him and Joy.</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">No Response</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Joe Vorbach</td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Paul Hinkley</td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bruce Skinner</td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Fred Pryor<span class="note">Lives in Paul's subdivision.</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">No Response</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Chris Klotz</td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">No Response</span></td>
+        </tr>
+        <tr class="group-header">
+          <td colspan="4">Pakos Family</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Pat Pakos</td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Matt Pakos</td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Diane (Paul's sister)<span class="note">Confirmed by Pat (Mar 16).</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Katie Rimer</td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Ned Rimer</td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Nico Rimer</td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr class="group-header">
+          <td colspan="4">Family & Friends</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Rick Burgess<span class="note">Deacon. Knows many racers.</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Trish Burgess</td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Patrick Burgess<span class="note">Paul's godson (Class of '91).</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bob Burgess</td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Brian O'Halloran</td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">No Response</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Steve Brady</td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Matt Brady</td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">John Brady</td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Richard Masse</td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f3f4f6;color:#4b5563">Not Attending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Ray Geitler</td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Joe Latino<span class="note">Contact info unknown.</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#f9fafb;color:#6b7280">Pending</span></td>
+        </tr>
+        <tr class="group-header">
+          <td colspan="4">Spouse</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Taffy Burgess</td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+          <td class="status-cell"><span class="badge" style="background:#dcfce7;color:#166534">Attending</span></td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="footer">
+  <div class="updated">Last updated: March 17, 2026 at 08:28 AM</div>
+  <div style="margin-top:0.5rem">
+    In honor of Paul "Skip" Pakos &mdash; co-skipper, friend, shipmate.<br>
+    Block Island Race Week &bull; 1988&ndash;2013
+  </div>
+</div>
+</body>
+</html>
