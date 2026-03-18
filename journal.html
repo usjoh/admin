@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journal Master Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+    --text: #e0e0e8; --text-dim: #8888a0; --accent: #6c8cff;
+    --voice: #6c8cff; --cannabis: #4ade80; --kodiak: #f59e0b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5;
+  }
+  .header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 16px;
+  }
+  .header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; }
+  .header .subtitle {
+    font-size: 13px; color: var(--text-dim); margin-top: 4px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .header .subtitle .source-badge {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 600; padding: 2px 8px; border-radius: 3px;
+    background: rgba(108,140,255,0.15); color: var(--accent);
+  }
+  .header .updated { font-size: 13px; color: var(--text-dim); }
+
+  .hero {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 24px;
+  }
+  .hero-metrics {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+  }
+  .metric .label {
+    font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .metric .value {
+    font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums;
+  }
+  .metric .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+  .charts {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px;
+  }
+  .chart-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px;
+  }
+  .chart-box h3 {
+    font-size: 14px; font-weight: 600; margin-bottom: 14px; color: var(--text-dim);
+  }
+  .chart-box canvas { max-height: 260px; }
+  .wide { grid-column: 1 / -1; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left; padding: 8px 12px; color: var(--text-dim); font-weight: 500;
+    border-bottom: 1px solid var(--border); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+
+  @media (max-width: 768px) {
+    .charts { grid-template-columns: 1fr; }
+    .hero-metrics { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Journal Master Dashboard</h1>
+    <div class="subtitle">
+      <span>All Journals Overview</span>
+      <span class="source-badge">Mock Data</span>
+    </div>
+  </div>
+  <span class="updated">Generated 2026-03-17 22:29</span>
+</div>
+
+<div class="hero">
+  <div class="hero-metrics">
+    <div class="metric">
+      <div class="label">Total Events</div>
+      <div class="value">1,310</div>
+      <div class="sub">2025-06-01 — 2026-03-17</div>
+    </div>
+    <div class="metric">
+      <div class="label">Avg / Day</div>
+      <div class="value">4.6</div>
+      <div class="sub">285 days tracked</div>
+    </div>
+    <div class="metric">
+      <div class="label" style="color: var(--voice)">Voice</div>
+      <div class="value" style="color: var(--voice)">435</div>
+      <div class="sub">33% of events</div>
+    </div>
+    <div class="metric">
+      <div class="label" style="color: var(--cannabis)">Cannabis</div>
+      <div class="value" style="color: var(--cannabis)">320</div>
+      <div class="sub">24% of events</div>
+    </div>
+    <div class="metric">
+      <div class="label" style="color: var(--kodiak)">Kodiak</div>
+      <div class="value" style="color: var(--kodiak)">555</div>
+      <div class="sub">42% of events</div>
+    </div>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Events per Day by Journal</h3>
+    <canvas id="timelineChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Journal Mix</h3>
+    <canvas id="donutChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Activity by Hour</h3>
+    <canvas id="hourChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Top Devices</h3>
+    <canvas id="deviceChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Top Locations</h3>
+    <canvas id="locationChart"></canvas>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Recent Events</h3>
+    <div style="max-height: 400px; overflow-y: auto;">
+    <table>
+      <thead>
+        <tr><th>Journal</th><th>Action</th><th>Timestamp</th><th>Device</th><th>Location</th><th>Content</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:#4ade80; font-weight:600">Cannabis</td>
+          <td>SMOSI</td>
+          <td style="font-size:12px">2026-03-17 19:12</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">B-141</td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-17 17:39</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">28 First St, Salisbury, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-17 14:04</td>
+          <td style="font-size:12px">MacBook Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">Portsmouth, NH</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2304</td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-17 13:35</td>
+          <td style="font-size:12px">iPad Air</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">Boston, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2303</td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-17 13:12</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">28 First St, Salisbury, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-17 10:28</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-17 09:07</td>
+          <td style="font-size:12px">iPad Air</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">Portsmouth, NH</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2305</td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-17 06:49</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">28 First St, Salisbury, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#4ade80; font-weight:600">Cannabis</td>
+          <td>SMOSI</td>
+          <td style="font-size:12px">2026-03-16 21:27</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">B-199</td>
+        </tr>
+        <tr>
+          <td style="color:#4ade80; font-weight:600">Cannabis</td>
+          <td>SMOSI</td>
+          <td style="font-size:12px">2026-03-16 20:16</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">B-110</td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-16 10:30</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#4ade80; font-weight:600">Cannabis</td>
+          <td>SMOSI</td>
+          <td style="font-size:12px">2026-03-15 21:32</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">B-111</td>
+        </tr>
+        <tr>
+          <td style="color:#4ade80; font-weight:600">Cannabis</td>
+          <td>SMOSI</td>
+          <td style="font-size:12px">2026-03-15 20:18</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">B-200</td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-15 11:20</td>
+          <td style="font-size:12px">iPad Air</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">28 First St, Salisbury, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2295</td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-15 10:21</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-15 08:43</td>
+          <td style="font-size:12px">iPad Air</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">Portsmouth, NH</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2296</td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-15 08:19</td>
+          <td style="font-size:12px">iPad Air</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2294</td>
+        </tr>
+        <tr>
+          <td style="color:#4ade80; font-weight:600">Cannabis</td>
+          <td>SMOSI</td>
+          <td style="font-size:12px">2026-03-14 23:36</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">B-148</td>
+        </tr>
+        <tr>
+          <td style="color:#4ade80; font-weight:600">Cannabis</td>
+          <td>SMOSI</td>
+          <td style="font-size:12px">2026-03-14 23:03</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">B-198</td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-14 22:11</td>
+          <td style="font-size:12px">MacBook Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">Boston, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2288</td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-14 19:26</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-14 13:47</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-14 13:46</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">Home Office</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2287</td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-14 10:38</td>
+          <td style="font-size:12px">iPad Air</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">Home Office</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2289</td>
+        </tr>
+        <tr>
+          <td style="color:#4ade80; font-weight:600">Cannabis</td>
+          <td>SMOSI</td>
+          <td style="font-size:12px">2026-03-13 21:09</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">B-112</td>
+        </tr>
+        <tr>
+          <td style="color:#4ade80; font-weight:600">Cannabis</td>
+          <td>SMOSI</td>
+          <td style="font-size:12px">2026-03-13 20:22</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">B-119</td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-13 17:56</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-13 15:58</td>
+          <td style="font-size:12px">iPad Air</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">Boston, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2282</td>
+        </tr>
+        <tr>
+          <td style="color:#f59e0b; font-weight:600">Kodiak</td>
+          <td>START</td>
+          <td style="font-size:12px">2026-03-13 14:51</td>
+          <td style="font-size:12px">iPhone 15 Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">28 First St, Salisbury, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+        </tr>
+        <tr>
+          <td style="color:#6c8cff; font-weight:600">Voice</td>
+          <td>NOTE</td>
+          <td style="font-size:12px">2026-03-13 14:13</td>
+          <td style="font-size:12px">MacBook Pro</td>
+          <td style="font-size:12px; max-width:160px; overflow:hidden; text-overflow:ellipsis">491 Dutton St, Lowell, MA</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Voice note 2281</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const chartDefaults = {
+  x: { ticks: { color: '#8888a0', font: { size: 10 }, maxRotation: 45 }, grid: { color: 'rgba(42,45,58,0.6)' } },
+  y: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' }, beginAtZero: true }
+};
+
+// Timeline — stacked bar
+new Chart(document.getElementById('timelineChart'), {
+  type: 'bar',
+  data: {
+    labels: ["2025-06-01", "", "", "", "", "", "", "", "", "2025-06-10", "", "", "", "", "", "", "", "", "2025-06-20", "", "", "", "", "", "", "", "", "2025-06-30", "", "", "", "", "", "", "", "", "2025-07-09", "", "", "", "", "", "", "", "", "2025-07-18", "", "", "", "", "", "", "", "", "2025-07-27", "", "", "", "", "", "", "", "", "2025-08-05", "", "", "", "", "", "", "", "", "2025-08-15", "", "", "", "", "", "", "", "", "2025-08-24", "", "", "", "", "", "", "", "", "2025-09-02", "", "", "", "", "", "", "", "", "2025-09-12", "", "", "", "", "", "", "", "", "2025-09-21", "", "", "", "", "", "", "", "", "2025-10-01", "", "", "", "", "", "", "", "", "2025-10-10", "", "", "", "", "", "", "", "", "2025-10-19", "", "", "", "", "", "", "", "", "2025-10-28", "", "", "", "", "", "", "", "", "2025-11-06", "", "", "", "", "", "", "", "", "2025-11-15", "", "", "", "", "", "", "", "", "2025-11-24", "", "", "", "", "", "", "", "", "2025-12-03", "", "", "", "", "", "", "", "", "2025-12-12", "", "", "", "", "", "", "", "", "2025-12-21", "", "", "", "", "", "", "", "", "2025-12-30", "", "", "", "", "", "", "", "", "2026-01-08", "", "", "", "", "", "", "", "", "2026-01-17", "", "", "", "", "", "", "", "", "2026-01-26", "", "", "", "", "", "", "", "", "2026-02-04", "", "", "", "", "", "", "", "", "2026-02-13", "", "", "", "", "", "", "", "", "2026-02-22", "", "", "", "", "", "", "", "", "2026-03-03", "", "", "", "", "", "", "", "", "2026-03-12", "", "", "", "", ""],
+    datasets: [
+      { label: 'Voice', data: [0, 0, 1, 1, 3, 2, 1, 3, 1, 2, 2, 1, 2, 0, 0, 3, 1, 0, 0, 2, 1, 2, 1, 3, 3, 2, 2, 3, 0, 3, 2, 2, 3, 0, 0, 1, 0, 2, 1, 2, 2, 1, 0, 3, 3, 1, 1, 2, 0, 2, 0, 1, 1, 2, 0, 3, 3, 1, 3, 2, 3, 2, 1, 3, 1, 0, 2, 3, 1, 3, 1, 0, 1, 1, 1, 3, 0, 0, 0, 1, 3, 2, 2, 1, 1, 1, 0, 0, 2, 2, 0, 3, 1, 2, 3, 2, 2, 1, 3, 2, 3, 2, 2, 2, 2, 0, 1, 1, 3, 3, 3, 3, 3, 2, 1, 2, 1, 2, 2, 3, 1, 0, 3, 3, 0, 2, 0, 1, 1, 0, 3, 3, 0, 2, 0, 2, 2, 1, 3, 1, 1, 3, 2, 1, 2, 0, 3, 1, 0, 0, 1, 1, 2, 3, 3, 1, 2, 3, 3, 2, 3, 1, 0, 0, 2, 0, 3, 2, 0, 2, 3, 0, 1, 1, 1, 0, 3, 3, 0, 2, 3, 3, 2, 3, 2, 0, 1, 0, 1, 1, 1, 3, 3, 2, 1, 3, 1, 3, 0, 1, 1, 2, 3, 1, 0, 3, 0, 2, 0, 0, 3, 3, 1, 1, 0, 3, 3, 1, 1, 0, 0, 2, 1, 1, 2, 0, 2, 0, 3, 3, 1, 0, 0, 2, 2, 1, 3, 2, 2, 2, 2, 0, 1, 3, 3, 3, 2, 3, 1, 2, 2, 0, 2, 0, 1, 2, 1, 3, 2, 3, 0, 1, 2, 1, 0, 3, 1, 1, 1, 0, 1, 0, 1, 3, 0, 0, 0, 0, 1, 2, 2, 3, 3, 0, 3], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 2 },
+      { label: 'Cannabis', data: [1, 2, 0, 1, 2, 2, 0, 1, 0, 0, 0, 2, 2, 2, 1, 1, 1, 2, 1, 1, 2, 1, 0, 0, 1, 1, 2, 1, 2, 0, 2, 1, 1, 1, 0, 1, 2, 2, 1, 2, 0, 2, 0, 0, 0, 1, 0, 2, 0, 2, 0, 1, 2, 2, 0, 2, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 0, 2, 1, 2, 0, 0, 1, 1, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 1, 0, 2, 2, 1, 1, 1, 0, 0, 1, 2, 2, 0, 2, 1, 0, 0, 0, 2, 1, 2, 0, 2, 2, 0, 1, 2, 2, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 2, 2, 0, 0, 2, 1, 2, 2, 1, 1, 2, 0, 1, 1, 1, 2, 1, 2, 1, 3, 0, 1, 1, 1, 0, 1, 2, 1, 2, 2, 0, 2, 2, 0, 0, 2, 2, 1, 0, 1, 0, 2, 2, 0, 1, 2, 0, 2, 1, 2, 2, 1, 2, 0, 0, 1, 0, 2, 0, 0, 1, 1, 1, 2, 1, 2, 1, 1, 1, 0, 1, 1, 0, 2, 1, 2, 0, 1, 2, 3, 1, 0, 2, 0, 1, 1, 2, 0, 2, 0, 0, 1, 2, 2, 1, 2, 0, 2, 1, 2, 2, 0, 1, 0, 2, 1, 0, 2, 1, 1, 2, 0, 1, 1, 1, 2, 1, 1, 0, 1, 2, 0, 2, 1, 1, 2, 1, 2, 0, 1, 1, 0, 1, 1, 1, 2, 1, 2, 0, 1, 1, 1, 1, 0, 1, 1, 2, 1, 2, 1, 1, 0, 2, 0, 2, 2, 2, 2, 1], backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 2 },
+      { label: 'Kodiak', data: [1, 0, 1, 0, 2, 0, 1, 0, 3, 4, 4, 1, 0, 0, 1, 0, 4, 0, 2, 0, 4, 2, 3, 0, 2, 3, 3, 3, 0, 3, 3, 3, 0, 0, 1, 1, 1, 3, 2, 3, 1, 1, 4, 0, 1, 2, 3, 2, 3, 3, 2, 0, 3, 3, 4, 0, 1, 0, 4, 1, 1, 1, 2, 2, 1, 2, 0, 2, 2, 0, 2, 2, 2, 4, 0, 3, 2, 1, 1, 4, 4, 2, 4, 1, 1, 3, 3, 0, 3, 3, 0, 1, 0, 2, 2, 4, 0, 1, 1, 1, 2, 4, 2, 2, 3, 3, 0, 4, 3, 4, 3, 1, 3, 1, 3, 3, 4, 3, 0, 1, 3, 0, 3, 4, 1, 4, 0, 3, 0, 3, 1, 0, 4, 1, 4, 0, 4, 1, 2, 4, 2, 2, 1, 0, 1, 2, 2, 3, 3, 3, 3, 1, 1, 0, 0, 2, 4, 1, 0, 3, 3, 3, 2, 0, 2, 0, 4, 1, 1, 4, 3, 1, 0, 0, 1, 2, 2, 1, 3, 4, 0, 0, 0, 0, 2, 2, 3, 2, 0, 4, 1, 2, 2, 3, 1, 2, 0, 1, 4, 2, 4, 0, 3, 3, 3, 4, 4, 3, 3, 1, 1, 2, 3, 3, 3, 3, 3, 4, 2, 2, 4, 0, 3, 2, 0, 0, 0, 4, 0, 2, 2, 2, 4, 0, 2, 4, 1, 0, 0, 1, 3, 4, 3, 4, 1, 3, 0, 0, 3, 4, 1, 2, 1, 3, 4, 2, 1, 2, 3, 4, 3, 2, 4, 3, 1, 1, 0, 3, 4, 2, 0, 0, 2, 3, 4, 3, 4, 1, 3, 4, 2, 2, 1, 1, 4], backgroundColor: 'rgba(245,158,11,0.7)', borderRadius: 2 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: {
+      x: { ...chartDefaults.x, stacked: true },
+      y: { ...chartDefaults.y, stacked: true }
+    }
+  }
+});
+
+// Donut
+new Chart(document.getElementById('donutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ["Voice", "Cannabis", "Kodiak"],
+    datasets: [{ data: [435, 320, 555], backgroundColor: ["#6c8cffcc", "#4ade80cc", "#f59e0bcc"], borderWidth: 1, borderColor: '#1a1d27' }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { color: '#8888a0', font: { size: 11 }, padding: 12 } },
+      tooltip: { callbacks: { label: ctx => { var t = ctx.dataset.data.reduce((a,b)=>a+b,0); return ctx.label+': '+ctx.parsed.toLocaleString()+' ('+Math.round(ctx.parsed/t*100)+'%)'; } } }
+    }
+  }
+});
+
+// Hour distribution
+new Chart(document.getElementById('hourChart'), {
+  type: 'bar',
+  data: {
+    labels: ["0:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
+    datasets: [{ data: [0, 0, 0, 0, 0, 0, 31, 57, 57, 64, 87, 69, 59, 63, 64, 57, 58, 94, 120, 87, 103, 100, 92, 48], backgroundColor: 'rgba(108,140,255,0.6)', borderRadius: 3 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: chartDefaults
+  }
+});
+
+// Devices
+new Chart(document.getElementById('deviceChart'), {
+  type: 'bar',
+  data: {
+    labels: ["iPhone 15 Pro", "MacBook Pro", "iPad Air"],
+    datasets: [{ data: [1016, 147, 147], backgroundColor: 'rgba(245,158,11,0.6)', borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ...chartDefaults.y },
+      y: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+
+// Locations
+new Chart(document.getElementById('locationChart'), {
+  type: 'bar',
+  data: {
+    labels: ["491 Dutton St, Lowell, MA", "28 First St, Salisbury, MA", "Home Office", "Portsmouth, NH", "Boston, MA"],
+    datasets: [{ data: [661, 381, 97, 86, 85], backgroundColor: 'rgba(74,222,128,0.6)', borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ...chartDefaults.y },
+      y: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
