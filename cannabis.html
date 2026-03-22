@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cannabis Dashboard — Journal Master</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+    --text: #e0e0e8; --text-dim: #8888a0; --accent: #4ade80;
+    --cannabis: #4ade80; --cannabis-dim: rgba(74,222,128,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 18px; border-bottom: 1px solid var(--border); padding-bottom: 16px;
+  }
+  .header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; color: var(--cannabis); }
+  .header .subtitle {
+    font-size: 13px; color: var(--text-dim); margin-top: 4px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .header .updated { font-size: 13px; color: var(--text-dim); }
+
+  .last-event {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 24px; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .last-event .indicator {
+    width: 12px; height: 12px; border-radius: 50%; background: var(--cannabis);
+    flex-shrink: 0; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .last-event .le-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+  .last-event .le-detail { flex: 1; font-size: 13px; }
+  .last-event .le-time { text-align: right; font-size: 12px; color: var(--text-dim); white-space: nowrap; }
+  .last-event .le-time .le-ago { font-size: 16px; font-weight: 600; color: var(--text); display: block; }
+
+  .hero {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 24px;
+  }
+  .hero-metrics { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .metric .label {
+    font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .metric .value { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .metric .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
+  .chart-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+  }
+  .chart-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 14px; color: var(--text-dim); }
+  .chart-box canvas { max-height: 260px; }
+  .wide { grid-column: 1 / -1; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left; padding: 8px 12px; color: var(--text-dim); font-weight: 500;
+    border-bottom: 1px solid var(--border); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+
+  @media (max-width: 768px) {
+    .charts { grid-template-columns: 1fr; }
+    .hero-metrics { grid-template-columns: repeat(3, 1fr); }
+    .last-event { flex-wrap: wrap; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Cannabis</h1>
+    <div class="subtitle">
+      <a href="journal-dashboard.html">&larr; All Journals</a>
+      <span style="color: var(--text-dim);">&middot;</span>
+      <span>Batch Economics &amp; Usage Patterns</span>
+    </div>
+  </div>
+  <span class="updated">Generated 2026-03-22 00:03</span>
+</div>
+
+<div class="last-event">
+  <div class="indicator"></div>
+  <div class="le-time">
+    <span class="le-ago">29m ago</span>
+  </div>
+  <div class="le-detail">
+    via Jeffrey’s MacBook Air &middot; 2026-03-21 23:34:03
+  </div>
+</div>
+
+<div class="hero" style="margin-bottom: 12px;">
+  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Activity</div>
+  <div class="hero-metrics" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="metric">
+      <div class="label">Today</div>
+      <div class="value" style="color: var(--cannabis)">0</div>
+    </div>
+    <div class="metric">
+      <div class="label">Mar 2026</div>
+      <div class="value">375</div>
+      <div class="sub">17.9/day &middot; 21 days</div>
+    </div>
+    <div class="metric">
+      <div class="label">Feb 2026</div>
+      <div class="value">458</div>
+      <div class="sub">16.4/day &middot; 28 days</div>
+    </div>
+    <div class="metric">
+      <div class="label">All Time</div>
+      <div class="value">932</div>
+      <div class="sub">2026-01-27 — 2026-03-21</div>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Economics</div>
+  <div class="hero-metrics" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="metric">
+      <div class="label">Mar 2026 Spend</div>
+      <div class="value">$48.75</div>
+      <div class="sub">22.5g consumed</div>
+    </div>
+    <div class="metric">
+      <div class="label">Cost / Use</div>
+      <div class="value">$0.13</div>
+      <div class="sub">this month</div>
+    </div>
+    <div class="metric">
+      <div class="label">Cost / 28g</div>
+      <div class="value">$65.14</div>
+      <div class="sub">weighted avg</div>
+    </div>
+    <div class="metric">
+      <div class="label">Lifetime</div>
+      <div class="value" style="font-size: 18px">$114.00</div>
+      <div class="sub">49g &middot; 3 batches</div>
+    </div>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Daily Usage &amp; 7-Day Average</h3>
+    <canvas id="dailyChart" height="80"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Activity by Hour</h3>
+    <canvas id="hourChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Day of Week</h3>
+    <canvas id="weekdayChart"></canvas>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Batch History</h3>
+    <div style="overflow-x: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th><th>Size</th><th>Cost</th><th>$/g</th><th>$/28g</th>
+          <th>Uses</th><th>Duration</th><th>Strain</th><th>Quality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-02-21</td>
+          <td>28.0g</td>
+          <td>$60.00</td>
+          <td>$2.143</td>
+          <td>$60.00</td>
+          <td>475</td>
+          <td>29d</td>
+          <td>—</td>
+          <td><span style="color: #4ade80">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-02-14</td>
+          <td>7.0g</td>
+          <td>$18.00</td>
+          <td>$2.571</td>
+          <td>$72.00</td>
+          <td>125</td>
+          <td>8d</td>
+          <td>—</td>
+          <td><span style="color: #4ade80">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-01-13</td>
+          <td>14.0g</td>
+          <td>$36.00</td>
+          <td>$2.571</td>
+          <td>$72.00</td>
+          <td>332</td>
+          <td>19d</td>
+          <td>—</td>
+          <td><span style="color: #4ade80">OK</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Recent Uses</h3>
+    <div style="max-height: 400px; overflow-y: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th><th>Device</th><th>Location</th>
+          <th>Batch</th><th style="text-align:right">Grams</th><th style="text-align:right">Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 23:34</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">Lowell National Historical Par</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 22:58</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 20:14</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 20:05</td>
+          <td style="font-size:12px">iPad Pro (2025)</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 19:09</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 18:28</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 18:22</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 17:28</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 16:35</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 16:26</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 16:17</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 15:41</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 14:39</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 13:59</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 13:11</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 12:50</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 11:25</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 10:39</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 09:59</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 09:17</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:140px; overflow:hidden; text-overflow:ellipsis">491 Dutton St</td>
+          <td style="font-family:monospace; font-size:11px">…1.094654</td>
+          <td style="text-align:right">0.06</td>
+          <td style="text-align:right">$0.13</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const chartDefaults = {
+  x: { ticks: { color: '#8888a0', font: { size: 10 }, maxRotation: 45 }, grid: { color: 'rgba(42,45,58,0.6)' } },
+  y: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' }, beginAtZero: true }
+};
+
+// Daily usage + 7-day rolling average
+new Chart(document.getElementById('dailyChart'), {
+  type: 'bar',
+  data: {
+    labels: ["2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-01-31", "2026-02-01", "2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-07", "2026-02-08", "2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-14", "2026-02-15", "2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21", "2026-02-22", "2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-02-28", "2026-03-01", "2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07", "2026-03-08", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21"],
+    datasets: [
+      {
+        label: 'Daily Uses',
+        data: [5, 19, 19, 30, 26, 21, 17, 19, 20, 19, 13, 13, 17, 21, 11, 17, 13, 20, 26, 17, 18, 20, 19, 21, 15, 11, 2, 18, 19, 17, 22, 8, 4, 13, 15, 20, 18, 25, 26, 18, 13, 13, 17, 17, 20, 17, 27, 19, 20, 11, 12, 13, 17, 24],
+        backgroundColor: 'rgba(74,222,128,0.5)',
+        borderRadius: 2,
+        order: 2
+      },
+      {
+        label: '7-Day Avg',
+        data: [5.0, 12.0, 14.3, 18.2, 19.8, 20.0, 19.6, 21.6, 21.7, 21.7, 19.3, 17.4, 16.9, 17.4, 16.3, 15.9, 15.0, 16.0, 17.9, 17.9, 17.4, 18.7, 19.0, 20.1, 19.4, 17.3, 15.1, 15.1, 15.0, 14.7, 14.9, 13.9, 12.9, 14.4, 14.0, 14.1, 14.3, 14.7, 17.3, 19.3, 19.3, 19.0, 18.6, 18.4, 17.7, 16.4, 17.7, 18.6, 19.6, 18.7, 18.0, 17.0, 17.0, 16.6],
+        type: 'line',
+        borderColor: '#4ade80',
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+        tension: 0.3,
+        order: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: chartDefaults
+  }
+});
+
+// Hourly distribution — last 7 days vs prior 7 days
+new Chart(document.getElementById('hourChart'), {
+  type: 'bar',
+  data: {
+    labels: ["0:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
+    datasets: [
+      {
+        label: 'Last 7 Days',
+        data: [2, 2, 1, 0, 2, 1, 3, 5, 7, 6, 6, 4, 7, 4, 9, 11, 6, 5, 10, 6, 8, 5, 3, 3],
+        backgroundColor: 'rgba(74,222,128,0.7)',
+        borderRadius: 3
+      },
+      {
+        label: 'Prior 7 Days',
+        data: [3, 3, 1, 1, 0, 4, 2, 2, 9, 2, 9, 7, 7, 7, 6, 6, 3, 13, 6, 9, 6, 9, 5, 4],
+        backgroundColor: 'rgba(74,222,128,0.2)',
+        borderColor: 'rgba(74,222,128,0.4)',
+        borderWidth: 1,
+        borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: chartDefaults
+  }
+});
+
+// Day of week
+new Chart(document.getElementById('weekdayChart'), {
+  type: 'bar',
+  data: {
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    datasets: [{ data: [122, 122, 139, 152, 146, 149, 102], backgroundColor: 'rgba(74,222,128,0.6)', borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: chartDefaults
+  }
+});
+</script>
+</body>
+</html>
