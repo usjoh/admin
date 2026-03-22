@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian — Ops</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+    --text: #e0e0e8; --text-dim: #8888a0; --accent: #6c8cff;
+    --domain: #4ade80; --infra: #818cf8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 16px;
+  }
+  .header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; }
+  .header .subtitle {
+    font-size: 13px; color: var(--text-dim); margin-top: 4px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .header .subtitle .status-badge {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 600; padding: 2px 8px; border-radius: 3px;
+  }
+  .header .updated { font-size: 13px; color: var(--text-dim); }
+  .header .nav { font-size: 13px; color: var(--text-dim); }
+
+  /* Readiness banner */
+  .readiness {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px; margin-bottom: 24px;
+    display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start;
+  }
+  .readiness-left {
+    display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 100px;
+  }
+  .readiness-gauge { position: relative; width: 100px; height: 100px; }
+  .readiness-gauge canvas { width: 100px !important; height: 100px !important; }
+  .readiness-pct {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 22px; font-weight: 700;
+  }
+  .readiness-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+    font-weight: 600; padding: 3px 10px; border-radius: 4px;
+  }
+
+  /* Time hero */
+  .time-hero {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 24px;
+  }
+  .time-hero-metrics {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 16px;
+  }
+  .time-metric .label {
+    font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .time-metric .value {
+    font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums;
+  }
+  .time-metric .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .time-hero canvas { width: 100%; max-height: 160px; }
+
+  /* Instance cards */
+  .inst-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px;
+  }
+  .inst-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; text-decoration: none !important; color: var(--text);
+    transition: border-color 0.2s, transform 0.15s; display: flex; flex-direction: column; gap: 12px;
+  }
+  .inst-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .inst-header { display: flex; justify-content: space-between; align-items: center; }
+  .inst-header h3 { font-size: 18px; font-weight: 600; }
+  .inst-status {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 600; padding: 2px 8px; border-radius: 3px;
+  }
+  .inst-metrics { display: flex; gap: 20px; flex-wrap: wrap; }
+  .inst-metric { text-align: center; }
+  .inst-metric-val { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .inst-metric-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.4px; }
+  .inst-areas { font-size: 12px; color: var(--text-dim); }
+  .inst-arrow { font-size: 12px; color: var(--border); transition: color 0.15s; align-self: flex-end; }
+  .inst-card:hover .inst-arrow { color: var(--accent); }
+
+  /* Charts */
+  .charts {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px;
+  }
+  .chart-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+  }
+  .chart-box h3 {
+    font-size: 14px; font-weight: 600; margin-bottom: 14px; color: var(--text-dim);
+  }
+  .chart-box canvas { max-height: 260px; }
+  .wide { grid-column: 1 / -1; }
+
+  /* Info icons */
+  .info-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 1px solid var(--text-dim); font-size: 9px; font-weight: 600;
+    font-style: italic; font-family: Georgia, serif;
+    color: var(--text-dim); cursor: pointer; margin-left: 6px;
+    transition: color 0.15s, border-color 0.15s; position: relative;
+    vertical-align: middle; line-height: 1;
+  }
+  .info-icon:hover { color: var(--accent); border-color: var(--accent); }
+  .info-tooltip {
+    position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    background: #252836; border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 14px; font-size: 12px; line-height: 1.5; color: var(--text-dim);
+    width: 280px; z-index: 50; box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    text-transform: none; letter-spacing: 0; font-weight: 400;
+  }
+  .info-tooltip::after {
+    content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border: 6px solid transparent; border-top-color: #252836;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); z-index: 100; align-items: center; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px; width: 90%; max-width: 600px; max-height: 80vh;
+  }
+  .modal h3 { font-size: 16px; margin-bottom: 16px; }
+  .modal canvas { max-height: 300px; }
+  .modal-close {
+    float: right; background: none; border: none; color: var(--text-dim);
+    font-size: 20px; cursor: pointer; padding: 0 4px;
+  }
+  .modal-close:hover { color: var(--text); }
+
+  .readiness-left { cursor: pointer; }
+  .readiness-left:hover .readiness-gauge { filter: brightness(1.15); }
+  .readiness-left .expand-hint {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 10px; color: var(--border); transition: color 0.15s;
+  }
+  .readiness-left:hover .expand-hint { color: var(--accent); }
+
+  .chart-box.clickable { cursor: pointer; transition: border-color 0.15s; }
+  .chart-box.clickable:hover { border-color: var(--accent); }
+
+  /* Observation items */
+  .obs-list { display: flex; flex-direction: column; gap: 2px; }
+  .obs-item { border-radius: 3px; }
+
+  .footer {
+    text-align: center; padding: 24px; font-size: 12px; color: var(--text-dim);
+    border-top: 1px solid var(--border); margin-top: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .charts, .inst-grid { grid-template-columns: 1fr; }
+    .time-hero-metrics { grid-template-columns: repeat(3, 1fr); }
+    .readiness { grid-template-columns: 1fr; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Meridian Ops</h1>
+    <div class="subtitle">
+      <span>2 instances</span>
+      <span class="status-badge" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</span>
+    </div>
+  </div>
+  <div style="text-align: right">
+    <div style="font-size: 13px; color: var(--text-dim); margin-bottom: 4px;"><a href="index.html" style="color: var(--accent); text-decoration: none;">&#8592; Meridian Home</a> &middot; <span style="color: var(--text);">Meridian Ops</span> &middot; <a href="personal.html" style="color: var(--accent); text-decoration: none;">Personal</a> &middot; <a href="consulting.html" style="color: var(--accent); text-decoration: none;">Consulting</a></div>
+    <div class="updated">Generated 2026-03-22 02:07</div>
+  </div>
+</div>
+
+<!-- Readiness banner -->
+<div class="readiness">
+  <div class="readiness-left" onclick="showModal('domainpct')">
+    <div class="readiness-gauge">
+      <canvas id="readinessGauge"></canvas>
+      <div class="readiness-pct" style="color: var(--infra)">31%</div>
+    </div>
+    <span class="readiness-label" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</span>
+    <div class="expand-hint">&#8599; click to expand</div>
+  </div>
+  <div class="readiness-right">
+    <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Cross-Instance Domain Time</h2>
+    <div class="obs-list">
+    <div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Cumulative domain time is 31%, 49 points below the 80% exit target. Need sustained domain-dominant days to close the gap.</div>
+    <div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Total infrastructure time: 86.5h of 124.5h total across 2 instances. This is the cumulative cost of building Meridian.</div>
+    <div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Personal leads at 60% domain time vs. Consulting at 20%. Protocol maturity in the leading instance should transfer to the other.</div>
+    <div class="obs-item" style="border-left: 3px solid #f59e0b; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #f59e0b; margin-right: 5px;">&#9888;</span>Instance divergence: 40pp gap between Personal (60%) and Consulting (20%). Large divergence suggests one instance is still heavily infrastructure-bound while the other is maturing.</div>
+    <div class="obs-item" style="border-left: 3px solid #555570; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #555570; margin-right: 5px;">&#8226;</span>Averaging 8.5 sessions/day across 11 days and 2 instances.</div>
+    <div class="obs-item" style="border-left: 3px solid #f59e0b; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #f59e0b; margin-right: 5px;">&#9888;</span>107 observations logged across all instances (9.7/day). High observation volume means many gaps and patterns surfaced. Each one costs infra time to document — expect this to taper as patterns stabilize.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Time hero -->
+<div class="time-hero">
+  <div class="time-hero-metrics">
+    <div class="time-metric">
+      <div class="label">Total Time<span class="info-icon" onclick="showInfo(this, 'Combined time across all Meridian instances. Includes both domain work and infrastructure investment. Derived from session-activity-log.md in each instance.')" title="About">i</span></div>
+      <div class="value">124h 31m</div>
+      <div class="sub">11 days, 94 sessions</div>
+    </div>
+    <div class="time-metric">
+      <div class="label">Domain Time<span class="info-icon" onclick="showInfo(this, 'Time spent on actual domain work: client engagements, content creation, areas of responsibility. Allocated proportionally based on file-change ratios per session.')" title="About">i</span></div>
+      <div class="value" style="color: var(--domain)">37h 59m</div>
+      <div class="sub">31% of total</div>
+    </div>
+    <div class="time-metric">
+      <div class="label">Infra Time<span class="info-icon" onclick="showInfo(this, 'Time spent building and maintaining Meridian itself: protocols, observations, governance, CLAUDE.md, .kos/ files. Should decline as the system stabilizes.')" title="About">i</span></div>
+      <div class="value" style="color: var(--infra)">86h 31m</div>
+      <div class="sub">69% of total</div>
+    </div>
+    <div class="time-metric">
+      <div class="label">Sessions<span class="info-icon" onclick="showInfo(this, 'Total Claude Code sessions across all instances. Each session is one worktree or branch conversation. Higher throughput means more gets done but also more context switches.')" title="About">i</span></div>
+      <div class="value">94</div>
+      <div class="sub">8.5 / day</div>
+    </div>
+    <div class="time-metric">
+      <div class="label">Observations<span class="info-icon" onclick="showInfo(this, 'Meridian observations (MO entries) logged across all instances. Gaps, pattern validations, and feature candidates surfaced during real work. High volume during build phase is expected.')" title="About">i</span></div>
+      <div class="value" style="color: #fb7185">107</div>
+      <div class="sub">9.7 / day</div>
+    </div>
+  </div>
+  <canvas id="timeHeroChart"></canvas>
+</div>
+
+<!-- Instance cards -->
+<div class="inst-grid">
+
+      <a href="personal.html" class="inst-card" style="border-left: 3px solid #6c8cff">
+        <div class="inst-header">
+          <h3>Personal</h3>
+          <span class="inst-status" style="background: rgba(245,158,11,0.15); color: #f59e0b;">Transitioning</span>
+        </div>
+        <div class="inst-metrics">
+          <div class="inst-metric">
+            <div class="inst-metric-val" style="color: #6c8cff">60%</div>
+            <div class="inst-metric-label">Domain</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">32h 21m</div>
+            <div class="inst-metric-label">Total</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">33</div>
+            <div class="inst-metric-label">Sessions</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">8</div>
+            <div class="inst-metric-label">Days</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">33</div>
+            <div class="inst-metric-label">Observations</div>
+          </div>
+        </div>
+        <div class="inst-areas">Areas: Condo Board, Home Lab, BIRW, TAVR, Church</div>
+        <span class="inst-arrow">&#8599; View dashboard</span>
+      </a>
+
+      <a href="consulting.html" class="inst-card" style="border-left: 3px solid #f59e0b">
+        <div class="inst-header">
+          <h3>Consulting</h3>
+          <span class="inst-status" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</span>
+        </div>
+        <div class="inst-metrics">
+          <div class="inst-metric">
+            <div class="inst-metric-val" style="color: #f59e0b">20%</div>
+            <div class="inst-metric-label">Domain</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">92h 10m</div>
+            <div class="inst-metric-label">Total</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">61</div>
+            <div class="inst-metric-label">Sessions</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">11</div>
+            <div class="inst-metric-label">Days</div>
+          </div>
+          <div class="inst-metric">
+            <div class="inst-metric-val">74</div>
+            <div class="inst-metric-label">Observations</div>
+          </div>
+        </div>
+        <div class="inst-areas">Areas: MaAM, Content, Practice</div>
+        <span class="inst-arrow">&#8599; View dashboard</span>
+      </a>
+
+</div>
+
+<!-- Charts -->
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Combined Time Allocation: Domain vs Infrastructure (hours/day)<span class="info-icon" onclick="showInfo(this, 'Stacked bar showing how each day\'s total time splits between domain work (green) and Meridian infrastructure (purple). Healthy trend: green grows, purple shrinks.')" title="About">i</span></h3>
+    <canvas id="timeAllocChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Domain Time % by Instance<span class="info-icon" onclick="showInfo(this, 'Per-instance domain time percentage over time. Shows which instance is maturing faster and whether protocol stabilization in one instance transfers to the other. 80% target line marks operational readiness.')" title="About">i</span></h3>
+    <canvas id="instCompareChart"></canvas>
+  </div>
+
+  <div class="chart-box clickable" onclick="showModal('donut')">
+    <h3>Cumulative Allocation by Instance<span class="info-icon" onclick="event.stopPropagation(); showInfo(this, 'How total time breaks down: domain vs. infrastructure for each instance. Shows which instance consumes more infrastructure time and where domain effort concentrates. Click to expand.')" title="About">i</span></h3>
+    <canvas id="donutChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Combined Domain % Trend<span class="info-icon" onclick="showInfo(this, 'Rolling combined domain percentage across all instances. The single most important metric for prototype exit. Must sustain above 80% to transition from Prototype to Operational.')" title="About">i</span></h3>
+    <canvas id="domainPctChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Time by Instance (hours/day)<span class="info-icon" onclick="showInfo(this, 'How total daily effort distributes across instances. Shows where attention is concentrated and whether both instances are receiving active use.')" title="About">i</span></h3>
+    <canvas id="instHoursChart"></canvas>
+  </div>
+</div>
+
+<!-- Modal for drill-down -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('active')">&times;</button>
+    <h3 id="modalTitle"></h3>
+    <canvas id="modalChart"></canvas>
+  </div>
+</div>
+
+<div class="footer">
+  Meridian Ops &middot; <a href="index.html">Meridian Home</a>
+</div>
+
+<script>
+const labels = ['2026-03-10', '2026-03-11', '2026-03-12', '2026-03-13', '2026-03-14', '2026-03-15', '2026-03-16', '2026-03-17', '2026-03-18', '2026-03-19', '2026-03-20'];
+const scaleDefaults = {
+  x: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' } },
+  y: { ticks: { color: '#8888a0', font: { size: 11 }, callback: v => v + 'h' }, grid: { color: 'rgba(42,45,58,0.6)' }, beginAtZero: true }
+};
+
+// Readiness gauge
+new Chart(document.getElementById('readinessGauge'), {
+  type: 'doughnut',
+  data: { datasets: [{ data: [31, 69],
+    backgroundColor: ['#818cf8', 'rgba(42,45,58,0.4)'], borderWidth: 0 }] },
+  options: { responsive: false, cutout: '75%', plugins: { legend: { display: false }, tooltip: { enabled: false } } }
+});
+
+// Time hero: combined lines
+new Chart(document.getElementById('timeHeroChart'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Total', data: [7.17, 0.17, 10.17, 7.2, 19.82, 3.0, 14.5, 11.42, 27.58, 16.42, 7.08], borderColor: '#e0e0e8', backgroundColor: 'rgba(224,224,232,0.05)', fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#e0e0e8', borderWidth: 2.5 },
+      { label: 'Domain', data: [2.71, 0.0, 6.85, 1.89, 7.39, 0.46, 0.5, 0.75, 1.96, 12.91, 2.58], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#4ade80', borderWidth: 2.5 },
+      { label: 'Infrastructure', data: [4.46, 0.17, 3.32, 5.31, 12.43, 2.54, 14.0, 10.67, 25.63, 3.51, 4.5], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: false, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#818cf8', borderWidth: 2.5, borderDash: [4, 2] }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#8888a0', font: { size: 11 }, usePointStyle: true, pointStyle: 'circle' } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + 'h' } }
+    },
+    scales: scaleDefaults
+  }
+});
+
+// Time allocation stacked bar
+new Chart(document.getElementById('timeAllocChart'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Domain', data: [2.71, 0.0, 6.85, 1.89, 7.39, 0.46, 0.5, 0.75, 1.96, 12.91, 2.58], backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 4 },
+      { label: 'Infrastructure', data: [4.46, 0.17, 3.32, 5.31, 12.43, 2.54, 14.0, 10.67, 25.63, 3.51, 4.5], backgroundColor: 'rgba(129,140,248,0.7)', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#8888a0', font: { size: 11 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + 'h' } }
+    },
+    scales: {
+      x: { ...scaleDefaults.x, stacked: true },
+      y: { ...scaleDefaults.y, stacked: true }
+    }
+  }
+});
+
+// Domain % by instance comparison
+new Chart(document.getElementById('instCompareChart'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Personal', data: [null,null,88,46,47,35,null,0,67,72,31], borderColor: '#6c8cff', backgroundColor: '#6c8cff22', fill: false, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#6c8cff', borderWidth: 2.5, spanGaps: true },
+      { label: 'Consulting', data: [38,0,23,14,21,6,3,7,1,82,38], borderColor: '#f59e0b', backgroundColor: '#f59e0b22', fill: false, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#f59e0b', borderWidth: 2.5, spanGaps: true },
+      { label: '80% Target', data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' } },
+      y: { min: 0, max: 100, ticks: { color: '#8888a0', font: { size: 11 }, callback: v => v+'%' }, grid: { color: 'rgba(42,45,58,0.6)' } }
+    }
+  }
+});
+
+// Donut: domain + infra per instance
+new Chart(document.getElementById('donutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Personal Domain', 'Consulting Domain', 'Personal Infra', 'Consulting Infra'],
+    datasets: [{ data: [19.3, 18.7, 13.0, 73.5], backgroundColor: ['#4ade80cc', '#06b6d4cc', '#818cf8cc', '#818cf8cc'], borderWidth: 1, borderColor: '#1a1d27' }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { color: '#8888a0', font: { size: 11 }, padding: 12 } },
+      tooltip: { callbacks: { label: ctx => { var t = ctx.dataset.data.reduce((a,b)=>a+b,0); return ctx.label+': '+ctx.parsed.toFixed(1)+'h ('+Math.round(ctx.parsed/t*100)+'%)'; } } }
+    }
+  }
+});
+
+// Combined domain % trend
+new Chart(document.getElementById('domainPctChart'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Combined Domain %', data: [38, 0, 67, 26, 37, 15, 3, 7, 7, 79, 36], borderColor: 'rgba(74,222,128,0.9)', backgroundColor: 'rgba(74,222,128,0.1)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
+      { label: '80% Target', data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' } },
+      y: { min: 0, max: 100, ticks: { color: '#8888a0', font: { size: 11 }, callback: v => v+'%' }, grid: { color: 'rgba(42,45,58,0.6)' } }
+    }
+  }
+});
+
+// Time by instance stacked bar
+new Chart(document.getElementById('instHoursChart'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Personal', data: [0.0, 0.0, 7.0, 2.7, 12.32, 1.0, 0.0, 0.42, 2.42, 5.42, 1.08], backgroundColor: '#6c8cffaa', borderRadius: 2 },
+      { label: 'Consulting', data: [7.17, 0.17, 3.17, 4.5, 7.5, 2.0, 14.5, 11.0, 25.17, 11.0, 6.0], backgroundColor: '#f59e0baa', borderRadius: 2 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#8888a0', font: { size: 11 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + 'h' } }
+    },
+    scales: {
+      x: { ...scaleDefaults.x, stacked: true },
+      y: { ...scaleDefaults.y, stacked: true }
+    }
+  }
+});
+
+// Info tooltip
+function showInfo(el, text) {
+  var existing = el.querySelector('.info-tooltip');
+  if (existing) { existing.remove(); return; }
+  document.querySelectorAll('.info-tooltip').forEach(t => t.remove());
+  var tip = document.createElement('div');
+  tip.className = 'info-tooltip';
+  tip.innerHTML = text;
+  el.appendChild(tip);
+  setTimeout(() => {
+    document.addEventListener('click', function handler(e) {
+      if (!el.contains(e.target)) { tip.remove(); document.removeEventListener('click', handler); }
+    });
+  }, 0);
+}
+
+// Modal drill-down
+var modalChart = null;
+const modalData = {
+  domainpct: {
+    title: 'Combined Domain Time % per Day',
+    type: 'line',
+    datasets: [
+      { label: 'Combined Domain %', data: [38, 0, 67, 26, 37, 15, 3, 7, 7, 79, 36], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
+      { label: '80% Target', data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
+    ],
+    yLabel: '%',
+    yMax: 100
+  },
+  donut: {
+    title: 'Cumulative Time Allocation by Instance',
+    type: 'doughnut',
+    datasets: [{ data: [19.3, 18.7, 13.0, 73.5], backgroundColor: ['#4ade80cc', '#06b6d4cc', '#818cf8cc', '#818cf8cc'], borderWidth: 1, borderColor: '#1a1d27' }],
+    donutLabels: ['Personal Domain', 'Consulting Domain', 'Personal Infra', 'Consulting Infra']
+  }
+};
+
+function showModal(key) {
+  var d = modalData[key];
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalOverlay').classList.add('active');
+  if (modalChart) modalChart.destroy();
+  if (d.type === 'doughnut') {
+    modalChart = new Chart(document.getElementById('modalChart'), {
+      type: 'doughnut',
+      data: { labels: d.donutLabels, datasets: d.datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'right', labels: { color: '#8888a0', font: { size: 12 }, padding: 14 } },
+          tooltip: { callbacks: { label: ctx => { var t = ctx.dataset.data.reduce((a,b)=>a+b,0); return ctx.label+': '+ctx.parsed.toFixed(1)+'h ('+Math.round(ctx.parsed/t*100)+'%)'; } } }
+        }
+      }
+    });
+  } else {
+    modalChart = new Chart(document.getElementById('modalChart'), {
+      type: 'line',
+      data: { labels: labels, datasets: d.datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: '#8888a0' } } },
+        scales: {
+          x: { ticks: { color: '#8888a0' }, grid: { color: 'rgba(42,45,58,0.6)' } },
+          y: { beginAtZero: true, max: d.yMax || undefined, ticks: { color: '#8888a0', callback: v => v + (d.yLabel || '') }, grid: { color: 'rgba(42,45,58,0.6)' } }
+        }
+      }
+    });
+  }
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('active');
+  }
+}
+</script>
+</body>
+</html>

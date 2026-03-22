@@ -136,49 +136,6 @@
   }
   .dash-card:hover .arrow { color: var(--accent); }
 
-  /* Article cards */
-  .article-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-  }
-  .article-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 24px; text-decoration: none;
-    color: var(--text); transition: border-color 0.2s, transform 0.15s;
-    display: flex; flex-direction: column; gap: 6px;
-  }
-  .article-card:hover {
-    border-color: var(--accent); transform: translateY(-2px);
-  }
-  .article-card h3 { font-size: 16px; font-weight: 600; }
-  .article-card .article-meta {
-    font-size: 12px; color: var(--text-dim);
-  }
-  .article-card .article-desc {
-    font-size: 13px; color: var(--text-dim); line-height: 1.5;
-    margin-top: 4px;
-  }
-  .article-card .arrow {
-    font-size: 14px; color: var(--border); transition: color 0.15s;
-    align-self: flex-end; margin-top: auto;
-  }
-  .article-card:hover .arrow { color: var(--accent); }
-
-  /* Instance overview */
-  .instance-grid {
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
-  }
-  .instance-tile {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; padding: 18px; text-align: center;
-  }
-  .instance-tile .label {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
-    color: var(--text-dim); margin-bottom: 6px;
-  }
-  .instance-tile .value {
-    font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums;
-  }
-
   /* Footer */
   .footer {
     text-align: center; padding: 32px 24px;
@@ -189,8 +146,7 @@
   .footer a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
-    .dash-grid, .article-grid { grid-template-columns: 1fr; }
-    .instance-grid { grid-template-columns: 1fr 1fr; }
+    .dash-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 32px; }
     .hero-metrics { gap: 20px; }
   }
@@ -235,53 +191,32 @@
     </div>
   </div>
 
-  <div class="hero-updated">Generated 2026-03-21 11:15</div>
+  <div class="hero-updated">Generated 2026-03-22 02:07</div>
 </div>
 <div class="hero-accent"></div>
 
 <div class="container">
 
-  <!-- System Overview -->
+  <!-- Navigation -->
   <div class="section">
-    <div class="section-title">System Overview</div>
-    <div class="instance-grid">
-      <div class="instance-tile">
-        <div class="label">Instances</div>
-        <div class="value" style="color: var(--accent)">2</div>
-      </div>
-      <div class="instance-tile">
-        <div class="label">Phase</div>
-        <div class="value" style="color: var(--infra); font-size: 16px;">Prototype</div>
-      </div>
-      <div class="instance-tile">
-        <div class="label">Architecture</div>
-        <div class="value" style="color: var(--domain); font-size: 14px;">Kernel + Instances</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Consolidated Readiness -->
-  <div class="section">
-    <div class="section-title">Consolidated Readiness</div>
+    <div class="section-title">Domains</div>
     <div class="dash-grid">
-      <a href="consolidated.html" class="dash-card" style="grid-column: 1 / -1;">
+      <a href="meridian-ops.html" class="dash-card" style="grid-column: 1 / -1;">
         <div class="card-header">
-          <h3>Cross-Instance Readiness</h3>
+          <h3>Meridian Ops</h3>
           <span class="arrow">&#8599;</span>
         </div>
         <div class="desc">
-          Combined domain time vs. infrastructure investment across all Meridian instances.
-          Per-instance comparison, merged trends, and system-wide health metrics.
+          Cross-instance health metrics, domain vs. infrastructure trends,
+          per-instance comparison, and system-wide readiness.
+        </div>
+        <div class="metrics">
+          <div class="metric-item"><strong>94</strong> sessions</div>
+          <div class="metric-item"><strong>124h 31m</strong> total</div>
+          <div class="metric-item"><strong>11</strong> active days</div>
         </div>
         <div class="status" style="background: rgba(129,140,248,0.15); color: #818cf8;">Prototype</div>
       </a>
-    </div>
-  </div>
-
-  <!-- Readiness Dashboards -->
-  <div class="section">
-    <div class="section-title">Instance Dashboards</div>
-    <div class="dash-grid">
       <a href="personal.html" class="dash-card">
         <div class="card-header">
           <h3>Personal</h3>
@@ -303,60 +238,6 @@
           Active: MaAM (Milli &amp; Ali Medical).
         </div>
         <div class="status" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</div>
-      </a>
-    </div>
-  </div>
-
-  <!-- Articles -->
-  <div class="section">
-    <div class="section-title">Writing</div>
-    <div class="article-grid">
-      <a href="https://usjoh.github.io/writing/the-pattern/" target="_blank" class="article-card">
-        <h3>The Pattern</h3>
-        <div class="article-meta">March 2026 &middot; Essay</div>
-        <div class="article-desc">
-          The foundational essay — what happens when you apply structure to knowledge
-          and let it grow with you. Where Meridian begins.
-        </div>
-        <span class="arrow">&#8599;</span>
-      </a>
-      <a href="https://usjoh.github.io/writing/no-sir-your-policy-doesnt-cover-that/" target="_blank" class="article-card">
-        <h3>No Sir, Your Policy Doesn't Cover That</h3>
-        <div class="article-meta">March 2026 &middot; Article</div>
-        <div class="article-desc">
-          When the rules say one thing and reality says another.
-          A case study in structured reasoning versus institutional defaults.
-        </div>
-        <span class="arrow">&#8599;</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- Client Dashboards -->
-  <div class="section">
-    <div class="section-title">Client Dashboards</div>
-    <div class="dash-grid">
-      <a href="https://usjoh.github.io/maam-dashboard-site/" target="_blank" class="dash-card">
-        <div class="card-header">
-          <h3>MaAM — Operations</h3>
-          <span class="arrow">&#8599;</span>
-        </div>
-        <div class="desc">
-          Fleet status, AR exceptions, consignment inventory,
-          and transaction activity for Milli &amp; Ali Medical.
-        </div>
-        <div class="status" style="background: rgba(74,222,128,0.15); color: var(--domain);">Active</div>
-      </a>
-      <a href="https://usjoh.github.io/maam-dashboard-site/finance.html" target="_blank" class="dash-card">
-        <div class="card-header">
-          <h3>MaAM — Finance</h3>
-          <span class="arrow">&#8599;</span>
-        </div>
-        <div class="desc">
-          Revenue by period and facility, supply breakdown,
-          billing terms mix, and invoice coverage.
-        </div>
-        <div class="status" style="background: rgba(74,222,128,0.15); color: var(--domain);">Active</div>
       </a>
     </div>
   </div>
