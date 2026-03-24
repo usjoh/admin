@@ -21,7 +21,8 @@ import re
 from datetime import datetime
 from pathlib import Path
 
-OUTPUT_FILE = Path(__file__).resolve().parent / "consolidated.html"
+OUTPUT_FILE = Path(__file__).resolve().parent / "consolidated.html"  # redirect for bookmarks
+MERIDIAN_OPS_FILE = Path(__file__).resolve().parent / "meridian-ops.html"
 INDEX_FILE = Path(__file__).resolve().parent / "index.html"
 
 # Instance configurations — area columns differ per instance
@@ -36,7 +37,7 @@ INSTANCES = [
         },
         "color": "#6c8cff",
         "domain_color": "#4ade80",
-        "dashboard_url": "personal.html",
+        "dashboard_url": "personal-ops.html",
     },
     {
         "name": "Consulting",
@@ -47,7 +48,7 @@ INSTANCES = [
         },
         "color": "#f59e0b",
         "domain_color": "#06b6d4",
-        "dashboard_url": "consulting.html",
+        "dashboard_url": "consulting-ops.html",
     },
 ]
 
@@ -333,8 +334,8 @@ def render_observations_html(observations: list) -> str:
     return "\n    ".join(items)
 
 
-def generate_html(instances: list, merged: list) -> str:
-    """Generate consolidated dashboard HTML."""
+def generate_meridian_ops_html(instances: list, merged: list) -> str:
+    """Generate meridian-ops.html — cross-instance readiness dashboard."""
     total_sessions = sum(d["sessions"] for d in merged)
     total_min = sum(d["duration_min"] for d in merged)
     total_domain_min = sum(d["domain_min"] for d in merged)
@@ -463,7 +464,7 @@ def generate_html(instances: list, merged: list) -> str:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meridian — Consolidated Readiness</title>
+<title>Meridian — Ops</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
   :root {{
@@ -642,14 +643,14 @@ def generate_html(instances: list, merged: list) -> str:
 
 <div class="header">
   <div>
-    <h1>Meridian — Consolidated Readiness</h1>
+    <h1>Meridian Ops</h1>
     <div class="subtitle">
       <span>{len(instances)} instances</span>
       <span class="status-badge" style="background: {status_bg}; color: {status_color};">{status}</span>
     </div>
   </div>
   <div style="text-align: right">
-    <div class="nav"><a href="index.html">&#8592; Admin Home</a></div>
+    {nav_strip_html("ops")}
     <div class="updated">Generated {now}</div>
   </div>
 </div>
@@ -747,7 +748,7 @@ def generate_html(instances: list, merged: list) -> str:
 </div>
 
 <div class="footer">
-  Meridian Consolidated Readiness &middot; <a href="index.html">Admin Home</a>
+  Meridian Ops &middot; <a href="index.html">Meridian Home</a>
 </div>
 
 <script>
@@ -773,7 +774,7 @@ new Chart(document.getElementById('timeHeroChart'), {{
     datasets: [
       {{ label: 'Total', data: {merged_total_hrs}, borderColor: '#e0e0e8', backgroundColor: 'rgba(224,224,232,0.05)', fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#e0e0e8', borderWidth: 2.5 }},
       {{ label: 'Domain', data: {merged_domain_hrs}, borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#4ade80', borderWidth: 2.5 }},
-      {{ label: 'Infrastructure', data: {merged_infra_hrs}, borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#818cf8', borderWidth: 2.5 }}
+      {{ label: 'Infrastructure', data: {merged_infra_hrs}, borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: false, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#818cf8', borderWidth: 2.5, borderDash: [4, 2] }}
     ]
   }},
   options: {{
@@ -981,8 +982,43 @@ function closeModal(e) {{
     return html
 
 
+def nav_strip_html(current: str) -> str:
+    """Generate a consistent top navigation strip for sub-pages.
+
+    Args:
+        current: One of "ops", "personal", "consulting". The current page
+                 is rendered as plain text; the others as links.
+    """
+    pages = [
+        ("index.html", "Meridian Home", "home"),
+        ("meridian-ops.html", "Meridian Ops", "ops"),
+        ("personal-ops.html", "Personal Ops", "personal-ops"),
+        ("consulting-ops.html", "Consulting Ops", "consulting-ops"),
+    ]
+    parts = []
+    for url, label, key in pages:
+        if key == current:
+            parts.append(f'<span style="color: var(--text);">{label}</span>')
+        elif key == "home":
+            parts.append(f'<a href="{url}" style="color: var(--accent); text-decoration: none;">&#8592; {label}</a>')
+        else:
+            parts.append(f'<a href="{url}" style="color: var(--accent); text-decoration: none;">{label}</a>')
+    return f'<div style="font-size: 13px; color: var(--text-dim); margin-bottom: 4px;">{" &middot; ".join(parts)}</div>'
+
+
+def generate_redirect_html() -> str:
+    """Generate a minimal redirect from consolidated.html to meridian-ops.html."""
+    return """<!DOCTYPE html>
+<html><head>
+<meta http-equiv="refresh" content="0;url=meridian-ops.html">
+<title>Redirecting...</title>
+</head><body>
+<p>Redirected to <a href="meridian-ops.html">Meridian Ops</a>.</p>
+</body></html>"""
+
+
 def generate_index_html(instances: list, merged: list) -> str:
-    """Generate index.html with data-driven hero section."""
+    """Generate thin index.html landing page with hero + navigation cards."""
     total_sessions = sum(d["sessions"] for d in merged)
     total_min = sum(d["duration_min"] for d in merged)
     total_domain_min = sum(d["domain_min"] for d in merged)
@@ -1156,49 +1192,6 @@ def generate_index_html(instances: list, merged: list) -> str:
   }}
   .dash-card:hover .arrow {{ color: var(--accent); }}
 
-  /* Article cards */
-  .article-grid {{
-    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-  }}
-  .article-card {{
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 24px; text-decoration: none;
-    color: var(--text); transition: border-color 0.2s, transform 0.15s;
-    display: flex; flex-direction: column; gap: 6px;
-  }}
-  .article-card:hover {{
-    border-color: var(--accent); transform: translateY(-2px);
-  }}
-  .article-card h3 {{ font-size: 16px; font-weight: 600; }}
-  .article-card .article-meta {{
-    font-size: 12px; color: var(--text-dim);
-  }}
-  .article-card .article-desc {{
-    font-size: 13px; color: var(--text-dim); line-height: 1.5;
-    margin-top: 4px;
-  }}
-  .article-card .arrow {{
-    font-size: 14px; color: var(--border); transition: color 0.15s;
-    align-self: flex-end; margin-top: auto;
-  }}
-  .article-card:hover .arrow {{ color: var(--accent); }}
-
-  /* Instance overview */
-  .instance-grid {{
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
-  }}
-  .instance-tile {{
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; padding: 18px; text-align: center;
-  }}
-  .instance-tile .label {{
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
-    color: var(--text-dim); margin-bottom: 6px;
-  }}
-  .instance-tile .value {{
-    font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums;
-  }}
-
   /* Footer */
   .footer {{
     text-align: center; padding: 32px 24px;
@@ -1209,8 +1202,7 @@ def generate_index_html(instances: list, merged: list) -> str:
   .footer a:hover {{ text-decoration: underline; }}
 
   @media (max-width: 768px) {{
-    .dash-grid, .article-grid {{ grid-template-columns: 1fr; }}
-    .instance-grid {{ grid-template-columns: 1fr 1fr; }}
+    .dash-grid {{ grid-template-columns: 1fr; }}
     .hero h1 {{ font-size: 32px; }}
     .hero-metrics {{ gap: 20px; }}
   }}
@@ -1259,59 +1251,38 @@ def generate_index_html(instances: list, merged: list) -> str:
 
 <div class="container">
 
-  <!-- System Overview -->
+  <!-- Navigation -->
   <div class="section">
-    <div class="section-title">System Overview</div>
-    <div class="instance-grid">
-      <div class="instance-tile">
-        <div class="label">Instances</div>
-        <div class="value" style="color: var(--accent)">{len(instances)}</div>
-      </div>
-      <div class="instance-tile">
-        <div class="label">Phase</div>
-        <div class="value" style="color: var(--infra); font-size: 16px;">{status}</div>
-      </div>
-      <div class="instance-tile">
-        <div class="label">Architecture</div>
-        <div class="value" style="color: var(--domain); font-size: 14px;">Kernel + Instances</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Consolidated Readiness -->
-  <div class="section">
-    <div class="section-title">Consolidated Readiness</div>
+    <div class="section-title">Domains</div>
     <div class="dash-grid">
-      <a href="consolidated.html" class="dash-card" style="grid-column: 1 / -1;">
+      <a href="meridian-ops.html" class="dash-card" style="grid-column: 1 / -1;">
         <div class="card-header">
-          <h3>Cross-Instance Readiness</h3>
+          <h3>Meridian Ops</h3>
           <span class="arrow">&#8599;</span>
         </div>
         <div class="desc">
-          Combined domain time vs. infrastructure investment across all Meridian instances.
-          Per-instance comparison, merged trends, and system-wide health metrics.
+          Cross-instance health metrics, domain vs. infrastructure trends,
+          per-instance comparison, and system-wide readiness.
+        </div>
+        <div class="metrics">
+          <div class="metric-item"><strong>{total_sessions}</strong> sessions</div>
+          <div class="metric-item"><strong>{fmt_hours(total_min)}</strong> total</div>
+          <div class="metric-item"><strong>{total_days}</strong> active days</div>
         </div>
         <div class="status" style="background: {status_bg}; color: {status_color};">{status}</div>
       </a>
-    </div>
-  </div>
-
-  <!-- Readiness Dashboards -->
-  <div class="section">
-    <div class="section-title">Instance Dashboards</div>
-    <div class="dash-grid">
-      <a href="personal.html" class="dash-card">
+      <a href="personal-dashboard.html" class="dash-card">
         <div class="card-header">
           <h3>Personal</h3>
           <span class="arrow">&#8599;</span>
         </div>
         <div class="desc">
           Life management — areas of responsibility, projects, and structured knowledge.
-          Condo board, BIRW, TAVR, Home Lab, Church.
+          Journal, BIRW, Flight Log.
         </div>
         <div class="status" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</div>
       </a>
-      <a href="consulting.html" class="dash-card">
+      <a href="consulting-dashboard.html" class="dash-card">
         <div class="card-header">
           <h3>Consulting</h3>
           <span class="arrow">&#8599;</span>
@@ -1321,60 +1292,6 @@ def generate_index_html(instances: list, merged: list) -> str:
           Active: MaAM (Milli &amp; Ali Medical).
         </div>
         <div class="status" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</div>
-      </a>
-    </div>
-  </div>
-
-  <!-- Articles -->
-  <div class="section">
-    <div class="section-title">Writing</div>
-    <div class="article-grid">
-      <a href="https://usjoh.github.io/writing/the-pattern/" target="_blank" class="article-card">
-        <h3>The Pattern</h3>
-        <div class="article-meta">March 2026 &middot; Essay</div>
-        <div class="article-desc">
-          The foundational essay — what happens when you apply structure to knowledge
-          and let it grow with you. Where Meridian begins.
-        </div>
-        <span class="arrow">&#8599;</span>
-      </a>
-      <a href="https://usjoh.github.io/writing/no-sir-your-policy-doesnt-cover-that/" target="_blank" class="article-card">
-        <h3>No Sir, Your Policy Doesn't Cover That</h3>
-        <div class="article-meta">March 2026 &middot; Article</div>
-        <div class="article-desc">
-          When the rules say one thing and reality says another.
-          A case study in structured reasoning versus institutional defaults.
-        </div>
-        <span class="arrow">&#8599;</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- Client Dashboards -->
-  <div class="section">
-    <div class="section-title">Client Dashboards</div>
-    <div class="dash-grid">
-      <a href="https://usjoh.github.io/maam-dashboard-site/" target="_blank" class="dash-card">
-        <div class="card-header">
-          <h3>MaAM — Operations</h3>
-          <span class="arrow">&#8599;</span>
-        </div>
-        <div class="desc">
-          Fleet status, AR exceptions, consignment inventory,
-          and transaction activity for Milli &amp; Ali Medical.
-        </div>
-        <div class="status" style="background: rgba(74,222,128,0.15); color: var(--domain);">Active</div>
-      </a>
-      <a href="https://usjoh.github.io/maam-dashboard-site/finance.html" target="_blank" class="dash-card">
-        <div class="card-header">
-          <h3>MaAM — Finance</h3>
-          <span class="arrow">&#8599;</span>
-        </div>
-        <div class="desc">
-          Revenue by period and facility, supply breakdown,
-          billing terms mix, and invoice coverage.
-        </div>
-        <div class="status" style="background: rgba(74,222,128,0.15); color: var(--domain);">Active</div>
       </a>
     </div>
   </div>
@@ -1390,6 +1307,45 @@ def generate_index_html(instances: list, merged: list) -> str:
 </html>"""
 
     return html
+
+
+def publish_admin_repo():
+    """Commit and push modified HTML files in the admin repo to GitHub Pages."""
+    import subprocess
+
+    admin_dir = Path(__file__).resolve().parent
+
+    # Check for changes to commit
+    status = subprocess.run(
+        ["git", "status", "--porcelain"],
+        cwd=str(admin_dir), capture_output=True, text=True,
+    )
+    changed = [
+        line.split()[-1] for line in status.stdout.strip().split("\n")
+        if line.strip() and line.strip().split()[-1].endswith(".html")
+    ]
+
+    if not changed:
+        print("Admin repo: no HTML changes to publish.")
+        return
+
+    # Stage only HTML files — never stage config, secrets, or non-dashboard files
+    subprocess.run(["git", "add"] + changed, cwd=str(admin_dir), check=True)
+
+    subprocess.run(
+        ["git", "commit", "-m", "chore: regenerate dashboards"],
+        cwd=str(admin_dir), check=True,
+    )
+
+    result = subprocess.run(
+        ["git", "push"],
+        cwd=str(admin_dir), capture_output=True, text=True,
+    )
+    if result.returncode == 0:
+        print(f"Admin repo: published {len(changed)} files to GitHub Pages.")
+    else:
+        print(f"Admin repo: push failed — {result.stderr.strip()}")
+        print("  Files are committed locally. Push manually when ready.")
 
 
 def main():
@@ -1408,15 +1364,22 @@ def main():
 
     merged = merge_daily(instances)
 
-    html = generate_html(instances, merged)
-    OUTPUT_FILE.write_text(html)
-    print(f"Consolidated dashboard generated: {OUTPUT_FILE}")
+    ops_html = generate_meridian_ops_html(instances, merged)
+    MERIDIAN_OPS_FILE.write_text(ops_html)
+    print(f"Meridian Ops dashboard generated: {MERIDIAN_OPS_FILE}")
+
+    redirect_html = generate_redirect_html()
+    OUTPUT_FILE.write_text(redirect_html)
+    print(f"Consolidated redirect generated: {OUTPUT_FILE}")
 
     index_html = generate_index_html(instances, merged)
     INDEX_FILE.write_text(index_html)
     print(f"Index page generated: {INDEX_FILE}")
 
     print(f"  Open with: open {INDEX_FILE}")
+
+    # Publish all admin HTML to GitHub Pages
+    publish_admin_repo()
 
 
 if __name__ == "__main__":
