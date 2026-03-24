@@ -99,13 +99,14 @@
       <span>Session Patterns &amp; Tin Economics</span>
     </div>
   </div>
-  <span class="updated">Generated 2026-03-23 22:55</span>
+  <span class="updated">Generated 2026-03-23 23:00</span>
 </div>
 
+<!-- ===== SECTION 1: TODAY — immediate orientation ===== -->
 <div class="last-event">
   <div class="indicator"></div>
   <div class="le-time">
-    <span class="le-ago">15h ago</span>
+    <span class="le-ago">16h ago</span>
   </div>
   <div class="le-detail">
     via Jeff’s iPhone &middot; 2026-03-23 6:59:51 &middot; 50 min &middot;
@@ -114,16 +115,55 @@
 </div>
 
 <div class="hero" style="margin-bottom: 12px;">
-  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Sessions</div>
-  <div class="hero-metrics" style="grid-template-columns: repeat(5, 1fr);">
+  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Today</div>
+  <div class="hero-metrics" style="grid-template-columns: repeat(4, 1fr);">
     <div class="metric">
-      <div class="label">Today</div>
+      <div class="label">Sessions</div>
       <div class="value" style="color: var(--kodiak)">8</div>
     </div>
     <div class="metric">
+      <div class="label">Avg Duration</div>
+      <div class="value" style="color: #4ade80">53.7m</div>
+      <div class="sub">lifetime avg: 59.7m</div>
+    </div>
+    <div class="metric">
+      <div class="label">3-Day Avg Duration</div>
+      <div class="value" style="color: #f87171">64.8m</div>
+      <div class="sub">above lifetime avg</div>
+    </div>
+    <div class="metric">
+      <div class="label">Last 5 Tins Avg Life</div>
+      <div class="value" style="color: #4ade80">2.0d</div>
+      <div class="sub">improving vs prior 5 (1.4d)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 2: REDUCTION TRENDS — where am I going? ===== -->
+<div class="charts" style="margin-bottom: 12px;">
+  <div class="chart-box wide">
+    <h3>Tin Life Trend (days per tin) &mdash; most recent first</h3>
+    <div class="chart-scroll"><div class="chart-scroll-inner" style="min-width: 1008px">
+    <canvas id="tinLifeChart" height="200"></canvas>
+    </div></div>
+  </div>
+
+  <div class="chart-box wide">
+    <h3>Daily Sessions &amp; 7-Day Average &mdash; most recent first</h3>
+    <div class="chart-scroll"><div class="chart-scroll-inner" style="min-width: 1296px">
+    <canvas id="dailyChart" height="200"></canvas>
+    </div></div>
+  </div>
+</div>
+
+<!-- ===== SECTION 3: SESSIONS & DURATION — context ===== -->
+<div class="hero" style="margin-bottom: 12px;">
+  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Sessions &amp; Duration</div>
+  <div class="hero-metrics" style="grid-template-columns: repeat(6, 1fr);">
+    <div class="metric">
       <div class="label">Mar 2026</div>
       <div class="value">144</div>
-      <div class="sub">6.3/day &middot; 23 days</div>
+      <div class="sub">6.3/day &middot; avg 61.8m</div>
     </div>
     <div class="metric">
       <div class="label">Feb 2026</div>
@@ -136,6 +176,14 @@
       <div class="sub">2025-11-21 — 2026-03-23</div>
     </div>
     <div class="metric">
+      <div class="label">Lifetime Avg</div>
+      <div class="value">59.7m</div>
+    </div>
+    <div class="metric">
+      <div class="label">Median</div>
+      <div class="value">49.0m</div>
+    </div>
+    <div class="metric">
       <div class="label">Data Quality</div>
       <div class="value" style="font-size: 18px">29%</div>
       <div class="sub">114 OK / 75 est-end / 204 est-start</div>
@@ -143,33 +191,9 @@
   </div>
 </div>
 
-<div class="hero" style="margin-bottom: 12px;">
-  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Duration (OK sessions)</div>
-  <div class="hero-metrics" style="grid-template-columns: repeat(4, 1fr);">
-    <div class="metric">
-      <div class="label">Avg Duration</div>
-      <div class="value">59.7m</div>
-      <div class="sub">Mar 2026: 61.8m</div>
-    </div>
-    <div class="metric">
-      <div class="label">Median</div>
-      <div class="value">49.0m</div>
-    </div>
-    <div class="metric">
-      <div class="label">Today Avg</div>
-      <div class="value" style="font-size: 18px; color: #4ade80">53.7m</div>
-      <div class="sub">below lifetime avg</div>
-    </div>
-    <div class="metric">
-      <div class="label">3-Day Avg</div>
-      <div class="value" style="font-size: 18px; color: #f87171">64.8m</div>
-      <div class="sub">above lifetime avg</div>
-    </div>
-  </div>
-</div>
-
+<!-- ===== SECTION 4: COST & ECONOMICS ===== -->
 <div class="hero">
-  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Cost &amp; Reduction</div>
+  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Cost &amp; Economics</div>
   <div class="hero-metrics" style="grid-template-columns: repeat(5, 1fr);">
     <div class="metric">
       <div class="label">Cost / Week</div>
@@ -196,29 +220,11 @@
       <div class="value">2.0d</div>
       <div class="sub">lifetime</div>
     </div>
-    <div class="metric">
-      <div class="label">Last 5 Tins</div>
-      <div class="value" style="color: #4ade80">2.0d</div>
-      <div class="sub">improving vs prior 5 (1.4d)</div>
-    </div>
   </div>
 </div>
 
+<!-- ===== SECTION 5: DETAILED CHARTS ===== -->
 <div class="charts">
-  <div class="chart-box wide">
-    <h3>Tin Life Trend (days per tin) &mdash; most recent first</h3>
-    <div class="chart-scroll"><div class="chart-scroll-inner" style="min-width: 1008px">
-    <canvas id="tinLifeChart" height="200"></canvas>
-    </div></div>
-  </div>
-
-  <div class="chart-box wide">
-    <h3>Daily Sessions &amp; 7-Day Average &mdash; most recent first</h3>
-    <div class="chart-scroll"><div class="chart-scroll-inner" style="min-width: 1296px">
-    <canvas id="dailyChart" height="200"></canvas>
-    </div></div>
-  </div>
-
   <div class="chart-box wide">
     <h3>Weekly Cost &amp; Sessions &mdash; most recent first</h3>
     <div class="chart-scroll"><div class="chart-scroll-inner" style="min-width: 800px">
