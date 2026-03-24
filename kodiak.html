@@ -63,6 +63,14 @@
   .chart-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 14px; color: var(--text-dim); }
   .chart-box canvas { max-height: 260px; }
   .wide { grid-column: 1 / -1; }
+  .chart-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chart-scroll-inner {
+    min-width: 800px;
+    position: relative;
+  }
 
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th {
@@ -91,7 +99,7 @@
       <span>Session Patterns &amp; Tin Economics</span>
     </div>
   </div>
-  <span class="updated">Generated 2026-03-23 22:43</span>
+  <span class="updated">Generated 2026-03-23 22:47</span>
 </div>
 
 <div class="last-event">
@@ -199,17 +207,23 @@
 <div class="charts">
   <div class="chart-box wide">
     <h3>Tin Life Trend (days per tin)</h3>
+    <div class="chart-scroll"><div class="chart-scroll-inner" style="min-width: 1008px">
     <canvas id="tinLifeChart" height="80"></canvas>
+    </div></div>
   </div>
 
   <div class="chart-box wide">
     <h3>Daily Sessions &amp; 7-Day Average</h3>
+    <div class="chart-scroll"><div class="chart-scroll-inner" style="min-width: 1296px">
     <canvas id="dailyChart" height="80"></canvas>
+    </div></div>
   </div>
 
   <div class="chart-box wide">
     <h3>Weekly Cost &amp; Sessions</h3>
+    <div class="chart-scroll"><div class="chart-scroll-inner" style="min-width: 800px">
     <canvas id="weeklyChart" height="80"></canvas>
+    </div></div>
   </div>
 
   <div class="chart-box">
