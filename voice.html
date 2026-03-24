@@ -61,8 +61,16 @@
     background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
   }
   .chart-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 14px; color: var(--text-dim); }
-  .chart-box canvas { max-height: 260px; }
+  .chart-box canvas { max-height: 320px; }
   .wide { grid-column: 1 / -1; }
+  .chart-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chart-scroll-inner {
+    min-width: 800px;
+    position: relative;
+  }
 
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th {
@@ -91,13 +99,13 @@
       <span>Capture Frequency &amp; Patterns</span>
     </div>
   </div>
-  <span class="updated">Generated 2026-03-23 22:38</span>
+  <span class="updated">Generated 2026-03-23 23:36</span>
 </div>
 
 <div class="last-event">
   <div class="indicator"></div>
   <div class="le-time">
-    <span class="le-ago">5h ago</span>
+    <span class="le-ago">6h ago</span>
   </div>
   <div class="le-detail">
     via Jeff’s iPhone &middot; 2026-03-23 17:10
