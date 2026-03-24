@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiak Dashboard — Journal Master</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+    --text: #e0e0e8; --text-dim: #8888a0; --accent: #f59e0b;
+    --kodiak: #f59e0b; --kodiak-dim: rgba(245,158,11,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 18px; border-bottom: 1px solid var(--border); padding-bottom: 16px;
+  }
+  .header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; color: var(--kodiak); }
+  .header .subtitle {
+    font-size: 13px; color: var(--text-dim); margin-top: 4px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .header .updated { font-size: 13px; color: var(--text-dim); }
+
+  .last-event {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 24px; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .last-event .indicator {
+    width: 12px; height: 12px; border-radius: 50%; background: var(--kodiak);
+    flex-shrink: 0; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .last-event .le-detail { flex: 1; font-size: 13px; }
+  .last-event .le-time { text-align: right; font-size: 12px; color: var(--text-dim); white-space: nowrap; }
+  .last-event .le-time .le-ago { font-size: 16px; font-weight: 600; color: var(--text); display: block; }
+
+  .hero {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 24px;
+  }
+  .hero-metrics { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .metric .label {
+    font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .metric .value { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .metric .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
+  .chart-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+  }
+  .chart-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 14px; color: var(--text-dim); }
+  .chart-box canvas { max-height: 260px; }
+  .wide { grid-column: 1 / -1; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left; padding: 8px 12px; color: var(--text-dim); font-weight: 500;
+    border-bottom: 1px solid var(--border); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+
+  @media (max-width: 768px) {
+    .charts { grid-template-columns: 1fr; }
+    .hero-metrics { grid-template-columns: repeat(3, 1fr); }
+    .last-event { flex-wrap: wrap; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Kodiak</h1>
+    <div class="subtitle">
+      <a href="journal.html">&larr; All Journals</a>
+      <span style="color: var(--text-dim);">&middot;</span>
+      <span>Session Patterns &amp; Tin Economics</span>
+    </div>
+  </div>
+  <span class="updated">Generated 2026-03-22 18:10</span>
+</div>
+
+<div class="last-event">
+  <div class="indicator"></div>
+  <div class="le-time">
+    <span class="le-ago">11h ago</span>
+  </div>
+  <div class="le-detail">
+    via Jeffrey’s MacBook Air &middot; 2026-03-22 7:01:20 &middot; 63 min &middot;
+    <span style="color: #4ade80">OK</span>
+  </div>
+</div>
+
+<div class="hero" style="margin-bottom: 12px;">
+  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Sessions</div>
+  <div class="hero-metrics" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="metric">
+      <div class="label">Today</div>
+      <div class="value" style="color: var(--kodiak)">4</div>
+    </div>
+    <div class="metric">
+      <div class="label">Mar 2026</div>
+      <div class="value">134</div>
+      <div class="sub">6.1/day &middot; 22 days</div>
+    </div>
+    <div class="metric">
+      <div class="label">Feb 2026</div>
+      <div class="value">61</div>
+      <div class="sub">3.6/day &middot; 17 days</div>
+    </div>
+    <div class="metric">
+      <div class="label">All Time</div>
+      <div class="value">382</div>
+      <div class="sub">2025-11-21 — 2026-03-22</div>
+    </div>
+    <div class="metric">
+      <div class="label">Data Quality</div>
+      <div class="value" style="font-size: 18px">28%</div>
+      <div class="sub">108 OK / 72 est-end / 202 est-start</div>
+    </div>
+  </div>
+</div>
+
+<div class="hero" style="margin-bottom: 12px;">
+  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Duration (OK sessions)</div>
+  <div class="hero-metrics" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="metric">
+      <div class="label">Avg Duration</div>
+      <div class="value">61.1m</div>
+      <div class="sub">Mar 2026: 61.5m</div>
+    </div>
+    <div class="metric">
+      <div class="label">Median</div>
+      <div class="value">48.0m</div>
+    </div>
+    <div class="metric">
+      <div class="label">Shortest</div>
+      <div class="value" style="font-size: 18px">1.0m</div>
+    </div>
+    <div class="metric">
+      <div class="label">Longest</div>
+      <div class="value" style="font-size: 18px">249.0m</div>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <div style="font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; font-weight: 600;">Cost &amp; Reduction</div>
+  <div class="hero-metrics" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="metric">
+      <div class="label">Cost / Week</div>
+      <div class="value" style="color: #f87171">$23.94</div>
+      <div class="sub">lifetime avg</div>
+    </div>
+    <div class="metric">
+      <div class="label">Recent 4 Wks</div>
+      <div class="value" style="color: #f87171">$38.77</div>
+      <div class="sub">trending up</div>
+    </div>
+    <div class="metric">
+      <div class="label">Annualized</div>
+      <div class="value" style="color: #f87171">$1,245</div>
+      <div class="sub">at current rate</div>
+    </div>
+    <div class="metric">
+      <div class="label">Total Spend</div>
+      <div class="value">$430.98</div>
+      <div class="sub">48 tins &middot; $8.98/tin</div>
+    </div>
+    <div class="metric">
+      <div class="label">Avg Tin Life</div>
+      <div class="value">2.0d</div>
+    </div>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Daily Sessions &amp; 7-Day Average</h3>
+    <canvas id="dailyChart" height="80"></canvas>
+  </div>
+
+  <div class="chart-box wide">
+    <h3>Weekly Cost &amp; Sessions</h3>
+    <canvas id="weeklyChart" height="80"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Session Duration Distribution</h3>
+    <canvas id="durationChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Activity by Hour</h3>
+    <canvas id="hourChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Day of Week</h3>
+    <canvas id="weekdayChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Data Quality Breakdown</h3>
+    <canvas id="qualityChart"></canvas>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box">
+    <h3>Purchase History</h3>
+    <div style="overflow-x: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th><th>Tins</th><th>Cost</th><th>$/Tin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-18</td>
+          <td>3</td>
+          <td>$39.00</td>
+          <td>$13.00</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-02</td>
+          <td>15</td>
+          <td>$105.00</td>
+          <td>$7.00</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-01-13</td>
+          <td>10</td>
+          <td>$75.98</td>
+          <td>$7.60</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2025-11-24</td>
+          <td>20</td>
+          <td>$211.00</td>
+          <td>$10.55</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <h3>Recent Tin Lifecycle</h3>
+    <div style="overflow-x: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Opened</th><th>Closed</th><th>Duration</th><th>Quality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-19</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-21</td>
+          <td>37.6h (1.6d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-18</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-19</td>
+          <td>25.4h (1.1d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-13</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-18</td>
+          <td>119.2h (5.0d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-12</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-13</td>
+          <td>24.8h (1.0d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-11</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-12</td>
+          <td>32.2h (1.3d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-10</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-11</td>
+          <td>27.8h (1.2d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-08</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-10</td>
+          <td>40.5h (1.7d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-06</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-08</td>
+          <td>40.5h (1.7d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-05</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-06</td>
+          <td>28.1h (1.2d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; font-family:monospace">2026-03-04</td>
+          <td style="font-size:12px; font-family:monospace">2026-03-05</td>
+          <td>26.5h (1.1d)</td>
+          <td><span style="color: #4ade80">Container</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Recent Sessions</h3>
+    <div style="max-height: 400px; overflow-y: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Start</th><th style="text-align:right">Duration</th><th>Device</th>
+          <th>Content</th><th>Quality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 7:01:</td>
+          <td style="text-align:right">63m</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">I've been working pretty early after a l</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 16:29</td>
+          <td style="text-align:right">56m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Finish dinner a little early but I can't</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 12:52</td>
+          <td style="text-align:right">61m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Little hungry Christine starting lunch b</td>
+          <td><span style="color: #f59e0b; font-size:11px">Estimated_End</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 0:25:</td>
+          <td style="text-align:right">43m</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Yeah doing research late at night</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 9:20:</td>
+          <td style="text-align:right">61m</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">It's late morning working through some p</td>
+          <td><span style="color: #f59e0b; font-size:11px">Estimated_End</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 7:35:</td>
+          <td style="text-align:right">80m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">About to have family game time where we </td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">~2026-03-21 21:3</td>
+          <td style="text-align:right">61m</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+          <td><span style="color: #f59e0b; font-size:11px">Estimated_Start</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 14:56</td>
+          <td style="text-align:right">91m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Christine's upset and I'm getting on a c</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">~2026-03-21 12:5</td>
+          <td style="text-align:right">61m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+          <td><span style="color: #f59e0b; font-size:11px">Estimated_Start</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 11:26</td>
+          <td style="text-align:right">57m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Finally got Meridian working to the poin</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">~2026-03-21 05:5</td>
+          <td style="text-align:right">61m</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis"></td>
+          <td><span style="color: #f59e0b; font-size:11px">Estimated_Start</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-20 6:33:</td>
+          <td style="text-align:right">215m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Getting some early morning work done at </td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-20 21:05</td>
+          <td style="text-align:right">91m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Still trying to get corn to bed</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-20 18:17</td>
+          <td style="text-align:right">59m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">I just had a couple beers hungry but din</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-20 16:03</td>
+          <td style="text-align:right">61m</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Back from picking corn up from school an</td>
+          <td><span style="color: #f59e0b; font-size:11px">Estimated_End</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-20 12:08</td>
+          <td style="text-align:right">134m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Driving home from dad's</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 8:06:</td>
+          <td style="text-align:right">27m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Getting in the shower to get ready to ta</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 6:13:</td>
+          <td style="text-align:right">61m</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Finished morning coffee working on Milli</td>
+          <td><span style="color: #f59e0b; font-size:11px">Estimated_End</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 21:51</td>
+          <td style="text-align:right">61m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">Watching a show with dad at his apartmen</td>
+          <td><span style="color: #f59e0b; font-size:11px">Estimated_End</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 18:03</td>
+          <td style="text-align:right">48m</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:200px; overflow:hidden; text-overflow:ellipsis">I just had some snacks and wanna stop ea</td>
+          <td><span style="color: #4ade80; font-size:11px">OK</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const chartDefaults = {
+  x: { ticks: { color: '#8888a0', font: { size: 10 }, maxRotation: 45 }, grid: { color: 'rgba(42,45,58,0.6)' } },
+  y: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' }, beginAtZero: true }
+};
+
+// Daily sessions + 7-day rolling average
+new Chart(document.getElementById('dailyChart'), {
+  type: 'bar',
+  data: {
+    labels: ["2025-11-21", "", "", "2025-11-24", "", "", "2025-11-27", "", "", "2025-11-30", "", "", "2025-12-03", "", "", "2025-12-06", "", "", "2025-12-09", "", "", "2025-12-12", "", "", "2025-12-15", "", "", "2025-12-18", "", "", "2025-12-21", "", "", "2025-12-24", "", "", "2025-12-29", "", "", "2026-01-01", "", "", "2026-01-04", "", "", "2026-01-07", "", "", "2026-01-10", "", "", "2026-01-13", "", "", "2026-01-17", "", "", "2026-01-20", "", "", "2026-01-24", "", "", "2026-01-27", "", "", "2026-01-30", "", "", "2026-02-02", "", "", "2026-02-05", "", "", "2026-02-09", "", "", "2026-02-21", "", "", "2026-02-25", "", "", "2026-02-28", "", "", "2026-03-03", "", "", "2026-03-06", "", "", "2026-03-09", "", "", "2026-03-12", "", "", "2026-03-15", "", "", "2026-03-18", "", "", "2026-03-21", ""],
+    datasets: [
+      {
+        label: 'Daily Sessions',
+        data: [2, 2, 2, 4, 3, 4, 3, 4, 4, 4, 1, 4, 5, 4, 5, 4, 3, 4, 2, 4, 3, 3, 2, 4, 2, 1, 3, 2, 4, 3, 1, 4, 2, 2, 1, 2, 1, 2, 2, 4, 3, 1, 2, 1, 3, 2, 1, 3, 1, 2, 2, 3, 3, 3, 2, 5, 1, 3, 1, 4, 1, 2, 3, 4, 2, 1, 6, 6, 5, 6, 1, 1, 2, 3, 2, 4, 3, 5, 3, 3, 5, 7, 7, 3, 1, 4, 5, 6, 7, 7, 8, 6, 6, 6, 8, 5, 9, 7, 6, 4, 8, 5, 5, 6, 5, 7, 4],
+        backgroundColor: 'rgba(245,158,11,0.5)',
+        borderRadius: 2,
+        order: 2
+      },
+      {
+        label: '7-Day Avg',
+        data: [2.0, 2.0, 2.0, 2.5, 2.6, 2.8, 2.9, 3.1, 3.4, 3.7, 3.3, 3.4, 3.6, 3.7, 3.9, 3.9, 3.7, 4.1, 3.9, 3.7, 3.6, 3.3, 3.0, 3.1, 2.9, 2.7, 2.6, 2.4, 2.6, 2.7, 2.3, 2.6, 2.7, 2.6, 2.4, 2.1, 1.9, 2.0, 1.7, 2.0, 2.1, 2.1, 2.1, 2.1, 2.3, 2.3, 1.9, 1.9, 1.9, 1.9, 2.0, 2.0, 2.1, 2.4, 2.3, 2.9, 2.7, 2.9, 2.6, 2.7, 2.4, 2.4, 2.1, 2.6, 2.4, 2.4, 2.7, 3.4, 3.9, 4.3, 3.9, 3.7, 3.9, 3.4, 2.9, 2.7, 2.3, 2.9, 3.1, 3.3, 3.6, 4.3, 4.7, 4.7, 4.1, 4.3, 4.6, 4.7, 4.7, 4.7, 5.4, 6.1, 6.4, 6.6, 6.9, 6.6, 6.9, 6.7, 6.7, 6.4, 6.7, 6.3, 6.3, 5.9, 5.6, 5.7, 5.7],
+        type: 'line',
+        borderColor: '#f59e0b',
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+        tension: 0.3,
+        order: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: chartDefaults
+  }
+});
+
+// Weekly cost & sessions dual-axis chart
+new Chart(document.getElementById('weeklyChart'), {
+  type: 'bar',
+  data: {
+    labels: ["2025-W47", "2025-W48", "2025-W49", "2025-W50", "2025-W51", "2025-W52", "2026-W01", "2026-W02", "2026-W03", "2026-W04", "2026-W05", "2026-W06", "2026-W07", "2026-W08", "2026-W09", "2026-W10", "2026-W11", "2026-W12"],
+    datasets: [
+      {
+        label: 'Weekly Cost ($)',
+        data: [0, 29.54, 29.54, 29.54, 29.54, 29.54, 29.54, 29.54, 13.72, 11.08, 11.08, 11.08, 11.08, 11.08, 11.08, 45.94, 45.94, 52.12],
+        backgroundColor: 'rgba(248,113,113,0.6)',
+        borderRadius: 2,
+        yAxisID: 'yCost',
+        order: 2
+      },
+      {
+        label: 'Sessions / Week',
+        data: [6, 26, 26, 22, 16, 11, 15, 13, 18, 12, 27, 15, 7, 8, 30, 45, 45, 40],
+        type: 'line',
+        borderColor: '#f59e0b',
+        borderWidth: 2,
+        pointRadius: 2,
+        fill: false,
+        tension: 0.3,
+        yAxisID: 'ySessions',
+        order: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#8888a0', font: { size: 10 }, maxRotation: 45 }, grid: { color: 'rgba(42,45,58,0.6)' } },
+      yCost: {
+        type: 'linear', position: 'left', beginAtZero: true,
+        ticks: { color: '#f87171', font: { size: 11 }, callback: function(v) { return '$' + v; } },
+        grid: { color: 'rgba(42,45,58,0.6)' },
+        title: { display: true, text: 'Cost ($)', color: '#f87171', font: { size: 11 } }
+      },
+      ySessions: {
+        type: 'linear', position: 'right', beginAtZero: true,
+        ticks: { color: '#f59e0b', font: { size: 11 } },
+        grid: { drawOnChartArea: false },
+        title: { display: true, text: 'Sessions', color: '#f59e0b', font: { size: 11 } }
+      }
+    }
+  }
+});
+
+// Duration distribution histogram
+new Chart(document.getElementById('durationChart'), {
+  type: 'bar',
+  data: {
+    labels: ["0-15", "15-30", "30-60", "60-90", "90-120", "120-180", "180+"],
+    datasets: [{ data: [3, 19, 48, 294, 8, 6, 4], backgroundColor: 'rgba(245,158,11,0.6)', borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: chartDefaults
+  }
+});
+
+// Hourly distribution — last 7 days vs prior 7 days
+new Chart(document.getElementById('hourChart'), {
+  type: 'bar',
+  data: {
+    labels: ["0:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
+    datasets: [
+      {
+        label: 'Last 7 Days',
+        data: [2, 0, 0, 0, 1, 1, 2, 2, 2, 2, 1, 2, 5, 0, 4, 0, 4, 1, 3, 1, 4, 3, 1, 1],
+        backgroundColor: 'rgba(245,158,11,0.7)',
+        borderRadius: 3
+      },
+      {
+        label: 'Prior 7 Days',
+        data: [0, 1, 0, 0, 0, 1, 1, 3, 5, 2, 2, 2, 2, 2, 2, 3, 0, 5, 2, 4, 2, 2, 3, 1],
+        backgroundColor: 'rgba(245,158,11,0.2)',
+        borderColor: 'rgba(245,158,11,0.4)',
+        borderWidth: 1,
+        borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: chartDefaults
+  }
+});
+
+// Day of week
+new Chart(document.getElementById('weekdayChart'), {
+  type: 'bar',
+  data: {
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    datasets: [{ data: [55, 55, 50, 52, 69, 51, 50], backgroundColor: 'rgba(245,158,11,0.6)', borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: chartDefaults
+  }
+});
+
+// Data quality donut
+new Chart(document.getElementById('qualityChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['OK', 'Estimated End', 'Estimated Start'],
+    datasets: [{
+      data: [108, 72, 202],
+      backgroundColor: ['#4ade80', '#f59e0b', '#fb923c'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#8888a0', font: { size: 11 }, padding: 12 } }
+    }
+  }
+});
+</script>
+</body>
+</html>

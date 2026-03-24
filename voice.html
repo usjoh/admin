@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Dashboard — Journal Master</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+    --text: #e0e0e8; --text-dim: #8888a0; --accent: #6c8cff;
+    --voice: #6c8cff; --voice-dim: rgba(108,140,255,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 18px; border-bottom: 1px solid var(--border); padding-bottom: 16px;
+  }
+  .header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; color: var(--voice); }
+  .header .subtitle {
+    font-size: 13px; color: var(--text-dim); margin-top: 4px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .header .updated { font-size: 13px; color: var(--text-dim); }
+
+  .last-event {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 24px; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .last-event .indicator {
+    width: 12px; height: 12px; border-radius: 50%; background: var(--voice);
+    flex-shrink: 0; animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .last-event .le-detail { flex: 1; font-size: 13px; }
+  .last-event .le-time { text-align: right; font-size: 12px; color: var(--text-dim); white-space: nowrap; }
+  .last-event .le-time .le-ago { font-size: 16px; font-weight: 600; color: var(--text); display: block; }
+
+  .hero {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 24px;
+  }
+  .hero-metrics { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .metric .label {
+    font-size: 11px; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 4px;
+  }
+  .metric .value { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .metric .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
+  .chart-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+  }
+  .chart-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 14px; color: var(--text-dim); }
+  .chart-box canvas { max-height: 260px; }
+  .wide { grid-column: 1 / -1; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left; padding: 8px 12px; color: var(--text-dim); font-weight: 500;
+    border-bottom: 1px solid var(--border); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+
+  @media (max-width: 768px) {
+    .charts { grid-template-columns: 1fr; }
+    .hero-metrics { grid-template-columns: repeat(3, 1fr); }
+    .last-event { flex-wrap: wrap; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Voice</h1>
+    <div class="subtitle">
+      <a href="journal.html">&larr; All Journals</a>
+      <span style="color: var(--text-dim);">&middot;</span>
+      <span>Capture Frequency &amp; Patterns</span>
+    </div>
+  </div>
+  <span class="updated">Generated 2026-03-22 18:10</span>
+</div>
+
+<div class="last-event">
+  <div class="indicator"></div>
+  <div class="le-time">
+    <span class="le-ago">6h ago</span>
+  </div>
+  <div class="le-detail">
+    via Jeff’s iPhone &middot; 2026-03-22 11:50
+    <div style="font-size: 12px; color: var(--text-dim); margin-top: 4px;">When did Tom Anderson first mention Claude AI to me</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-metrics" style="grid-template-columns: repeat(6, 1fr);">
+    <div class="metric">
+      <div class="label">Today</div>
+      <div class="value" style="color: var(--voice)">6</div>
+    </div>
+    <div class="metric">
+      <div class="label">Mar 2026</div>
+      <div class="value">32</div>
+      <div class="sub">3.2/day &middot; 10 days</div>
+    </div>
+    <div class="metric">
+      <div class="label">Feb 2026</div>
+      <div class="value">32</div>
+      <div class="sub">8.0/day &middot; 4 days</div>
+    </div>
+    <div class="metric">
+      <div class="label">All Time</div>
+      <div class="value">64</div>
+      <div class="sub">2026-02-23 — 2026-03-22</div>
+    </div>
+    <div class="metric">
+      <div class="label">Avg Length</div>
+      <div class="value">20.6w</div>
+      <div class="sub">max: 56w</div>
+    </div>
+    <div class="metric">
+      <div class="label">Active Days</div>
+      <div class="value">14</div>
+      <div class="sub">of 28 total</div>
+    </div>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Daily Entries &amp; 7-Day Average</h3>
+    <canvas id="dailyChart" height="80"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Activity by Hour</h3>
+    <canvas id="hourChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Day of Week</h3>
+    <canvas id="weekdayChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Device Distribution</h3>
+    <canvas id="deviceChart"></canvas>
+  </div>
+</div>
+
+<div class="charts">
+  <div class="chart-box wide">
+    <h3>Recent Entries</h3>
+    <div style="max-height: 500px; overflow-y: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th><th>Device</th><th>Content</th><th style="text-align:right">Words</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 11:50</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">When did Tom Anderson first mention Claude AI to me</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">10w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 11:50</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">When did Tom Anderson first mention Claude as an AI to me</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">12w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 09:48</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">I need to remember to connect the new icemaker and other device the hot water pot to the Wi-Fi network and test out the </td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">25w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 09:48</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">The cabinet lights on the top of completely died now I need to figure out what I'm gonna do with that either repair or r</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">25w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 09:47</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">I need to get back to dealing with the thrips problem in our plants in the condo today</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">18w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-22 09:47</td>
+          <td style="font-size:12px">Apple Watch Ultra 3</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">Log Voice Note</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">3w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 11:27</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">Maybe I create a shortcut for logged Meridian note</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">9w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-21 11:27</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">I need to make sure I get voice notes into Meridian somehow</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">12w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 08:50</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">At the bus stop Khoren indicated that his teachers don't like it when he brings his jacket but he is very adamant to not</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">33w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 08:49</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">There's a fast company article on AI's impact on organizational structures which I think is very relevant to Milli & Ali</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">24w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 08:47</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">Karen indicated today his teachers don't like it when he wears his jacket or brings his jacket and he refuses to talk ab</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">31w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 08:16</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">I need to figure out a way to connect a domain to the journal master voice notes so we can process that</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">22w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 08:15</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">I'd like to get my weight data into Meridian as a dashboard so I don't have to keep checking separate apps for things li</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">31w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 08:15</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">I had a bigger picture in mind that the AI didn't have its context so it was pushing for One Direction while I was resis</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">34w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 08:14</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">The Meridian example that acknowledge analogous to Khoren's jumping ahead with the model building and we always having t</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">26w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-19 08:14</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">Wanna capture a story about Khoren building Lego models and the connection to Meridian and its evolution through its own</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">27w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-14 11:46</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">Try to remember eight planet bath bombs for Khoren</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">9w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-14 09:12</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">My battleship story ties to my desire to understand process not just use them</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">14w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-14 09:11</td>
+          <td style="font-size:12px">Jeffrey’s MacBook Air</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">Just thought of when I was seven or eight and took apart my electronic battleship game</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">16w</td>
+        </tr>
+        <tr>
+          <td style="font-size:12px; white-space:nowrap">2026-03-11 20:56</td>
+          <td style="font-size:12px">Jeff’s iPhone</td>
+          <td style="font-size:12px; max-width:400px; overflow:hidden; text-overflow:ellipsis">Fix squeak on Khoren's globe</td>
+          <td style="text-align:right; font-size:12px; color: var(--text-dim)">5w</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const chartDefaults = {
+  x: { ticks: { color: '#8888a0', font: { size: 10 }, maxRotation: 45 }, grid: { color: 'rgba(42,45,58,0.6)' } },
+  y: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' }, beginAtZero: true }
+};
+
+// Daily entries + 7-day rolling average
+new Chart(document.getElementById('dailyChart'), {
+  type: 'bar',
+  data: {
+    labels: ["2026-02-23", "2026-02-24", "2026-02-25", "2026-02-27", "2026-03-02", "2026-03-04", "2026-03-05", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-14", "2026-03-19", "2026-03-21", "2026-03-22"],
+    datasets: [
+      {
+        label: 'Daily Entries',
+        data: [8, 17, 5, 2, 2, 1, 5, 2, 2, 1, 3, 8, 2, 6],
+        backgroundColor: 'rgba(108,140,255,0.5)',
+        borderRadius: 2,
+        order: 2
+      },
+      {
+        label: '7-Day Avg',
+        data: [8.0, 12.5, 10.0, 8.0, 6.8, 5.8, 5.7, 4.9, 2.7, 2.1, 2.3, 3.1, 3.3, 3.4],
+        type: 'line',
+        borderColor: '#6c8cff',
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+        tension: 0.3,
+        order: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: chartDefaults
+  }
+});
+
+// Hourly distribution
+new Chart(document.getElementById('hourChart'), {
+  type: 'bar',
+  data: {
+    labels: ["0:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
+    datasets: [
+      {
+        label: 'Last 7 Days',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 8, 4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        backgroundColor: 'rgba(108,140,255,0.7)',
+        borderRadius: 3
+      },
+      {
+        label: 'Prior 7 Days',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        backgroundColor: 'rgba(108,140,255,0.2)',
+        borderColor: 'rgba(108,140,255,0.4)',
+        borderWidth: 1,
+        borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8888a0', font: { size: 11 } } } },
+    scales: chartDefaults
+  }
+});
+
+// Day of week
+new Chart(document.getElementById('weekdayChart'), {
+  type: 'bar',
+  data: {
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    datasets: [{ data: [12, 19, 7, 13, 2, 5, 6], backgroundColor: 'rgba(108,140,255,0.6)', borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: chartDefaults
+  }
+});
+
+// Device donut
+new Chart(document.getElementById('deviceChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ["Jeff\u2019s iPhone", "Apple Watch Ultra 3", "iPad Pro (2025)", "Jeffrey\u2019s MacBook Air"],
+    datasets: [{
+      data: [45, 9, 7, 3],
+      backgroundColor: ['#6c8cff', '#818cf8', '#a78bfa', '#c4b5fd', '#ddd6fe', '#ede9fe'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#8888a0', font: { size: 11 }, padding: 12 } }
+    }
+  }
+});
+</script>
+</body>
+</html>
