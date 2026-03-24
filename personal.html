@@ -198,7 +198,7 @@
       <span class="status-badge" style="background: rgba(245,158,11,0.15); color: var(--condo)">Transitioning</span>
     </div>
   </div>
-  <span class="updated">Generated 2026-03-24 10:29</span>
+  <span class="updated">Generated 2026-03-24 11:13</span>
 </div>
 
 <!-- Readiness banner: gauge left, observations right -->
@@ -206,7 +206,7 @@
   <div class="readiness-left" onclick="showModal('domainpct')">
     <div class="readiness-gauge">
       <canvas id="readinessGauge"></canvas>
-      <div class="readiness-pct" style="color: var(--domain)">64%</div>
+      <div class="readiness-pct" style="color: var(--domain)">62%</div>
     </div>
     <span class="readiness-label" style="background: rgba(245,158,11,0.15); color: var(--condo)">Transitioning</span>
     <div class="expand-hint">&#8599; click to expand</div>
@@ -214,8 +214,8 @@
   <div class="readiness-right">
     <h2>Prototype Readiness — Domain Time Analysis</h2>
     <div class="obs-list">
-<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Cumulative domain time is 64%, 16 points below the 80% exit target. Need sustained domain-dominant days to close the gap.</div>
-<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Total infrastructure time: 20.7h of 57.7h total. This is the cost of building Meridian — it needs to decline as protocols stabilize.</div>
+<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Cumulative domain time is 62%, 18 points below the 80% exit target. Need sustained domain-dominant days to close the gap.</div>
+<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Total infrastructure time: 22.7h of 59.7h total. This is the cost of building Meridian — it needs to decline as protocols stabilize.</div>
 <div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Most active domain area: Condo Board (12h 45m). Other active areas: Home Lab (11h 49m), BIRW (10h 13m), TAVR (1h 49m), Church (17m).</div>
 <div class="obs-item" style="border-left: 3px solid #f59e0b; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #f59e0b; margin-right: 5px;">&#9888;</span>33 observations logged in 12 days. High observation volume means the system is surfacing many gaps and patterns — good for learning, but each one costs infra time to document. Expect this to taper as patterns stabilize.</div>
     </div>
@@ -227,18 +227,18 @@
   <div class="time-hero-metrics">
     <div class="time-metric">
       <div class="label">Total Time</div>
-      <div class="value">57h 41m</div>
-      <div class="sub">12 days, 41 sessions</div>
+      <div class="value">59h 41m</div>
+      <div class="sub">12 days, 42 sessions</div>
     </div>
     <div class="time-metric">
       <div class="label">Domain Time</div>
       <div class="value" style="color: var(--domain)">36h 56m</div>
-      <div class="sub">64% of total</div>
+      <div class="sub">62% of total</div>
     </div>
     <div class="time-metric">
       <div class="label">Infrastructure Time</div>
-      <div class="value" style="color: var(--infra)">20h 44m</div>
-      <div class="sub">36% of total</div>
+      <div class="value" style="color: var(--infra)">22h 44m</div>
+      <div class="sub">38% of total</div>
     </div>
   </div>
   <canvas id="timeHeroChart"></canvas>
@@ -248,8 +248,8 @@
 <div class="cards">
   <div class="card" onclick="showModal('sessions')">
     <div class="label">Sessions / Day<span class="info-icon" onclick="event.stopPropagation(); showInfo(this, 'Average Claude Code sessions per day. Higher throughput means more gets done but also more context switches. Watch for close-protocol friction as this scales.')" title="About this metric">i</span></div>
-    <div class="value">3.4</div>
-    <div class="sub">1 → 9 → 10 → 3 → 1 → 2 → 5 → 2 → 3 → 2 → 2 → 1</div>
+    <div class="value">3.5</div>
+    <div class="sub">1 → 9 → 10 → 3 → 1 → 2 → 5 → 2 → 3 → 2 → 2 → 2</div>
     <div class="sparkline"><canvas id="sparkSessions"></canvas></div>
     <div class="expand-hint">&#8599; click to expand</div>
   </div>
@@ -262,8 +262,8 @@
   </div>
   <div class="card" onclick="showModal('infracost')">
     <div class="label">Infra % / Session<span class="info-icon" onclick="event.stopPropagation(); showInfo(this, 'What percentage of session time is spent on Meridian infrastructure rather than domain content. Declining means the system is getting out of the way. Target: &lt;20% sustained.')" title="About this metric">i</span></div>
-    <div class="value">36%</div>
-    <div class="sub">12% → 54% → 53% → 66% → 100% → 33% → 28% → 69% → 100% → 9% → 33% → 50% daily avg</div>
+    <div class="value">38%</div>
+    <div class="sub">12% → 54% → 53% → 66% → 100% → 33% → 28% → 69% → 100% → 9% → 33% → 62% daily avg</div>
     <div class="sparkline"><canvas id="sparkInfraCost"></canvas></div>
     <div class="expand-hint">&#8599; click to expand</div>
   </div>
@@ -748,6 +748,16 @@
           <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
           <td style="font-size: 12px; max-width: 280px">12</td>
         </tr>
+        <tr>
+          <td>13</td><td>cc-20260324-0910 (main)</td>
+          <td style="font-size:12px">~09:10–11:15</td>
+          <td>~2h<span style="color:var(--text-dim); font-size:11px"> (120m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="—">0 files</td>
+          <td style="color: var(--infra); font-size:12px">0 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 0%; background: var(--domain)"></span><span class="bar-inline" style="width: 100%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">0%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">60+</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -763,7 +773,7 @@ const scaleDefaults = {
 // Readiness gauge
 new Chart(document.getElementById('readinessGauge'), {
   type: 'doughnut',
-  data: { datasets: [{ data: [64, 36],
+  data: { datasets: [{ data: [62, 38],
     backgroundColor: ['#4ade80', 'rgba(42,45,58,0.4)'],
     borderWidth: 0 }] },
   options: { responsive: false, cutout: '75%', plugins: { legend: { display: false }, tooltip: { enabled: false } } }
@@ -775,9 +785,9 @@ new Chart(document.getElementById('timeHeroChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Total', data: [7.0, 2.7, 12.32, 1.0, 0.42, 2.42, 5.42, 1.08, 1.33, 11.0, 6.5, 6.5], borderColor: '#e0e0e8', backgroundColor: 'rgba(224,224,232,0.05)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#e0e0e8', borderWidth: 2.5 },
+      { label: 'Total', data: [7.0, 2.7, 12.32, 1.0, 0.42, 2.42, 5.42, 1.08, 1.33, 11.0, 6.5, 8.5], borderColor: '#e0e0e8', backgroundColor: 'rgba(224,224,232,0.05)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#e0e0e8', borderWidth: 2.5 },
       { label: 'Domain', data: [6.12, 1.25, 5.78, 0.35, 0.0, 1.61, 3.88, 0.33, 0.0, 10.0, 4.38, 3.25], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#4ade80', borderWidth: 2.5 },
-      { label: 'Infrastructure', data: [0.88, 1.45, 6.53, 0.65, 0.42, 0.81, 1.54, 0.75, 1.33, 1.0, 2.12, 3.25], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#818cf8', borderWidth: 2.5 }
+      { label: 'Infrastructure', data: [0.88, 1.45, 6.53, 0.65, 0.42, 0.81, 1.54, 0.75, 1.33, 1.0, 2.12, 5.25], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#818cf8', borderWidth: 2.5 }
     ]
   },
   options: {
@@ -816,9 +826,9 @@ function sparkline(id, data, color) {
     options: { responsive: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
   });
 }
-sparkline('sparkSessions', [1, 9, 10, 3, 1, 2, 5, 2, 3, 2, 2, 1], '#6c8cff');
+sparkline('sparkSessions', [1, 9, 10, 3, 1, 2, 5, 2, 3, 2, 2, 2], '#6c8cff');
 sparkline('sparkObs', [0, 4, 12, 6, 1, 3, 7, 0, 0, 0, 0, 0], '#fb7185');
-sparkline('sparkInfraCost', [12.5, 53.8, 53.1, 65.5, 100.0, 33.3, 28.4, 69.2, 100.0, 9.1, 32.7, 50.0], '#818cf8');
+sparkline('sparkInfraCost', [12.5, 53.8, 53.1, 65.5, 100.0, 33.3, 28.4, 69.2, 100.0, 9.1, 32.7, 61.8], '#818cf8');
 
 // Modal drill-down
 var modalChart = null;
@@ -826,7 +836,7 @@ const modalData = {
   sessions: {
     title: 'Sessions per Day',
     datasets: [
-      { label: 'Sessions', data: [1, 9, 10, 3, 1, 2, 5, 2, 3, 2, 2, 1], borderColor: '#6c8cff', backgroundColor: 'rgba(108,140,255,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#6c8cff' }
+      { label: 'Sessions', data: [1, 9, 10, 3, 1, 2, 5, 2, 3, 2, 2, 2], borderColor: '#6c8cff', backgroundColor: 'rgba(108,140,255,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#6c8cff' }
     ],
     yLabel: ''
   },
@@ -840,7 +850,7 @@ const modalData = {
   domainpct: {
     title: 'Domain Time % per Day',
     datasets: [
-      { label: 'Domain %', data: [88, 46, 47, 35, 0, 67, 72, 31, 0, 91, 67, 50], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
+      { label: 'Domain %', data: [88, 46, 47, 35, 0, 67, 72, 31, 0, 91, 67, 38], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
       { label: '80% Target', data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
     ],
     yLabel: '%',
@@ -849,7 +859,7 @@ const modalData = {
   infracost: {
     title: 'Infrastructure % per Session',
     datasets: [
-      { label: 'Infra %', data: [12.5, 53.8, 53.1, 65.5, 100.0, 33.3, 28.4, 69.2, 100.0, 9.1, 32.7, 50.0], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#818cf8' },
+      { label: 'Infra %', data: [12.5, 53.8, 53.1, 65.5, 100.0, 33.3, 28.4, 69.2, 100.0, 9.1, 32.7, 61.8], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#818cf8' },
       { label: '20% Target', data: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
     ],
     yLabel: '%',
@@ -889,7 +899,7 @@ new Chart(document.getElementById('timeAllocChart'), {
     labels: labels,
     datasets: [
       { label: 'Domain', data: [6.12, 1.25, 5.78, 0.35, 0.0, 1.61, 3.88, 0.33, 0.0, 10.0, 4.38, 3.25], backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 4 },
-      { label: 'Infrastructure', data: [0.88, 1.45, 6.53, 0.65, 0.42, 0.81, 1.54, 0.75, 1.33, 1.0, 2.12, 3.25], backgroundColor: 'rgba(129,140,248,0.7)', borderRadius: 4 }
+      { label: 'Infrastructure', data: [0.88, 1.45, 6.53, 0.65, 0.42, 0.81, 1.54, 0.75, 1.33, 1.0, 2.12, 5.25], backgroundColor: 'rgba(129,140,248,0.7)', borderRadius: 4 }
     ]
   },
   options: {
@@ -936,7 +946,7 @@ new Chart(document.getElementById('donutChart'), {
   type: 'doughnut',
   data: {
     labels: ['Condo Board', 'Home Lab', 'BIRW', 'TAVR', 'Church', 'Meridian'],
-    datasets: [{ data: [12.8, 11.8, 10.2, 1.8, 0.3, 20.7], backgroundColor: ['#f59e0bcc', '#06b6d4cc', '#4ade80cc', '#f472b6cc', '#a78bfacc', '#818cf8cc'], borderWidth: 1, borderColor: '#1a1d27' }]
+    datasets: [{ data: [12.8, 11.8, 10.2, 1.8, 0.3, 22.7], backgroundColor: ['#f59e0bcc', '#06b6d4cc', '#4ade80cc', '#f472b6cc', '#a78bfacc', '#818cf8cc'], borderWidth: 1, borderColor: '#1a1d27' }]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
@@ -953,7 +963,7 @@ new Chart(document.getElementById('domainPctChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Domain %', data: [88, 46, 47, 35, 0, 67, 72, 31, 0, 91, 67, 50], borderColor: 'rgba(74,222,128,0.9)', backgroundColor: 'rgba(74,222,128,0.1)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
+      { label: 'Domain %', data: [88, 46, 47, 35, 0, 67, 72, 31, 0, 91, 67, 38], borderColor: 'rgba(74,222,128,0.9)', backgroundColor: 'rgba(74,222,128,0.1)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
       { label: '80% Target', data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
     ]
   },
@@ -973,7 +983,7 @@ new Chart(document.getElementById('sessionsChartWide'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Sessions', data: [1, 9, 10, 3, 1, 2, 5, 2, 3, 2, 2, 1], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
+      { label: 'Sessions', data: [1, 9, 10, 3, 1, 2, 5, 2, 3, 2, 2, 2], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
       { label: 'Observations', data: [0, 4, 12, 6, 1, 3, 7, 0, 0, 0, 0, 0], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
     ]
   },
@@ -996,7 +1006,7 @@ new Chart(document.getElementById('sessionsChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Sessions', data: [1, 9, 10, 3, 1, 2, 5, 2, 3, 2, 2, 1], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
+      { label: 'Sessions', data: [1, 9, 10, 3, 1, 2, 5, 2, 3, 2, 2, 2], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
       { label: 'Observations', data: [0, 4, 12, 6, 1, 3, 7, 0, 0, 0, 0, 0], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
     ]
   },
