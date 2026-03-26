@@ -199,7 +199,7 @@
   </div>
   <div style="text-align: right">
     <div style="font-size: 13px; margin-bottom: 4px;"><a href="index.html" style="color: var(--accent); text-decoration: none;">&#8592; Meridian Home</a> &middot; <a href="meridian-ops.html" style="color: var(--accent); text-decoration: none;">Meridian Ops</a> &middot; <a href="personal-ops.html" style="color: var(--accent); text-decoration: none;">Personal Ops</a> &middot; <span style="color: var(--text);">Consulting Ops</span></div>
-    <span class="updated">Generated 2026-03-26 01:29</span>
+    <span class="updated">Generated 2026-03-26 02:52</span>
   </div>
 </div>
 
@@ -217,9 +217,9 @@
     <h2>Prototype Readiness — Domain Time Analysis</h2>
     <div class="obs-list">
 <div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Cumulative domain time is 20%, 60 points below the 80% exit target. Need sustained domain-dominant days to close the gap.</div>
-<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Total infrastructure time: 96.1h of 120.7h total. This is the cost of building Meridian — it needs to decline as protocols stabilize.</div>
+<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Total infrastructure time: 97.1h of 121.7h total. This is the cost of building Meridian — it needs to decline as protocols stabilize.</div>
 <div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Most active domain area: MaAM (18h 47m). Other active areas: Content (3h 36m), Practice (2h 9m).</div>
-<div class="obs-item" style="border-left: 3px solid #f59e0b; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #f59e0b; margin-right: 5px;">&#9888;</span>93 observations logged in 15 days. High observation volume means the system is surfacing many gaps and patterns — good for learning, but each one costs infra time to document. Expect this to taper as patterns stabilize.</div>
+<div class="obs-item" style="border-left: 3px solid #f59e0b; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #f59e0b; margin-right: 5px;">&#9888;</span>95 observations logged in 15 days. High observation volume means the system is surfacing many gaps and patterns — good for learning, but each one costs infra time to document. Expect this to taper as patterns stabilize.</div>
     </div>
   </div>
 </div>
@@ -229,8 +229,8 @@
   <div class="time-hero-metrics">
     <div class="time-metric">
       <div class="label">Total Time</div>
-      <div class="value">120h 40m</div>
-      <div class="sub">15 days, 77 sessions</div>
+      <div class="value">121h 40m</div>
+      <div class="sub">15 days, 78 sessions</div>
     </div>
     <div class="time-metric">
       <div class="label">Domain Time</div>
@@ -239,7 +239,7 @@
     </div>
     <div class="time-metric">
       <div class="label">Infrastructure Time</div>
-      <div class="value" style="color: var(--infra)">96h 6m</div>
+      <div class="value" style="color: var(--infra)">97h 6m</div>
       <div class="sub">80% of total</div>
     </div>
   </div>
@@ -250,15 +250,15 @@
 <div class="cards">
   <div class="card" onclick="showModal('sessions')">
     <div class="label">Sessions / Day<span class="info-icon" onclick="event.stopPropagation(); showInfo(this, 'Average Claude Code sessions per day. Higher throughput means more gets done but also more context switches. Watch for close-protocol friction as this scales.')" title="About this metric">i</span></div>
-    <div class="value">5.1</div>
-    <div class="sub">3 → 1 → 3 → 16 → 9 → 2 → 6 → 2 → 1 → 4 → 25 → 1 → 1 → 2 → 1</div>
+    <div class="value">5.2</div>
+    <div class="sub">3 → 1 → 3 → 16 → 9 → 2 → 6 → 2 → 1 → 4 → 25 → 1 → 1 → 2 → 2</div>
     <div class="sparkline"><canvas id="sparkSessions"></canvas></div>
     <div class="expand-hint">&#8599; click to expand</div>
   </div>
   <div class="card" onclick="showModal('observations')">
     <div class="label">Observations<span class="info-icon" onclick="event.stopPropagation(); showInfo(this, 'Meridian observations (MO entries) logged — gaps, pattern validations, and feature candidates surfaced during sessions. High volume during build phase is expected. Should taper as the system stabilizes.')" title="About this metric">i</span></div>
-    <div class="value">93</div>
-    <div class="sub">0 → 0 → 0 → 17 → 10 → 2 → 13 → 8 → 0 → 8 → 35 → 0 → 3 → 3 → 2 MO entries</div>
+    <div class="value">95</div>
+    <div class="sub">0 → 0 → 0 → 17 → 10 → 2 → 13 → 8 → 0 → 8 → 35 → 0 → 3 → 3 → 4 MO entries</div>
     <div class="sparkline"><canvas id="sparkObs"></canvas></div>
     <div class="expand-hint">&#8599; click to expand</div>
   </div>
@@ -1111,6 +1111,16 @@
           <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-164, MO-165</td>
           <td style="font-size: 12px; max-width: 280px">Developer Mode: Core D-060 (inter-session notification checkpoint pattern). Plan review from Personal — 6 issues identified, Core interface designed here. TIA retired (D-055 amended). Stop hook for active session detection. Hub email subscriber enabled for Consulting/MaAM. Hub self-blocking fix. Core Sync hook table updated. STA protocol + agent definition updated. 9 LWA writes, 2 MO entries ( ).</td>
         </tr>
+        <tr>
+          <td>17</td><td>cc-20260326-0145</td>
+          <td style="font-size:12px">01:45–02:45</td>
+          <td>~1h<span style="color:var(--text-dim); font-size:11px"> (60m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="—">0 files</td>
+          <td style="color: var(--infra); font-size:12px">5 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 0%; background: var(--domain)"></span><span class="bar-inline" style="width: 100%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">0%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-166, MO-167</td>
+          <td style="font-size: 12px; max-width: 280px">Hub infrastructure gaps diagnosed and fixed. Round 1: consulting subscriber missing Corpus Maintenance Config section (1ea1ee8). Round 2: Hub permissions, MCP server, RAG index name (8921b23). Consulting RAG confirmed healthy (283 docs). KSA confirmed subscriber schema implicit (no formal decision). (implicit subscriber schema), (session-scoped permissions).</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -1138,9 +1148,9 @@ new Chart(document.getElementById('timeHeroChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Total', data: [7.17, 0.17, 3.17, 4.5, 7.5, 2.0, 14.5, 3.0, 10.0, 8.0, 47.0, 1.0, 6.0, 4.17, 2.5], borderColor: '#e0e0e8', backgroundColor: 'rgba(224,224,232,0.05)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#e0e0e8', borderWidth: 2.5 },
+      { label: 'Total', data: [7.17, 0.17, 3.17, 4.5, 7.5, 2.0, 14.5, 3.0, 10.0, 8.0, 47.0, 1.0, 6.0, 4.17, 3.5], borderColor: '#e0e0e8', backgroundColor: 'rgba(224,224,232,0.05)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#e0e0e8', borderWidth: 2.5 },
       { label: 'Domain', data: [2.71, 0.0, 0.73, 0.64, 1.61, 0.11, 0.5, 0.23, 9.03, 0.52, 4.74, 0.0, 2.25, 1.5, 0.0], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#4ade80', borderWidth: 2.5 },
-      { label: 'Infrastructure', data: [4.46, 0.17, 2.44, 3.86, 5.89, 1.89, 14.0, 2.77, 0.97, 7.48, 42.26, 1.0, 3.75, 2.67, 2.5], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: false, borderDash: [4, 2], tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#818cf8', borderWidth: 2.5 }
+      { label: 'Infrastructure', data: [4.46, 0.17, 2.44, 3.86, 5.89, 1.89, 14.0, 2.77, 0.97, 7.48, 42.26, 1.0, 3.75, 2.67, 3.5], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: false, borderDash: [4, 2], tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#818cf8', borderWidth: 2.5 }
     ]
   },
   options: {
@@ -1179,8 +1189,8 @@ function sparkline(id, data, color) {
     options: { responsive: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
   });
 }
-sparkline('sparkSessions', [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 1], '#6c8cff');
-sparkline('sparkObs', [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 2], '#fb7185');
+sparkline('sparkSessions', [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 2], '#6c8cff');
+sparkline('sparkObs', [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 4], '#fb7185');
 sparkline('sparkInfraCost', [62.2, 100.0, 77.1, 85.7, 78.6, 94.4, 96.6, 92.4, 9.7, 93.5, 89.9, 100.0, 62.5, 64.0, 100.0], '#818cf8');
 
 // Modal drill-down
@@ -1189,14 +1199,14 @@ const modalData = {
   sessions: {
     title: 'Sessions per Day',
     datasets: [
-      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 1], borderColor: '#6c8cff', backgroundColor: 'rgba(108,140,255,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#6c8cff' }
+      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 2], borderColor: '#6c8cff', backgroundColor: 'rgba(108,140,255,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#6c8cff' }
     ],
     yLabel: ''
   },
   observations: {
     title: 'Observations Logged per Day',
     datasets: [
-      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 2], borderColor: '#fb7185', backgroundColor: 'rgba(251,113,133,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#fb7185' }
+      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 4], borderColor: '#fb7185', backgroundColor: 'rgba(251,113,133,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#fb7185' }
     ],
     yLabel: ''
   },
@@ -1252,7 +1262,7 @@ new Chart(document.getElementById('timeAllocChart'), {
     labels: labels,
     datasets: [
       { label: 'Domain', data: [2.71, 0.0, 0.73, 0.64, 1.61, 0.11, 0.5, 0.23, 9.03, 0.52, 4.74, 0.0, 2.25, 1.5, 0.0], backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 4 },
-      { label: 'Infrastructure', data: [4.46, 0.17, 2.44, 3.86, 5.89, 1.89, 14.0, 2.77, 0.97, 7.48, 42.26, 1.0, 3.75, 2.67, 2.5], backgroundColor: 'rgba(129,140,248,0.7)', borderRadius: 4 }
+      { label: 'Infrastructure', data: [4.46, 0.17, 2.44, 3.86, 5.89, 1.89, 14.0, 2.77, 0.97, 7.48, 42.26, 1.0, 3.75, 2.67, 3.5], backgroundColor: 'rgba(129,140,248,0.7)', borderRadius: 4 }
     ]
   },
   options: {
@@ -1297,7 +1307,7 @@ new Chart(document.getElementById('donutChart'), {
   type: 'doughnut',
   data: {
     labels: ['MaAM', 'Content', 'Practice', 'Meridian'],
-    datasets: [{ data: [18.8, 3.6, 2.2, 96.1], backgroundColor: ['#f59e0bcc', '#06b6d4cc', '#4ade80cc', '#818cf8cc'], borderWidth: 1, borderColor: '#1a1d27' }]
+    datasets: [{ data: [18.8, 3.6, 2.2, 97.1], backgroundColor: ['#f59e0bcc', '#06b6d4cc', '#4ade80cc', '#818cf8cc'], borderWidth: 1, borderColor: '#1a1d27' }]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
@@ -1334,8 +1344,8 @@ new Chart(document.getElementById('sessionsChartWide'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 1], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
-      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 2], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
+      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 2], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
+      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 4], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
     ]
   },
   options: {
@@ -1357,8 +1367,8 @@ new Chart(document.getElementById('sessionsChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 1], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
-      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 2], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
+      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 2], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
+      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 4], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
     ]
   },
   options: {
