@@ -3,437 +3,818 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIRW Sailing Reunion — Paul Pakos Memorial</title>
+<title>BIRW Navigator's Brief — March 28, 2026</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
   :root {
-    --navy: #1e3a5f;
-    --navy-light: #2c5282;
-    --warm-bg: #faf9f7;
-    --card-bg: #ffffff;
-    --text: #1a202c;
-    --text-light: #4a5568;
-    --border: #e2e8f0;
-    --accent: #2b6cb0;
-    --green: #16a34a;
-    --amber: #d97706;
-    --red: #dc2626;
+    --bg: #0a0e14;
+    --bg-card: #111820;
+    --bg-card-hover: #151d28;
+    --bg-surface: #0d1219;
+    --border: #1a2535;
+    --border-accent: #1e3a5f;
+    --text: #c8d6e5;
+    --text-bright: #e8f0f8;
+    --text-dim: #5a6a7a;
+    --text-muted: #3a4a5a;
+    --accent: #00b4d8;
+    --accent-dim: #0077a8;
+    --accent-glow: rgba(0, 180, 216, 0.15);
+    --gold: #f0a030;
+    --gold-dim: #a07020;
+    --gold-glow: rgba(240, 160, 48, 0.1);
+    --green: #00e676;
+    --green-dim: #00a854;
+    --green-bg: rgba(0, 230, 118, 0.08);
+    --green-border: rgba(0, 230, 118, 0.2);
+    --amber: #ffab00;
+    --amber-bg: rgba(255, 171, 0, 0.08);
+    --amber-border: rgba(255, 171, 0, 0.2);
+    --red: #ff5252;
+    --gray: #546e7a;
+    --gray-bg: rgba(84, 110, 122, 0.08);
+    --gray-border: rgba(84, 110, 122, 0.2);
+    --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
-    font-family: Georgia, 'Times New Roman', serif;
-    background: var(--warm-bg);
+    font-family: var(--sans);
+    background: var(--bg);
     color: var(--text);
     line-height: 1.6;
     min-height: 100vh;
   }
+
+  /* Subtle scanline effect */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* Header — HUD style */
   .header {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-    color: white;
-    padding: 2.5rem 1.5rem 2rem;
+    background: linear-gradient(180deg, #0d1520 0%, var(--bg) 100%);
+    padding: 2rem 1.5rem 1.5rem;
     text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  }
+  .header-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    opacity: 0.7;
   }
   .header h1 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-    letter-spacing: 0.02em;
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
   .header .subtitle {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    font-style: italic;
-  }
-  .header .memorial {
-    margin-top: 0.75rem;
+    font-family: var(--sans);
     font-size: 0.95rem;
-    opacity: 0.8;
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 300;
   }
+  .header .date-line {
+    margin-top: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+  }
+
   .container {
-    max-width: 900px;
+    max-width: 860px;
     margin: 0 auto;
-    padding: 1.5rem;
+    padding: 1.5rem 1.25rem;
   }
-  .event-cards {
+
+  /* Section labels — HUD category headers */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-label::before {
+    content: '//';
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  /* Timeline / Waypoints */
+  .timeline {
+    background: var(--bg-card);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .waypoint {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    position: relative;
+  }
+  .waypoint:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+  }
+  .wp-marker {
+    flex-shrink: 0;
+    width: 2.5rem;
+    text-align: center;
+  }
+  .wp-id {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .wp-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent), 0 0 12px rgba(0, 180, 216, 0.2);
+    margin: 0.25rem auto 0;
+  }
+  .wp-time {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    min-width: 3.5rem;
+    flex-shrink: 0;
+    padding-top: 0.05rem;
+  }
+  .wp-content { flex: 1; }
+  .wp-title {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-bright);
+  }
+  .wp-detail {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-top: 0.15rem;
+  }
+  .wp-detail a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-dim);
+  }
+  .wp-detail a:hover {
+    color: var(--text-bright);
+    border-color: var(--accent);
+  }
+  .wp-transit {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    padding: 0.2rem 0 0.2rem 3.5rem;
+    margin-left: 1rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* Venue cards */
+  .venue-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    gap: 0.75rem;
     margin-bottom: 1.5rem;
   }
   @media (max-width: 640px) {
-    .event-cards { grid-template-columns: 1fr; }
+    .venue-cards { grid-template-columns: 1fr; }
   }
   .card {
-    background: var(--card-bg);
-    border-radius: 8px;
-    padding: 1.25rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    background: var(--bg-card);
+    border-radius: 6px;
+    padding: 1rem;
     border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .card:hover {
+    border-color: var(--border-accent);
+    background: var(--bg-card-hover);
   }
   .card h2 {
-    font-size: 1rem;
-    color: var(--navy);
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--navy);
-    font-variant: small-caps;
-    letter-spacing: 0.05em;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
   }
   .card-row {
     display: flex;
     justify-content: space-between;
-    padding: 0.3rem 0;
-    font-size: 0.95rem;
+    padding: 0.2rem 0;
+    font-size: 0.82rem;
+    gap: 0.5rem;
   }
   .card-row .label {
-    color: var(--text-light);
-    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
   }
   .card-row .value {
-    font-weight: 600;
+    font-weight: 500;
     text-align: right;
-    max-width: 60%;
+    color: var(--text);
   }
-  .summary-bar {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+  .card-row .value a {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    border-bottom: 1px solid var(--accent-dim);
+  }
+
+  /* Logistics */
+  .logistics {
+    background: var(--bg-card);
+    border-radius: 6px;
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--border);
     margin-bottom: 1.5rem;
   }
-  .summary-item {
-    background: var(--card-bg);
-    border-radius: 8px;
-    padding: 0.75rem 1.25rem;
-    text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  .logistics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.25rem;
+  }
+  @media (max-width: 640px) {
+    .logistics-grid { grid-template-columns: 1fr; }
+  }
+  .logistics-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 4px;
+    background: var(--bg-surface);
     border: 1px solid var(--border);
-    min-width: 120px;
+  }
+  .logistics-icon {
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    width: 1.25rem;
+    text-align: center;
+    padding-top: 0.1rem;
+  }
+  .logistics-text .li-label {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--text-bright);
+    letter-spacing: 0.02em;
+  }
+  .logistics-text .li-detail {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    margin-top: 0.1rem;
+  }
+
+  /* Crew roster */
+  .crew-section { margin-bottom: 1.5rem; }
+  .summary-bar {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .summary-item {
+    background: var(--bg-card);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    min-width: 95px;
   }
   .summary-item .count {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    font-family: Arial, sans-serif;
+    font-family: var(--mono);
   }
-  .summary-item .label {
-    font-size: 0.8rem;
-    color: var(--text-light);
+  .summary-item .s-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    color: var(--text-dim);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
-  .count-green { color: var(--green); }
-  .count-amber { color: var(--amber); }
-  .count-gray { color: #6b7280; }
-  .count-red { color: var(--red); }
+  .count-green { color: var(--green); text-shadow: 0 0 8px rgba(0, 230, 118, 0.3); }
+  .count-amber { color: var(--amber); text-shadow: 0 0 8px rgba(255, 171, 0, 0.3); }
+  .count-gray { color: var(--gray); }
+
   table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--card-bg);
-    border-radius: 8px;
+    background: var(--bg-card);
+    border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     border: 1px solid var(--border);
-    margin-bottom: 1.5rem;
   }
   thead th {
-    background: var(--navy);
-    color: white;
-    padding: 0.75rem 1rem;
+    background: #0f1923;
+    color: var(--accent);
+    padding: 0.6rem 0.75rem;
     text-align: left;
-    font-size: 0.85rem;
-    font-variant: small-caps;
-    letter-spacing: 0.05em;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-accent);
   }
-  thead th:not(:first-child) {
-    text-align: center;
-  }
+  thead th:not(:first-child) { text-align: center; }
   .group-header td {
-    background: #edf2f7;
-    padding: 0.5rem 1rem;
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: var(--navy);
-    letter-spacing: 0.03em;
+    background: var(--bg-surface);
+    padding: 0.4rem 0.75rem;
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     border-top: 1px solid var(--border);
   }
   tbody tr:not(.group-header) {
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #111820;
   }
   tbody tr:not(.group-header):hover {
-    background: #f8fafc;
+    background: var(--bg-card-hover);
   }
   .name-cell {
-    padding: 0.6rem 1rem;
-    font-size: 0.95rem;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text);
   }
   .note {
     display: block;
-    font-size: 0.8rem;
-    color: var(--text-light);
+    font-size: 0.68rem;
+    color: var(--text-muted);
     font-style: italic;
-    margin-top: 0.15rem;
+    margin-top: 0.05rem;
   }
   .status-cell {
-    padding: 0.6rem 0.5rem;
+    padding: 0.45rem 0.4rem;
     text-align: center;
   }
   .badge {
     display: inline-block;
-    padding: 0.2rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
+    padding: 0.12rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.6rem;
     font-weight: 600;
-    font-family: Arial, sans-serif;
+    font-family: var(--mono);
     white-space: nowrap;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
-  .badge-yes { background:#dcfce7; color:#166534; }
-  .badge-no { background:#f3f4f6; color:#4b5563; }
-  .badge-pending { background:#f9fafb; color:#6b7280; }
-  .badge-cant { background:#fee2e2; color:#991b1b; }
+  .badge-green {
+    background: var(--green-bg);
+    color: var(--green);
+    border: 1px solid var(--green-border);
+  }
+  .badge-amber {
+    background: var(--amber-bg);
+    color: var(--amber);
+    border: 1px solid var(--amber-border);
+  }
+  .badge-gray {
+    background: var(--gray-bg);
+    color: var(--gray);
+    border: 1px solid var(--gray-border);
+  }
+
+  /* Fleet history */
+  .fleet-section { margin-bottom: 1.5rem; }
+  .fleet-card {
+    background: var(--bg-card);
+    border-radius: 6px;
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--border);
+  }
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 0.4rem 1rem;
+  }
+  .boat-entry {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+  }
+  .boat-name {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text);
+    font-style: italic;
+  }
+  .boat-years {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+  .fleet-span {
+    text-align: center;
+    margin-top: 0.75rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-shadow: 0 0 10px var(--gold-glow);
+  }
+
+  /* Footer */
   .footer {
     text-align: center;
     padding: 1.5rem;
-    font-size: 0.85rem;
-    color: var(--text-light);
     border-top: 1px solid var(--border);
+    position: relative;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  }
+  .footer .memorial {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+  .footer .memorial strong {
+    color: var(--gold);
+    font-weight: 400;
   }
   .footer .updated {
-    font-weight: 600;
-    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.05em;
   }
-  .capacity-note {
-    background: #eff6ff;
-    border: 1px solid #93c5fd;
-    border-radius: 8px;
-    padding: 0.75rem 1.25rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-    color: #1e40af;
+  .footer .meridian {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+  .footer .meridian em {
+    font-style: normal;
+    color: var(--accent);
   }
 </style>
 </head>
 <body>
+
 <div class="header">
-  <h1>BIRW Sailing Reunion</h1>
-  <div class="subtitle">In Memory of Paul "Skip" Pakos</div>
-  <div class="memorial">Saturday, March 28, 2026 &mdash; Sudbury, Massachusetts</div>
+  <div class="header-eyebrow">Block Island Race Week &bull; Reunion Operations</div>
+  <h1>Navigator's Brief</h1>
+  <div class="subtitle">In Memory of Paul "Skip" Pakos &mdash; Co-Skipper</div>
+  <div class="date-line">SAT 28 MAR 2026 &bull; SUDBURY, MA</div>
 </div>
 
 <div class="container">
 
-  <div class="event-cards">
+  <!-- WAYPOINTS -->
+  <div class="section-label">Course &mdash; Day Waypoints</div>
+  <div class="timeline">
+    <div class="waypoint">
+      <div class="wp-marker"><div class="wp-id">WP1</div><div class="wp-dot"></div></div>
+      <div class="wp-time">08:30</div>
+      <div class="wp-content">
+        <div class="wp-title">Load Car &mdash; Pre-Departure Check</div>
+        <div class="wp-detail">BIRW race hat for group photo at dinner &bull; Venmo + cash ready ($20pp room fee + dinner share)</div>
+      </div>
+    </div>
+    <div class="wp-transit">&darr; 60 min &mdash; Bill arrives Lowell</div>
+    <div class="waypoint">
+      <div class="wp-marker"><div class="wp-id">WP2</div><div class="wp-dot"></div></div>
+      <div class="wp-time">09:30</div>
+      <div class="wp-content">
+        <div class="wp-title">Depart Lowell</div>
+        <div class="wp-detail">Jeff drives Bill + Jeff to Sudbury &bull; ~35 min via Rt. 3 &rarr; I-495 &rarr; Rt. 20</div>
+      </div>
+    </div>
+    <div class="wp-transit">&darr; 35 min transit</div>
+    <div class="waypoint">
+      <div class="wp-marker"><div class="wp-id">WP3</div><div class="wp-dot"></div></div>
+      <div class="wp-time">10:30</div>
+      <div class="wp-content">
+        <div class="wp-title">Funeral Mass &mdash; St. Anselm Church</div>
+        <div class="wp-detail">100 Landham Rd, Sudbury, MA &bull; <a href="https://maps.apple.com/?address=100+Landham+Rd,+Sudbury,+MA" target="_blank">Open in Maps</a></div>
+      </div>
+    </div>
+    <div class="wp-transit">&darr; reception follows at church</div>
+    <div class="waypoint">
+      <div class="wp-marker"><div class="wp-id">WP4</div><div class="wp-dot"></div></div>
+      <div class="wp-time">~12:00</div>
+      <div class="wp-content">
+        <div class="wp-title">Reception at Church</div>
+        <div class="wp-detail">Hosted by Pakos family at St. Anselm &bull; ~4 hr gap before dinner</div>
+      </div>
+    </div>
+    <div class="wp-transit">&darr; 4.0 hr standby &mdash; Wayside Inn is 1.8 mi from church</div>
+    <div class="waypoint">
+      <div class="wp-marker"><div class="wp-id">WP5</div><div class="wp-dot"></div></div>
+      <div class="wp-time">17:30</div>
+      <div class="wp-content">
+        <div class="wp-title">Arrive Longfellow's Wayside Inn</div>
+        <div class="wp-detail">72 Wayside Inn Rd, Sudbury, MA &bull; Parlor Room opens 5:30 PM &bull; <a href="https://maps.apple.com/?address=72+Wayside+Inn+Road,+Sudbury,+MA" target="_blank">Open in Maps</a></div>
+      </div>
+    </div>
+    <div class="wp-transit">&darr; 30 min &mdash; settle in</div>
+    <div class="waypoint">
+      <div class="wp-marker"><div class="wp-id">WP6</div><div class="wp-dot"></div></div>
+      <div class="wp-time">18:00</div>
+      <div class="wp-content">
+        <div class="wp-title">Reunion Dinner &mdash; Captain's Night Out</div>
+        <div class="wp-detail">Parlor Room (private) &bull; 14 confirmed &bull; Individual orders from dinner menu &bull; Photos/video on TV</div>
+      </div>
+    </div>
+    <div class="wp-transit">&darr; dinner concludes &mdash; Jeff drives Bill back to Lowell. Bill stays overnight at Jeff's.</div>
+  </div>
+
+  <!-- VENUE CARDS -->
+  <div class="section-label">Venues</div>
+  <div class="venue-cards">
     <div class="card">
       <h2>Funeral Mass</h2>
-      <div class="card-row"><span class="label">Date</span><span class="value">Saturday, March 28, 2026</span></div>
+      <div class="card-row"><span class="label">Venue</span><span class="value">St. Anselm Church</span></div>
+      <div class="card-row"><span class="label">Address</span><span class="value">100 Landham Rd, Sudbury</span></div>
       <div class="card-row"><span class="label">Time</span><span class="value">10:30 AM</span></div>
-      <div class="card-row"><span class="label">Location</span><span class="value">St. Anselm Church</span></div>
-      <div class="card-row"><span class="label">Address</span><span class="value">100 Landham Rd, Sudbury, MA</span></div>
-      <div class="card-row"><span class="label">After</span><span class="value">Reception at the church</span></div>
+      <div class="card-row"><span class="label">After</span><span class="value">Reception at church</span></div>
+      <div class="card-row"><span class="label">Nav</span><span class="value"><a href="https://maps.apple.com/?address=100+Landham+Rd,+Sudbury,+MA" target="_blank">Open in Maps</a></span></div>
     </div>
     <div class="card">
       <h2>Reunion Dinner</h2>
-      <div class="card-row"><span class="label">Time</span><span class="value">6:00 PM (room at 5:30)</span></div>
       <div class="card-row"><span class="label">Venue</span><span class="value">Longfellow's Wayside Inn</span></div>
       <div class="card-row"><span class="label">Room</span><span class="value">Parlor Room (private)</span></div>
-      <div class="card-row"><span class="label">Address</span><span class="value">72 Wayside Inn Rd, Sudbury, MA</span></div>
-      <div class="card-row"><span class="label">Cost</span><span class="value">Dutch treat (~$20/pp room fee)</span></div>
-      <div class="card-row"><span class="label">Organized by</span><span class="value">William 'Abe' Peck</span></div>
-      <div class="card-row"><span class="label">Amenities</span><span class="value">Wireless mic + speaker; TV TBD</span></div>
-      <div class="card-row"><span class="label">Website</span><span class="value"><a href="https://www.wayside.org/" style="color:var(--accent)">wayside.org</a></span></div>
+      <div class="card-row"><span class="label">Address</span><span class="value">72 Wayside Inn Rd, Sudbury</span></div>
+      <div class="card-row"><span class="label">Time</span><span class="value">6:00 PM (room at 5:30)</span></div>
+      <div class="card-row"><span class="label">Org</span><span class="value">Abe Peck</span></div>
+      <div class="card-row"><span class="label">Nav</span><span class="value"><a href="https://maps.apple.com/?address=72+Wayside+Inn+Road,+Sudbury,+MA" target="_blank">Open in Maps</a></span></div>
     </div>
   </div>
 
-  <div class="capacity-note">
-    Abe has a firm count of <strong>13</strong> &mdash; told venue 15, room capacity 18&ndash;20.
-    Fred's family may expand the count. Abe needs final numbers early this week.
+  <!-- LOGISTICS -->
+  <div class="section-label">Pre-Flight Checklist</div>
+  <div class="logistics">
+    <div class="logistics-grid">
+      <div class="logistics-item">
+        <div class="logistics-icon">&#9875;</div>
+        <div class="logistics-text">
+          <div class="li-label">BIRW Race Hat</div>
+          <div class="li-detail">Group photo at dinner</div>
+        </div>
+      </div>
+      <div class="logistics-item">
+        <div class="logistics-icon">&#128179;</div>
+        <div class="logistics-text">
+          <div class="li-label">Venmo + Cash</div>
+          <div class="li-detail">Dinner share + $20/pp room fee. No credit cards.</div>
+        </div>
+      </div>
+      <div class="logistics-item">
+        <div class="logistics-icon">&#128663;</div>
+        <div class="logistics-text">
+          <div class="li-label">Jeff Drives</div>
+          <div class="li-detail">Bill &rarr; Lowell AM. Jeff drives both to Sudbury + back.</div>
+        </div>
+      </div>
+      <div class="logistics-item">
+        <div class="logistics-icon">&#127909;</div>
+        <div class="logistics-text">
+          <div class="li-label">Photo Montage</div>
+          <div class="li-detail">Bill's BIRW montage for TV streaming at dinner.</div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="summary-bar">
-    <div class="summary-item">
-      <div class="count count-green">14</div>
-      <div class="label">Dinner Confirmed</div>
+  <!-- CREW ROSTER -->
+  <div class="section-label">Crew Roster &mdash; 14 Confirmed for Dinner</div>
+  <div class="crew-section">
+    <div class="summary-bar">
+      <div class="summary-item">
+        <div class="count count-green">14</div>
+        <div class="s-label">Dinner Confirmed</div>
+      </div>
+      <div class="summary-item">
+        <div class="count count-amber">1</div>
+        <div class="s-label">Funeral Only</div>
+      </div>
+      <div class="summary-item">
+        <div class="count count-gray">5</div>
+        <div class="s-label">Not Attending</div>
+      </div>
     </div>
-    <div class="summary-item">
-      <div class="count count-amber">8</div>
-      <div class="label">Pending</div>
-    </div>
-    <div class="summary-item">
-      <div class="count count-red">4</div>
-      <div class="label">Can't Attend Dinner</div>
-    </div>
-    <div class="summary-item">
-      <div class="count count-gray">5</div>
-      <div class="label">Not Attending</div>
-    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Funeral</th>
+          <th>Dinner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-header"><td colspan="3">Core Crew</td></tr>
+        <tr>
+          <td class="name-cell">William "Abe" Peck + Mary<span class="note">Organizing dinner. Traveling from Colorado.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Fred Burgess + Taffy<span class="note">Arriving Friday afternoon.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Fred Pryor + Barbara<span class="note">Lives in Paul's subdivision.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bill O'Halloran<span class="note">Jeff's dad. Driving from Salisbury to Lowell, Jeff drives to Sudbury.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Jeff O'Halloran</td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bob Warakomsky<span class="note">Caregiver — must return to VA after reception.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-amber">Funeral Only</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Steve Brady<span class="note">Confirmed via Fred. Son of John Brady.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+
+        <tr class="group-header"><td colspan="3">Burgess Family</td></tr>
+        <tr>
+          <td class="name-cell">Rick Burgess<span class="note">Deacon. Knows many racers.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Patrick Burgess<span class="note">Paul's godson (USCGA Class of '91).</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+
+        <tr class="group-header"><td colspan="3">Not Attending</td></tr>
+        <tr>
+          <td class="name-cell">George Krietemeyer<span class="note">Confirmed not coming.</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">John Klotz<span class="note">Sent condolences from him and Joy.</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Chris Klotz<span class="note">"So sorry, I will not be able to attend."</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Joe Vorbach<span class="note">Wife + sister Emily have flights right after reception.</span></td>
+          <td class="status-cell"><span class="badge badge-amber">Reception</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Funeral</th>
-        <th>Dinner</th>
-      </tr>
-    </thead>
-    <tbody>
-
-      <tr class="group-header">
-        <td colspan="3">Core Crew</td>
-      </tr>
-      <tr>
-        <td class="name-cell">William 'Abe' Peck + Mary<span class="note">Organizing dinner. Traveling from CO. (203) 733-6651</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Confirmed</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Fred Burgess + Taffy<span class="note">Arriving Friday afternoon.</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Confirmed</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Fred Pryor + Barbara</td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Confirmed</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Bill O'Halloran<span class="note">Confirmed funeral via iMessage Mar 16.</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Confirmed</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Jeff O'Halloran</td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Confirmed</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Steve Brady<span class="note">Confirmed for dinner (per Fred, Mar 23).</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Confirmed</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Bob Warakomsky<span class="note">Caregiver — must return to VA. Cannot attend Saturday dinner.</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-cant">Can't Attend</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">George Krietemeyer<span class="note">Confirmed not coming (per Abe, Mar 16).</span></td>
-        <td class="status-cell"><span class="badge badge-no">Not Attending</span></td>
-        <td class="status-cell"><span class="badge badge-no">Not Attending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">John Klotz<span class="note">Sent condolences from him and Joy.</span></td>
-        <td class="status-cell"><span class="badge badge-no">Not Attending</span></td>
-        <td class="status-cell"><span class="badge badge-no">Not Attending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Chris Klotz<span class="note">"So sorry, I will not be able to attend" (Mar 20).</span></td>
-        <td class="status-cell"><span class="badge badge-no">Not Attending</span></td>
-        <td class="status-cell"><span class="badge badge-no">Not Attending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Joe Vorbach<span class="note">Wife + sister Emily have flights right after reception (per Fred, Mar 23).</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-cant">Can't Attend</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Paul Hinkley</td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Bruce Skinner</td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-
-      <tr class="group-header">
-        <td colspan="3">Burgess Family</td>
-      </tr>
-      <tr>
-        <td class="name-cell">Rick Burgess<span class="note">Fred's son. Either night works.</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Confirmed</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Trish Burgess<span class="note">Rick's wife. Maybe (per Abe).</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Maybe</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Patrick Burgess<span class="note">Fred's son. Paul's godson (Class of '91).</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Confirmed</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Fred's 2 daughters + 1 husband<span class="note">Attending funeral, leaving Sunday. May want dinner — Abe needs count (Mar 23).</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Maybe</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Fred's grandson + wife<span class="note">May be interested in dinner (per Fred, Mar 23). In Newton area.</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Maybe</span></td>
-      </tr>
-
-      <tr class="group-header">
-        <td colspan="3">Pakos Family</td>
-      </tr>
-      <tr>
-        <td class="name-cell">Pat Pakos</td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Matt Pakos</td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Diane (Paul's sister)<span class="note">Confirmed by Pat (Mar 16).</span></td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Katie + Ned Rimer</td>
-        <td class="status-cell"><span class="badge badge-yes">Attending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-
-      <tr class="group-header">
-        <td colspan="3">Extended Network</td>
-      </tr>
-      <tr>
-        <td class="name-cell">Brian O'Halloran</td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Ray Geitler</td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Richard Masse</td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-      <tr>
-        <td class="name-cell">Joe Latino<span class="note">Contact info unknown.</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-        <td class="status-cell"><span class="badge badge-pending">Pending</span></td>
-      </tr>
-
-    </tbody>
-  </table>
+  <!-- FLEET HISTORY -->
+  <div class="section-label">Fleet Log &mdash; BIRW 1988&ndash;2013</div>
+  <div class="fleet-section">
+    <div class="fleet-card">
+      <div class="fleet-grid">
+        <div class="boat-entry">
+          <span class="boat-name">Hot Entr&eacute;e</span>
+          <span class="boat-years">early years</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">SuperNova</span>
+          <span class="boat-years">'92 &ndash; '93</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Goodnight Moon</span>
+          <span class="boat-years">'93 &ndash; '95</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Odette</span>
+          <span class="boat-years">'98</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Xenophon</span>
+          <span class="boat-years">Swan 40/44 &bull; '01, '09</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Black Tie</span>
+          <span class="boat-years">&mdash;</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Flashpoint</span>
+          <span class="boat-years">&mdash;</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Breaksea</span>
+          <span class="boat-years">&mdash;</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Dreamcatcher</span>
+          <span class="boat-years">USA 10625 &bull; '10 &ndash; '13</span>
+        </div>
+      </div>
+      <div class="fleet-span">25 YEARS ON THE WATER &bull; 9 BOATS &bull; 1 CREW</div>
+    </div>
+  </div>
 
 </div>
 
 <div class="footer">
-  <div class="updated">Last updated: March 23, 2026 at 09:45 PM ET</div>
-  <div style="margin-top:0.5rem">
-    In honor of Paul "Skip" Pakos &mdash; co-skipper, friend, shipmate.<br>
+  <div class="memorial">
+    In honor of <strong>Paul "Skip" Pakos</strong> &mdash; co-skipper, friend, shipmate.<br>
     Block Island Race Week &bull; 1988&ndash;2013
   </div>
+  <div class="updated">LAST UPDATED: 2026-03-26 17:00 EDT</div>
+  <div class="meridian">
+    Assembled by <em>Meridian</em> from 47 emails, 12 texts, and a lifetime of sailing.<br>
+    Know where you are. Move forward with confidence.
+  </div>
 </div>
+
 </body>
 </html>
