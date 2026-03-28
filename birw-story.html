@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Block Island Race Week &mdash; 26 Years on the Water</title>
+<title>Block Island Race Week &mdash; 1988&ndash;2013</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
 
@@ -299,7 +299,7 @@
 <!-- Start Screen -->
 <div class="start-screen" id="startScreen">
   <h1>Block Island Race Week</h1>
-  <div class="sub">26 Years on the Water</div>
+  <div class="sub">1988 &mdash; 2013</div>
   <button class="start-button" id="startBtn">Start the Show</button>
   <div class="start-hint">Spacebar to pause &middot; Arrow keys to navigate &middot; F for fullscreen</div>
 </div>
@@ -330,20 +330,13 @@
 const slides = [
 
   // ═══ TITLE ═══
-  { type: 'text', duration: 10000, html: `
+  { type: 'text', duration: 12000, html: `
     <h1>Block Island Race Week</h1>
-    <div class="subtitle">26 Years on the Water</div>
+    <div class="subtitle">1988 &mdash; 2013</div>
     <p class="body">
-      ~40 crew members. Twenty-six years. Twenty-five races. Nine boats.
-      One crew that kept showing up &mdash;
-      for the racing, the dinners, the matching polos, and for each other.
+      One crew. Twenty-five races. Nine boats.<br>
+      A lifetime of friendship on the water.
     </p>
-    <div class="stats">
-      <div><span class="stat-number">~40</span><span class="stat-label">Crew</span></div>
-      <div><span class="stat-number">26</span><span class="stat-label">Years</span></div>
-      <div><span class="stat-number">25</span><span class="stat-label">Races</span></div>
-      <div><span class="stat-number">9</span><span class="stat-label">Boats</span></div>
-    </div>
   `},
 
   // ═══ 2001 ═══
@@ -551,7 +544,7 @@ const slides = [
     <p class="body">
       For everyone who crewed. For the families who let us disappear to Block Island
       every other summer. For the ones who aren&rsquo;t here tonight.<br><br>
-      ~40 crew members. Twenty-six years. Twenty-five races. Nine boats. One crew.
+      One crew. Twenty-five races. Nine boats. 1988 to 2013.
     </p>
     <div class="tagline">See you on the water.</div>
     <p class="credit">
@@ -562,7 +555,7 @@ const slides = [
 ];
 
 // ── Engine ──
-const DEFAULT_PHOTO_DURATION = 3000;
+const DEFAULT_PHOTO_DURATION = 5000;
 const DEFAULT_TEXT_DURATION = 10000;
 let current = 0;
 let playing = false;
