@@ -100,7 +100,7 @@
     color: var(--text-dim);
     letter-spacing: 0.12em;
   }
-  .container { max-width: 860px; margin: 0 auto; padding: 1.5rem 1.25rem; }
+  .container { max-width: 960px; margin: 0 auto; padding: 1.5rem 1.25rem; }
   .section-label {
     font-family: var(--mono);
     font-size: 0.6rem;
@@ -115,6 +115,8 @@
     gap: 0.5rem;
   }
   .section-label::before { content: '//'; color: var(--text-muted); font-weight: 300; }
+
+  /* Timeline */
   .timeline {
     background: var(--bg-card);
     border-radius: 6px;
@@ -139,6 +141,8 @@
   .wp-detail a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-dim); }
   .wp-detail a:hover { color: var(--text-bright); border-color: var(--accent); }
   .wp-transit { font-family: var(--mono); font-size: 0.62rem; color: var(--text-muted); padding: 0.2rem 0 0.2rem 3.5rem; margin-left: 1rem; letter-spacing: 0.03em; }
+
+  /* Cards */
   .venue-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
   @media (max-width: 640px) { .venue-cards { grid-template-columns: 1fr; } }
   .card { background: var(--bg-card); border-radius: 6px; padding: 1rem; border: 1px solid var(--border); transition: border-color 0.2s; }
@@ -148,6 +152,8 @@
   .card-row .label { color: var(--text-dim); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.03em; flex-shrink: 0; padding-top: 0.1rem; }
   .card-row .value { font-weight: 500; text-align: right; color: var(--text); }
   .card-row .value a { color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: 0.72rem; border-bottom: 1px solid var(--accent-dim); }
+
+  /* Logistics */
   .logistics { background: var(--bg-card); border-radius: 6px; padding: 1rem 1.15rem; border: 1px solid var(--border); margin-bottom: 1.5rem; }
   .logistics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1.25rem; }
   @media (max-width: 640px) { .logistics-grid { grid-template-columns: 1fr; } }
@@ -155,6 +161,8 @@
   .logistics-icon { font-size: 0.95rem; flex-shrink: 0; width: 1.25rem; text-align: center; padding-top: 0.1rem; }
   .logistics-text .li-label { font-family: var(--mono); font-weight: 600; font-size: 0.78rem; color: var(--text-bright); letter-spacing: 0.02em; }
   .logistics-text .li-detail { color: var(--text-dim); font-size: 0.75rem; margin-top: 0.1rem; }
+
+  /* Crew section */
   .crew-section { margin-bottom: 1.5rem; }
   .summary-bar { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
   .summary-item { background: var(--bg-card); border-radius: 6px; padding: 0.5rem 1rem; text-align: center; border: 1px solid var(--border); min-width: 95px; }
@@ -163,6 +171,9 @@
   .count-green { color: var(--green); text-shadow: 0 0 8px rgba(0,230,118,0.3); }
   .count-amber { color: var(--amber); text-shadow: 0 0 8px rgba(255,171,0,0.3); }
   .count-gray { color: var(--gray); }
+  .count-accent { color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
+
+  /* Tables */
   table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
   thead th { background: #0f1923; color: var(--accent); padding: 0.6rem 0.75rem; text-align: left; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; border-bottom: 1px solid var(--border-accent); }
   thead th:not(:first-child) { text-align: center; }
@@ -176,13 +187,47 @@
   .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
   .badge-amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
   .badge-gray { background: var(--gray-bg); color: var(--gray); border: 1px solid var(--gray-border); }
+
+  /* Fleet */
   .fleet-section { margin-bottom: 1.5rem; }
   .fleet-card { background: var(--bg-card); border-radius: 6px; padding: 1rem 1.15rem; border: 1px solid var(--border); }
-  .fleet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 0.4rem 1rem; }
+  .fleet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.4rem 1rem; }
   .boat-entry { display: flex; align-items: baseline; gap: 0.5rem; padding: 0.25rem 0; }
   .boat-name { font-family: var(--sans); font-weight: 600; font-size: 0.85rem; color: var(--text); font-style: italic; }
   .boat-years { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); }
   .fleet-span { text-align: center; margin-top: 0.75rem; padding-top: 0.6rem; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.7rem; color: var(--gold); font-weight: 600; letter-spacing: 0.12em; text-shadow: 0 0 10px var(--gold-glow); }
+
+  /* Crew matrix */
+  .matrix-section { margin-bottom: 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .matrix-card { background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border); padding: 0.75rem; min-width: 700px; }
+  .matrix-table { width: 100%; border-collapse: collapse; }
+  .matrix-table th, .matrix-table td { padding: 0.2rem 0.15rem; text-align: center; font-family: var(--mono); font-size: 0.52rem; }
+  .matrix-table th { color: var(--accent); font-weight: 500; letter-spacing: 0.05em; }
+  .matrix-table th.year-header { writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(180deg); height: 2.5rem; padding: 0.15rem 0.1rem; font-size: 0.5rem; }
+  .matrix-table .crew-name { text-align: left; padding-left: 0.5rem; font-size: 0.62rem; color: var(--text); white-space: nowrap; min-width: 110px; font-weight: 500; }
+  .matrix-table .crew-name.deceased { color: var(--gold); }
+  .matrix-table .crew-count { text-align: right; padding-right: 0.5rem; font-size: 0.58rem; color: var(--text-dim); min-width: 1.5rem; }
+  .matrix-table .dot { width: 7px; height: 7px; border-radius: 50%; margin: 0 auto; }
+  .dot-active { background: var(--accent); box-shadow: 0 0 4px rgba(0,180,216,0.4); }
+  .dot-empty { background: var(--border); opacity: 0.3; width: 3px; height: 3px; }
+  .matrix-table tbody tr { border-bottom: 1px solid rgba(26,37,53,0.5); }
+  .matrix-table tbody tr:hover { background: var(--bg-card-hover); }
+  .matrix-table .boat-row td { border-top: 2px solid var(--border); padding-top: 0.3rem; padding-bottom: 0.15rem; }
+  .matrix-table .boat-cell { font-size: 0.5rem; color: var(--gold-dim); font-style: italic; letter-spacing: 0.02em; }
+  .matrix-divider td { height: 4px; background: var(--bg-surface); padding: 0; }
+
+  /* Crew roster grid */
+  .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem; margin-bottom: 1.5rem; }
+  .roster-entry { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 0.5rem 0.65rem; display: flex; justify-content: space-between; align-items: center; transition: border-color 0.2s; }
+  .roster-entry:hover { border-color: var(--border-accent); background: var(--bg-card-hover); }
+  .roster-entry .r-name { font-size: 0.8rem; color: var(--text); font-weight: 500; }
+  .roster-entry .r-name.deceased { color: var(--gold); }
+  .roster-entry .r-years { font-family: var(--mono); font-size: 0.62rem; color: var(--text-dim); }
+  .roster-entry .r-seasons { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); font-weight: 600; }
+  .roster-entry .r-detail { font-size: 0.6rem; color: var(--text-muted); }
+  .roster-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.1rem; }
+
+  /* Footer */
   .footer { text-align: center; padding: 1.5rem; border-top: 1px solid var(--border); position: relative; }
   .footer::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), transparent); }
   .footer .memorial { font-size: 0.85rem; color: var(--text-dim); font-style: italic; margin-bottom: 0.75rem; }
@@ -202,6 +247,835 @@
 </div>
 
 <div class="container">
+
+  <!-- ============================================================ -->
+  <!-- CREW MATRIX — Who Was With Us When                           -->
+  <!-- ============================================================ -->
+
+  <div class="section-label">Ship's Company &mdash; Who Was With Us When</div>
+  <div class="matrix-section">
+    <div class="matrix-card">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th style="text-align:left; min-width:110px;"></th>
+            <th class="year-header">'88</th>
+            <th class="year-header">'89</th>
+            <th class="year-header">'90</th>
+            <th class="year-header">'91</th>
+            <th class="year-header">'92</th>
+            <th class="year-header">'93</th>
+            <th class="year-header">'94</th>
+            <th class="year-header">'95</th>
+            <th class="year-header">'96</th>
+            <th class="year-header">'97</th>
+            <th class="year-header">'98</th>
+            <th class="year-header">'99</th>
+            <th class="year-header">'00</th>
+            <th class="year-header">'01</th>
+            <th class="year-header">'02</th>
+            <th class="year-header">'03</th>
+            <th class="year-header">'04</th>
+            <th class="year-header">'05</th>
+            <th class="year-header">'06</th>
+            <th class="year-header">'07</th>
+            <th class="year-header">'08</th>
+            <th class="year-header">'09</th>
+            <th class="year-header">'10</th>
+            <th class="year-header">'11</th>
+            <th class="year-header">'13</th>
+            <th style="min-width:1.5rem;"></th>
+          </tr>
+          <tr class="boat-row">
+            <td></td>
+            <td class="boat-cell" title="Hot Entree">HE</td>
+            <td class="boat-cell" title="SuperNova (Dehler 38)">SN</td>
+            <td class="boat-cell" title="SuperNova">SN</td>
+            <td class="boat-cell" title="SuperNova">SN</td>
+            <td class="boat-cell" title="SuperNova">SN</td>
+            <td class="boat-cell" title="Goodnight Moon">GM</td>
+            <td class="boat-cell" title="Goodnight Moon">GM</td>
+            <td class="boat-cell" title="Goodnight Moon">GM</td>
+            <td class="boat-cell" title="Goodnight Moon">GM</td>
+            <td class="boat-cell" title="Odette">Od</td>
+            <td class="boat-cell" title="Odette">Od</td>
+            <td class="boat-cell" title="Odette">Od</td>
+            <td class="boat-cell" title="Odette">Od</td>
+            <td class="boat-cell" title="Xenophon">Xe</td>
+            <td class="boat-cell" title="Odette">Od</td>
+            <td class="boat-cell" title="Black Tie">BT</td>
+            <td class="boat-cell" title="Flashpoint">FP</td>
+            <td class="boat-cell" title="Xenophon">Xe</td>
+            <td class="boat-cell" title="Flashpoint">FP</td>
+            <td class="boat-cell" title="Xenophon">Xe</td>
+            <td class="boat-cell" title="Breaksea">Br</td>
+            <td class="boat-cell" title="Xenophon">Xe</td>
+            <td class="boat-cell" title="Dreamcatcher">DC</td>
+            <td class="boat-cell" title="Dreamcatcher">DC</td>
+            <td class="boat-cell" title="Dreamcatcher">DC</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Co-skippers -->
+          <tr>
+            <td class="crew-name deceased">Paul Pakos &#9733;</td>
+            <td><div class="dot dot-active"></div></td><!-- 88 -->
+            <td><div class="dot dot-active"></div></td><!-- 89 -->
+            <td><div class="dot dot-active"></div></td><!-- 90 -->
+            <td><div class="dot dot-active"></div></td><!-- 91 -->
+            <td><div class="dot dot-active"></div></td><!-- 92 -->
+            <td><div class="dot dot-active"></div></td><!-- 93 -->
+            <td><div class="dot dot-active"></div></td><!-- 94 -->
+            <td><div class="dot dot-active"></div></td><!-- 95 -->
+            <td><div class="dot dot-active"></div></td><!-- 96 -->
+            <td><div class="dot dot-active"></div></td><!-- 97 -->
+            <td><div class="dot dot-active"></div></td><!-- 98 -->
+            <td><div class="dot dot-active"></div></td><!-- 99 -->
+            <td><div class="dot dot-active"></div></td><!-- 00 -->
+            <td><div class="dot dot-active"></div></td><!-- 01 -->
+            <td><div class="dot dot-active"></div></td><!-- 02 -->
+            <td><div class="dot dot-active"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-active"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">25</td>
+          </tr>
+          <tr>
+            <td class="crew-name deceased">Steve Masse &#9733;</td>
+            <td><div class="dot dot-active"></div></td><!-- 88 -->
+            <td><div class="dot dot-active"></div></td><!-- 89 -->
+            <td><div class="dot dot-active"></div></td><!-- 90 -->
+            <td><div class="dot dot-active"></div></td><!-- 91 -->
+            <td><div class="dot dot-active"></div></td><!-- 92 -->
+            <td><div class="dot dot-active"></div></td><!-- 93 -->
+            <td><div class="dot dot-active"></div></td><!-- 94 -->
+            <td><div class="dot dot-active"></div></td><!-- 95 -->
+            <td><div class="dot dot-active"></div></td><!-- 96 -->
+            <td><div class="dot dot-active"></div></td><!-- 97 -->
+            <td><div class="dot dot-active"></div></td><!-- 98 -->
+            <td><div class="dot dot-active"></div></td><!-- 99 -->
+            <td><div class="dot dot-active"></div></td><!-- 00 -->
+            <td><div class="dot dot-active"></div></td><!-- 01 -->
+            <td><div class="dot dot-empty"></div></td><!-- 02 -->
+            <td><div class="dot dot-active"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-active"></div></td><!-- 06 -->
+            <td><div class="dot dot-empty"></div></td><!-- 07 -->
+            <td><div class="dot dot-empty"></div></td><!-- 08 -->
+            <td><div class="dot dot-empty"></div></td><!-- 09 -->
+            <td><div class="dot dot-empty"></div></td><!-- 10 -->
+            <td><div class="dot dot-empty"></div></td><!-- 11 -->
+            <td><div class="dot dot-empty"></div></td><!-- 13 -->
+            <td class="crew-count">18</td>
+          </tr>
+          <!-- Navigator -->
+          <tr>
+            <td class="crew-name">Fred Burgess</td>
+            <td><div class="dot dot-active"></div></td><!-- 88 -->
+            <td><div class="dot dot-active"></div></td><!-- 89 -->
+            <td><div class="dot dot-active"></div></td><!-- 90 -->
+            <td><div class="dot dot-active"></div></td><!-- 91 -->
+            <td><div class="dot dot-active"></div></td><!-- 92 -->
+            <td><div class="dot dot-active"></div></td><!-- 93 -->
+            <td><div class="dot dot-active"></div></td><!-- 94 -->
+            <td><div class="dot dot-active"></div></td><!-- 95 -->
+            <td><div class="dot dot-active"></div></td><!-- 96 -->
+            <td><div class="dot dot-active"></div></td><!-- 97 -->
+            <td><div class="dot dot-active"></div></td><!-- 98 -->
+            <td><div class="dot dot-active"></div></td><!-- 99 -->
+            <td><div class="dot dot-active"></div></td><!-- 00 -->
+            <td><div class="dot dot-active"></div></td><!-- 01 -->
+            <td><div class="dot dot-active"></div></td><!-- 02 -->
+            <td><div class="dot dot-active"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-empty"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">23</td>
+          </tr>
+          <!-- Core crew by seasons desc -->
+          <tr>
+            <td class="crew-name">Bill "Frank" O'Halloran</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-active"></div></td><!-- 92 -->
+            <td><div class="dot dot-active"></div></td><!-- 93 -->
+            <td><div class="dot dot-active"></div></td><!-- 94 -->
+            <td><div class="dot dot-active"></div></td><!-- 95 -->
+            <td><div class="dot dot-active"></div></td><!-- 96 -->
+            <td><div class="dot dot-active"></div></td><!-- 97 -->
+            <td><div class="dot dot-active"></div></td><!-- 98 -->
+            <td><div class="dot dot-active"></div></td><!-- 99 -->
+            <td><div class="dot dot-active"></div></td><!-- 00 -->
+            <td><div class="dot dot-active"></div></td><!-- 01 -->
+            <td><div class="dot dot-active"></div></td><!-- 02 -->
+            <td><div class="dot dot-active"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-active"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">21</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Bob Warakomsky</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-active"></div></td><!-- 90 -->
+            <td><div class="dot dot-active"></div></td><!-- 91 -->
+            <td><div class="dot dot-active"></div></td><!-- 92 -->
+            <td><div class="dot dot-active"></div></td><!-- 93 -->
+            <td><div class="dot dot-active"></div></td><!-- 94 -->
+            <td><div class="dot dot-active"></div></td><!-- 95 -->
+            <td><div class="dot dot-empty"></div></td><!-- 96 -->
+            <td><div class="dot dot-empty"></div></td><!-- 97 -->
+            <td><div class="dot dot-active"></div></td><!-- 98 -->
+            <td><div class="dot dot-active"></div></td><!-- 99 -->
+            <td><div class="dot dot-active"></div></td><!-- 00 -->
+            <td><div class="dot dot-empty"></div></td><!-- 01 -->
+            <td><div class="dot dot-active"></div></td><!-- 02 -->
+            <td><div class="dot dot-active"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-active"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">20</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Abe Peck</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-empty"></div></td><!-- 92 -->
+            <td><div class="dot dot-empty"></div></td><!-- 93 -->
+            <td><div class="dot dot-active"></div></td><!-- 94 -->
+            <td><div class="dot dot-active"></div></td><!-- 95 -->
+            <td><div class="dot dot-active"></div></td><!-- 96 -->
+            <td><div class="dot dot-active"></div></td><!-- 97 -->
+            <td><div class="dot dot-active"></div></td><!-- 98 -->
+            <td><div class="dot dot-active"></div></td><!-- 99 -->
+            <td><div class="dot dot-active"></div></td><!-- 00 -->
+            <td><div class="dot dot-active"></div></td><!-- 01 -->
+            <td><div class="dot dot-active"></div></td><!-- 02 -->
+            <td><div class="dot dot-active"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-active"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">19</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Joe Vorbach</td>
+            <td><div class="dot dot-active"></div></td><!-- 88 -->
+            <td><div class="dot dot-active"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-empty"></div></td><!-- 92 -->
+            <td><div class="dot dot-empty"></div></td><!-- 93 -->
+            <td><div class="dot dot-active"></div></td><!-- 94 -->
+            <td><div class="dot dot-active"></div></td><!-- 95 -->
+            <td><div class="dot dot-empty"></div></td><!-- 96 -->
+            <td><div class="dot dot-active"></div></td><!-- 97 -->
+            <td><div class="dot dot-active"></div></td><!-- 98 -->
+            <td><div class="dot dot-active"></div></td><!-- 99 -->
+            <td><div class="dot dot-active"></div></td><!-- 00 -->
+            <td><div class="dot dot-active"></div></td><!-- 01 -->
+            <td><div class="dot dot-active"></div></td><!-- 02 -->
+            <td><div class="dot dot-active"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-active"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-empty"></div></td><!-- 10 -->
+            <td><div class="dot dot-empty"></div></td><!-- 11 -->
+            <td><div class="dot dot-empty"></div></td><!-- 13 -->
+            <td class="crew-count">17</td>
+          </tr>
+          <tr>
+            <td class="crew-name">George Krietemeyer</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-empty"></div></td><!-- 92 -->
+            <td><div class="dot dot-empty"></div></td><!-- 93 -->
+            <td><div class="dot dot-empty"></div></td><!-- 94 -->
+            <td><div class="dot dot-empty"></div></td><!-- 95 -->
+            <td><div class="dot dot-empty"></div></td><!-- 96 -->
+            <td><div class="dot dot-active"></div></td><!-- 97 -->
+            <td><div class="dot dot-active"></div></td><!-- 98 -->
+            <td><div class="dot dot-active"></div></td><!-- 99 -->
+            <td><div class="dot dot-active"></div></td><!-- 00 -->
+            <td><div class="dot dot-empty"></div></td><!-- 01 -->
+            <td><div class="dot dot-active"></div></td><!-- 02 -->
+            <td><div class="dot dot-active"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-empty"></div></td><!-- 06 -->
+            <td><div class="dot dot-empty"></div></td><!-- 07 -->
+            <td><div class="dot dot-empty"></div></td><!-- 08 -->
+            <td><div class="dot dot-empty"></div></td><!-- 09 -->
+            <td><div class="dot dot-empty"></div></td><!-- 10 -->
+            <td><div class="dot dot-empty"></div></td><!-- 11 -->
+            <td><div class="dot dot-empty"></div></td><!-- 13 -->
+            <td class="crew-count">8</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Paul Hinkley</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-empty"></div></td><!-- 92 -->
+            <td><div class="dot dot-empty"></div></td><!-- 93 -->
+            <td><div class="dot dot-empty"></div></td><!-- 94 -->
+            <td><div class="dot dot-empty"></div></td><!-- 95 -->
+            <td><div class="dot dot-empty"></div></td><!-- 96 -->
+            <td><div class="dot dot-empty"></div></td><!-- 97 -->
+            <td><div class="dot dot-empty"></div></td><!-- 98 -->
+            <td><div class="dot dot-active"></div></td><!-- 99 -->
+            <td><div class="dot dot-active"></div></td><!-- 00 -->
+            <td><div class="dot dot-active"></div></td><!-- 01 -->
+            <td><div class="dot dot-active"></div></td><!-- 02 -->
+            <td><div class="dot dot-empty"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-active"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-empty"></div></td><!-- 08 -->
+            <td><div class="dot dot-empty"></div></td><!-- 09 -->
+            <td><div class="dot dot-empty"></div></td><!-- 10 -->
+            <td><div class="dot dot-empty"></div></td><!-- 11 -->
+            <td><div class="dot dot-empty"></div></td><!-- 13 -->
+            <td class="crew-count">8</td>
+          </tr>
+          <tr>
+            <td class="crew-name">John Klotz</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-empty"></div></td><!-- 92 -->
+            <td><div class="dot dot-empty"></div></td><!-- 93 -->
+            <td><div class="dot dot-empty"></div></td><!-- 94 -->
+            <td><div class="dot dot-empty"></div></td><!-- 95 -->
+            <td><div class="dot dot-empty"></div></td><!-- 96 -->
+            <td><div class="dot dot-empty"></div></td><!-- 97 -->
+            <td><div class="dot dot-empty"></div></td><!-- 98 -->
+            <td><div class="dot dot-empty"></div></td><!-- 99 -->
+            <td><div class="dot dot-empty"></div></td><!-- 00 -->
+            <td><div class="dot dot-empty"></div></td><!-- 01 -->
+            <td><div class="dot dot-empty"></div></td><!-- 02 -->
+            <td><div class="dot dot-active"></div></td><!-- 03 -->
+            <td><div class="dot dot-active"></div></td><!-- 04 -->
+            <td><div class="dot dot-empty"></div></td><!-- 05 -->
+            <td><div class="dot dot-empty"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">8</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Jeff O'Halloran</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-active"></div></td><!-- 92 -->
+            <td><div class="dot dot-active"></div></td><!-- 93 -->
+            <td><div class="dot dot-empty"></div></td><!-- 94 -->
+            <td><div class="dot dot-empty"></div></td><!-- 95 -->
+            <td><div class="dot dot-empty"></div></td><!-- 96 -->
+            <td><div class="dot dot-empty"></div></td><!-- 97 -->
+            <td><div class="dot dot-active"></div></td><!-- 98 -->
+            <td><div class="dot dot-empty"></div></td><!-- 99 -->
+            <td><div class="dot dot-empty"></div></td><!-- 00 -->
+            <td><div class="dot dot-active"></div></td><!-- 01 -->
+            <td><div class="dot dot-empty"></div></td><!-- 02 -->
+            <td><div class="dot dot-empty"></div></td><!-- 03 -->
+            <td><div class="dot dot-empty"></div></td><!-- 04 -->
+            <td><div class="dot dot-empty"></div></td><!-- 05 -->
+            <td><div class="dot dot-empty"></div></td><!-- 06 -->
+            <td><div class="dot dot-empty"></div></td><!-- 07 -->
+            <td><div class="dot dot-empty"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">8</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Bruce Skinner</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-empty"></div></td><!-- 92 -->
+            <td><div class="dot dot-empty"></div></td><!-- 93 -->
+            <td><div class="dot dot-empty"></div></td><!-- 94 -->
+            <td><div class="dot dot-empty"></div></td><!-- 95 -->
+            <td><div class="dot dot-empty"></div></td><!-- 96 -->
+            <td><div class="dot dot-empty"></div></td><!-- 97 -->
+            <td><div class="dot dot-empty"></div></td><!-- 98 -->
+            <td><div class="dot dot-empty"></div></td><!-- 99 -->
+            <td><div class="dot dot-empty"></div></td><!-- 00 -->
+            <td><div class="dot dot-empty"></div></td><!-- 01 -->
+            <td><div class="dot dot-empty"></div></td><!-- 02 -->
+            <td><div class="dot dot-empty"></div></td><!-- 03 -->
+            <td><div class="dot dot-empty"></div></td><!-- 04 -->
+            <td><div class="dot dot-active"></div></td><!-- 05 -->
+            <td><div class="dot dot-active"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">8</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Chris Klotz</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-empty"></div></td><!-- 92 -->
+            <td><div class="dot dot-empty"></div></td><!-- 93 -->
+            <td><div class="dot dot-empty"></div></td><!-- 94 -->
+            <td><div class="dot dot-empty"></div></td><!-- 95 -->
+            <td><div class="dot dot-empty"></div></td><!-- 96 -->
+            <td><div class="dot dot-empty"></div></td><!-- 97 -->
+            <td><div class="dot dot-empty"></div></td><!-- 98 -->
+            <td><div class="dot dot-empty"></div></td><!-- 99 -->
+            <td><div class="dot dot-empty"></div></td><!-- 00 -->
+            <td><div class="dot dot-empty"></div></td><!-- 01 -->
+            <td><div class="dot dot-empty"></div></td><!-- 02 -->
+            <td><div class="dot dot-empty"></div></td><!-- 03 -->
+            <td><div class="dot dot-empty"></div></td><!-- 04 -->
+            <td><div class="dot dot-empty"></div></td><!-- 05 -->
+            <td><div class="dot dot-empty"></div></td><!-- 06 -->
+            <td><div class="dot dot-empty"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-active"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">5</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Fred "Rick" Pryor</td>
+            <td><div class="dot dot-empty"></div></td><!-- 88 -->
+            <td><div class="dot dot-empty"></div></td><!-- 89 -->
+            <td><div class="dot dot-empty"></div></td><!-- 90 -->
+            <td><div class="dot dot-empty"></div></td><!-- 91 -->
+            <td><div class="dot dot-empty"></div></td><!-- 92 -->
+            <td><div class="dot dot-empty"></div></td><!-- 93 -->
+            <td><div class="dot dot-empty"></div></td><!-- 94 -->
+            <td><div class="dot dot-empty"></div></td><!-- 95 -->
+            <td><div class="dot dot-empty"></div></td><!-- 96 -->
+            <td><div class="dot dot-empty"></div></td><!-- 97 -->
+            <td><div class="dot dot-empty"></div></td><!-- 98 -->
+            <td><div class="dot dot-empty"></div></td><!-- 99 -->
+            <td><div class="dot dot-empty"></div></td><!-- 00 -->
+            <td><div class="dot dot-empty"></div></td><!-- 01 -->
+            <td><div class="dot dot-empty"></div></td><!-- 02 -->
+            <td><div class="dot dot-empty"></div></td><!-- 03 -->
+            <td><div class="dot dot-empty"></div></td><!-- 04 -->
+            <td><div class="dot dot-empty"></div></td><!-- 05 -->
+            <td><div class="dot dot-empty"></div></td><!-- 06 -->
+            <td><div class="dot dot-active"></div></td><!-- 07 -->
+            <td><div class="dot dot-active"></div></td><!-- 08 -->
+            <td><div class="dot dot-empty"></div></td><!-- 09 -->
+            <td><div class="dot dot-active"></div></td><!-- 10 -->
+            <td><div class="dot dot-active"></div></td><!-- 11 -->
+            <td><div class="dot dot-active"></div></td><!-- 13 -->
+            <td class="crew-count">5</td>
+          </tr>
+          <!-- Divider -->
+          <tr class="matrix-divider"><td colspan="27"></td></tr>
+          <!-- Extended crew — shorter tenure, sorted by first year then count -->
+          <tr>
+            <td class="crew-name">Joe Latino</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">5</td>
+          </tr>
+          <tr>
+            <td class="crew-name">George Christman</td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">4</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Richard Masse</td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">4</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Steve Brady</td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">3</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Mike Conway</td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">2</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Matt Pakos</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">4</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Ray Geitler</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">3</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Brian O'Halloran</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">2</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Justin Vorbach</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Ron Beck</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Steve Long</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Pat Burgess</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Katie Pakos</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">John David</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Chris Kraybil</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Joe LiPuma</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Ed McLaughlin</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Gordon Streeter</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">George Streeter</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Steve Peck</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Dan Neff</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Terry Montoyne</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Brian Burgess</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Paul Welling</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+          <tr>
+            <td class="crew-name">Lew Carter</td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td><div class="dot dot-active"></div></td>
+            <td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td><td><div class="dot dot-empty"></div></td>
+            <td class="crew-count">1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- FLEET LOG                                                    -->
+  <!-- ============================================================ -->
+
+  <div class="section-label">Fleet Log &mdash; BIRW 1988&ndash;2013</div>
+  <div class="fleet-section">
+    <div class="fleet-card">
+      <div class="fleet-grid">
+        <div class="boat-entry">
+          <span class="boat-name">Hot Entr&eacute;e</span>
+          <span class="boat-years">'88</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">SuperNova</span>
+          <span class="boat-years">Dehler 38 &bull; '89</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">SuperNova</span>
+          <span class="boat-years">'90 &ndash; '92</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Goodnight Moon</span>
+          <span class="boat-years">Swan 431 &bull; '93 &ndash; '96</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Odette</span>
+          <span class="boat-years">Swan 431 &bull; '97 &ndash; '00, '02</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Xenophon</span>
+          <span class="boat-years">Swan 40/44 &bull; '01, '05, '07, '09</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Black Tie</span>
+          <span class="boat-years">Swan 47 &bull; '03</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Flashpoint</span>
+          <span class="boat-years">Beneteau 42 &bull; '04, '06</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Breaksea</span>
+          <span class="boat-years">C&amp;C 121 &bull; '08</span>
+        </div>
+        <div class="boat-entry">
+          <span class="boat-name">Dreamcatcher</span>
+          <span class="boat-years">Swan 48 &bull; '10 &ndash; '13</span>
+        </div>
+      </div>
+      <div class="fleet-span">25 YEARS ON THE WATER &bull; 10 BOATS &bull; 1 CREW</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- REUNION ATTENDANCE                                           -->
+  <!-- ============================================================ -->
+
+  <div class="section-label">Reunion Attendance &mdash; March 28, 2026</div>
+  <div class="crew-section">
+    <div class="summary-bar">
+      <div class="summary-item">
+        <div class="count count-green">11</div>
+        <div class="s-label">Dinner Confirmed</div>
+      </div>
+      <div class="summary-item">
+        <div class="count count-amber">2</div>
+        <div class="s-label">Funeral Only</div>
+      </div>
+      <div class="summary-item">
+        <div class="count count-gray">4</div>
+        <div class="s-label">Not Attending</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Funeral</th><th>Dinner</th></tr>
+      </thead>
+      <tbody>
+        <tr class="group-header"><td colspan="3">Core Crew (5+ seasons)</td></tr>
+        <tr>
+          <td class="name-cell">William "Abe" Peck + Mary<span class="note">19 seasons. Organizing dinner. Traveling from Colorado.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Fred Burgess + Taffy<span class="note">23 seasons. Navigator. Arriving Friday afternoon.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Fred "Rick" Pryor + Barbara<span class="note">5 seasons. Lives in Paul's subdivision.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bill "Frank" O'Halloran<span class="note">21 seasons. Navigator. Driving from Salisbury to Lowell, Jeff drives to Sudbury.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Jeff O'Halloran<span class="note">8 seasons.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bob Warakomsky<span class="note">20 seasons. Caregiver — must return to VA after reception.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-amber">Funeral Only</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">George Krietemeyer<span class="note">8 seasons. Confirmed not coming.</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Paul Hinkley<span class="note">8 seasons.</span></td>
+          <td class="status-cell"><span class="badge badge-gray">Unknown</span></td>
+          <td class="status-cell"><span class="badge badge-gray">Unknown</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bruce Skinner<span class="note">8 seasons.</span></td>
+          <td class="status-cell"><span class="badge badge-gray">Unknown</span></td>
+          <td class="status-cell"><span class="badge badge-gray">Unknown</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">John Klotz<span class="note">8 seasons. Sent condolences from him and Joy.</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Chris Klotz<span class="note">5 seasons.</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Joe Vorbach<span class="note">17 seasons. Wife + sister Emily have flights right after reception.</span></td>
+          <td class="status-cell"><span class="badge badge-amber">Reception</span></td>
+          <td class="status-cell"><span class="badge badge-gray">No</span></td>
+        </tr>
+        <tr class="group-header"><td colspan="3">Other Guests</td></tr>
+        <tr>
+          <td class="name-cell">Steve Brady<span class="note">3 seasons. Confirmed via Fred.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Rick Burgess<span class="note">Deacon. Fred's son.</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Patrick Burgess<span class="note">Paul's godson (USCGA Class of '91).</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- DAY OPERATIONS                                               -->
+  <!-- ============================================================ -->
 
   <div class="section-label">Course &mdash; Day Waypoints</div>
   <div class="timeline">
@@ -270,7 +1144,6 @@
       <div class="card-row"><span class="label">Time</span><span class="value">10:30 AM</span></div>
       <div class="card-row"><span class="label">After</span><span class="value">Reception at church</span></div>
       <div class="card-row"><span class="label">Nav</span><span class="value"><a href="https://maps.apple.com/?address=100+Landham+Rd,+Sudbury,+MA" target="_blank">Open in Maps</a></span></div>
-      
     </div>
     <div class="card">
       <h2>Reunion Dinner</h2>
@@ -280,7 +1153,6 @@
       <div class="card-row"><span class="label">Time</span><span class="value">6:00 PM (room at 5:30)</span></div>
       <div class="card-row"><span class="label">Org</span><span class="value">Abe Peck</span></div>
       <div class="card-row"><span class="label">Nav</span><span class="value"><a href="https://maps.apple.com/?address=72+Wayside+Inn+Road,+Sudbury,+MA" target="_blank">Open in Maps</a></span></div>
-      
     </div>
   </div>
 
@@ -318,158 +1190,6 @@
     </div>
   </div>
 
-  <div class="section-label">Crew Roster &mdash; 14 Paver Crew &bull; 3 Other Guests</div>
-  <div class="crew-section">
-    <div class="summary-bar">
-      <div class="summary-item">
-        <div class="count count-green">11</div>
-        <div class="s-label">Dinner Confirmed</div>
-      </div>
-      <div class="summary-item">
-        <div class="count count-amber">2</div>
-        <div class="s-label">Funeral Only</div>
-      </div>
-      <div class="summary-item">
-        <div class="count count-gray">4</div>
-        <div class="s-label">Not Attending</div>
-      </div>
-    </div>
-
-    <table>
-      <thead>
-        <tr><th>Name</th><th>Funeral</th><th>Dinner</th></tr>
-      </thead>
-      <tbody>
-        <tr class="group-header"><td colspan="3">Core Crew (5+ seasons)</td></tr>
-        <tr>
-          <td class="name-cell">William "Abe" Peck + Mary<span class="note">20 seasons. Organizing dinner. Traveling from Colorado.</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Fred Burgess + Taffy<span class="note">24 seasons. Navigator. Arriving Friday afternoon.</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Fred "Rick" Pryor + Barbara<span class="note">5 seasons. Lives in Paul's subdivision.</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Bill "Frank" O'Halloran<span class="note">22 seasons. Navigator. Driving from Salisbury to Lowell, Jeff drives to Sudbury.</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Jeff O'Halloran<span class="note">8 seasons.</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Bob Warakomsky<span class="note">19 seasons. Caregiver — must return to VA after reception.</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-          <td class="status-cell"><span class="badge badge-amber">Funeral Only</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">George Krietemeyer<span class="note">10 seasons. Confirmed not coming.</span></td>
-          <td class="status-cell"><span class="badge badge-gray">No</span></td>
-          <td class="status-cell"><span class="badge badge-gray">No</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Paul Hinkley<span class="note">12 seasons.</span></td>
-          <td class="status-cell"><span class="badge badge-gray">Unknown</span></td>
-          <td class="status-cell"><span class="badge badge-gray">Unknown</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Bruce Skinner<span class="note">9 seasons.</span></td>
-          <td class="status-cell"><span class="badge badge-gray">Unknown</span></td>
-          <td class="status-cell"><span class="badge badge-gray">Unknown</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">John Klotz<span class="note">9 seasons. Sent condolences from him and Joy.</span></td>
-          <td class="status-cell"><span class="badge badge-gray">No</span></td>
-          <td class="status-cell"><span class="badge badge-gray">No</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Chris Klotz<span class="note">5 seasons. "So sorry, I will not be able to attend."</span></td>
-          <td class="status-cell"><span class="badge badge-gray">No</span></td>
-          <td class="status-cell"><span class="badge badge-gray">No</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Joe Vorbach<span class="note">21 seasons. Wife + sister Emily have flights right after reception.</span></td>
-          <td class="status-cell"><span class="badge badge-amber">Reception</span></td>
-          <td class="status-cell"><span class="badge badge-gray">No</span></td>
-        </tr>
-        <tr class="group-header"><td colspan="3">Other Guests</td></tr>
-        <tr>
-          <td class="name-cell">Steve Brady<span class="note">3 seasons. Confirmed via Fred.</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Rick Burgess<span class="note">Deacon. Fred's son.</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-        </tr>
-        <tr>
-          <td class="name-cell">Patrick Burgess<span class="note">Paul's godson (USCGA Class of '91).</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-          <td class="status-cell"><span class="badge badge-green">Confirmed</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-label">Fleet Log &mdash; BIRW 1988&ndash;2013</div>
-  <div class="fleet-section">
-    <div class="fleet-card">
-      <div class="fleet-grid">
-        <div class="boat-entry">
-          <span class="boat-name">Hot Entr&eacute;e</span>
-          <span class="boat-years">'88</span>
-        </div>
-        <div class="boat-entry">
-          <span class="boat-name">SuperNova</span>
-          <span class="boat-years">Dehler 38 &bull; '89</span>
-        </div>
-        <div class="boat-entry">
-          <span class="boat-name">SuperNova</span>
-          <span class="boat-years">'90 &ndash; '92</span>
-        </div>
-        <div class="boat-entry">
-          <span class="boat-name">Goodnight Moon</span>
-          <span class="boat-years">Swan 431 &bull; '93 &ndash; '96</span>
-        </div>
-        <div class="boat-entry">
-          <span class="boat-name">Odette</span>
-          <span class="boat-years">Swan 431 &bull; '97 &ndash; '00, '02</span>
-        </div>
-        <div class="boat-entry">
-          <span class="boat-name">Xenophon</span>
-          <span class="boat-years">Swan 40/44 &bull; '01, '05, '07, '09</span>
-        </div>
-        <div class="boat-entry">
-          <span class="boat-name">Black Tie</span>
-          <span class="boat-years">Swan 47 &bull; '03</span>
-        </div>
-        <div class="boat-entry">
-          <span class="boat-name">Flashpoint</span>
-          <span class="boat-years">Beneteau 42 &bull; '04, '06</span>
-        </div>
-        <div class="boat-entry">
-          <span class="boat-name">Breaksea</span>
-          <span class="boat-years">C&amp;C 121 &bull; '08</span>
-        </div>
-        <div class="boat-entry">
-          <span class="boat-name">Dreamcatcher</span>
-          <span class="boat-years">Swan 48 &bull; '10 &ndash; '13</span>
-        </div>
-      </div>
-      <div class="fleet-span">25 YEARS ON THE WATER &bull; 10 BOATS &bull; 1 CREW</div>
-    </div>
-  </div>
-
 </div>
 
 <div class="footer">
@@ -477,9 +1197,10 @@
     In honor of <strong>Paul "Skip" Pakos</strong> &mdash; co-skipper, friend, shipmate.<br>
     Block Island Race Week &bull; 1988&ndash;2013
   </div>
-  <div class="updated">LAST UPDATED: 2026-03-26 18:03 EDT</div>
+  <div class="updated">LAST UPDATED: 2026-03-28 15:30 EDT</div>
   <div class="meridian">
     Assembled by <em>Meridian</em> from 47 emails, 12 texts, and a lifetime of sailing.<br>
+    Source: <em>25 Years of Camaraderie</em> &mdash; Paul Pakos &amp; Abe Peck, 2020<br>
     Know where you are. Move forward with confidence.
   </div>
 </div>
