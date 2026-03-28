@@ -304,6 +304,11 @@
   <div class="start-hint">Spacebar to pause &middot; Arrow keys to navigate &middot; F for fullscreen</div>
 </div>
 
+<!-- Audio -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="birw-photos/harbor-of-old-friends.mp3" type="audio/mpeg">
+</audio>
+
 <!-- Slideshow -->
 <div class="slideshow" id="slideshow"></div>
 
@@ -316,6 +321,7 @@
   <button id="playPauseBtn">Pause</button>
   <button id="nextBtn">&rarr;</button>
   <span class="progress" id="progressText">1 / 1</span>
+  <button id="muteBtn">Mute</button>
   <button id="fullscreenBtn">Fullscreen</button>
 </div>
 
@@ -656,12 +662,14 @@ function play() {
   playing = true;
   playPauseBtn.textContent = 'Pause';
   scheduleNext();
+  if (bgMusic) bgMusic.play();
 }
 
 function pause() {
   playing = false;
   playPauseBtn.textContent = 'Play';
   clearTimeout(timer);
+  if (bgMusic) bgMusic.pause();
 }
 
 function togglePlay() {
@@ -669,11 +677,15 @@ function togglePlay() {
 }
 
 // ── Event handlers ──
+const bgMusic = document.getElementById('bgMusic');
+bgMusic.volume = 0.4;
+
 startBtn.addEventListener('click', () => {
   startScreen.classList.add('hidden');
   controls.classList.add('visible');
   showSlide(0);
   play();
+  bgMusic.play();
   // Fade controls after 3s
   setTimeout(() => controls.classList.remove('visible'), 3000);
 });
@@ -681,6 +693,12 @@ startBtn.addEventListener('click', () => {
 playPauseBtn.addEventListener('click', togglePlay);
 nextBtn.addEventListener('click', () => { nextSlide(); });
 prevBtn.addEventListener('click', () => { prevSlide(); });
+const muteBtn = document.getElementById('muteBtn');
+muteBtn.addEventListener('click', () => {
+  bgMusic.muted = !bgMusic.muted;
+  muteBtn.textContent = bgMusic.muted ? 'Unmute' : 'Mute';
+});
+
 fullscreenBtn.addEventListener('click', () => {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen();
