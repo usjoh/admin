@@ -227,6 +227,67 @@
   .roster-entry .r-detail { font-size: 0.6rem; color: var(--text-muted); }
   .roster-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.1rem; }
 
+  /* Race results timeline */
+  .results-section { margin-bottom: 1.5rem; }
+  .results-card { background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border); padding: 1rem; overflow-x: auto; }
+  .results-timeline { display: flex; gap: 0; align-items: flex-end; min-height: 180px; padding-bottom: 2rem; position: relative; min-width: 750px; }
+  .results-year { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 28px; position: relative; }
+  .results-bar-container { display: flex; flex-direction: column; align-items: center; gap: 1px; margin-bottom: 0.3rem; }
+  .results-pip { width: 10px; height: 10px; border-radius: 2px; }
+  .pip-1st { background: var(--gold); box-shadow: 0 0 4px rgba(240,160,48,0.5); }
+  .pip-2nd { background: #a0a8b4; box-shadow: 0 0 3px rgba(160,168,180,0.3); }
+  .pip-3rd { background: #cd7f32; box-shadow: 0 0 3px rgba(205,127,50,0.3); }
+  .pip-4th { background: var(--border); }
+  .results-label { font-family: var(--mono); font-size: 0.45rem; color: var(--text-muted); writing-mode: vertical-lr; transform: rotate(180deg); height: 1.8rem; }
+  .results-boat-label { font-family: var(--mono); font-size: 0.4rem; color: var(--gold-dim); font-style: italic; margin-bottom: 0.15rem; }
+  .results-ftw { font-family: var(--mono); font-size: 0.42rem; color: var(--gold); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.1rem; }
+  .results-legend { display: flex; gap: 1rem; justify-content: center; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+  .legend-item { display: flex; align-items: center; gap: 0.3rem; font-family: var(--mono); font-size: 0.55rem; color: var(--text-dim); }
+  .legend-pip { width: 8px; height: 8px; border-radius: 2px; }
+  .results-summary { text-align: center; margin-top: 0.5rem; font-family: var(--mono); font-size: 0.7rem; color: var(--gold); font-weight: 600; letter-spacing: 0.12em; }
+
+  /* Tenure bars */
+  .tenure-section { margin-bottom: 1.5rem; }
+  .tenure-card { background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border); padding: 1rem; overflow-x: auto; }
+  .tenure-row { display: flex; align-items: center; gap: 0.5rem; padding: 0.15rem 0; }
+  .tenure-name { font-family: var(--mono); font-size: 0.6rem; color: var(--text); min-width: 120px; text-align: right; white-space: nowrap; }
+  .tenure-name.deceased { color: var(--gold); }
+  .tenure-track { flex: 1; height: 8px; display: flex; position: relative; min-width: 300px; }
+  .tenure-segment { height: 100%; }
+  .tenure-active { background: var(--accent); border-radius: 1px; box-shadow: 0 0 3px rgba(0,180,216,0.3); }
+  .tenure-gap { background: transparent; }
+  .tenure-inactive { background: rgba(26,37,53,0.3); }
+  .tenure-count { font-family: var(--mono); font-size: 0.55rem; color: var(--text-dim); min-width: 1.5rem; text-align: left; }
+  .tenure-axis { display: flex; gap: 0; margin-left: 128px; min-width: 300px; }
+  .tenure-axis-label { flex: 1; font-family: var(--mono); font-size: 0.42rem; color: var(--text-muted); text-align: center; min-width: 12px; }
+  .tenure-divider { height: 1px; background: var(--border); margin: 0.3rem 0 0.3rem 128px; opacity: 0.5; }
+
+  /* Generations */
+  .gen-section { margin-bottom: 1.5rem; }
+  .gen-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.6rem; }
+  .gen-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem; }
+  .gen-card:hover { border-color: var(--border-accent); background: var(--bg-card-hover); }
+  .gen-father { font-size: 0.82rem; color: var(--text-bright); font-weight: 600; margin-bottom: 0.4rem; }
+  .gen-father .gen-seasons { font-family: var(--mono); font-size: 0.6rem; color: var(--accent); font-weight: 500; margin-left: 0.3rem; }
+  .gen-child { display: flex; justify-content: space-between; align-items: center; padding: 0.15rem 0 0.15rem 0.75rem; border-left: 2px solid var(--border-accent); margin-bottom: 0.2rem; }
+  .gen-child-name { font-size: 0.78rem; color: var(--text); }
+  .gen-child-detail { font-family: var(--mono); font-size: 0.55rem; color: var(--text-dim); }
+  .gen-shared { font-family: var(--mono); font-size: 0.55rem; color: var(--gold-dim); margin-top: 0.3rem; padding-top: 0.3rem; border-top: 1px solid var(--border); }
+
+  /* Boat eras */
+  .eras-section { margin-bottom: 1.5rem; }
+  .era-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.5rem; }
+  .era-card:hover { border-color: var(--border-accent); }
+  .era-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; }
+  .era-boat { font-family: var(--sans); font-weight: 600; font-size: 0.9rem; color: var(--text-bright); font-style: italic; }
+  .era-years { font-family: var(--mono); font-size: 0.6rem; color: var(--text-dim); }
+  .era-class { font-family: var(--mono); font-size: 0.55rem; color: var(--gold-dim); }
+  .era-crew { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.3rem; }
+  .era-crew-tag { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.4rem; font-family: var(--mono); font-size: 0.55rem; color: var(--text); }
+  .era-crew-tag.every-year { border-color: var(--accent-dim); color: var(--accent); }
+  .era-crew-tag.deceased { color: var(--gold); border-color: var(--gold-dim); }
+  .era-results { font-family: var(--mono); font-size: 0.52rem; color: var(--text-muted); margin-top: 0.35rem; padding-top: 0.3rem; border-top: 1px solid var(--border); }
+
   /* Footer */
   .footer { text-align: center; padding: 1.5rem; border-top: 1px solid var(--border); position: relative; }
   .footer::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-dim), transparent); }
@@ -914,6 +975,301 @@
   </div>
 
   <!-- ============================================================ -->
+  <!-- CO-OCCURRENCE — Who Sailed Together                          -->
+  <!-- ============================================================ -->
+
+  <div class="section-label">Shipmates &mdash; How Many Seasons Together</div>
+  <div class="matrix-section">
+    <div class="matrix-card">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th style="text-align:left; min-width:110px;"></th>
+            <th class="year-header">Paul</th>
+            <th class="year-header">Steve</th>
+            <th class="year-header">Fred</th>
+            <th class="year-header">Bill</th>
+            <th class="year-header">Bob</th>
+            <th class="year-header">Abe</th>
+            <th class="year-header">Joe</th>
+            <th class="year-header">George</th>
+            <th class="year-header">Hink</th>
+            <th class="year-header">John</th>
+            <th class="year-header">Bruce</th>
+            <th class="year-header">Jeff</th>
+            <th class="year-header">Chris</th>
+            <th class="year-header">Rick</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="crew-name deceased">Paul Pakos</td><td style="color:var(--gold);font-weight:700">25</td><td>18</td><td style="color:var(--accent);font-weight:600">25</td><td>21</td><td>20</td><td>19</td><td>17</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td><td>5</td><td>5</td></tr>
+          <tr><td class="crew-name deceased">Steve Masse</td><td>18</td><td style="color:var(--gold);font-weight:700">18</td><td>18</td><td>14</td><td>13</td><td>12</td><td>13</td><td>7</td><td>6</td><td>2</td><td>2</td><td>4</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td class="crew-name">Fred Burgess</td><td style="color:var(--accent);font-weight:600">25</td><td>18</td><td style="color:var(--gold);font-weight:700">23</td><td>21</td><td>20</td><td>19</td><td>17</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td><td>5</td><td>5</td></tr>
+          <tr><td class="crew-name">Bill O'Halloran</td><td>21</td><td>14</td><td>21</td><td style="color:var(--gold);font-weight:700">21</td><td>18</td><td>19</td><td>15</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td><td>5</td><td>5</td></tr>
+          <tr><td class="crew-name">Bob Warakomsky</td><td>20</td><td>13</td><td>20</td><td>18</td><td style="color:var(--gold);font-weight:700">20</td><td>16</td><td>13</td><td>7</td><td>7</td><td>8</td><td>8</td><td>7</td><td>5</td><td>5</td></tr>
+          <tr><td class="crew-name">Abe Peck</td><td>19</td><td>12</td><td>19</td><td>19</td><td>16</td><td style="color:var(--gold);font-weight:700">19</td><td>15</td><td>8</td><td>8</td><td>8</td><td>8</td><td>6</td><td>5</td><td>5</td></tr>
+          <tr><td class="crew-name">Joe Vorbach</td><td>17</td><td>13</td><td>17</td><td>15</td><td>13</td><td>15</td><td style="color:var(--gold);font-weight:700">17</td><td>8</td><td>8</td><td>5</td><td>5</td><td>3</td><td>2</td><td>2</td></tr>
+          <tr><td class="crew-name">George Krietemeyer</td><td>8</td><td>7</td><td>8</td><td>8</td><td>7</td><td>8</td><td>8</td><td style="color:var(--gold);font-weight:700">8</td><td>5</td><td>2</td><td>1</td><td>1</td><td>&mdash;</td><td>&mdash;</td></tr>
+          <tr><td class="crew-name">Paul Hinkley</td><td>8</td><td>6</td><td>8</td><td>8</td><td>7</td><td>8</td><td>8</td><td>5</td><td style="color:var(--gold);font-weight:700">8</td><td>2</td><td>3</td><td>1</td><td>&mdash;</td><td>1</td></tr>
+          <tr><td class="crew-name">John Klotz</td><td>8</td><td>2</td><td>8</td><td>8</td><td>8</td><td>8</td><td>5</td><td>2</td><td>2</td><td style="color:var(--gold);font-weight:700">8</td><td>6</td><td>4</td><td>5</td><td>5</td></tr>
+          <tr><td class="crew-name">Bruce Skinner</td><td>8</td><td>2</td><td>8</td><td>8</td><td>8</td><td>8</td><td>5</td><td>1</td><td>3</td><td>6</td><td style="color:var(--gold);font-weight:700">8</td><td>4</td><td>5</td><td>5</td></tr>
+          <tr><td class="crew-name">Jeff O'Halloran</td><td>8</td><td>4</td><td>8</td><td>8</td><td>7</td><td>6</td><td>3</td><td>1</td><td>1</td><td>4</td><td>4</td><td style="color:var(--gold);font-weight:700">8</td><td>4</td><td>3</td></tr>
+          <tr><td class="crew-name">Chris Klotz</td><td>5</td><td>&mdash;</td><td>5</td><td>5</td><td>5</td><td>5</td><td>2</td><td>&mdash;</td><td>&mdash;</td><td>5</td><td>5</td><td>4</td><td style="color:var(--gold);font-weight:700">5</td><td>4</td></tr>
+          <tr><td class="crew-name">Fred "Rick" Pryor</td><td>5</td><td>&mdash;</td><td>5</td><td>5</td><td>5</td><td>5</td><td>2</td><td>&mdash;</td><td>1</td><td>5</td><td>5</td><td>3</td><td>4</td><td style="color:var(--gold);font-weight:700">5</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- RACE RESULTS TIMELINE                                        -->
+  <!-- ============================================================ -->
+
+  <div class="section-label">Race Record &mdash; 25 Years of Results</div>
+  <div class="results-section">
+    <div class="results-card">
+      <div class="results-timeline">
+        <!-- 1988: no results listed -->
+        <div class="results-year"><div class="results-bar-container"></div><div class="results-boat-label">HE</div><div class="results-label">'88</div></div>
+        <!-- 1989 -->
+        <div class="results-year"><div class="results-bar-container"></div><div class="results-boat-label">SN</div><div class="results-label">'89</div></div>
+        <!-- 1990 -->
+        <div class="results-year"><div class="results-bar-container"></div><div class="results-boat-label">SN</div><div class="results-label">'90</div></div>
+        <!-- 1991 -->
+        <div class="results-year"><div class="results-bar-container"></div><div class="results-boat-label">SN</div><div class="results-label">'91</div></div>
+        <!-- 1992 -->
+        <div class="results-year"><div class="results-bar-container"></div><div class="results-boat-label">SN</div><div class="results-label">'92</div></div>
+        <!-- 1993: 1 silver, 2x3rd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-2nd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">GM</div><div class="results-label">'93</div></div>
+        <!-- 1994: 1x2nd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-2nd"></div></div><div class="results-boat-label">GM</div><div class="results-label">'94</div></div>
+        <!-- 1995 -->
+        <div class="results-year"><div class="results-bar-container"></div><div class="results-boat-label">GM</div><div class="results-label">'95</div></div>
+        <!-- 1996: 2x2nd, 3x3rd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-2nd"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">GM</div><div class="results-label">'96</div></div>
+        <!-- 1997: 3rd for week, Best Swan -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">Od</div><div class="results-label">'97</div></div>
+        <!-- 1998: 4x2nd, 2x3rd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-2nd"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">Od</div><div class="results-label">'98</div></div>
+        <!-- 1999: 2x1st, 1x2nd, 2x3rd — 1ST FOR WEEK -->
+        <div class="results-year"><div class="results-ftw">1st</div><div class="results-bar-container"><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">Od</div><div class="results-label">'99</div></div>
+        <!-- 2000: 1x2nd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-2nd"></div></div><div class="results-boat-label">Od</div><div class="results-label">'00</div></div>
+        <!-- 2001: 1x3rd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">Xe</div><div class="results-label">'01</div></div>
+        <!-- 2002: 1x1st, 1x2nd, 1x3rd — 1ST FOR WEEK -->
+        <div class="results-year"><div class="results-ftw">1st</div><div class="results-bar-container"><div class="results-pip pip-1st"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">Od</div><div class="results-label">'02</div></div>
+        <!-- 2003: 1x1st, 1x2nd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-1st"></div><div class="results-pip pip-2nd"></div></div><div class="results-boat-label">BT</div><div class="results-label">'03</div></div>
+        <!-- 2004: 3x1st, 2x2nd, 1x3rd — 1ST FOR WEEK (boom broke!) -->
+        <div class="results-year"><div class="results-ftw">1st</div><div class="results-bar-container"><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">FP</div><div class="results-label">'04</div></div>
+        <!-- 2005: 2x1st, 1x2nd, 3x3rd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">Xe</div><div class="results-label">'05</div></div>
+        <!-- 2006: 2x1st, 1x2nd, 3x3rd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-2nd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">FP</div><div class="results-label">'06</div></div>
+        <!-- 2007: 3x1st, 1x3rd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">Xe</div><div class="results-label">'07</div></div>
+        <!-- 2008: 1x2nd -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-2nd"></div></div><div class="results-boat-label">Br</div><div class="results-label">'08</div></div>
+        <!-- 2009: 3x1st, 2x3rd — 1ST FOR WEEK -->
+        <div class="results-year"><div class="results-ftw">1st</div><div class="results-bar-container"><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-3rd"></div></div><div class="results-boat-label">Xe</div><div class="results-label">'09</div></div>
+        <!-- 2010: 4x1st, 1x2nd — 1ST FOR WEEK -->
+        <div class="results-year"><div class="results-ftw">1st</div><div class="results-bar-container"><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-1st"></div><div class="results-pip pip-2nd"></div></div><div class="results-boat-label">DC</div><div class="results-label">'10</div></div>
+        <!-- 2011: 1x2nd, 1x3rd, 2x4th -->
+        <div class="results-year"><div class="results-bar-container"><div class="results-pip pip-2nd"></div><div class="results-pip pip-3rd"></div><div class="results-pip pip-4th"></div><div class="results-pip pip-4th"></div></div><div class="results-boat-label">DC</div><div class="results-label">'11</div></div>
+        <!-- 2013 -->
+        <div class="results-year"><div class="results-bar-container"></div><div class="results-boat-label">DC</div><div class="results-label">'13</div></div>
+      </div>
+      <div class="results-legend">
+        <div class="legend-item"><div class="legend-pip pip-1st"></div> 1st</div>
+        <div class="legend-item"><div class="legend-pip pip-2nd"></div> 2nd</div>
+        <div class="legend-item"><div class="legend-pip pip-3rd"></div> 3rd</div>
+        <div class="legend-item"><div class="legend-pip pip-4th"></div> 4th</div>
+      </div>
+      <div class="results-summary">5&times; FIRST FOR THE WEEK &bull; ~50 TROPHIES &bull; 25 SEASONS</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- TENURE BARS — Years Active                                   -->
+  <!-- ============================================================ -->
+
+  <div class="section-label">Years Active &mdash; When Each Crew Member Sailed</div>
+  <div class="tenure-section">
+    <div class="tenure-card">
+      <div style="overflow-x:auto;">
+      <!-- Axis -->
+      <div class="tenure-axis">
+        <div class="tenure-axis-label">'88</div><div class="tenure-axis-label">'89</div><div class="tenure-axis-label">'90</div><div class="tenure-axis-label">'91</div><div class="tenure-axis-label">'92</div><div class="tenure-axis-label">'93</div><div class="tenure-axis-label">'94</div><div class="tenure-axis-label">'95</div><div class="tenure-axis-label">'96</div><div class="tenure-axis-label">'97</div><div class="tenure-axis-label">'98</div><div class="tenure-axis-label">'99</div><div class="tenure-axis-label">'00</div><div class="tenure-axis-label">'01</div><div class="tenure-axis-label">'02</div><div class="tenure-axis-label">'03</div><div class="tenure-axis-label">'04</div><div class="tenure-axis-label">'05</div><div class="tenure-axis-label">'06</div><div class="tenure-axis-label">'07</div><div class="tenure-axis-label">'08</div><div class="tenure-axis-label">'09</div><div class="tenure-axis-label">'10</div><div class="tenure-axis-label">'11</div><div class="tenure-axis-label">'13</div>
+      </div>
+      <!-- Paul Pakos: all 25 -->
+      <div class="tenure-row"><div class="tenure-name deceased">Paul Pakos &#9733;</div><div class="tenure-track"><div class="tenure-segment tenure-active" style="flex:25"></div></div><div class="tenure-count">25</div></div>
+      <!-- Fred Burgess: 88-05, gap 06, 07-13 = 23 -->
+      <div class="tenure-row"><div class="tenure-name">Fred Burgess</div><div class="tenure-track"><div class="tenure-segment tenure-active" style="flex:18"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:6"></div></div><div class="tenure-count">23</div></div>
+      <!-- Bill O'Halloran: gap 88-91, 92-13 = 21 -->
+      <div class="tenure-row"><div class="tenure-name">Bill O'Halloran</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:4"></div><div class="tenure-segment tenure-active" style="flex:21"></div></div><div class="tenure-count">21</div></div>
+      <!-- Bob Warakomsky: gap 88-89, 90-95, gap 96-97, 98-00, gap 01, 02-13 = 20 -->
+      <div class="tenure-row"><div class="tenure-name">Bob Warakomsky</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:2"></div><div class="tenure-segment tenure-active" style="flex:6"></div><div class="tenure-segment tenure-gap" style="flex:2"></div><div class="tenure-segment tenure-active" style="flex:3"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:11"></div></div><div class="tenure-count">20</div></div>
+      <!-- Abe Peck: gap 88-93, 94-13 = 19 -->
+      <div class="tenure-row"><div class="tenure-name">Abe Peck</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:6"></div><div class="tenure-segment tenure-active" style="flex:19"></div></div><div class="tenure-count">19</div></div>
+      <!-- Steve Masse: 88-01, gap 02, 03-06 = 18 -->
+      <div class="tenure-row"><div class="tenure-name deceased">Steve Masse &#9733;</div><div class="tenure-track"><div class="tenure-segment tenure-active" style="flex:14"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:4"></div><div class="tenure-segment tenure-inactive" style="flex:6"></div></div><div class="tenure-count">18</div></div>
+      <!-- Joe Vorbach: 88-89, gap 90-93, 94-95, gap 96, 97-09, gap 10-13 = 17 -->
+      <div class="tenure-row"><div class="tenure-name">Joe Vorbach</div><div class="tenure-track"><div class="tenure-segment tenure-active" style="flex:2"></div><div class="tenure-segment tenure-gap" style="flex:4"></div><div class="tenure-segment tenure-active" style="flex:2"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:13"></div><div class="tenure-segment tenure-inactive" style="flex:3"></div></div><div class="tenure-count">17</div></div>
+      <!-- George Krietemeyer: gap 88-96, 97-00, gap 01, 02-05, gap 06-13 = 8 -->
+      <div class="tenure-row"><div class="tenure-name">George Krietemeyer</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:9"></div><div class="tenure-segment tenure-active" style="flex:4"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:4"></div><div class="tenure-segment tenure-inactive" style="flex:7"></div></div><div class="tenure-count">8</div></div>
+      <!-- Paul Hinkley: gap 88-98, 99-02, gap 03, 04-07, gap 08-13 = 8 -->
+      <div class="tenure-row"><div class="tenure-name">Paul Hinkley</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:11"></div><div class="tenure-segment tenure-active" style="flex:4"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:4"></div><div class="tenure-segment tenure-inactive" style="flex:5"></div></div><div class="tenure-count">8</div></div>
+      <!-- John Klotz: gap to 03, 03-04, gap 05-06, 07-13 = 8 -->
+      <div class="tenure-row"><div class="tenure-name">John Klotz</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:15"></div><div class="tenure-segment tenure-active" style="flex:2"></div><div class="tenure-segment tenure-gap" style="flex:2"></div><div class="tenure-segment tenure-active" style="flex:6"></div></div><div class="tenure-count">8</div></div>
+      <!-- Bruce Skinner: gap to 05, 05-13 = 8 -->
+      <div class="tenure-row"><div class="tenure-name">Bruce Skinner</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:17"></div><div class="tenure-segment tenure-active" style="flex:8"></div></div><div class="tenure-count">8</div></div>
+      <!-- Jeff O'Halloran: gap to 92, 92-93, gap 94-97, 98, gap 99-00, 01, gap 02-08, 09-13 = 8 -->
+      <div class="tenure-row"><div class="tenure-name">Jeff O'Halloran</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:4"></div><div class="tenure-segment tenure-active" style="flex:2"></div><div class="tenure-segment tenure-gap" style="flex:4"></div><div class="tenure-segment tenure-active" style="flex:1"></div><div class="tenure-segment tenure-gap" style="flex:2"></div><div class="tenure-segment tenure-active" style="flex:1"></div><div class="tenure-segment tenure-gap" style="flex:7"></div><div class="tenure-segment tenure-active" style="flex:4"></div></div><div class="tenure-count">8</div></div>
+      <!-- Chris Klotz: gap to 08, 08-13 = 5 -->
+      <div class="tenure-row"><div class="tenure-name">Chris Klotz</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:20"></div><div class="tenure-segment tenure-active" style="flex:5"></div></div><div class="tenure-count">5</div></div>
+      <!-- Fred Pryor: gap to 07, 07-08, gap 09, 10-13 = 5 -->
+      <div class="tenure-row"><div class="tenure-name">Fred "Rick" Pryor</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:19"></div><div class="tenure-segment tenure-active" style="flex:2"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:3"></div></div><div class="tenure-count">5</div></div>
+      <div class="tenure-divider"></div>
+      <!-- Joe Latino: 90-93, 95 = 5 -->
+      <div class="tenure-row"><div class="tenure-name">Joe Latino</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:2"></div><div class="tenure-segment tenure-active" style="flex:4"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:1"></div><div class="tenure-segment tenure-inactive" style="flex:17"></div></div><div class="tenure-count">5</div></div>
+      <!-- George Christman: 88-91 = 4 -->
+      <div class="tenure-row"><div class="tenure-name">George Christman</div><div class="tenure-track"><div class="tenure-segment tenure-active" style="flex:4"></div><div class="tenure-segment tenure-inactive" style="flex:21"></div></div><div class="tenure-count">4</div></div>
+      <!-- Matt Pakos: 89, 91, 96-97 = 4 -->
+      <div class="tenure-row"><div class="tenure-name">Matt Pakos</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:1"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:1"></div><div class="tenure-segment tenure-gap" style="flex:4"></div><div class="tenure-segment tenure-active" style="flex:2"></div><div class="tenure-segment tenure-inactive" style="flex:15"></div></div><div class="tenure-count">4</div></div>
+      <!-- Richard Masse: 88-90, 93 = 4 -->
+      <div class="tenure-row"><div class="tenure-name">Richard Masse</div><div class="tenure-track"><div class="tenure-segment tenure-active" style="flex:3"></div><div class="tenure-segment tenure-gap" style="flex:2"></div><div class="tenure-segment tenure-active" style="flex:1"></div><div class="tenure-segment tenure-inactive" style="flex:19"></div></div><div class="tenure-count">4</div></div>
+      <!-- Steve Brady: 88-89, 91 = 3 -->
+      <div class="tenure-row"><div class="tenure-name">Steve Brady</div><div class="tenure-track"><div class="tenure-segment tenure-active" style="flex:2"></div><div class="tenure-segment tenure-gap" style="flex:1"></div><div class="tenure-segment tenure-active" style="flex:1"></div><div class="tenure-segment tenure-inactive" style="flex:21"></div></div><div class="tenure-count">3</div></div>
+      <!-- Ray Geitler: 96-98 = 3 -->
+      <div class="tenure-row"><div class="tenure-name">Ray Geitler</div><div class="tenure-track"><div class="tenure-segment tenure-inactive" style="flex:8"></div><div class="tenure-segment tenure-active" style="flex:3"></div><div class="tenure-segment tenure-inactive" style="flex:14"></div></div><div class="tenure-count">3</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- GENERATIONS — Fathers & Sons Who Raced                       -->
+  <!-- ============================================================ -->
+
+  <div class="section-label">Generations &mdash; Fathers &amp; Sons Who Raced Together</div>
+  <div class="gen-section">
+    <div class="gen-grid">
+      <div class="gen-card">
+        <div class="gen-father">Bill "Frank" O'Halloran <span class="gen-seasons">21 seasons</span></div>
+        <div class="gen-child"><span class="gen-child-name">Jeff O'Halloran</span><span class="gen-child-detail">8 seasons</span></div>
+        <div class="gen-child"><span class="gen-child-name">Brian O'Halloran</span><span class="gen-child-detail">2 seasons</span></div>
+        <div class="gen-shared">Shared seasons: Bill + Jeff (8) &bull; Bill + Brian (2)</div>
+      </div>
+      <div class="gen-card">
+        <div class="gen-father" style="color:var(--gold)">Paul "Skip" Pakos &#9733; <span class="gen-seasons">25 seasons</span></div>
+        <div class="gen-child"><span class="gen-child-name">Matt Pakos</span><span class="gen-child-detail">4 seasons</span></div>
+        <div class="gen-child"><span class="gen-child-name">Katie Pakos</span><span class="gen-child-detail">1 season</span></div>
+        <div class="gen-shared">Shared seasons: Paul + Matt (4) &bull; Paul + Katie (1)</div>
+      </div>
+      <div class="gen-card">
+        <div class="gen-father">Fred Burgess <span class="gen-seasons">23 seasons</span></div>
+        <div class="gen-child"><span class="gen-child-name">Pat Burgess</span><span class="gen-child-detail">1 season ('91)</span></div>
+        <div class="gen-child"><span class="gen-child-name">Brian Burgess</span><span class="gen-child-detail">1 season ('03)</span></div>
+        <div class="gen-child"><span class="gen-child-name">Rick Burgess</span><span class="gen-child-detail">Reunion guest</span></div>
+        <div class="gen-shared">Paul's godson Patrick &mdash; USCGA Class of '91</div>
+      </div>
+      <div class="gen-card">
+        <div class="gen-father" style="color:var(--gold)">Steve Masse &#9733; <span class="gen-seasons">18 seasons</span></div>
+        <div class="gen-child"><span class="gen-child-name">Richard Masse</span><span class="gen-child-detail">4 seasons</span></div>
+        <div class="gen-shared">Shared seasons: Steve + Richard (4)</div>
+      </div>
+      <div class="gen-card">
+        <div class="gen-father">Joe Vorbach <span class="gen-seasons">17 seasons</span></div>
+        <div class="gen-child"><span class="gen-child-name">Justin Vorbach</span><span class="gen-child-detail">1 season ('89)</span></div>
+        <div class="gen-shared">Shared seasons: Joe + Justin (1)</div>
+      </div>
+      <div class="gen-card">
+        <div class="gen-father">Abe Peck <span class="gen-seasons">19 seasons</span></div>
+        <div class="gen-child"><span class="gen-child-name">Steve Peck</span><span class="gen-child-detail">1 season ('00)</span></div>
+        <div class="gen-shared">Shared seasons: Abe + Steve (1)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- BOAT ERAS — Crew Composition by Boat                         -->
+  <!-- ============================================================ -->
+
+  <div class="section-label">Boat Eras &mdash; Who Sailed on What</div>
+  <div class="eras-section">
+    <div class="era-card">
+      <div class="era-header"><span class="era-boat">Hot Entr&eacute;e</span><span class="era-years">'88</span></div>
+      <div class="era-class">The First Year</div>
+      <div class="era-crew">
+        <span class="era-crew-tag deceased">Paul Pakos</span><span class="era-crew-tag deceased">Steve Masse</span><span class="era-crew-tag">Joe Vorbach</span><span class="era-crew-tag">Fred Burgess</span><span class="era-crew-tag">George Christman</span><span class="era-crew-tag">Richard Masse</span><span class="era-crew-tag">Steve Brady</span><span class="era-crew-tag">Mike Conway</span>
+      </div>
+      <div class="era-results">8 crew &bull; No results recorded</div>
+    </div>
+    <div class="era-card">
+      <div class="era-header"><span class="era-boat">SuperNova</span><span class="era-years">Dehler 38 &bull; '89 &vert; SuperNova '90&ndash;'92</span></div>
+      <div class="era-class">The Learning Years</div>
+      <div class="era-crew">
+        <span class="era-crew-tag every-year deceased">Paul Pakos</span><span class="era-crew-tag every-year deceased">Steve Masse</span><span class="era-crew-tag every-year">Fred Burgess</span><span class="era-crew-tag">Joe Vorbach</span><span class="era-crew-tag">Bob Warakomsky</span><span class="era-crew-tag">George Christman</span><span class="era-crew-tag">Steve Brady</span><span class="era-crew-tag">Richard Masse</span><span class="era-crew-tag">Mike Conway</span><span class="era-crew-tag">Matt Pakos</span><span class="era-crew-tag">Justin Vorbach</span><span class="era-crew-tag">Ron Beck</span><span class="era-crew-tag">Joe Latino</span><span class="era-crew-tag">Steve Long</span><span class="era-crew-tag">Pat Burgess</span><span class="era-crew-tag">Katie Pakos</span><span class="era-crew-tag">Bill O'Halloran</span><span class="era-crew-tag">Jeff O'Halloran</span><span class="era-crew-tag">John David</span><span class="era-crew-tag">Chris Kraybil</span>
+      </div>
+      <div class="era-results">20 unique crew across 4 years &bull; Highlighted = sailed every year of this era</div>
+    </div>
+    <div class="era-card">
+      <div class="era-header"><span class="era-boat">Goodnight Moon</span><span class="era-years">Swan 431 &bull; '93&ndash;'96</span></div>
+      <div class="era-class">First Trophies</div>
+      <div class="era-crew">
+        <span class="era-crew-tag every-year deceased">Paul Pakos</span><span class="era-crew-tag every-year deceased">Steve Masse</span><span class="era-crew-tag every-year">Fred Burgess</span><span class="era-crew-tag every-year">Bill O'Halloran</span><span class="era-crew-tag">Jeff O'Halloran</span><span class="era-crew-tag">Bob Warakomsky</span><span class="era-crew-tag">Abe Peck</span><span class="era-crew-tag">Joe Vorbach</span><span class="era-crew-tag">Joe Latino</span><span class="era-crew-tag">Richard Masse</span><span class="era-crew-tag">Brian O'Halloran</span><span class="era-crew-tag">Joe LiPuma</span><span class="era-crew-tag">Ed McLaughlin</span><span class="era-crew-tag">Matt Pakos</span><span class="era-crew-tag">Ray Geitler</span><span class="era-crew-tag">Gordon Streeter</span><span class="era-crew-tag">George Streeter</span>
+      </div>
+      <div class="era-results">17 unique crew &bull; First silver ('93) &bull; First 2nd place ('94)</div>
+    </div>
+    <div class="era-card">
+      <div class="era-header"><span class="era-boat">Odette</span><span class="era-years">Swan 431 &bull; '97&ndash;'00, '02</span></div>
+      <div class="era-class">The Championship Run Begins</div>
+      <div class="era-crew">
+        <span class="era-crew-tag every-year deceased">Paul Pakos</span><span class="era-crew-tag every-year deceased">Steve Masse</span><span class="era-crew-tag every-year">Fred Burgess</span><span class="era-crew-tag every-year">Bill O'Halloran</span><span class="era-crew-tag every-year">Abe Peck</span><span class="era-crew-tag">Bob Warakomsky</span><span class="era-crew-tag">Joe Vorbach</span><span class="era-crew-tag">George Krietemeyer</span><span class="era-crew-tag">Paul Hinkley</span><span class="era-crew-tag">Jeff O'Halloran</span><span class="era-crew-tag">Ray Geitler</span><span class="era-crew-tag">Matt Pakos</span><span class="era-crew-tag">Steve Peck</span><span class="era-crew-tag">Terry Montoyne</span>
+      </div>
+      <div class="era-results">14 unique crew &bull; 2&times; 1st for the week ('99, '02) &bull; Best Swan ('97)</div>
+    </div>
+    <div class="era-card">
+      <div class="era-header"><span class="era-boat">Xenophon</span><span class="era-years">Swan 40/44 &bull; '01, '05, '07, '09</span></div>
+      <div class="era-class">The Peak Years</div>
+      <div class="era-crew">
+        <span class="era-crew-tag every-year deceased">Paul Pakos</span><span class="era-crew-tag every-year">Fred Burgess</span><span class="era-crew-tag every-year">Bill O'Halloran</span><span class="era-crew-tag every-year">Abe Peck</span><span class="era-crew-tag">Bob Warakomsky</span><span class="era-crew-tag">Joe Vorbach</span><span class="era-crew-tag">Paul Hinkley</span><span class="era-crew-tag">Bruce Skinner</span><span class="era-crew-tag">John Klotz</span><span class="era-crew-tag">Jeff O'Halloran</span><span class="era-crew-tag">Chris Klotz</span><span class="era-crew-tag">Fred "Rick" Pryor</span><span class="era-crew-tag deceased">Steve Masse</span><span class="era-crew-tag">George Krietemeyer</span><span class="era-crew-tag">Dan Neff</span>
+      </div>
+      <div class="era-results">15 unique crew &bull; 2&times; 1st for the week ('09) &bull; 2nd for the week ('05, '07)</div>
+    </div>
+    <div class="era-card">
+      <div class="era-header"><span class="era-boat">Black Tie</span><span class="era-years">Swan 47 &bull; '03</span></div>
+      <div class="era-crew">
+        <span class="era-crew-tag deceased">Paul Pakos</span><span class="era-crew-tag deceased">Steve Masse</span><span class="era-crew-tag">Fred Burgess</span><span class="era-crew-tag">Bill O'Halloran</span><span class="era-crew-tag">Abe Peck</span><span class="era-crew-tag">Bob Warakomsky</span><span class="era-crew-tag">Joe Vorbach</span><span class="era-crew-tag">George Krietemeyer</span><span class="era-crew-tag">John Klotz</span><span class="era-crew-tag">Brian Burgess</span><span class="era-crew-tag">Paul Welling</span>
+      </div>
+      <div class="era-results">11 crew &bull; 1&times; 1st, 1&times; 2nd</div>
+    </div>
+    <div class="era-card">
+      <div class="era-header"><span class="era-boat">Flashpoint</span><span class="era-years">Beneteau 42 &bull; '04, '06</span></div>
+      <div class="era-class">The Boom Broke &mdash; Still Won</div>
+      <div class="era-crew">
+        <span class="era-crew-tag every-year deceased">Paul Pakos</span><span class="era-crew-tag every-year deceased">Steve Masse</span><span class="era-crew-tag every-year">Fred Burgess</span><span class="era-crew-tag every-year">Bill O'Halloran</span><span class="era-crew-tag every-year">Abe Peck</span><span class="era-crew-tag every-year">Bob Warakomsky</span><span class="era-crew-tag every-year">Joe Vorbach</span><span class="era-crew-tag">Paul Hinkley</span><span class="era-crew-tag">Bruce Skinner</span><span class="era-crew-tag">George Krietemeyer</span><span class="era-crew-tag">John Klotz</span><span class="era-crew-tag">Lew Carter</span>
+      </div>
+      <div class="era-results">12 unique crew &bull; 1st for the week ('04 &mdash; boom broke mid-race!)</div>
+    </div>
+    <div class="era-card">
+      <div class="era-header"><span class="era-boat">Breaksea</span><span class="era-years">C&amp;C 121 &bull; '08</span></div>
+      <div class="era-crew">
+        <span class="era-crew-tag deceased">Paul Pakos</span><span class="era-crew-tag">Fred Burgess</span><span class="era-crew-tag">Bill O'Halloran</span><span class="era-crew-tag">Abe Peck</span><span class="era-crew-tag">Bob Warakomsky</span><span class="era-crew-tag">Joe Vorbach</span><span class="era-crew-tag">Bruce Skinner</span><span class="era-crew-tag">John Klotz</span><span class="era-crew-tag">Chris Klotz</span><span class="era-crew-tag">Fred "Rick" Pryor</span>
+      </div>
+      <div class="era-results">10 crew &bull; 1&times; 2nd</div>
+    </div>
+    <div class="era-card">
+      <div class="era-header"><span class="era-boat">Dreamcatcher</span><span class="era-years">Swan 48 &bull; '10&ndash;'13</span></div>
+      <div class="era-class">The Ultimate Success &amp; The Last Chapter</div>
+      <div class="era-crew">
+        <span class="era-crew-tag every-year deceased">Paul Pakos</span><span class="era-crew-tag every-year">Fred Burgess</span><span class="era-crew-tag every-year">Bill O'Halloran</span><span class="era-crew-tag every-year">Abe Peck</span><span class="era-crew-tag every-year">Bob Warakomsky</span><span class="era-crew-tag every-year">Bruce Skinner</span><span class="era-crew-tag every-year">John Klotz</span><span class="era-crew-tag every-year">Jeff O'Halloran</span><span class="era-crew-tag every-year">Chris Klotz</span><span class="era-crew-tag every-year">Fred "Rick" Pryor</span>
+      </div>
+      <div class="era-results">10 crew (same roster all 3 years) &bull; 1st for the week ('10 &mdash; 4 firsts and a second)</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
   <!-- FLEET LOG                                                    -->
   <!-- ============================================================ -->
 
@@ -1197,7 +1553,7 @@
     In honor of <strong>Paul "Skip" Pakos</strong> &mdash; co-skipper, friend, shipmate.<br>
     Block Island Race Week &bull; 1988&ndash;2013
   </div>
-  <div class="updated">LAST UPDATED: 2026-03-28 15:30 EDT</div>
+  <div class="updated">LAST UPDATED: 2026-03-29 06:30 EDT</div>
   <div class="meridian">
     Assembled by <em>Meridian</em> from 47 emails, 12 texts, and a lifetime of sailing.<br>
     Source: <em>25 Years of Camaraderie</em> &mdash; Paul Pakos &amp; Abe Peck, 2020<br>
