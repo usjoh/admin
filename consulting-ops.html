@@ -199,7 +199,7 @@
   </div>
   <div style="text-align: right">
     <div style="font-size: 13px; margin-bottom: 4px;"><a href="index.html" style="color: var(--accent); text-decoration: none;">&#8592; Meridian Home</a> &middot; <a href="meridian-ops.html" style="color: var(--accent); text-decoration: none;">Meridian Ops</a> &middot; <a href="personal-ops.html" style="color: var(--accent); text-decoration: none;">Personal Ops</a> &middot; <span style="color: var(--text);">Consulting Ops</span></div>
-    <span class="updated">Generated 2026-03-30 15:37</span>
+    <span class="updated">Generated 2026-04-07 16:02</span>
   </div>
 </div>
 
@@ -208,7 +208,7 @@
   <div class="readiness-left" onclick="showModal('domainpct')">
     <div class="readiness-gauge">
       <canvas id="readinessGauge"></canvas>
-      <div class="readiness-pct" style="color: var(--infra)">22%</div>
+      <div class="readiness-pct" style="color: var(--infra)">33%</div>
     </div>
     <span class="readiness-label" style="background: rgba(129,140,248,0.15); color: var(--infra)">Prototype</span>
     <div class="expand-hint">&#8599; click to expand</div>
@@ -216,10 +216,12 @@
   <div class="readiness-right">
     <h2>Prototype Readiness — Domain Time Analysis</h2>
     <div class="obs-list">
-<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Cumulative domain time is 22%, 58 points below the 80% exit target. Need sustained domain-dominant days to close the gap.</div>
-<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Total infrastructure time: 113.2h of 144.2h total. This is the cost of building Meridian — it needs to decline as protocols stabilize.</div>
-<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Most active domain area: MaAM (24h 10m). Other active areas: Content (4h 8m), Practice (2h 42m).</div>
-<div class="obs-item" style="border-left: 3px solid #f59e0b; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #f59e0b; margin-right: 5px;">&#9888;</span>100 observations logged in 18 days. High observation volume means the system is surfacing many gaps and patterns — good for learning, but each one costs infra time to document. Expect this to taper as patterns stabilize.</div>
+<div class="obs-item" style="border-left: 3px solid #4ade80; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #4ade80; margin-right: 5px;">&#10003;</span>Daily domain % trending up: Day 28 was 0%, Day 29 was 43% — infrastructure investment may be starting to pay off.</div>
+<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Cumulative domain time is 33%, 47 points below the 80% exit target. Need sustained domain-dominant days to close the gap.</div>
+<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Total infrastructure time: 155.2h of 233.1h total. This is the cost of building Meridian — it needs to decline as protocols stabilize.</div>
+<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Most active domain area: MaAM (70h 6m). Other active areas: Content (4h 57m), Practice (2h 47m).</div>
+<div class="obs-item" style="border-left: 3px solid #8888a0; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #8888a0; margin-right: 5px;">&#8226;</span>Session throughput increasing: 1 → 2 sessions/day. Higher throughput means more context switches — watch for close-protocol friction.</div>
+<div class="obs-item" style="border-left: 3px solid #f59e0b; padding: 4px 10px; margin-bottom: 4px; font-size: 12px; line-height: 1.4; color: var(--text-dim);"><span style="color: #f59e0b; margin-right: 5px;">&#9888;</span>113 observations logged in 29 days. High observation volume means the system is surfacing many gaps and patterns — good for learning, but each one costs infra time to document. Expect this to taper as patterns stabilize.</div>
     </div>
   </div>
 </div>
@@ -229,18 +231,18 @@
   <div class="time-hero-metrics">
     <div class="time-metric">
       <div class="label">Total Time</div>
-      <div class="value">144h 15m</div>
-      <div class="sub">18 days, 87 sessions</div>
+      <div class="value">233h 4m</div>
+      <div class="sub">29 days, 110 sessions</div>
     </div>
     <div class="time-metric">
       <div class="label">Domain Time</div>
-      <div class="value" style="color: var(--domain)">31h 0m</div>
-      <div class="sub">22% of total</div>
+      <div class="value" style="color: var(--domain)">77h 51m</div>
+      <div class="sub">33% of total</div>
     </div>
     <div class="time-metric">
       <div class="label">Infrastructure Time</div>
-      <div class="value" style="color: var(--infra)">113h 14m</div>
-      <div class="sub">78% of total</div>
+      <div class="value" style="color: var(--infra)">155h 12m</div>
+      <div class="sub">67% of total</div>
     </div>
   </div>
   <canvas id="timeHeroChart"></canvas>
@@ -250,22 +252,22 @@
 <div class="cards">
   <div class="card" onclick="showModal('sessions')">
     <div class="label">Sessions / Day<span class="info-icon" onclick="event.stopPropagation(); showInfo(this, 'Average Claude Code sessions per day. Higher throughput means more gets done but also more context switches. Watch for close-protocol friction as this scales.')" title="About this metric">i</span></div>
-    <div class="value">4.8</div>
-    <div class="sub">3 → 1 → 3 → 16 → 9 → 2 → 6 → 2 → 1 → 4 → 25 → 1 → 1 → 2 → 5 → 3 → 2 → 1</div>
+    <div class="value">3.8</div>
+    <div class="sub">3 → 1 → 3 → 16 → 9 → 2 → 6 → 2 → 1 → 4 → 25 → 1 → 1 → 2 → 5 → 3 → 2 → 2 → 1 → 4 → 2 → 1 → 6 → 2 → 1 → 1 → 1 → 1 → 2</div>
     <div class="sparkline"><canvas id="sparkSessions"></canvas></div>
     <div class="expand-hint">&#8599; click to expand</div>
   </div>
   <div class="card" onclick="showModal('observations')">
     <div class="label">Observations<span class="info-icon" onclick="event.stopPropagation(); showInfo(this, 'Meridian observations (MO entries) logged — gaps, pattern validations, and feature candidates surfaced during sessions. High volume during build phase is expected. Should taper as the system stabilizes.')" title="About this metric">i</span></div>
-    <div class="value">100</div>
-    <div class="sub">0 → 0 → 0 → 17 → 10 → 2 → 13 → 8 → 0 → 8 → 35 → 0 → 3 → 3 → 7 → 0 → 0 → 2 MO entries</div>
+    <div class="value">113</div>
+    <div class="sub">0 → 0 → 0 → 17 → 10 → 2 → 13 → 8 → 0 → 8 → 35 → 0 → 3 → 3 → 7 → 0 → 0 → 3 → 3 → 3 → 0 → 2 → 2 → 2 → 1 → 1 → 0 → 3 → 1 MO entries</div>
     <div class="sparkline"><canvas id="sparkObs"></canvas></div>
     <div class="expand-hint">&#8599; click to expand</div>
   </div>
   <div class="card" onclick="showModal('infracost')">
     <div class="label">Infra % / Session<span class="info-icon" onclick="event.stopPropagation(); showInfo(this, 'What percentage of session time is spent on Meridian infrastructure rather than domain content. Declining means the system is getting out of the way. Target: &lt;20% sustained.')" title="About this metric">i</span></div>
-    <div class="value">78%</div>
-    <div class="sub">62% → 100% → 77% → 86% → 79% → 94% → 97% → 92% → 10% → 94% → 90% → 100% → 62% → 64% → 86% → 93% → 35% → 94% daily avg</div>
+    <div class="value">67%</div>
+    <div class="sub">62% → 100% → 77% → 86% → 79% → 94% → 97% → 92% → 10% → 94% → 90% → 100% → 62% → 64% → 86% → 93% → 35% → 96% → 100% → 3% → 46% → 100% → 56% → 50% → 12% → 33% → 12% → 100% → 57% daily avg</div>
     <div class="sparkline"><canvas id="sparkInfraCost"></canvas></div>
     <div class="expand-hint">&#8599; click to expand</div>
   </div>
@@ -1211,13 +1213,243 @@
           <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-174, MO-175</td>
           <td style="font-size: 12px; max-width: 280px">Developer Mode. CD-007 (Session Lifecycle Simplification: Autonomous KC, Lightweight Close, Core Directory Clarification). 15 Core file rewrites: core-session-lifecycle.md (lightweight close, 2-mode model), core-knowledge-capture.md (autonomous pipeline, Case A/B), core-session-transcript.md (STA start-feed-stop), core-system-map.md, session-close.md, CLAUDE.md, core-sync.md, session-start-sta.sh. .kos/agents/ directory created (5 agent definitions). .kos/tasks/ directory + kc-pipeline.md created. Hub KC pipeline scheduled task deployed. First KC pipeline run on cc-20260329-1210 (reviewed): 10 layer writes, / cross-domain intake (10 items). Stale manifest cc-20260329-1210 fixed (moved active/ → closed/).</td>
         </tr>
+        <tr>
+          <td>22</td><td>cc-20260330-1729</td>
+          <td style="font-size:12px">17:30–22:00</td>
+          <td>~4.5h<span style="color:var(--text-dim); font-size:11px"> (270m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="Practice: 1">1 files</td>
+          <td style="color: var(--infra); font-size:12px">52 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 2%; background: var(--domain)"></span><span class="bar-inline" style="width: 98%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">2%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-168</td>
+          <td style="font-size: 12px; max-width: 280px">Developer Mode. D-064 screenshot enrichment built and first-run (28 enriched files, 243 chunks). CD-008 Developer Write Agent (dwa-1.md, .kos/CHANGELOG.md bootstrap). amended (command-type approval taxonomy, 13+ Skipped run evidence). Hub CD-005 notification reviewed, parked.</td>
+        </tr>
+        <tr>
+          <td>23</td><td>cc-20260331-0615</td>
+          <td style="font-size:12px">06:15–08:15</td>
+          <td>~2h<span style="color:var(--text-dim); font-size:11px"> (120m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="—">0 files</td>
+          <td style="color: var(--infra); font-size:12px">36 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 0%; background: var(--domain)"></span><span class="bar-inline" style="width: 100%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">0%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-176, MO-177, MO-178</td>
+          <td style="font-size: 12px; max-width: 280px">Developer Mode. Session start: Hub notifications reviewed + checkpointed, cc-20260330-1729 KC findings applied (2 LWA writes). Core Sync gap analysis: Personal Domain + iOneMoto (identical 7-file/4-decision gap profiles). 13-step Personal Domain Core Sync plan reviewed and approved (5 issues resolved; execution deferred). Mar 26-31 screenshot enrichment: 23 new artifacts (corpus-feed/screenshots/). CC changelog investigation: 12 CLI releases in March, 3 new MOs ( ), CLI v2.1.81→v2.1.87, version tracking closed (5 data points). Personal Domain abandoned session cc-20260331-0624 diagnosed (close commit race; self-healing confirmed).</td>
+        </tr>
+        <tr>
+          <td>24</td><td>cc-20260331-0906</td>
+          <td style="font-size:12px">09:06–14:10</td>
+          <td>~5h<span style="color:var(--text-dim); font-size:11px"> (300m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 20">20 files</td>
+          <td style="color: var(--infra); font-size:12px">0 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 100%; background: var(--domain)"></span><span class="bar-inline" style="width: 0%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">100%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. MaAM GoCanvas: 10:30 Bianca+Calvin call (30 min), transcript ingested to corpus (139 chunks). Pump cleanup: 52911+49414 reset to Available. Default Supplies tab fixed (prod IDs). Mobile editing disabled on GoCanvas form. 20 screenshots enriched+ingested. Configuration Guide v1.1 (3 sections) + Troubleshooting Playbook v1.1 (5 sections). Post-meeting recap email sent. Calvin reply: ghost invoice blocking (Treatment Start update logic) + P in column Q = Sheets API write shift. QBO vs Sheets question sent; answer pending. Pam 3pm call booked.</td>
+        </tr>
+        <tr>
+          <td>24</td><td>cc-20260331-1425</td>
+          <td style="font-size:12px">14:25–14:30</td>
+          <td>~5m<span style="color:var(--text-dim); font-size:11px"> (10m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="—">0 files</td>
+          <td style="color: var(--infra); font-size:12px">0 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 0%; background: var(--domain)"></span><span class="bar-inline" style="width: 100%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">0%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. Orientation only — email review, Calvin confirmation noted (Treatment Start checks by month/facility/patient confirmed). No substantive work performed.</td>
+        </tr>
+        <tr>
+          <td>24</td><td>cc-20260331-1505</td>
+          <td style="font-size:12px">15:05–17:50</td>
+          <td>~2.75h<span style="color:var(--text-dim); font-size:11px"> (165m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 12">12 files</td>
+          <td style="color: var(--infra); font-size:12px">0 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 100%; background: var(--domain)"></span><span class="bar-inline" style="width: 0%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">100%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. Pam call (3pm) transcript processed: pump 52916/51842 swap corrected (Stonebrook 133, Danny Doyle), Rios Garibay end date deleted, invoice 1607 Leaks→Leask corrected. 11 backlog forms; first two entered during call (Marin Post Acute treatment start, Graves resupply). Transaction ordering discipline established (process oldest-first). Calvin email thread triaged (3 replies): QBO search confirmed, revision blocker + null check deployed, always-create-new rejected (manual placeholder risk). Draft reply in Gmail drafts. Patients table cleaned. Brian feature request: invoice number column. LWA writes: MaAM current-state + operational-model.</td>
+        </tr>
+        <tr>
+          <td>24</td><td>cc-20260331-1725</td>
+          <td style="font-size:12px">17:25–17:58</td>
+          <td>~33m<span style="color:var(--text-dim); font-size:11px"> (10m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 5">5 files</td>
+          <td style="color: var(--infra); font-size:12px">2 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 71%; background: var(--domain)"></span><span class="bar-inline" style="width: 29%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">71%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. Hub notifications (160 lines) reviewed. KC findings approved (6 items): current-state/README.md (Next Session Priority + Recent Changes row for 0906+1425), session-activity-log.md (Day 24 section), clients/maam/current-state/README.md (Mar 31 outcomes). 3 session manifests advanced to KC Status: reviewed (cc-20260331-0615, cc-20260331-0906, cc-20260331-1425). AR_Queue INVOICE error discovered: TxnID 00141 (Graves D, PatientID 88, PL_RESUPPLY). Calvin emailed (urgent, cc Bianca): disable month-end. Pam called: done for today, backlog resumes tomorrow. 4 screenshots captured.</td>
+        </tr>
+        <tr>
+          <td>25</td><td>cc-20260331-2011</td>
+          <td style="font-size:12px">20:11–(Apr 1)</td>
+          <td>~2h+<span style="color:var(--text-dim); font-size:11px"> (120m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 8">8 files</td>
+          <td style="color: var(--infra); font-size:12px">0 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 100%; background: var(--domain)"></span><span class="bar-inline" style="width: 0%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">100%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. TxnID 00141 root cause identified (Graves D. period mismatch). Pam GoCanvas risk surfaced and contained (reply sent). Brian reversal pattern named (4-5+ incidents). Emotional session. KC writes pending at close.</td>
+        </tr>
+        <tr>
+          <td>25</td><td>cc-20260401-2115</td>
+          <td style="font-size:12px">21:16–late</td>
+          <td>~2h<span style="color:var(--text-dim); font-size:11px"> (120m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 3">3 files</td>
+          <td style="color: var(--infra); font-size:12px">30 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 9%; background: var(--domain)"></span><span class="bar-inline" style="width: 91%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">9%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Developer Mode. KC backlog cleared: 14 write instructions (6 file operations via LWA) for cc-20260331-1505/1725/2011. MaAM: ghost invoices confirmed deleted (Brian Apr 1), Pam entering March backlog via GoCanvas, unsent Pam draft flagged, Calvin draft in Gmail. CD-009 executed: core-relationships.md, core-decisions.md row, core-system-map.md update. CD-010 executed: CC-001–CC-005 concern files, Core Concerns table in core-current-state.md. CD-011 planned but deferred. Hub checkpoint written.</td>
+        </tr>
+        <tr>
+          <td>26</td><td>cc-20260401-2305</td>
+          <td style="font-size:12px">23:05–04:12</td>
+          <td>~5h<span style="color:var(--text-dim); font-size:11px"> (300m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="—">0 files</td>
+          <td style="color: var(--infra); font-size:12px">64 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 0%; background: var(--domain)"></span><span class="bar-inline" style="width: 100%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">0%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Infrastructure. CD-011 Phase 3: first full Tier 1+2 audit run, audit report written (.kos/audit-reports/2026-04-02.md, 3 findings). D-014 Entity Registry gap resolved (DWA). CD-041: Core/Domain boundary enforcement designed and fully executed. 29 D-NNN decisions promoted to CD-NNN (CD-012–CD-040) via 3 parallel DWA batches. core-decisions.md rewritten (65 D-NNN → CD-NNN). core-relationships.md rewritten (85 refs, D-014+FILE-COMPREG entities added, 3 edges). 12 operational-model/ files + decision-log/README.md updated (LWA). CLAUDE.md updated (4 D-NNN → CD-NNN). Verification: zero D-NNN refs in active .kos/ files; 43 Core decision files. Core Sync to Personal/iOneMoto now unblocked.</td>
+        </tr>
+        <tr>
+          <td>27</td><td>cc-20260402-0606</td>
+          <td style="font-size:12px">06:06–?</td>
+          <td>~1-2h<span style="color:var(--text-dim); font-size:11px"> (120m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="Content: 1">1 files</td>
+          <td style="color: var(--infra); font-size:12px">8 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 11%; background: var(--domain)"></span><span class="bar-inline" style="width: 89%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">11%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-179</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. KC review session: reconciled MO numbering conflict (cc-20260401-2115/2305), –184 assigned (10 LWA + 2 DWA writes, commit 010344f). "Size Matters?" article outline shaped for iOneMoto pipeline. Fred Baly reply drafted. Hub checkpoint written.</td>
+        </tr>
+        <tr>
+          <td>27</td><td>cc-20260402-0748</td>
+          <td style="font-size:12px">07:48–?</td>
+          <td>~2-3h<span style="color:var(--text-dim); font-size:11px"> (180m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="—">0 files</td>
+          <td style="color: var(--infra); font-size:12px">20 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 0%; background: var(--domain)"></span><span class="bar-inline" style="width: 100%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">0%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-185</td>
+          <td style="font-size: 12px; max-width: 280px">Developer Mode. Audit remediation: CSA self-referential gap diagnosed + fixed ( CLAUDE.md bridge + agent rewrites). Consulting self-audit: 8 findings (Tier 1–5), Infrastructure gap patched. Meridian Prime vision encoded: OQ-001 v3, four-layer stack (Prime→Core→Surface Adapters→Surfaces), open-questions.md created. 20 relationship edges added. Audit report .kos/audit-reports/2026-04-02.md written.</td>
+        </tr>
+        <tr>
+          <td>27</td><td>cc-20260402-1013</td>
+          <td style="font-size:12px">10:13–12:30</td>
+          <td>~2h20m<span style="color:var(--text-dim); font-size:11px"> (120m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 15">15 files</td>
+          <td style="color: var(--infra); font-size:12px">2 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 88%; background: var(--domain)"></span><span class="bar-inline" style="width: 12%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">88%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. MaAM AR Queue triage: 3 INVOICE errors diagnosed. INV-01 spec-implementation gap confirmed (Calvin: QBO name search vs. spec: Pump_Master.CurrentInvoiceID). Deployed pump audit: 8 pumps, 5 pre-go-live high-mismatch-risk, Goydie P. period-in-name failure predicted. Pam options email sent (GoCanvas vs. manual QBO). Calvin troubleshooting email sent. Patients tab duplicates: Blackhurst + Leask. MaAM current-state updated.</td>
+        </tr>
+        <tr>
+          <td>27</td><td>cc-20260402-1353</td>
+          <td style="font-size:12px">13:53–20:30</td>
+          <td>~6.5h<span style="color:var(--text-dim); font-size:11px"> (390m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 2">2 files</td>
+          <td style="color: var(--infra); font-size:12px">1 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 67%; background: var(--domain)"></span><span class="bar-inline" style="width: 33%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">67%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. Calvin reply received (Apr 2, 1:36 PM ET): Blackhurst = month-boundary bug (not name mismatch), Treatment Start = rental days concern. PatientID = PatientDisplayName strings confirmed (not numeric IDs) — Calvin's proposed FacilityID+PatientID lookup is still name-based, does not escape name-matching failure class. CurrentInvoiceID fix confirmed as correct path. Gmail reply to Calvin sent (approved by user).</td>
+        </tr>
+        <tr>
+          <td>27</td><td>cc-20260402-1831</td>
+          <td style="font-size:12px">18:31–18:45</td>
+          <td>~14min<span style="color:var(--text-dim); font-size:11px"> (14m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="—">0 files</td>
+          <td style="color: var(--infra); font-size:12px">1 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 0%; background: var(--domain)"></span><span class="bar-inline" style="width: 100%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">0%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Developer Mode. Hub notification review (KC: 0606 reviewed, 0748 deferred, 1013 carry-forwards noted). RAG MCP fix: SKILL.md Steps 1/4/5 → CLI calls; DB path + Base dir added to all 3 subscriber RAG Index sections. MCP dependency audit: 4 broken RAG tasks + 3 email tasks identified, deferred. Hub notification file growth identified (813 lines, no autonomous checkpoint mechanism).</td>
+        </tr>
+        <tr>
+          <td>27</td><td>cc-20260402-1941</td>
+          <td style="font-size:12px">19:41–01:05</td>
+          <td>~5.5h<span style="color:var(--text-dim); font-size:11px"> (330m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 3">3 files</td>
+          <td style="color: var(--infra); font-size:12px">5 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 38%; background: var(--domain)"></span><span class="bar-inline" style="width: 62%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">38%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. MaAM March backlog COMPLETE. 7-patient data corrections (Goydie P., Blackhurst, Leask, Daneman, Graves, Riosgaribay, Doyle). Calvin INV-01 fix deployed + validated (2 live transactions). 9 remaining backlog forms processed via GoCanvas. March closes at 9 deployed pumps; April opens with 12. Dashboard: 5 commits (invoice column + QBO hyperlinks + color-coded count + resupply gap-fill + invoice number fix). New issues: Suncrest pricing bug (invoice 1242), Patients tab sync bug (Doyle). Hub MCP audit: SKILL.md CLI migration, settings.json allow patterns, KC pipeline Step 0c Write tool.</td>
+        </tr>
+        <tr>
+          <td>28</td><td>cc-20260403-0649</td>
+          <td style="font-size:12px">06:49–13:15</td>
+          <td>~6.5h<span style="color:var(--text-dim); font-size:11px"> (390m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 8">8 files</td>
+          <td style="color: var(--infra); font-size:12px">3 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 73%; background: var(--domain)"></span><span class="bar-inline" style="width: 27%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">73%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-186, MO-189</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work + Developer Mode (hybrid). Hub notifications (330 lines) fully processed: 4 approval groups, all written via parallel LWA; 6 activity log rows, 3 Recent Changes rows, Next Session Priority updated, – created; checkpoint written, file reset. 5 KC manifests marked reviewed (0748 deferred). Email: Brian CTN toggle discovered, private reply drafted + sent (Exchange 11); 48-hour moratorium established on-call. MD-003 Phase A code-complete (QBO.gs + SETUP.md). QBO backup: Rewind recommended (~$4/mo). 11:30–13:00 call: March DONE (all 13 invoices), CTN moratorium, April stubs (9, Calvin Mon), Danville typo, Consignment_State rows 11/23. Phase 3 AI-forward vision aligned with Brian. Calvin email sent (CTN + Consignment_State). Bianca Flores email sent (project leadership). March payment $2,700 incoming.</td>
+        </tr>
+        <tr>
+          <td>28</td><td>cc-20260403-1519</td>
+          <td style="font-size:12px">15:19–end</td>
+          <td>~3h<span style="color:var(--text-dim); font-size:11px"> (180m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="—">0 files</td>
+          <td style="color: var(--infra); font-size:12px">9 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 0%; background: var(--domain)"></span><span class="bar-inline" style="width: 100%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">0%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Developer Mode. Hub corpus-maintenance health check (healthy post-CLI migration). KC findings applied from prior sessions (4 applied, 3 skipped, 2 superseded). KSA cross-domain analysis: 430+ transcripts, 18+ provenance sources, 6 behavioral patterns — CSA failure mode is retrieval not reasoning. CD-042 (CSA Motivation Principle) + CD-043 (Dual-Core Architecture) written to .kos/decisions/. core-decisions.md updated. OQ-001 amended with four-phase CSA-Meridian bootstrap plan. Phase 1 ready.</td>
+        </tr>
+        <tr>
+          <td>29</td><td>cc-20260403-1754</td>
+          <td style="font-size:12px">17:54–08:30</td>
+          <td>~14.5h (overnight)<span style="color:var(--text-dim); font-size:11px"> (870m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 15">15 files</td>
+          <td style="color: var(--infra); font-size:12px">2 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 88%; background: var(--domain)"></span><span class="bar-inline" style="width: 12%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">88%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. MaAM Dashboard major evolution: three-tab split (Operations/AI Enhanced/Finance placeholder). Computational sheet pipeline: Dashboard_Computed workbook with delta detection (Compute_Meta), Placement_Enriched, Consignment_Enriched. Attention-based orientation (⚠/✓ flags, triage ratio card, sortable tables, activity trend panel). AI Commentary (CSA-native, MD-004 formalized). Custom tooltip system (MD-008, required for Apps Script iframe). 5 new decisions (MD-004–MD-008). Full MaAM operational model written. User personas (Pam/Brian) documented. Finance tab Next Session Priority set.</td>
+        </tr>
+        <tr>
+          <td>30</td><td>cc-20260404-1013</td>
+          <td style="font-size:12px">10:13–end</td>
+          <td>~7h<span style="color:var(--text-dim); font-size:11px"> (420m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 10">10 files</td>
+          <td style="color: var(--infra); font-size:12px">5 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 67%; background: var(--domain)"></span><span class="bar-inline" style="width: 33%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">67%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-192</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. KC findings applied (cc-20260403-1519 verified, cc-20260403-1754 applied via LWA). Brian 2026-04-03 call transcribed (Whisper medium model, speaker-attributed): March $2,700 ACH confirmed, April moratorium reinforced. ~/Documents/Meridian/ reorganized (Consulting/ + Personal/ subdirectories). QBO production Phase A complete: compliance questionnaire, production keys, Realm ID 9341453843386092, QBO.gs authorized, 43 open invoices confirmed. Finance tab (Phase B): full code written (getInvoiceArraySafe, computeFinanceMetrics, refreshQBOInvoices, KPI cards, aging bar, facility breakdown, sortable invoice table) — deployment blocked by SyntaxError at line 464 col 13 across all fix attempts. V19 restored. MD-009 recorded. written. Hub checkpoint written.</td>
+        </tr>
+        <tr>
+          <td>31</td><td>cc-20260405-0702</td>
+          <td style="font-size:12px">07:02–11:15</td>
+          <td>~4h<span style="color:var(--text-dim); font-size:11px"> (240m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 15">15 files</td>
+          <td style="color: var(--infra); font-size:12px">2 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 88%; background: var(--domain)"></span><span class="bar-inline" style="width: 12%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">88%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Domain Work. KC findings for cc-20260404-1013 applied (LWA). Finance tab SyntaxError resolved (span+onclick). Finance tab LIVE. MD-010–013 created. dashboard-architecture.md + dashboard-troubleshooting.md created. C2 (CFO Analysis Panel) LIVE (8 commentary rows, AI_Commentary sheet). C1 MTD projection partially deployed (deferred). Easter email sent.</td>
+        </tr>
+        <tr>
+          <td>32</td><td>cc-20260406-0726</td>
+          <td style="font-size:12px">07:26–12:33</td>
+          <td>~5h<span style="color:var(--text-dim); font-size:11px"> (300m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="—">0 files</td>
+          <td style="color: var(--infra); font-size:12px">15 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 0%; background: var(--domain)"></span><span class="bar-inline" style="width: 100%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">0%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-195, MO-203, MO-199</td>
+          <td style="font-size: 12px; max-width: 280px">Developer Mode. D-065–D-068 recorded. – recorded. Build agenda scoped: post-close.sh, LaunchAgent for mechanical KC, KC two-bucket output, close protocol update. OpenClaw API explored (cost gate). Hub autonomy concern raised ( ). Corpus maintenance decomposition (3-problem model). STA dual-purpose clarification.</td>
+        </tr>
+        <tr>
+          <td>33</td><td>cc-20260407-0930</td>
+          <td style="font-size:12px">09:30–12:26</td>
+          <td>~3h<span style="color:var(--text-dim); font-size:11px"> (180m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="MaAM: 8">8 files</td>
+          <td style="color: var(--infra); font-size:12px">4 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 67%; background: var(--domain)"></span><span class="bar-inline" style="width: 33%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">67%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">MO-207</td>
+          <td style="font-size: 12px; max-width: 280px">GoCanvas call, MaAM entity model, cross-instance test</td>
+        </tr>
+        <tr>
+          <td>33</td><td>cc-20260407-1226</td>
+          <td style="font-size:12px">12:26–15:33</td>
+          <td>~3h<span style="color:var(--text-dim); font-size:11px"> (180m)</span></td>
+          <td style="color: var(--domain); font-size:12px" title="Content: 2">2 files</td>
+          <td style="color: var(--infra); font-size:12px">8 files</td>
+          <td style="min-width:110px"><span class="bar-inline" style="width: 20%; background: var(--domain)"></span><span class="bar-inline" style="width: 80%; background: var(--infra)"></span> <span style="font-size:11px; color: var(--text-dim)">20%</span></td>
+          <td style="font-size: 12px; color: #fb7185; white-space: nowrap">—</td>
+          <td style="font-size: 12px; max-width: 280px">Deep KC, CD-044, CD-045/046/047 promotions, Nate Jones analysis, Brian/Pam drafts</td>
+        </tr>
       </tbody>
     </table>
   </div>
 </div>
 
 <script>
-const labels = ['Day 1\\n2026-03-10', 'Day 2\\n2026-03-11', 'Day 3\\n2026-03-12', 'Day 4\\n2026-03-13', 'Day 5\\n2026-03-14', 'Day 6\\n2026-03-15', 'Day 7\\n2026-03-16', 'Day 8\\n2026-03-17', 'Day 9\\n2026-03-19', 'Day 9\\n2026-03-17', 'Day 10\\n2026-03-18', 'Day 11\\n2026-03-19', 'Day 12\\n2026-03-20', 'Day 16\\n2026-03-25', 'Day 17\\n2026-03-26', 'Day 19\\n2026-03-28', 'Day 21\\n2026-03-29', 'Day 22\\n2026-03-30'];
+const labels = ['Day 1\\n2026-03-10', 'Day 2\\n2026-03-11', 'Day 3\\n2026-03-12', 'Day 4\\n2026-03-13', 'Day 5\\n2026-03-14', 'Day 6\\n2026-03-15', 'Day 7\\n2026-03-16', 'Day 8\\n2026-03-17', 'Day 9\\n2026-03-19', 'Day 9\\n2026-03-17', 'Day 10\\n2026-03-18', 'Day 11\\n2026-03-19', 'Day 12\\n2026-03-20', 'Day 16\\n2026-03-25', 'Day 17\\n2026-03-26', 'Day 19\\n2026-03-28', 'Day 21\\n2026-03-29', 'Day 22\\n2026-03-30', 'Day 23\\n2026-03-31', 'Day 24\\n2026-03-31', 'Day 25\\n2026-04-01', 'Day 26\\n2026-04-02', 'Day 27\\n2026-04-02', 'Day 28\\n2026-04-03', 'Day 29\\n2026-04-04', 'Day 30\\n2026-04-04', 'Day 31\\n2026-04-05', 'Day 32\\n2026-04-06', 'Day 33\\n2026-04-07'];
 const scaleDefaults = {
   x: { ticks: { color: '#8888a0', font: { size: 11 } }, grid: { color: 'rgba(42,45,58,0.6)' } },
   y: { ticks: { color: '#8888a0', font: { size: 11 }, callback: v => v + 'h' }, grid: { color: 'rgba(42,45,58,0.6)' }, beginAtZero: true }
@@ -1226,7 +1458,7 @@ const scaleDefaults = {
 // Readiness gauge
 new Chart(document.getElementById('readinessGauge'), {
   type: 'doughnut',
-  data: { datasets: [{ data: [22, 78],
+  data: { datasets: [{ data: [33, 67],
     backgroundColor: ['#818cf8', 'rgba(42,45,58,0.4)'],
     borderWidth: 0 }] },
   options: { responsive: false, cutout: '75%', plugins: { legend: { display: false }, tooltip: { enabled: false } } }
@@ -1238,9 +1470,9 @@ new Chart(document.getElementById('timeHeroChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Total', data: [7.17, 0.17, 3.17, 4.5, 7.5, 2.0, 14.5, 3.0, 10.0, 8.0, 47.0, 1.0, 6.0, 4.17, 7.92, 3.5, 7.17, 7.5], borderColor: '#e0e0e8', backgroundColor: 'rgba(224,224,232,0.05)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#e0e0e8', borderWidth: 2.5 },
-      { label: 'Domain', data: [2.71, 0.0, 0.73, 0.64, 1.61, 0.11, 0.5, 0.23, 9.03, 0.52, 4.74, 0.0, 2.25, 1.5, 1.1, 0.25, 4.67, 0.44], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#4ade80', borderWidth: 2.5 },
-      { label: 'Infrastructure', data: [4.46, 0.17, 2.44, 3.86, 5.89, 1.89, 14.0, 2.77, 0.97, 7.48, 42.26, 1.0, 3.75, 2.67, 6.82, 3.25, 2.5, 7.06], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: false, borderDash: [4, 2], tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#818cf8', borderWidth: 2.5 }
+      { label: 'Total', data: [7.17, 0.17, 3.17, 4.5, 7.5, 2.0, 14.5, 3.0, 10.0, 8.0, 47.0, 1.0, 6.0, 4.17, 7.92, 3.5, 7.17, 12.0, 2.0, 8.08, 4.0, 5.0, 19.23, 9.5, 14.5, 7.0, 4.0, 5.0, 6.0], borderColor: '#e0e0e8', backgroundColor: 'rgba(224,224,232,0.05)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#e0e0e8', borderWidth: 2.5 },
+      { label: 'Domain', data: [2.71, 0.0, 0.73, 0.64, 1.61, 0.11, 0.5, 0.23, 9.03, 0.52, 4.74, 0.0, 2.25, 1.5, 1.1, 0.25, 4.67, 0.53, 0.0, 7.87, 2.18, 0.0, 8.38, 4.73, 12.79, 4.67, 3.53, 0.0, 2.6], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.08)', fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#4ade80', borderWidth: 2.5 },
+      { label: 'Infrastructure', data: [4.46, 0.17, 2.44, 3.86, 5.89, 1.89, 14.0, 2.77, 0.97, 7.48, 42.26, 1.0, 3.75, 2.67, 6.82, 3.25, 2.5, 11.47, 2.0, 0.21, 1.82, 5.0, 10.85, 4.77, 1.71, 2.33, 0.47, 5.0, 3.4], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.08)', fill: false, borderDash: [4, 2], tension: 0.3, pointRadius: 3, pointHoverRadius: 5, pointBackgroundColor: '#818cf8', borderWidth: 2.5 }
     ]
   },
   options: {
@@ -1279,9 +1511,9 @@ function sparkline(id, data, color) {
     options: { responsive: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
   });
 }
-sparkline('sparkSessions', [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 5, 3, 2, 1], '#6c8cff');
-sparkline('sparkObs', [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 7, 0, 0, 2], '#fb7185');
-sparkline('sparkInfraCost', [62.2, 100.0, 77.1, 85.7, 78.6, 94.4, 96.6, 92.4, 9.7, 93.5, 89.9, 100.0, 62.5, 64.0, 86.2, 92.9, 34.9, 94.1], '#818cf8');
+sparkline('sparkSessions', [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 5, 3, 2, 2, 1, 4, 2, 1, 6, 2, 1, 1, 1, 1, 2], '#6c8cff');
+sparkline('sparkObs', [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 7, 0, 0, 3, 3, 3, 0, 2, 2, 2, 1, 1, 0, 3, 1], '#fb7185');
+sparkline('sparkInfraCost', [62.2, 100.0, 77.1, 85.7, 78.6, 94.4, 96.6, 92.4, 9.7, 93.5, 89.9, 100.0, 62.5, 64.0, 86.2, 92.9, 34.9, 95.6, 100.0, 2.7, 45.5, 100.0, 56.4, 50.2, 11.8, 33.3, 11.8, 100.0, 56.7], '#818cf8');
 
 // Modal drill-down
 var modalChart = null;
@@ -1289,22 +1521,22 @@ const modalData = {
   sessions: {
     title: 'Sessions per Day',
     datasets: [
-      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 5, 3, 2, 1], borderColor: '#6c8cff', backgroundColor: 'rgba(108,140,255,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#6c8cff' }
+      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 5, 3, 2, 2, 1, 4, 2, 1, 6, 2, 1, 1, 1, 1, 2], borderColor: '#6c8cff', backgroundColor: 'rgba(108,140,255,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#6c8cff' }
     ],
     yLabel: ''
   },
   observations: {
     title: 'Observations Logged per Day',
     datasets: [
-      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 7, 0, 0, 2], borderColor: '#fb7185', backgroundColor: 'rgba(251,113,133,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#fb7185' }
+      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 7, 0, 0, 3, 3, 3, 0, 2, 2, 2, 1, 1, 0, 3, 1], borderColor: '#fb7185', backgroundColor: 'rgba(251,113,133,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#fb7185' }
     ],
     yLabel: ''
   },
   domainpct: {
     title: 'Domain Time % per Day',
     datasets: [
-      { label: 'Domain %', data: [38, 0, 23, 14, 21, 6, 3, 8, 90, 7, 10, 0, 38, 36, 14, 7, 65, 6], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
-      { label: '80% Target', data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
+      { label: 'Domain %', data: [38, 0, 23, 14, 21, 6, 3, 8, 90, 7, 10, 0, 38, 36, 14, 7, 65, 4, 0, 97, 55, 0, 44, 50, 88, 67, 88, 0, 43], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
+      { label: '80% Target', data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
     ],
     yLabel: '%',
     yMax: 100
@@ -1312,8 +1544,8 @@ const modalData = {
   infracost: {
     title: 'Infrastructure % per Session',
     datasets: [
-      { label: 'Infra %', data: [62.2, 100.0, 77.1, 85.7, 78.6, 94.4, 96.6, 92.4, 9.7, 93.5, 89.9, 100.0, 62.5, 64.0, 86.2, 92.9, 34.9, 94.1], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#818cf8' },
-      { label: '20% Target', data: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
+      { label: 'Infra %', data: [62.2, 100.0, 77.1, 85.7, 78.6, 94.4, 96.6, 92.4, 9.7, 93.5, 89.9, 100.0, 62.5, 64.0, 86.2, 92.9, 34.9, 95.6, 100.0, 2.7, 45.5, 100.0, 56.4, 50.2, 11.8, 33.3, 11.8, 100.0, 56.7], borderColor: '#818cf8', backgroundColor: 'rgba(129,140,248,0.15)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#818cf8' },
+      { label: '20% Target', data: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
     ],
     yLabel: '%',
     yMax: 100
@@ -1351,8 +1583,8 @@ new Chart(document.getElementById('timeAllocChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Domain', data: [2.71, 0.0, 0.73, 0.64, 1.61, 0.11, 0.5, 0.23, 9.03, 0.52, 4.74, 0.0, 2.25, 1.5, 1.1, 0.25, 4.67, 0.44], backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 4 },
-      { label: 'Infrastructure', data: [4.46, 0.17, 2.44, 3.86, 5.89, 1.89, 14.0, 2.77, 0.97, 7.48, 42.26, 1.0, 3.75, 2.67, 6.82, 3.25, 2.5, 7.06], backgroundColor: 'rgba(129,140,248,0.7)', borderRadius: 4 }
+      { label: 'Domain', data: [2.71, 0.0, 0.73, 0.64, 1.61, 0.11, 0.5, 0.23, 9.03, 0.52, 4.74, 0.0, 2.25, 1.5, 1.1, 0.25, 4.67, 0.53, 0.0, 7.87, 2.18, 0.0, 8.38, 4.73, 12.79, 4.67, 3.53, 0.0, 2.6], backgroundColor: 'rgba(74,222,128,0.7)', borderRadius: 4 },
+      { label: 'Infrastructure', data: [4.46, 0.17, 2.44, 3.86, 5.89, 1.89, 14.0, 2.77, 0.97, 7.48, 42.26, 1.0, 3.75, 2.67, 6.82, 3.25, 2.5, 11.47, 2.0, 0.21, 1.82, 5.0, 10.85, 4.77, 1.71, 2.33, 0.47, 5.0, 3.4], backgroundColor: 'rgba(129,140,248,0.7)', borderRadius: 4 }
     ]
   },
   options: {
@@ -1374,9 +1606,9 @@ new Chart(document.getElementById('areaTimeChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'MaAM', data: [0.0, 0.0, 0.73, 0.61, 1.41, 0.0, 0.5, 0.11, 8.71, 0.0, 3.53, 0.0, 1.88, 1.31, 0.28, 0.0, 4.67, 0.44], backgroundColor: '#f59e0bcc', borderRadius: 2 },
-      { label: 'Content', data: [1.87, 0.0, 0.0, 0.03, 0.2, 0.11, 0.0, 0.11, 0.0, 0.44, 0.86, 0.0, 0.0, 0.0, 0.27, 0.25, 0.0, 0.0], backgroundColor: '#06b6d4cc', borderRadius: 2 },
-      { label: 'Practice', data: [0.84, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.32, 0.08, 0.35, 0.0, 0.38, 0.19, 0.55, 0.0, 0.0, 0.0], backgroundColor: '#4ade80cc', borderRadius: 2 }
+      { label: 'MaAM', data: [0.0, 0.0, 0.73, 0.61, 1.41, 0.0, 0.5, 0.11, 8.71, 0.0, 3.53, 0.0, 1.88, 1.31, 0.28, 0.0, 4.67, 0.44, 0.0, 7.87, 2.18, 0.0, 8.16, 4.73, 12.79, 4.67, 3.53, 0.0, 2.0], backgroundColor: '#f59e0bcc', borderRadius: 2 },
+      { label: 'Content', data: [1.87, 0.0, 0.0, 0.03, 0.2, 0.11, 0.0, 0.11, 0.0, 0.44, 0.86, 0.0, 0.0, 0.0, 0.27, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.22, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6], backgroundColor: '#06b6d4cc', borderRadius: 2 },
+      { label: 'Practice', data: [0.84, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.32, 0.08, 0.35, 0.0, 0.38, 0.19, 0.55, 0.0, 0.0, 0.08, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], backgroundColor: '#4ade80cc', borderRadius: 2 }
     ]
   },
   options: {
@@ -1397,7 +1629,7 @@ new Chart(document.getElementById('donutChart'), {
   type: 'doughnut',
   data: {
     labels: ['MaAM', 'Content', 'Practice', 'Meridian'],
-    datasets: [{ data: [24.2, 4.1, 2.7, 113.2], backgroundColor: ['#f59e0bcc', '#06b6d4cc', '#4ade80cc', '#818cf8cc'], borderWidth: 1, borderColor: '#1a1d27' }]
+    datasets: [{ data: [70.1, 5.0, 2.8, 155.2], backgroundColor: ['#f59e0bcc', '#06b6d4cc', '#4ade80cc', '#818cf8cc'], borderWidth: 1, borderColor: '#1a1d27' }]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
@@ -1414,8 +1646,8 @@ new Chart(document.getElementById('domainPctChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Domain %', data: [38, 0, 23, 14, 21, 6, 3, 8, 90, 7, 10, 0, 38, 36, 14, 7, 65, 6], borderColor: 'rgba(74,222,128,0.9)', backgroundColor: 'rgba(74,222,128,0.1)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
-      { label: '80% Target', data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
+      { label: 'Domain %', data: [38, 0, 23, 14, 21, 6, 3, 8, 90, 7, 10, 0, 38, 36, 14, 7, 65, 4, 0, 97, 55, 0, 44, 50, 88, 67, 88, 0, 43], borderColor: 'rgba(74,222,128,0.9)', backgroundColor: 'rgba(74,222,128,0.1)', fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#4ade80' },
+      { label: '80% Target', data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], borderColor: 'rgba(245,158,11,0.5)', borderDash: [6,4], pointRadius: 0, fill: false }
     ]
   },
   options: {
@@ -1434,8 +1666,8 @@ new Chart(document.getElementById('sessionsChartWide'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 5, 3, 2, 1], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
-      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 7, 0, 0, 2], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
+      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 5, 3, 2, 2, 1, 4, 2, 1, 6, 2, 1, 1, 1, 1, 2], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
+      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 7, 0, 0, 3, 3, 3, 0, 2, 2, 2, 1, 1, 0, 3, 1], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
     ]
   },
   options: {
@@ -1457,8 +1689,8 @@ new Chart(document.getElementById('sessionsChart'), {
   data: {
     labels: labels,
     datasets: [
-      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 5, 3, 2, 1], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
-      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 7, 0, 0, 2], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
+      { label: 'Sessions', data: [3, 1, 3, 16, 9, 2, 6, 2, 1, 4, 25, 1, 1, 2, 5, 3, 2, 2, 1, 4, 2, 1, 6, 2, 1, 1, 1, 1, 2], backgroundColor: 'rgba(108,140,255,0.7)', borderRadius: 4 },
+      { label: 'Observations', data: [0, 0, 0, 17, 10, 2, 13, 8, 0, 8, 35, 0, 3, 3, 7, 0, 0, 3, 3, 3, 0, 2, 2, 2, 1, 1, 0, 3, 1], backgroundColor: 'rgba(251,113,133,0.7)', borderRadius: 4 }
     ]
   },
   options: {
