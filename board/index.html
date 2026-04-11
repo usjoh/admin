@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board Knowledge Base — The Residence at the ATHM</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --border: #e2e5ea;
+  --text: #1a1a2e;
+  --text-dim: #6c6c80;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --status-active: #16a34a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page-header {
+  padding: 64px 0 32px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.page-header .subtitle {
+  color: var(--text-dim);
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.page-header .updated {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin-top: 16px;
+}
+
+.concerns {
+  margin: 48px 0;
+}
+
+.concerns h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+
+.concern-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.concern-card:hover {
+  border-left-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.concern-card .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.concern-card .card-title {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: #dcfce7;
+  color: var(--status-active);
+}
+
+.concern-card .card-summary {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.concern-card .card-arrow {
+  color: var(--accent);
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.concern-card:hover .card-arrow {
+  opacity: 1;
+}
+
+.page-footer {
+  margin-top: 80px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+@media print {
+  .page-header { padding-top: 0; }
+}
+
+@media (max-width: 600px) {
+  .page-header h1 { font-size: 22px; }
+  .container { padding: 0 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="page-header">
+    <h1>Board Knowledge Base</h1>
+    <p class="subtitle">The Residence at the ATHM &mdash; 491 Dutton Street, Lowell</p>
+    <p class="updated">Last updated: April 11, 2026</p>
+  </header>
+
+  <section class="concerns">
+    <h2>Active Concerns</h2>
+
+    <a href="developer-agreement.html" class="concern-card">
+      <div class="card-header">
+        <span class="card-title">Developer Agreement</span>
+        <span class="status-badge">Active</span>
+      </div>
+      <p class="card-summary">Verbal extension to June 30, 2026. Six milestones, no bond, no penalties. Full decision chain, timeline, and bond history.</p>
+    </a>
+
+    <!-- Future concerns:
+    <a href="pm-transition.html" class="concern-card">
+      <div class="card-header">
+        <span class="card-title">Property Management Transition</span>
+        <span class="status-badge">Active</span>
+      </div>
+      <p class="card-summary">RFP process, vendor evaluation, contract target May 1. Alpine and Brigs as finalists.</p>
+    </a>
+    -->
+  </section>
+
+  <footer class="page-footer">
+    <p>The Residence at the ATHM &mdash; 491 Dutton Street, Lowell</p>
+  </footer>
+
+</div>
+
+<script data-goatcounter="https://usjoh.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

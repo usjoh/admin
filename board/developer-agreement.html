@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developer Agreement — Board Knowledge Base</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --border: #e2e5ea;
+  --text: #1a1a2e;
+  --text-dim: #6c6c80;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --status-active: #16a34a;
+  --status-superseded: #9ca3af;
+  --warning: #d97706;
+  --warning-bg: #fffbeb;
+  --warning-border: #fde68a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Navigation */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.top-nav .container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  overflow-x: auto;
+}
+
+.top-nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.top-nav a:hover,
+.top-nav a:focus {
+  color: var(--accent);
+}
+
+.top-nav .back-link {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.top-nav .sep {
+  color: var(--border);
+}
+
+/* Layout */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.page-header {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.page-header .subtitle {
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-left: 12px;
+  vertical-align: middle;
+}
+
+.status-active {
+  background: #dcfce7;
+  color: var(--status-active);
+}
+
+.status-superseded {
+  background: #f3f4f6;
+  color: var(--status-superseded);
+}
+
+/* Callout */
+.callout {
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  border-left: 4px solid var(--warning);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 24px 0 40px;
+  font-size: 14px;
+}
+
+.callout strong {
+  color: var(--warning);
+}
+
+/* Sections */
+.section {
+  margin-bottom: 48px;
+}
+
+.section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 24px 0 12px;
+}
+
+.section p {
+  margin-bottom: 16px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 13px;
+}
+
+thead th {
+  background: var(--surface);
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+tbody tr:hover {
+  background: var(--surface);
+}
+
+/* Decision chain */
+.decision-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+
+.decision-card .decision-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.decision-card .decision-id {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.decision-card .decision-date {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.decision-card .decision-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.decision-card p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.decision-card .positions {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+.decision-card .outcome {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.chain-connector {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0;
+  color: var(--border);
+  font-size: 18px;
+}
+
+/* Milestone checklist */
+.milestone-list {
+  list-style: none;
+  margin: 16px 0;
+}
+
+.milestone-list li {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.milestone-list .milestone-num {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 12px;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* People */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.person-card {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.person-card .person-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.person-card .person-role {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.person-card .person-org {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Footer */
+.page-footer {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* Print */
+@media print {
+  .top-nav { display: none; }
+  .page-header { padding-top: 0; }
+  .decision-card { break-inside: avoid; }
+  body { font-size: 12px; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .page-header h1 { font-size: 22px; }
+  .people-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="container">
+    <a href="index.html" class="back-link">Board Knowledge Base</a>
+    <span class="sep">/</span>
+    <a href="#overview">Overview</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#decisions">Decisions</a>
+    <a href="#bond-history">Bond History</a>
+    <a href="#milestones">Milestones</a>
+    <a href="#people">Key People</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <header class="page-header">
+    <h1>Developer Agreement <span class="status-badge status-active">Active</span></h1>
+    <p class="subtitle">The Residence at the ATHM &mdash; 491 Dutton Street, Lowell</p>
+  </header>
+
+  <!-- OVERVIEW -->
+  <section class="section" id="overview">
+    <h2>Overview</h2>
+    <p>The Developer Agreement between the Primary Board and developer John DeAngelis (Earth Realty) was executed on <strong>October 16, 2017</strong>. It established a 5-year base term with three optional 1-year extensions, each requiring a majority vote of the Primary Board.</p>
+    <p>All contractual extensions have been exhausted. The agreement's formal term ended <strong>April 3, 2026</strong>. The Primary Board subsequently granted a <strong>verbal extension to June 30, 2026</strong> with six milestones but no bond, no penalties, and no intermediate deadlines.</p>
+
+    <div class="callout">
+      <strong>Key implication:</strong> The current extension has no basis in the original agreement. All three contractual extension options have been used. The board's only enforcement mechanism is goodwill. Wally Smith and Anita Chmilarski are monitoring informally.
+    </div>
+
+    <p>The developer currently owns only <strong>Unit 207</strong>. Once that unit is sold, the Developer Agreement auto-terminates. The developer owes <strong>$42,935.50</strong> to the association ($26,200 to Primary + $16,735.50 to Museum). Unit 207 closing paperwork is in progress.</p>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section" id="timeline">
+    <h2>Extension Timeline</h2>
+    <table>
+      <thead>
+        <tr><th>Period</th><th>Status</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Oct 2017 &ndash; Oct 2022</td>
+          <td>Base 5-year term</td>
+          <td>Original agreement executed October 16, 2017</td>
+        </tr>
+        <tr>
+          <td>~Oct 2022 &ndash; 2023</td>
+          <td>Extension 1 (year 6)</td>
+          <td>Majority vote of Primary Board</td>
+        </tr>
+        <tr>
+          <td>~Oct 2023 &ndash; 2024</td>
+          <td>Extension 2 (year 7)</td>
+          <td>Majority vote of Primary Board</td>
+        </tr>
+        <tr>
+          <td>~Oct 2024 &ndash; Apr 3, 2026</td>
+          <td>Extension 3 (year 8, final contractual option)</td>
+          <td>Last extension allowed under original terms</td>
+        </tr>
+        <tr style="background: var(--warning-bg);">
+          <td><strong>Apr 3 &ndash; Jun 30, 2026</strong></td>
+          <td><strong>Verbal extension (ad hoc)</strong></td>
+          <td>Beyond contract. No bond, no penalties, 6 milestones. All contractual extensions exhausted.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- DECISIONS -->
+  <section class="section" id="decisions">
+    <h2>Decision Chain</h2>
+    <p>The board's approach to the Developer Agreement evolved through a series of decisions from February through April 2026. Each decision responded to new information or shifting board consensus.</p>
+
+    <div class="decision-card" id="d-002">
+      <div class="decision-header">
+        <span class="decision-id">#002</span>
+        <span class="decision-date">February 20, 2026</span>
+        <span class="status-badge status-active">Active</span>
+      </div>
+      <div class="decision-title">Verbal Extension Granted</div>
+      <p>Primary Board met with developer and his attorney. Granted a verbal extension to June 30, 2026. No written agreement was executed. Developer committed to completing outstanding obligations: replace plywood with window near rear awning, remove external gas pipe, identify HVAC unit ownership on roof.</p>
+      <div class="outcome">Outcome: Extension granted on good faith. No documentation, no financial security.</div>
+    </div>
+
+    <div class="chain-connector">&#x25BC;</div>
+
+    <div class="decision-card" id="d-003">
+      <div class="decision-header">
+        <span class="decision-id">#003</span>
+        <span class="decision-date">March 19, 2026</span>
+        <span class="status-badge status-active">Active</span>
+      </div>
+      <div class="decision-title">Extension Reversed &mdash; Demand Letter Directed</div>
+      <p>Joint Primary/Secondary board meeting. Board consensus to reject the February 20 extension and direct attorney Gary to draft a demand letter with an April 22 deadline (30 days). If no movement by April 22, no further extension.</p>
+      <p>Board members concluded that nothing had moved forward since the February meeting despite developer commitments.</p>
+      <div class="positions">Positions: Wally, Ray, Mark against extension. John Gopplerud in favor. Miles Tarter asked clarifying questions. Gary confirmed all actions within board's legal rights.</div>
+      <div class="outcome">Outcome: Demand letter directed but never sent with bond language. Superseded by later decisions.</div>
+    </div>
+
+    <div class="chain-connector">&#x25BC;</div>
+
+    <div class="decision-card" id="d-004">
+      <div class="decision-header">
+        <span class="decision-id">#004</span>
+        <span class="decision-date">March 19, 2026</span>
+        <span class="status-badge status-superseded">Superseded</span>
+      </div>
+      <div class="decision-title">$250K Performance Bond Requirement</div>
+      <p>Board consensus (not a formal vote) that any extension required a $250,000 performance bond. Strategy: start at $250K, expect to negotiate to $150K. This was the third attempt at requiring a bond (see <a href="#bond-history">Bond History</a>).</p>
+      <div class="positions">Ray was the hardest pusher for financial security.</div>
+      <div class="outcome">Outcome: Never materialized. Primary Board subsequently voted NO bond.</div>
+    </div>
+
+    <div class="chain-connector">&#x25BC;</div>
+
+    <div class="decision-card" id="d-005">
+      <div class="decision-header">
+        <span class="decision-id">#005</span>
+        <span class="decision-date">March 19 &ndash; April 9, 2026</span>
+        <span class="status-badge status-active">Active</span>
+      </div>
+      <div class="decision-title">Bond Requirement Voted Down</div>
+      <p>Primary Board held a formal vote on the bond requirement and voted <strong>NO bond</strong>. The verbal extension was granted without financial security of any kind.</p>
+      <p><em>Note: The exact date and vote breakdown of this decision have not been recorded. The outcome is confirmed by subsequent board correspondence.</em></p>
+      <div class="outcome">Outcome: Removed the last enforcement mechanism from the extension.</div>
+    </div>
+
+    <div class="chain-connector">&#x25BC;</div>
+
+    <div class="decision-card" id="d-006">
+      <div class="decision-header">
+        <span class="decision-id">#006</span>
+        <span class="decision-date">April 8, 2026</span>
+        <span class="status-badge status-active">Active</span>
+      </div>
+      <div class="decision-title">June 30 Extension &mdash; Final Terms</div>
+      <p>Primary Board granted a verbal extension to June 30, 2026 with six specific milestones (see <a href="#milestones">Current Milestones</a>). No bond, no intermediate deadlines, no penalties.</p>
+      <p><strong>Governance note:</strong> Jeff and Ray are Residence Board trustees &mdash; informed of this decision but non-voting on extension matters. Primary Board holds all extension authority.</p>
+      <div class="outcome">Outcome: Current state. All contractual extensions exhausted. Extension is ad hoc with no contractual basis.</div>
+    </div>
+  </section>
+
+  <!-- BOND HISTORY -->
+  <section class="section" id="bond-history">
+    <h2>Bond History</h2>
+    <p>The board has attempted to require a performance bond from the developer three times. All three attempts were rejected by the Primary Board.</p>
+
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Proposal</th><th>Outcome</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pre-2026</td>
+          <td>Wally pushed $500K bond, compromised to $250K</td>
+          <td>Primary Board voted it down</td>
+        </tr>
+        <tr>
+          <td>Mar 19, 2026</td>
+          <td>$250K bond as condition for extension (consensus, not formal vote). Ray led the push. Gary directed to draft demand letter with Apr 22 deadline.</td>
+          <td>Demand letter never sent with bond language</td>
+        </tr>
+        <tr>
+          <td>Mar 19 &ndash; Apr 9, 2026</td>
+          <td>Primary Board formal vote on bond requirement</td>
+          <td><strong>Voted NO bond.</strong> Extension granted without financial security.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- MILESTONES -->
+  <section class="section" id="milestones">
+    <h2>Current Milestones</h2>
+    <p>Six milestones committed by the developer under the June 30, 2026 verbal extension. No specific intermediate dates have been set. No penalties for missed milestones.</p>
+
+    <ol class="milestone-list">
+      <li>
+        <span class="milestone-num">1</span>
+        <div><strong>Master Deed Amendments</strong> &mdash; Amend the Master Deed to include developer's museum-area units, exhibit contents, and updated business use language. Developer working with Brian Mulroy on language. Manchester Group changes also to be included before June 30.</div>
+      </li>
+      <li>
+        <span class="milestone-num">2</span>
+        <div><strong>Unit 207 Closing</strong> &mdash; Complete sale of Unit 207. Developer owes $42,935.50 total ($26,200 to Primary + $16,735.50 to Museum). Closing paperwork in progress with attorneys Gary and Trudie.</div>
+      </li>
+      <li>
+        <span class="milestone-num">3</span>
+        <div><strong>Legal Costs</strong> &mdash; Developer pays legal costs for the AiRANACULUS purchase from Manchester Group, transferred to developer per Primary Board agreement.</div>
+      </li>
+      <li>
+        <span class="milestone-num">4</span>
+        <div><strong>Lobby Carpeting</strong> &mdash; Install carpet in rear lobby. On hold for weather to clear.</div>
+      </li>
+      <li>
+        <span class="milestone-num">5</span>
+        <div><strong>Architect's Final Draft</strong> &mdash; Complete the architect's final draft of space changes for Master Deed amendments.</div>
+      </li>
+      <li>
+        <span class="milestone-num">6</span>
+        <div><strong>Building Repairs &amp; Legal Coordination</strong> &mdash; Replace plywood with window at rear awning door, remove unused gas line per code, seal brick wall when weather permits. Attorney coordination between Gary and Trudie on the 6(d) certificate and buyer payment agreement.</div>
+      </li>
+    </ol>
+
+    <div class="callout">
+      <strong>Deadline: June 30, 2026.</strong> No intermediate dates, no penalties, no bond. Primary Board holds all extension and enforcement authority. Wally Smith and Anita Chmilarski monitoring.
+    </div>
+  </section>
+
+  <!-- KEY PEOPLE -->
+  <section class="section" id="people">
+    <h2>Key People</h2>
+
+    <h3>Residence Board</h3>
+    <div class="people-grid">
+      <div class="person-card">
+        <div class="person-name">Wally Smith</div>
+        <div class="person-role">Board Chair, Primary Board Trustee</div>
+        <div class="person-org">Monitoring developer agreement informally</div>
+      </div>
+      <div class="person-card">
+        <div class="person-name">Ray DeRosa</div>
+        <div class="person-role">Board Member, PM Search Lead</div>
+        <div class="person-org">Pushed for bond &amp; formal milestones</div>
+      </div>
+      <div class="person-card">
+        <div class="person-name">Jon Gopplerud</div>
+        <div class="person-role">Board Member, Treasurer</div>
+        <div class="person-org">Favored extension (architect needs time)</div>
+      </div>
+      <div class="person-card">
+        <div class="person-name">Mark DeMello</div>
+        <div class="person-role">Board Member, Primary Trustee</div>
+        <div class="person-org">Against extension at Mar 19 meeting</div>
+      </div>
+      <div class="person-card">
+        <div class="person-name">Miles Tarter</div>
+        <div class="person-role">Board Member, Primary Trustee</div>
+        <div class="person-org">Asked clarifying questions on Unit 207</div>
+      </div>
+      <div class="person-card">
+        <div class="person-name">Erin Harris</div>
+        <div class="person-role">Board Member</div>
+      </div>
+    </div>
+
+    <h3>Developer &amp; Legal</h3>
+    <div class="people-grid">
+      <div class="person-card">
+        <div class="person-name">John DeAngelis</div>
+        <div class="person-role">Developer (Earth Realty)</div>
+        <div class="person-org">Owns Unit 207. Primary Board member until agreement expires.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-name">Gary</div>
+        <div class="person-role">Board Attorney</div>
+        <div class="person-org">Directed to draft demand letter (Mar 19). Coordinating Unit 207 closing.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-name">Trudie</div>
+        <div class="person-role">Developer's Attorney</div>
+        <div class="person-org">Coordinating with Gary on 6(d) and buyer agreement</div>
+      </div>
+    </div>
+
+    <h3>Other Stakeholders</h3>
+    <div class="people-grid">
+      <div class="person-card">
+        <div class="person-name">Brian Mulroy</div>
+        <div class="person-role">Museum Trustee, Primary Board</div>
+        <div class="person-org">Working on business use amendment language</div>
+      </div>
+      <div class="person-card">
+        <div class="person-name">Anita Chmilarski</div>
+        <div class="person-role">Property Manager (Linear)</div>
+        <div class="person-org">Monitoring developer compliance informally</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <p>Last updated: April 11, 2026</p>
+    <p>The Residence at the ATHM &mdash; 491 Dutton Street, Lowell</p>
+  </footer>
+
+</div>
+
+<script data-goatcounter="https://usjoh.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
