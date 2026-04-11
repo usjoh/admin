@@ -1278,9 +1278,19 @@ def generate_index_html(instances: list, merged: list) -> str:
         </div>
         <div class="desc">
           Life management — areas of responsibility, projects, and structured knowledge.
-          Journal, BIRW, Flight Log.
+          BIRW, Flight Log.
         </div>
         <div class="status" style="background: rgba(129,140,248,0.15); color: var(--infra);">Prototype</div>
+      </a>
+      <a href="journal.html" class="dash-card">
+        <div class="card-header">
+          <h3>Journal Master</h3>
+          <span class="arrow">&#8599;</span>
+        </div>
+        <div class="desc">
+          Daily journal entries captured via Apple Shortcut voice input. Searchable, timestamped.
+        </div>
+        <div class="status" style="background: rgba(74,222,128,0.15); color: var(--domain);">Active</div>
       </a>
       <a href="consulting-dashboard.html" class="dash-card">
         <div class="card-header">
