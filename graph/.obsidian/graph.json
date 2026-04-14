@@ -1,0 +1,93 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#hub",
+      "color": {
+        "a": 1,
+        "rgb": 16762880
+      }
+    },
+    {
+      "query": "tag:#subscriber",
+      "color": {
+        "a": 1,
+        "rgb": 13803550
+      }
+    },
+    {
+      "query": "tag:#agent",
+      "color": {
+        "a": 1,
+        "rgb": 15106590
+      }
+    },
+    {
+      "query": "tag:#protocol",
+      "color": {
+        "a": 1,
+        "rgb": 9851100
+      }
+    },
+    {
+      "query": "tag:#domain-decision",
+      "color": {
+        "a": 1,
+        "rgb": 5289040
+      }
+    },
+    {
+      "query": "tag:#decision",
+      "color": {
+        "a": 1,
+        "rgb": 4621020
+      }
+    },
+    {
+      "query": "tag:#file",
+      "color": {
+        "a": 1,
+        "rgb": 9868950
+      }
+    },
+    {
+      "query": "tag:#convention",
+      "color": {
+        "a": 1,
+        "rgb": 43660
+      }
+    },
+    {
+      "query": "tag:#concern",
+      "color": {
+        "a": 1,
+        "rgb": 14433340
+      }
+    },
+    {
+      "query": "tag:#task",
+      "color": {
+        "a": 1,
+        "rgb": 13120082
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.5843581180567565,
+  "close": true
+}

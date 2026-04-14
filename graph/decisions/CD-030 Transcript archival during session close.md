@@ -1,0 +1,17 @@
+---
+id: CD-030
+type: decision
+tags: [decision]
+status: Active
+source: .kos/decisions/CD-030.md
+generated: 2026-04-13T17:40:34Z
+---
+
+# CD-030: Transcript archival during session close
+
+**Status:** Active
+**Source:** `.kos/decisions/CD-030.md`
+
+## Relationships
+
+**amends:** [[PROT-LIFECYCLE Session Lifecycle|Session Lifecycle]] (Added transcript archival to session close)
