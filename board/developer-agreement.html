@@ -775,6 +775,135 @@ tbody tr:hover { background: var(--surface); }
   .ms-card { break-inside: avoid; }
   body { font-size: 12px; }
 }
+
+/* ─── LEVERAGE CARDS ─── */
+.lev-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 16px 0 24px;
+}
+
+.lev-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lev-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+.lev-card.lev-strong::before { background: var(--green); }
+.lev-card.lev-vstrong::before { background: var(--accent); }
+.lev-card.lev-moderate::before { background: var(--amber); }
+.lev-card.lev-uncertain::before { background: var(--text-dim); }
+.lev-card.lev-context::before { background: var(--text-light); }
+
+.lev-card .lev-id {
+  font-size: 11px;
+  font-weight: 800;
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  background: var(--text-dim);
+}
+
+.lev-card.lev-strong .lev-id { background: var(--green); }
+.lev-card.lev-vstrong .lev-id { background: var(--accent); }
+.lev-card.lev-moderate .lev-id { background: var(--amber); }
+
+.lev-card .lev-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.lev-card .lev-basis {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.lev-card.lev-strong .lev-basis { color: var(--green); }
+.lev-card.lev-vstrong .lev-basis { color: var(--accent); }
+.lev-card.lev-moderate .lev-basis { color: var(--amber); }
+.lev-card.lev-uncertain .lev-basis { color: var(--text-dim); }
+.lev-card.lev-context .lev-basis { color: var(--text-light); }
+
+.lev-card .lev-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+.lev-card .lev-status {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 8px;
+  color: var(--text-dim);
+}
+
+/* ─── TRACKING TABLE ─── */
+.track-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 13px;
+}
+
+.track-table thead th {
+  background: var(--surface);
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--border);
+}
+
+.track-table tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.track-table tbody tr:hover { background: var(--surface); }
+
+.track-table .gap {
+  color: var(--red);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.track-table .set {
+  color: var(--green);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .lev-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .lev-card { break-inside: avoid; }
+}
 </style>
 </head>
 <body>
@@ -797,7 +926,10 @@ tbody tr:hover { background: var(--surface); }
     <div class="nav-group">People &amp; Risk</div>
     <a href="#transition">Board Transition</a>
     <a href="#people">Key People</a>
-    <div class="nav-group">Action</div>
+    <div class="nav-group">Leverage &amp; Action</div>
+    <a href="#leverage">Board Leverage</a>
+    <a href="#leverage-map">Leverage Map</a>
+    <a href="#tracking">Tracking Proposal</a>
     <a href="#questions">Open Questions</a>
     <a href="#bottom-line">Where This Stands</a>
   </nav>
@@ -809,7 +941,7 @@ tbody tr:hover { background: var(--surface); }
   <header class="page-header">
     <h1>Developer Agreement</h1>
     <p class="subtitle">The Residence at the ATHM &mdash; 491 Dutton Street, Lowell</p>
-    <p class="updated">Last updated April 14, 2026</p>
+    <p class="updated">Last updated April 15, 2026</p>
   </header>
 
   <!-- COUNTDOWN -->
@@ -822,6 +954,7 @@ tbody tr:hover { background: var(--surface); }
       <div class="detail"><strong>4 of 6</strong> milestones have no target date.</div>
       <div class="detail">No bond. No penalties. No intermediate deadlines.</div>
       <div class="detail" style="opacity:0.7; margin-top:4px; font-size:12px;">All 3 contractual extensions exhausted. Current extension is verbal, ad hoc, and beyond the original agreement.</div>
+      <div class="detail" style="opacity:0.7; margin-top:2px; font-size:12px;">Board holds 7 enforcement mechanisms independent of the expired agreement.</div>
     </div>
   </div>
 
@@ -1322,6 +1455,178 @@ tbody tr:hover { background: var(--surface); }
     </div>
   </section>
 
+  <!-- BOARD LEVERAGE -->
+  <section class="section" id="leverage">
+    <h2>Board Leverage</h2>
+    <p>The developer agreement expiring did not eliminate the board's enforcement options. These remedies exist under Massachusetts law and the governing documents, <em>independent</em> of the expired agreement.</p>
+
+    <div class="lev-grid">
+      <div class="lev-card lev-strong">
+        <div class="lev-id">1</div>
+        <div class="lev-name">Statutory Lien on Unit 207</div>
+        <div class="lev-basis">Strong &mdash; M.G.L. c. 183A &sect; 6</div>
+        <div class="lev-desc">Developer owes <strong>$42,935.50</strong> ($26,200 Primary + $16,735.50 Museum). Association has an automatic statutory lien for unpaid fees and assessments. Massachusetts super-lien: 6 months of unpaid common fees take priority over even first mortgages.</div>
+        <div class="lev-status">Status: Not yet pursued</div>
+      </div>
+      <div class="lev-card lev-vstrong">
+        <div class="lev-id">2</div>
+        <div class="lev-name">6(d) Certificate Control</div>
+        <div class="lev-basis">Very Strong &mdash; M.G.L. c. 183A &sect; 6(d)</div>
+        <div class="lev-desc">Unit 207 <strong>cannot close</strong> without an association certificate showing all amounts owed. The board controls certificate content. All debts must be paid at closing. Cassandra and Dave's purchase depends on this.</div>
+        <div class="lev-status">Status: Passive leverage &mdash; activates at sale</div>
+      </div>
+      <div class="lev-card lev-vstrong">
+        <div class="lev-id">3</div>
+        <div class="lev-name">Master Deed Amendment Cooperation</div>
+        <div class="lev-basis">Very Strong &mdash; Declaration of Trust</div>
+        <div class="lev-desc">Developer needs board approval for the museum space carve-out. He stated at the March 19 meeting he won't sell Unit 207 until this is secured. <strong>He needs the board more than the board needs him.</strong></div>
+        <div class="lev-status">Status: Not yet leveraged</div>
+      </div>
+      <div class="lev-card lev-moderate">
+        <div class="lev-id">4</div>
+        <div class="lev-name">Unauthorized Common Area Use</div>
+        <div class="lev-basis">Moderate &mdash; Declaration of Trust; c. 183A</div>
+        <div class="lev-desc">Developer's contractor (Mike) is operating a workshop in undeveloped museum common area. Board can demand cessation through its general governance authority. No developer agreement needed.</div>
+        <div class="lev-status">Status: Not enforced</div>
+      </div>
+      <div class="lev-card lev-strong">
+        <div class="lev-id">5</div>
+        <div class="lev-name">Special Assessment for Incomplete Work</div>
+        <div class="lev-basis">Strong &mdash; M.G.L. c. 183A (assessment authority)</div>
+        <div class="lev-desc">Punch list items (carpet, gas line, wall, HVAC, window, plywood) were developer obligations. Board can complete the work using its own contractors and levy a special assessment against Unit 207 for the cost.</div>
+        <div class="lev-status">Status: Not pursued</div>
+      </div>
+      <div class="lev-card lev-uncertain">
+        <div class="lev-id">6</div>
+        <div class="lev-name">Developer Board Seat Termination</div>
+        <div class="lev-basis">Uncertain &mdash; Needs legal analysis</div>
+        <div class="lev-desc">Developer's Primary Board trustee seat exists under the developer agreement. If the agreement has expired and all extensions are exhausted, the seat may terminate with it &mdash; removing the developer's vote and influence. <strong>Needs Gary's analysis.</strong></div>
+        <div class="lev-status">Status: Not explored</div>
+      </div>
+      <div class="lev-card lev-context">
+        <div class="lev-id">7</div>
+        <div class="lev-name">Fiduciary Duty Exposure</div>
+        <div class="lev-basis">Contextual &mdash; M.G.L. c. 183A; fiduciary law</div>
+        <div class="lev-desc">As a Primary Board trustee, the developer owes fiduciary duties to the association while simultaneously owing $42K, delaying obligations, and authorizing unauthorized common area use. Not a standalone remedy, but strengthens every other position.</div>
+        <div class="lev-status">Status: Background context</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVERAGE MAP -->
+  <section class="section" id="leverage-map">
+    <h2>Leverage Map</h2>
+    <p>Who needs what from whom? The asymmetry is the key finding.</p>
+
+    <div class="bl-grid">
+      <div class="bl-col missing">
+        <h3>What Jon Needs from the Board</h3>
+        <ul>
+          <li>Master Deed amendment for museum carve-out (R-3)</li>
+          <li>Clean 6(d) certificate for Unit 207 sale (R-2)</li>
+          <li>Continued Primary Board seat (R-6)</li>
+          <li>Cooperation on Manchester Group changes</li>
+        </ul>
+      </div>
+      <div class="bl-col has">
+        <h3>What the Board Needs from Jon</h3>
+        <ul>
+          <li>Punch list completion (already obligated)</li>
+          <li>$42,935.50 debt payment (already owed)</li>
+          <li>Workshop removal from common area (already unauthorized)</li>
+          <li>Master Deed amendment cooperation (mutual)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-label">Key Insight</div>
+      The developer agreement expiring didn't weaken the board &mdash; it removed the framework that was <em>protecting the developer</em>. Without it, the board's leverage is raw: statutory liens, 6(d) certificate control, amendment cooperation, and assessment authority. Jon's dependencies on the board are <strong>requests</strong>. The board's needs from Jon are things he's <strong>already obligated to do</strong>.
+    </div>
+  </section>
+
+  <!-- TRACKING PROPOSAL -->
+  <section class="section" id="tracking">
+    <h2>Tracking Proposal</h2>
+    <p>What structured milestone tracking would look like. Currently, only 1 of 6 milestones has informal monitoring (Wally on #2). The table below shows the gap &mdash; and what filling it would require.</p>
+
+    <table class="track-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Milestone</th>
+          <th>Owner</th>
+          <th>Target Date</th>
+          <th>Status</th>
+          <th>Evidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Master Deed amendments (developer units + business use language)</td>
+          <td><span class="gap">Unassigned</span></td>
+          <td><span class="gap">No date</span></td>
+          <td>Jon/Brian working on language</td>
+          <td>Brian asked for concrete prohibited-use example</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Unit 207 closing + $42,935.50 debt</td>
+          <td>Wally (informal)</td>
+          <td><span class="gap">"ASAP"</span></td>
+          <td>Paperwork in progress (Gary/Trudie)</td>
+          <td>Cassandra &amp; Dave in unit since Dec 2023</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>AiRANACULUS legal costs</td>
+          <td><span class="gap">Unassigned</span></td>
+          <td><span class="gap">No date</span></td>
+          <td>Unknown</td>
+          <td><span class="gap">None</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Lobby carpet installation</td>
+          <td><span class="gap">Unassigned</span></td>
+          <td><span class="gap">"When weather clears"</span></td>
+          <td>3+ months overdue</td>
+          <td><span class="gap">None</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Architect drawings for space changes</td>
+          <td><span class="gap">Unassigned</span></td>
+          <td><span class="gap">No date</span></td>
+          <td>"Reportedly complete" (Jon texted at Mar 19 meeting)</td>
+          <td><span class="gap">Not verified</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Attorney coordination (dirty 6(d), buyer agreement)</td>
+          <td><span class="gap">Unassigned</span></td>
+          <td><span class="gap">No date</span></td>
+          <td>Gary + Trudie working</td>
+          <td><span class="gap">None</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout-danger">
+      <strong>The gap:</strong> 5 of 6 milestones have no tracking owner. 4 of 6 have no target date. Zero have defined evidence of completion. Zero have recourse if missed. This table is what <em>should</em> exist &mdash; the red text shows what's missing.
+    </div>
+
+    <h3>Proposed Next Steps</h3>
+    <ul style="font-size:14px; list-style:disc; margin-left:20px;">
+      <li>Assign a <strong>tracking owner</strong> from the board for each milestone</li>
+      <li>Request <strong>target completion dates</strong> from the developer for each milestone</li>
+      <li>Establish a <strong>biweekly status cadence</strong> (email update from developer to Primary Board)</li>
+      <li>Define <strong>evidence of completion</strong> for each milestone (what document or action marks it done?)</li>
+      <li>Identify which <strong>leverage mechanisms</strong> (R-1 through R-7) apply if specific milestones miss June 30</li>
+    </ul>
+  </section>
+
   <!-- OPEN QUESTIONS -->
   <section class="section" id="questions">
     <h2>Open Questions</h2>
@@ -1354,6 +1659,9 @@ tbody tr:hover { background: var(--surface); }
         <h3>What the Board Has</h3>
         <ul>
           <li>6 verbal milestones (no documentation)</li>
+          <li>7 statutory enforcement mechanisms (R-1 through R-7)</li>
+          <li>6(d) certificate control over Unit 207 sale</li>
+          <li>Master Deed amendment veto power</li>
           <li>Goodwill and developer's interest in closing Unit 207</li>
           <li>Wally informally monitoring #2 (for now)</li>
           <li>Ray pushing for accountability</li>
@@ -1387,11 +1695,13 @@ tbody tr:hover { background: var(--surface); }
       <li>Request <strong>written terms</strong> documenting the verbal agreement</li>
       <li>Establish an <strong>update cadence</strong> (biweekly status from developer)</li>
       <li>Define the <strong>contingency</strong> for June 30 non-completion <em>now</em>, before the deadline arrives</li>
+      <li>Ask Gary to evaluate <strong>board seat termination</strong> (R-6) given agreement expiration</li>
+      <li>Consider <strong>conditioning Master Deed cooperation</strong> (R-3) on debt settlement and punch list completion</li>
     </ul>
   </section>
 
   <footer class="page-footer">
-    <p>Last updated: April 14, 2026</p>
+    <p>Last updated: April 15, 2026</p>
     <p>The Residence at the ATHM &mdash; 491 Dutton Street, Lowell</p>
   </footer>
 
@@ -1443,6 +1753,73 @@ tbody tr:hover { background: var(--surface); }
         document.querySelector('.sidebar').classList.remove('open');
       }
     });
+  });
+})();
+
+// ─── ENGAGEMENT TRACKING ───
+(function() {
+  // UTM source capture
+  var params = new URLSearchParams(window.location.search);
+  var source = params.get('utm_source') || 'direct';
+  var campaign = params.get('utm_campaign') || 'none';
+  sessionStorage.setItem('visitor_source', source);
+
+  // Wait for GoatCounter to load
+  function gc(path, title) {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({
+        path: '/developer-agreement/' + path,
+        title: title,
+        referrer: source,
+        event: true
+      });
+    }
+  }
+
+  // Track page load with source
+  setTimeout(function() {
+    gc('visit/' + source, 'Visit from ' + source);
+  }, 500);
+
+  // Section view tracking via IntersectionObserver
+  var sectionsSeen = {};
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !sectionsSeen[entry.target.id]) {
+          sectionsSeen[entry.target.id] = true;
+          gc('section/' + entry.target.id + '/' + source,
+             'Section: ' + entry.target.id + ' (' + source + ')');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.section').forEach(function(s) {
+      observer.observe(s);
+    });
+  }
+
+  // Scroll depth tracking
+  var depthsFired = {};
+  var depths = [25, 50, 75, 100];
+  window.addEventListener('scroll', function() {
+    var scrollPct = Math.round(
+      (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100
+    );
+    depths.forEach(function(d) {
+      if (scrollPct >= d && !depthsFired[d]) {
+        depthsFired[d] = true;
+        gc('scroll/' + d + '/' + source, 'Scroll ' + d + '% (' + source + ')');
+      }
+    });
+  }, { passive: true });
+
+  // Time on page tracking
+  var timeMilestones = [30, 60, 120, 300];
+  timeMilestones.forEach(function(sec) {
+    setTimeout(function() {
+      gc('time/' + sec + 's/' + source, 'Time ' + sec + 's (' + source + ')');
+    }, sec * 1000);
   });
 })();
 </script>
