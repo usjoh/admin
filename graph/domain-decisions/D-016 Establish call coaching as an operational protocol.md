@@ -4,10 +4,14 @@ type: domain-decision
 tags: [domain-decision]
 status: Active
 source: entries/D-016.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # D-016: Establish call coaching as an operational protocol
 
 **Status:** Active
 **Source:** `entries/D-016.md`
+
+## Relationships
+
+**referenced-by:** [[MO-048 Real-time call coaching using Meridian context|Real-time call coaching using Meridian context]] (Referenced in MO-048)

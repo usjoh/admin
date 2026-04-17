@@ -4,10 +4,14 @@ type: domain-decision
 tags: [domain-decision]
 status: Active
 source: entries/D-009.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # D-009: Test simpler interventions before building Agent SDK
 
 **Status:** Active
 **Source:** `entries/D-009.md`
+
+## Relationships
+
+**referenced-by:** [[MO-031 Agent defaulted to assuming Meridian Core lives in a separate `~Projectsmer...|Agent defaulted to assuming Meridian Core lives in a separate `~/Projects/mer...]] (Referenced in MO-031)

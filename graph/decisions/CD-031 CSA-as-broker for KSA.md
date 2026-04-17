@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-031.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # CD-031: CSA-as-broker for KSA
@@ -15,3 +15,4 @@ generated: 2026-04-17T09:57:50Z
 ## Relationships
 
 **created:** [[AGT-KSA Knowledge Search Agent|Knowledge Search Agent]] (CSA-as-broker pattern), [[PROT-KSA KSA Protocol|KSA Protocol]] (KSA protocol)
+**referenced-by:** [[MO-185 Self-referential naming gap CSA used in ~130 references across 30+ Core fi...|Self-referential naming gap: "CSA" used in ~130 references across 30+ Core fi...]] (Referenced in MO-185)

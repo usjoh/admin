@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: .kos/code-map.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # FILE-CODEMAP: Code Map

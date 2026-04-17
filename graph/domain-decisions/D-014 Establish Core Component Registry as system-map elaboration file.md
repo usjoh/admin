@@ -4,10 +4,14 @@ type: domain-decision
 tags: [domain-decision]
 status: Active
 source: entries/D-014.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # D-014: Establish Core Component Registry as system-map elaboration file
 
 **Status:** Active
 **Source:** `entries/D-014.md`
+
+## Relationships
+
+**referenced-by:** [[MO-039 Component Registry as deployment governance|Component Registry as deployment governance]] (Referenced in MO-039)

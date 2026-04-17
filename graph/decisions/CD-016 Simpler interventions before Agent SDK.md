@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-016.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # CD-016: Simpler interventions before Agent SDK
@@ -16,3 +16,4 @@ generated: 2026-04-17T09:57:50Z
 
 **governs:** [[CC-001 Agent reasoning depth|Agent reasoning depth]] (Simpler interventions governs agent reasoning concern)
 **depended-on-by:** [[CC-001 Agent reasoning depth|Agent reasoning depth]] (Simpler interventions governs resolution path)
+**referenced-by:** [[MO-214 Jones corpus validates Meridian architecture, challenges protocol weight — fi...|Jones corpus validates Meridian architecture, challenges protocol weight — fi...]] (Referenced in MO-214)

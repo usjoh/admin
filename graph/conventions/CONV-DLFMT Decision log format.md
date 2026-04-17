@@ -4,7 +4,7 @@ type: convention
 tags: [convention]
 status: Active
 source: decision-log/README.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # CONV-DLFMT: Decision log format

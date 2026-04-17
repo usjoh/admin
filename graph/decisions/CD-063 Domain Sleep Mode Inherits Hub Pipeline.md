@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-063.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # CD-063: Domain Sleep Mode Inherits Hub Pipeline
@@ -15,3 +15,4 @@ generated: 2026-04-17T09:57:50Z
 ## Relationships
 
 **amends:** [[CD-056 Sleep Mode — System-Driven Session Posture|Sleep Mode — System-Driven Session Posture]] (Domain Sleep Mode inherits Hub pipeline), [[CD-062 Sleep Mode as Execution Model — Retire LaunchAgents|Sleep Mode as Execution Model — Retire LaunchAgents]] (Domain Sleep Mode inherits Hub pipeline (adds domain execution path))
+**referenced-by:** [[MO-274 Recurring operational-layer-miss pattern — design-build-register-miss-protoco...|Recurring operational-layer-miss pattern — design-build-register-miss-protoco...]] (Referenced in MO-274)

@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Open
 source: .kos/decisions/CD-005.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # CD-005: Mode transparency
@@ -15,3 +15,4 @@ generated: 2026-04-17T09:57:50Z
 ## Relationships
 
 **extends:** [[CD-036 Thin orchestrator + formal agents|Thin orchestrator + formal agents]] (Mode transparency addresses operating modes design)
+**referenced-by:** [[MO-185 Self-referential naming gap CSA used in ~130 references across 30+ Core fi...|Self-referential naming gap: "CSA" used in ~130 references across 30+ Core fi...]] (Referenced in MO-185)

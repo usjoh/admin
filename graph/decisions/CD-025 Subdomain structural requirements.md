@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-025.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # CD-025: Subdomain structural requirements
@@ -15,3 +15,4 @@ generated: 2026-04-17T09:57:50Z
 ## Relationships
 
 **extends:** [[CD-002 CoreDomain separation|Core/Domain separation]] (Subdomain requirements extend Core/Domain separation)
+**referenced-by:** [[MO-270 Domain contamination — subdomain co-location leaks consulting perspective int...|Domain contamination — subdomain co-location leaks consulting perspective int...]] (Referenced in MO-270)

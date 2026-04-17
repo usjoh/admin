@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-060.md
-generated: 2026-04-17T09:57:50Z
+generated: 2026-04-17T12:10:36Z
 ---
 
 # CD-060: Hub as Cross-Domain Router — Retire Feed Files
@@ -16,3 +16,4 @@ generated: 2026-04-17T09:57:50Z
 
 **extends:** [[D-060 Inter-session notification pattern|Inter-session notification pattern]] (Hub absorbs cross-domain routing function), [[CD-054 Four-Phase Between-Session Processing Pipeline|Four-Phase Between-Session Processing Pipeline]] (Phase 3 Synthesize gains cross-domain routing responsibility)
 **supersedes:** [[CROSS-DOMAIN-FEED Cross-Domain Feed File Mechanism (retired)|Cross-Domain Feed File Mechanism (retired)]] (Retires feed file mechanism in favor of Hub routing)
+**referenced-by:** [[MO-264 Mechanism audit pattern — scaling failures expose architectural redundancy|Mechanism audit pattern — scaling failures expose architectural redundancy]] (Referenced in MO-264), [[MO-265 Behavioral Activation gap — deploying decisions ≠ activating behaviors|Behavioral Activation gap — deploying decisions ≠ activating behaviors]] (Referenced in MO-265), [[MO-266 Single-authority cross-domain routing pattern — Hub Phase 3 Synthesize as sol...|Single-authority cross-domain routing pattern — Hub Phase 3 Synthesize as sol...]] (Referenced in MO-266)
