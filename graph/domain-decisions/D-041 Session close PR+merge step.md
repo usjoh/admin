@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Superseded by D-054
 source: entries/D-041.md
-generated: 2026-04-17T05:48:41Z
+generated: 2026-04-17T09:57:50Z
 ---
 
 # D-041: Session close PR+merge step

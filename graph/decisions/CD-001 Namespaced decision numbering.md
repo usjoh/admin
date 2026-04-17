@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active (amended by CD-041)
 source: .kos/decisions/CD-001.md
-generated: 2026-04-17T05:48:41Z
+generated: 2026-04-17T09:57:50Z
 ---
 
 # CD-001: Namespaced decision numbering

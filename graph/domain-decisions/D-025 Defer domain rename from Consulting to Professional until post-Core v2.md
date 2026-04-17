@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Backlog
 source: entries/D-025.md
-generated: 2026-04-17T05:48:41Z
+generated: 2026-04-17T09:57:50Z
 ---
 
 # D-025: Defer domain rename from Consulting to Professional until post-Core v2

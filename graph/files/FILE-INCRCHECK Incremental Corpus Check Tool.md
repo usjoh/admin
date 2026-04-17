@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: .kos/tools/incremental-corpus-check.sh
-generated: 2026-04-17T05:48:41Z
+generated: 2026-04-17T09:57:50Z
 ---
 
 # FILE-INCRCHECK: Incremental Corpus Check Tool

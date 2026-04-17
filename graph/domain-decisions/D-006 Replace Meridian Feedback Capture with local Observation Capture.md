@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Partially superseded by D-010
 source: entries/D-006.md
-generated: 2026-04-17T05:48:41Z
+generated: 2026-04-17T09:57:50Z
 ---
 
 # D-006: Replace Meridian Feedback Capture with local Observation Capture

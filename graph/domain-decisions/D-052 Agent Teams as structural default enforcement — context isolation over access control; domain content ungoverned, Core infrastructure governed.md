@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Active
 source: entries/D-052.md
-generated: 2026-04-17T05:48:41Z
+generated: 2026-04-17T09:57:50Z
 ---
 
 # D-052: Agent Teams as structural default enforcement — context isolation over access control; domain content ungoverned, Core infrastructure governed
