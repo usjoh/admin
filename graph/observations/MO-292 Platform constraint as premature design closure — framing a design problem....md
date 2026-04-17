@@ -5,7 +5,7 @@ tags: [observation, friction]
 category: friction
 status: Active
 source: current-state/observations/MO-292.md
-generated: 2026-04-17T17:11:01Z
+generated: 2026-04-17T21:14:01Z
 ---
 
 # MO-292: "Platform constraint" as premature design closure — framing a design problem...

@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Open
 source: .kos/decisions/CD-005.md
-generated: 2026-04-17T17:11:01Z
+generated: 2026-04-17T21:14:01Z
 ---
 
 # CD-005: Mode transparency

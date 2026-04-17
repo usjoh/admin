@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Active
 source: current-state/observations/MO-217.md
-generated: 2026-04-17T17:11:01Z
+generated: 2026-04-17T21:14:01Z
 ---
 
 # MO-217: Carry-forward items in prose — no structured tracking

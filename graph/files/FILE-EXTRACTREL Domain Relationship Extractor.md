@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: .kos/tools/extract-domain-relationships.py
-generated: 2026-04-17T17:11:01Z
+generated: 2026-04-17T21:14:01Z
 ---
 
 # FILE-EXTRACTREL: Domain Relationship Extractor

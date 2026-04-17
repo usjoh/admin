@@ -1,15 +1,15 @@
 ---
 type: index
-generated: 2026-04-17T17:11:01Z
+generated: 2026-04-17T21:14:01Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, and `current-state/observations/relationships.md`. Do not edit.
 
-**Entities:** 465 | **Relationships:** 702
+**Entities:** 468 | **Relationships:** 707
 
-## Decisions (68)
+## Decisions (69)
 
 - CD-001 — Namespaced decision numbering `Active (amended by CD-041)`
 - CD-002 — Core/Domain separation `Active`
@@ -78,6 +78,7 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - CD-065 — I/O Interface Architecture `Active`
 - CD-066 — Autonomous Execution Architecture `Active`
 - CD-067 — Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files `Active`
+- CD-068 — True Tool Surface for Meridian `Draft`
 - D-060 — Inter-session notification pattern `Active`
 
 ## Domain-Decisions (69)
@@ -455,15 +456,17 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 
 - TASK-KCP — KC Pipeline `Core-ready`
 
-## Files (16)
+## Files (18)
 
 - FILE-AUDIT — Core Audit Protocol `Active`
 - FILE-CHANGELOG — Core Changelog `Active`
+- FILE-CHECKPOINT — Meridian Checkpoint Tool `Active`
 - FILE-CLAUDE — CLAUDE.md Entry Point `Core-ready`
 - FILE-CODEMAP — Code Map `Active`
 - FILE-COMPACTLDB — LanceDB Compaction Tool `Active`
 - FILE-CURSTATE — Core Current State `Core-ready`
 - FILE-DECISIONS — Core Decisions `Core-ready`
+- FILE-DETECTUNCOMMITTED — Detect Uncommitted Work Tool `Active`
 - FILE-EXTRACTREL — Domain Relationship Extractor `Active`
 - FILE-GRAPHGEN — Graph Generator `Active`
 - FILE-INCRCHECK — Incremental Corpus Check Tool `Active`

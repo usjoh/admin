@@ -5,7 +5,7 @@ tags: [observation, friction]
 category: friction
 status: Active
 source: current-state/observations/MO-024.md
-generated: 2026-04-17T17:11:01Z
+generated: 2026-04-17T21:14:01Z
 ---
 
 # MO-024: Session close-out protocol attempted worktree and branch cleanup from inside...

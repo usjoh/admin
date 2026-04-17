@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Deprecated
 source: entries/D-012.md
-generated: 2026-04-17T17:11:01Z
+generated: 2026-04-17T21:14:01Z
 ---
 
 # D-012: Deprioritize file split; focus Core rollout to subdomains and Personal

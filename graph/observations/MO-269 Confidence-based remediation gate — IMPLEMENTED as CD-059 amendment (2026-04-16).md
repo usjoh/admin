@@ -5,7 +5,7 @@ tags: [observation, implemented]
 category: implemented
 status: Resolved
 source: current-state/observations/MO-269.md
-generated: 2026-04-17T17:11:01Z
+generated: 2026-04-17T21:14:01Z
 ---
 
 # MO-269: Confidence-based remediation gate — IMPLEMENTED as CD-059 amendment (2026-04-16)
