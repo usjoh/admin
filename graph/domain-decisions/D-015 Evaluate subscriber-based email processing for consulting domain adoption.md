@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Superseded by D-026
 source: entries/D-015.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # D-015: Evaluate subscriber-based email processing for consulting domain adoption

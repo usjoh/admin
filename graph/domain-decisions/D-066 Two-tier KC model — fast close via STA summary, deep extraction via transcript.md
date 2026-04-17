@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Promoted to CD-045
 source: entries/D-066.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # D-066: Two-tier KC model — fast close via STA summary, deep extraction via transcript

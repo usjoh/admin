@@ -5,7 +5,7 @@ tags: [observation, design-consideration]
 category: design-consideration
 status: Active
 source: current-state/observations/MO-226.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # MO-226: NAS Map Professional directory — 326K files relevant to consulting at persona...

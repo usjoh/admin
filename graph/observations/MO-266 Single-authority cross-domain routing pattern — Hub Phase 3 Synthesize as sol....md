@@ -5,7 +5,7 @@ tags: [observation, pattern-validation]
 category: pattern-validation
 status: Active
 source: current-state/observations/MO-266.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # MO-266: Single-authority cross-domain routing pattern — Hub Phase 3 Synthesize as sol...

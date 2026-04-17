@@ -5,7 +5,7 @@ tags: [observation, Session Lifecycle]
 category: Session Lifecycle
 status: Active
 source: current-state/observations/MO-165.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # MO-165: STA summary status as active-session proxy is fragile

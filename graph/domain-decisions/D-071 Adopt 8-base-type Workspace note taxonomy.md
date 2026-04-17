@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Amended by CD-067
 source: entries/D-071.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # D-071: Adopt 8-base-type Workspace note taxonomy

@@ -5,7 +5,7 @@ tags: [observation, milestone]
 category: milestone
 status: Active
 source: current-state/observations/MO-276.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # MO-276: Bootstrap Evaluation Threshold — two independent harness evaluations 8 days a...

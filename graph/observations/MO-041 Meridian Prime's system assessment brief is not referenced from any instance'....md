@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Resolved
 source: current-state/observations/MO-041.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # MO-041: Meridian Prime's system assessment brief is not referenced from any instance'...

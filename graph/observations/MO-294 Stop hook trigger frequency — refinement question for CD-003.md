@@ -5,7 +5,7 @@ tags: [observation, observation]
 category: observation
 status: Active
 source: current-state/observations/MO-294.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # MO-294: Stop hook trigger frequency — refinement question for CD-003

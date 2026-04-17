@@ -5,7 +5,7 @@ tags: [observation, concern]
 category: concern
 status: Active
 source: current-state/observations/MO-285.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # MO-285: Call coaching gap — overselling pattern

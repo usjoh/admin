@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Superseded by D-054
 source: entries/D-011.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # D-011: Remove worktree/branch cleanup from session close (Platform Deference)

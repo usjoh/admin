@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Amended by D-060
 source: entries/D-055.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # D-055: TIA as transcript ingestion validator with executor-ready design

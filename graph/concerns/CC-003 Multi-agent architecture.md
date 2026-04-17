@@ -4,7 +4,7 @@ type: concern
 tags: [concern]
 status: Active
 source: .kos/concerns/CC-003.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # CC-003: Multi-agent architecture

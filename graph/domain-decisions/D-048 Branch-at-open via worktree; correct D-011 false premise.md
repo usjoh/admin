@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Superseded by D-054
 source: entries/D-048.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # D-048: Branch-at-open via worktree; correct D-011 false premise

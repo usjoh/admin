@@ -4,7 +4,7 @@ type: convention
 tags: [convention]
 status: Active
 source: operational-model/decision-status-governance.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # CONV-DLSTAT: Decision status lifecycle

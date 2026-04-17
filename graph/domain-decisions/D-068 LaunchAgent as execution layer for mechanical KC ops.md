@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Promoted to CD-047
 source: entries/D-068.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # D-068: LaunchAgent as execution layer for mechanical KC ops

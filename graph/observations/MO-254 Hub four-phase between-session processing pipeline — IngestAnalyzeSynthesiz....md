@@ -5,7 +5,7 @@ tags: [observation, design-proposal]
 category: design-proposal
 status: Active
 source: current-state/observations/MO-254.md
-generated: 2026-04-17T12:10:36Z
+generated: 2026-04-17T17:11:01Z
 ---
 
 # MO-254: Hub four-phase between-session processing pipeline — Ingest/Analyze/Synthesiz...
