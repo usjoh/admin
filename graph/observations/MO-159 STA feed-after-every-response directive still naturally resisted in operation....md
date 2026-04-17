@@ -5,7 +5,7 @@ tags: [observation, friction]
 category: friction
 status: Active
 source: current-state/observations/MO-159.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-159: STA feed-after-every-response directive still naturally resisted in operation...

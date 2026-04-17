@@ -5,7 +5,7 @@ tags: [observation, concern]
 category: concern
 status: Active
 source: current-state/observations/MO-124.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-124: Public content is fundamentally different from code iteration — reputation ca...

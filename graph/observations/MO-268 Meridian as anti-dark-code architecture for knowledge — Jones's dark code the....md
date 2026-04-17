@@ -5,7 +5,7 @@ tags: [observation, pattern-validation]
 category: pattern-validation
 status: Active
 source: current-state/observations/MO-268.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-268: Meridian as anti-dark-code architecture for knowledge — Jones's dark code the...

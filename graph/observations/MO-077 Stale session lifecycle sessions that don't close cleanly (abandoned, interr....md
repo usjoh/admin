@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Active
 source: current-state/observations/MO-077.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-077: Stale session lifecycle: sessions that don't close cleanly (abandoned, interr...

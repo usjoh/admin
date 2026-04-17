@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Active
 source: current-state/observations/MO-092.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-092: Scripts using Path(__file__) or relative paths resolve to the worktree in wor...

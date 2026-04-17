@@ -5,7 +5,7 @@ tags: [observation, pattern-validation]
 category: pattern-validation
 status: Active
 source: current-state/observations/MO-245.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-245: Succession gap and layer drift failure mode — CSA chose Phase 1 over Phase 2...

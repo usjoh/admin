@@ -5,7 +5,7 @@ tags: [observation, feature-candidate]
 category: feature-candidate
 status: Active
 source: current-state/observations/MO-037.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-037: Knowledge Capture Step 1 upgraded: minimum scan set (ground truth before eval...

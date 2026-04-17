@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Amended by CD-067
 source: entries/D-070.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # D-070: Rename shared Obsidian vault from Notebook to Workspace

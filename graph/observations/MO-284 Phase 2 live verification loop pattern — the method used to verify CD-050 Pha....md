@@ -5,7 +5,7 @@ tags: [observation, feature-candidate]
 category: feature-candidate
 status: Active
 source: current-state/observations/MO-284.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-284: Phase 2 live verification loop pattern — the method used to verify CD-050 Pha...

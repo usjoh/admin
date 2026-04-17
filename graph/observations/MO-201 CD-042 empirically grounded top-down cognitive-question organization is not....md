@@ -5,7 +5,7 @@ tags: [observation, architecture-validation]
 category: architecture-validation
 status: Active
 source: current-state/observations/MO-201.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-201: CD-042 empirically grounded: top-down cognitive-question organization is not...

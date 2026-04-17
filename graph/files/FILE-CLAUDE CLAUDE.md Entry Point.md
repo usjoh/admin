@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Core-ready
 source: CLAUDE.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # FILE-CLAUDE: CLAUDE.md Entry Point

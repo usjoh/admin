@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Active
 source: entries/D-026.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # D-026: Source Capabilities architecture for external data integration

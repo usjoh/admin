@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Superseded by D-054
 source: entries/D-042.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # D-042: Enable GitHub auto-delete head branches; remove stale branch check from session start

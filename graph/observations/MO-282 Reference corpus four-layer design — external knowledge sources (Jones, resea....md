@@ -5,7 +5,7 @@ tags: [observation, feature-candidate]
 category: feature-candidate
 status: Active
 source: current-state/observations/MO-282.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-282: Reference corpus four-layer design — external knowledge sources (Jones, resea...

@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Active
 source: entries/D-027.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # D-027: Adopt Session Transcript Agent (STA) as first Core agent service

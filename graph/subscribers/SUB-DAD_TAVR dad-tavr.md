@@ -4,7 +4,7 @@ type: subscriber
 tags: [subscriber]
 status: Active
 source: subscribers/dad-tavr.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # SUB-DAD_TAVR: dad-tavr

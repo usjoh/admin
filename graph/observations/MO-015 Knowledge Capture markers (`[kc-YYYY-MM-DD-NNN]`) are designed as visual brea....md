@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Active
 source: current-state/observations/MO-015.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-015: Knowledge Capture markers (`[kc-YYYY-MM-DD-NNN]`) are designed as visual brea...

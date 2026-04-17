@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Active
 source: current-state/observations/MO-013.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-013: D-003's "CLAUDE.md is now the single AI entry point" was intended to mean "st...

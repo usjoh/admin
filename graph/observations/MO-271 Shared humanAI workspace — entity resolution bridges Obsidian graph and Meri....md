@@ -5,7 +5,7 @@ tags: [observation, resolved]
 category: resolved
 status: Resolved
 source: current-state/observations/MO-271.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-271: Shared human/AI workspace — entity resolution bridges Obsidian graph and Meri...

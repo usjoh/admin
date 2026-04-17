@@ -5,7 +5,7 @@ tags: [observation, concern]
 category: concern
 status: Active
 source: current-state/observations/MO-279.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-279: iCloud Obsidian vault invisibility bug — vault created on iOS exists and is w...

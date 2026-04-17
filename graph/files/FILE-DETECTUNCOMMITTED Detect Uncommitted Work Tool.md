@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: .kos/tools/detect-uncommitted-work.sh
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # FILE-DETECTUNCOMMITTED: Detect Uncommitted Work Tool

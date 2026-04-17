@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Active
 source: current-state/observations/MO-071.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-071: Agent wrote all session changes to main repo root instead of worktree filesystem

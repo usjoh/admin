@@ -5,7 +5,7 @@ tags: [observation, feature-candidate]
 category: feature-candidate
 status: Active
 source: current-state/observations/MO-170.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-170: Cowork can generate its own session transcripts and write them to disk

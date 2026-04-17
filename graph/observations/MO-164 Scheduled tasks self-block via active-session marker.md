@@ -5,7 +5,7 @@ tags: [observation, Agent Architecture]
 category: Agent Architecture
 status: Active
 source: current-state/observations/MO-164.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-164: Scheduled tasks self-block via active-session marker

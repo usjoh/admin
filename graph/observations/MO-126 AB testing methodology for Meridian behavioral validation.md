@@ -5,7 +5,7 @@ tags: [observation, feature-candidate]
 category: feature-candidate
 status: Active
 source: current-state/observations/MO-126.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-126: A/B testing methodology for Meridian behavioral validation

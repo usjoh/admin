@@ -5,7 +5,7 @@ tags: [observation, architecture-signal]
 category: architecture-signal
 status: Active
 source: current-state/observations/MO-241.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-241: KSA characterized as legacy pattern requiring redesign, not formalization — f...

@@ -5,7 +5,7 @@ tags: [observation, vision]
 category: vision
 status: Active
 source: current-state/observations/MO-104.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-104: Meridian as organizational architecture proof case: new framing connecting Fa...

@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: .kos/tools/compact-lancedb.js
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # FILE-COMPACTLDB: LanceDB Compaction Tool

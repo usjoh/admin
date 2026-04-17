@@ -5,7 +5,7 @@ tags: [observation, architecture-validation]
 category: architecture-validation
 status: Active
 source: current-state/observations/MO-211.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-211: Agents (STA, LWA, KC, KSA, DWA) and Skills (meridian-email-draft) follow the...

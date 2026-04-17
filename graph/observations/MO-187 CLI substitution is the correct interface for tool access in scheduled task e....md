@@ -5,7 +5,7 @@ tags: [observation, pattern-validation]
 category: pattern-validation
 status: Active
 source: current-state/observations/MO-187.md
-generated: 2026-04-17T21:14:01Z
+generated: 2026-04-17T23:30:55Z
 ---
 
 # MO-187: CLI substitution is the correct interface for tool access in scheduled task e...
