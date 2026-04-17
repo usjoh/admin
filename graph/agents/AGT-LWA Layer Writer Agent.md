@@ -4,7 +4,7 @@ type: agent
 tags: [agent]
 status: Core-ready
 source: .kos/agents/lwa-3.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # AGT-LWA: Layer Writer Agent

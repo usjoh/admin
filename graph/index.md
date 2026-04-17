@@ -1,15 +1,15 @@
 ---
 type: index
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md` and `decision-log/relationships.md`. Do not edit.
 
-**Entities:** 174 | **Relationships:** 151
+**Entities:** 183 | **Relationships:** 183
 
-## Decisions (61)
+## Decisions (68)
 
 - CD-001 — Namespaced decision numbering `Active (amended by CD-041)`
 - CD-002 — Core/Domain separation `Active`
@@ -71,6 +71,13 @@ Auto-generated from `core-relationships.md` and `decision-log/relationships.md`.
 - CD-058 — Domain Relationship Infrastructure `Active`
 - CD-059 — Audit Remediation as Sleep Mode Pipeline Phase `Active`
 - CD-060 — Hub as Cross-Domain Router — Retire Feed Files `Active`
+- CD-061 — Notebook Hub-Served Knowledge Surface `Active`
+- CD-062 — Sleep Mode as Execution Model — Retire LaunchAgents `Active`
+- CD-063 — Domain Sleep Mode Inherits Hub Pipeline `Active`
+- CD-064 — Goal-Focused Evaluation Framework `Active`
+- CD-065 — I/O Interface Architecture `Active`
+- CD-066 — Autonomous Execution Architecture `Active`
+- CD-067 — Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files `Active`
 - D-060 — Inter-session notification pattern `Active`
 
 ## Domain-Decisions (66)
@@ -148,7 +155,7 @@ Auto-generated from `core-relationships.md` and `decision-log/relationships.md`.
 - AGT-KC — Knowledge Capture Agent `Core-ready`
 - AGT-KSA — Knowledge Search Agent `Core-ready`
 - AGT-LWA — Layer Writer Agent `Core-ready`
-- AGT-STA — Session Transcript Agent `Validated`
+- AGT-STA — Session Transcript Agent `Retired (CD-067)`
 - AGT-TIA — Transcript Ingestion Agent (retired) `Retired (D-060)`
 
 ## Protocols (5)
@@ -157,22 +164,24 @@ Auto-generated from `core-relationships.md` and `decision-log/relationships.md`.
 - PROT-KSA — KSA Protocol `Core-ready`
 - PROT-LIFECYCLE — Session Lifecycle `Validated`
 - PROT-LWA — LWA Protocol `Core-ready`
-- PROT-STA — STA Protocol `Validated`
+- PROT-STA — STA Protocol `Retired (CD-067)`
 
 ## Tasks (1)
 
 - TASK-KCP — KC Pipeline `Core-ready`
 
-## Files (14)
+## Files (16)
 
 - FILE-AUDIT — Core Audit Protocol `Active`
 - FILE-CHANGELOG — Core Changelog `Active`
 - FILE-CLAUDE — CLAUDE.md Entry Point `Core-ready`
 - FILE-CODEMAP — Code Map `Active`
+- FILE-COMPACTLDB — LanceDB Compaction Tool `Active`
 - FILE-CURSTATE — Core Current State `Core-ready`
 - FILE-DECISIONS — Core Decisions `Core-ready`
 - FILE-EXTRACTREL — Domain Relationship Extractor `Active`
 - FILE-GRAPHGEN — Graph Generator `Active`
+- FILE-INCRCHECK — Incremental Corpus Check Tool `Active`
 - FILE-PRINCIPLES — Core Principles `Core-ready`
 - FILE-REL — Core Relationships `Active`
 - FILE-SETTINGS — Core Settings Template `Core-ready`

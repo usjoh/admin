@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-031.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # CD-031: CSA-as-broker for KSA

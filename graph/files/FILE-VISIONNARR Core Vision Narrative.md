@@ -4,10 +4,14 @@ type: file
 tags: [file]
 status: Validated
 source: .kos/core-vision-narrative.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # FILE-VISIONNARR: Core Vision Narrative
 
 **Status:** Validated
 **Source:** `.kos/core-vision-narrative.md`
+
+## Relationships
+
+**created-by:** [[CD-021 Core-vision.md self-referential principle|Core-vision.md self-referential principle]] (Vision narrative separation — .kos/core-vision-narrative.md)

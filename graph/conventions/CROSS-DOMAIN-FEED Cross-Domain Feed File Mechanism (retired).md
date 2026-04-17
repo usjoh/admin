@@ -4,7 +4,7 @@ type: convention
 tags: [convention]
 status: Superseded
 source: current-state/*-feed.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # CROSS-DOMAIN-FEED: Cross-Domain Feed File Mechanism (retired)

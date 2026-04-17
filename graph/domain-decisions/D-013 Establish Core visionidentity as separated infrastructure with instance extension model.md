@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Active
 source: entries/D-013.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # D-013: Establish Core vision/identity as separated infrastructure with instance extension model

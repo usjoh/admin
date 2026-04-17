@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-003.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # CD-003: Active session false-close fix
@@ -15,3 +15,4 @@ generated: 2026-04-13T17:40:34Z
 ## Relationships
 
 **amends:** [[PROT-LIFECYCLE Session Lifecycle|Session Lifecycle]] (Fixed active session false-close detection)
+**amended-by:** [[CD-067 Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files|Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files]] (Stop hook purpose redefined from liveness to continuous git checkpointing)

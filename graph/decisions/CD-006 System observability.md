@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Open
 source: .kos/decisions/CD-006.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # CD-006: System observability
@@ -15,3 +15,4 @@ generated: 2026-04-13T17:40:34Z
 ## Relationships
 
 **extends:** [[CD-011 Corpus Consistency Auditing|Corpus Consistency Auditing]] (System observability addressed by audit protocol)
+**extended-by:** [[CD-064 Goal-Focused Evaluation Framework|Goal-Focused Evaluation Framework]] (Operationalizes system observability (Hub Remediate, C-2026-022))

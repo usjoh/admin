@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Simplified by D-054
 source: entries/D-053.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # D-053: Add main repo hygiene enforcement to session lifecycle

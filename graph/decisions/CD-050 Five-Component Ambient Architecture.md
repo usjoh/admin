@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-050.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # CD-050: Five-Component Ambient Architecture
@@ -16,4 +16,4 @@ generated: 2026-04-13T17:40:34Z
 
 **extends:** [[CD-048 Unified Execution Pattern Skills and Agents as Deployment Modes|Unified Execution Pattern: Skills and Agents as Deployment Modes]] (Five-component ambient architecture extends unified execution pattern), [[CD-049 Orchestration Policy as Named Core Concept|Orchestration Policy as Named Core Concept]] (Ambient architecture includes orchestration policy)
 **amended-by:** [[CD-052 Signal File Redesign — Nudge Not Payload|Signal File Redesign — Nudge Not Payload]] (Signal File Redesign amends five-component ambient architecture)
-**extended-by:** [[CD-055 Semantic Surfaces as Layered Reasoning Infrastructure|Semantic Surfaces as Layered Reasoning Infrastructure]] (Layered reasoning infrastructure extends five-component ambient architecture), [[CD-057 Working-Memory Lifecycle Management|Working-Memory Lifecycle Management]] (Working-memory lifecycle extends ambient architecture)
+**extended-by:** [[CD-055 Semantic Surfaces as Layered Reasoning Infrastructure|Semantic Surfaces as Layered Reasoning Infrastructure]] (Layered reasoning infrastructure extends five-component ambient architecture), [[CD-057 Working-Memory Lifecycle Management|Working-Memory Lifecycle Management]] (Working-memory lifecycle extends ambient architecture), [[CD-065 IO Interface Architecture|I/O Interface Architecture]] (I/O interface architecture extends ambient architecture's context model to external channels), [[CD-067 Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files|Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files]] (Workspace session notes and KC finding notes leverage working-memory surface model)

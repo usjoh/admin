@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-035.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # CD-035: Adopt shared credential convention

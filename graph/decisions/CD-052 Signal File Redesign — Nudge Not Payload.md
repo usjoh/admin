@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-052.md
-generated: 2026-04-13T17:40:34Z
+generated: 2026-04-17T05:48:41Z
 ---
 
 # CD-052: Signal File Redesign — Nudge Not Payload
@@ -15,3 +15,4 @@ generated: 2026-04-13T17:40:34Z
 ## Relationships
 
 **amends:** [[CD-029 Hook-based STA-to-CSA injection|Hook-based STA-to-CSA injection]] (Signal File Redesign amends hook-based STA-to-CSA injection), [[CD-050 Five-Component Ambient Architecture|Five-Component Ambient Architecture]] (Signal File Redesign amends five-component ambient architecture)
+**extended-by:** [[CD-067 Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files|Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files]] (Signal file retired entirely; working memory + ambient query replace coordination need)
