@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Active
 source: current-state/observations/MO-227.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # MO-227: Data format as token waste vector — Jones's token waste taxonomy maps to 4 Me...

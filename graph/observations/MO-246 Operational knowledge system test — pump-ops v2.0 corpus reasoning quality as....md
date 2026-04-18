@@ -5,7 +5,7 @@ tags: [observation, pattern-validation]
 category: pattern-validation
 status: Resolved
 source: current-state/observations/MO-246.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # MO-246: Operational knowledge system test — pump-ops v2.0 corpus reasoning quality as...

@@ -1,15 +1,15 @@
 ---
 type: index
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, and `current-state/observations/relationships.md`. Do not edit.
 
-**Entities:** 468 | **Relationships:** 707
+**Entities:** 469 | **Relationships:** 716
 
-## Decisions (69)
+## Decisions (70)
 
 - CD-001 — Namespaced decision numbering `Active (amended by CD-041)`
 - CD-002 — Core/Domain separation `Active`
@@ -79,6 +79,7 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - CD-066 — Autonomous Execution Architecture `Active`
 - CD-067 — Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files `Active`
 - CD-068 — True Tool Surface for Meridian `Draft`
+- CD-069 — Core Graduation to Meridian `Draft`
 - D-060 — Inter-session notification pattern `Active`
 
 ## Domain-Decisions (69)

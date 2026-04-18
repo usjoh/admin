@@ -5,7 +5,7 @@ tags: [observation, concern]
 category: concern
 status: Active
 source: current-state/observations/MO-296.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # MO-296: Generated-artifact commit lag hides architectural visibility

@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-067.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # CD-067: Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files
@@ -19,4 +19,5 @@ generated: 2026-04-17T23:30:55Z
 **implemented-by:** [[FILE-DETECTUNCOMMITTED Detect Uncommitted Work Tool|Detect Uncommitted Work Tool]] (Phase 3 — session-start uncommitted-work detection)
 **resolves:** [[MO-294 Stop hook trigger frequency — refinement question for CD-003|Stop hook trigger frequency — refinement question for CD-003]] (Resolution recorded in MO-294)
 **retires:** [[AGT-STA Session Transcript Agent|Session Transcript Agent]] (STA agent retired; orientation roles absorbed by CSA), [[PROT-STA STA Protocol|STA Protocol]] (STA protocol deprecated; replaced by Workspace-first session-surface protocol)
+**amended-by:** [[CD-069 Core Graduation to Meridian|Core Graduation to Meridian]] (Replaces Phase 8 (copy-based Core Sync propagation) with Meridian-reference model; all other CD-067 phases intact)
 **referenced-by:** [[MO-294 Stop hook trigger frequency — refinement question for CD-003|Stop hook trigger frequency — refinement question for CD-003]] (Referenced in MO-294), [[MO-295 Hub Sleep Mode pipeline commit scope — pipeline committed only hubnotificati...|Hub Sleep Mode pipeline commit scope — pipeline committed only hub/notificati...]] (Referenced in MO-295), [[MO-296 Generated-artifact commit lag hides architectural visibility|Generated-artifact commit lag hides architectural visibility]] (Referenced in MO-296)

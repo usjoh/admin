@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Amended by D-054 (Phase 4 simplified)
 source: entries/D-036.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # D-036: Unify meridian close and session close into single protocol

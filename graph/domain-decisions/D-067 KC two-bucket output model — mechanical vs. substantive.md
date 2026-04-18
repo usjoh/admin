@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Promoted to CD-046
 source: entries/D-067.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # D-067: KC two-bucket output model — mechanical vs. substantive

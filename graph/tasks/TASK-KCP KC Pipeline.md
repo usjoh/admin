@@ -4,7 +4,7 @@ type: task
 tags: [task]
 status: Core-ready
 source: .kos/tasks/kc-pipeline.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # TASK-KCP: KC Pipeline

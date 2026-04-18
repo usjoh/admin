@@ -5,7 +5,7 @@ tags: [observation, platform-constraint]
 category: platform-constraint
 status: Active
 source: current-state/observations/MO-168.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # MO-168: Scheduled task platform limitations block autonomous Hub operation

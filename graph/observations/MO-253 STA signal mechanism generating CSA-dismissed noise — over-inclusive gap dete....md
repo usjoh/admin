@@ -5,7 +5,7 @@ tags: [observation, efficiency-concern]
 category: efficiency-concern
 status: Active
 source: current-state/observations/MO-253.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # MO-253: STA signal mechanism generating CSA-dismissed noise — over-inclusive gap dete...

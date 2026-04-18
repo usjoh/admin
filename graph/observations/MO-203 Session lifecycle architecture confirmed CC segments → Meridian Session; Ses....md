@@ -5,7 +5,7 @@ tags: [observation, architecture-validation]
 category: architecture-validation
 status: Active
 source: current-state/observations/MO-203.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # MO-203: Session lifecycle architecture confirmed: CC segments → Meridian Session; Ses...

@@ -5,7 +5,7 @@ tags: [observation, concern]
 category: concern
 status: Resolved
 source: current-state/observations/MO-277.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # MO-277: Obsidian multi-vault confusion risk — iCloud container opened as parent vault...

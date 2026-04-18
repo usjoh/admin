@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Active
 source: current-state/observations/MO-270.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # MO-270: Domain contamination — subdomain co-location leaks consulting perspective int...
@@ -17,3 +17,4 @@ generated: 2026-04-17T23:30:55Z
 
 **references:** [[CD-002 CoreDomain separation|Core/Domain separation]] (Referenced in MO-270), [[CD-025 Subdomain structural requirements|Subdomain structural requirements]] (Referenced in MO-270)
 **referenced-by:** [[MO-271 Shared humanAI workspace — entity resolution bridges Obsidian graph and Meri...|Shared human/AI workspace — entity resolution bridges Obsidian graph and Meri...]] (Referenced in MO-271)
+**retired-by:** [[CD-069 Core Graduation to Meridian|Core Graduation to Meridian]] (Dual-presence pattern (consulting/Meridian overlap) replaced by uniform subdomains/ structure)

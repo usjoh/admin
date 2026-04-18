@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-013.md
-generated: 2026-04-17T23:30:55Z
+generated: 2026-04-18T03:47:27Z
 ---
 
 # CD-013: Prototype kernel pattern
@@ -16,3 +16,4 @@ generated: 2026-04-17T23:30:55Z
 
 **extends:** [[CD-012 Adopt Meridian KOS standard|Adopt Meridian KOS standard]] (Prototype kernel extends KOS standard)
 **governed-by:** [[CD-012 Adopt Meridian KOS standard|Adopt Meridian KOS standard]] (KOS standard governs prototype kernel pattern)
+**retired-by:** [[CD-069 Core Graduation to Meridian|Core Graduation to Meridian]] (Core-prototyped-in-consulting is a bootstrap artifact, not a principle; consulting becomes a Meridian subdomain)
