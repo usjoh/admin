@@ -3,14 +3,14 @@ id: PROT-LIFECYCLE
 type: protocol
 tags: [protocol]
 status: Validated
-source: .kos/core-session-lifecycle.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-session-lifecycle.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # PROT-LIFECYCLE: Session Lifecycle
 
 **Status:** Validated
-**Source:** `.kos/core-session-lifecycle.md`
+**Source:** `kos/core-session-lifecycle.md`
 
 ## Relationships
 

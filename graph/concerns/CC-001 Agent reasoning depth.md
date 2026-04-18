@@ -3,14 +3,14 @@ id: CC-001
 type: concern
 tags: [concern]
 status: Active
-source: .kos/concerns/CC-001.md
-generated: 2026-04-18T12:13:27Z
+source: kos/concerns/CC-001.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CC-001: Agent reasoning depth
 
 **Status:** Active
-**Source:** `.kos/concerns/CC-001.md`
+**Source:** `kos/concerns/CC-001.md`
 
 ## Relationships
 

@@ -3,14 +3,14 @@ id: CONV-KCSUMM
 type: convention
 tags: [convention]
 status: Active
-source: .kos/core-knowledge-capture.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-knowledge-capture.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CONV-KCSUMM: KC Summary as primary session artifact
 
 **Status:** Active
-**Source:** `.kos/core-knowledge-capture.md`
+**Source:** `kos/core-knowledge-capture.md`
 
 ## Relationships
 

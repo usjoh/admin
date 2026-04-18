@@ -3,14 +3,14 @@ id: CD-014
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-014.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-014.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-014: Core behavioral principles
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-014.md`
+**Source:** `kos/decisions/CD-014.md`
 
 ## Relationships
 

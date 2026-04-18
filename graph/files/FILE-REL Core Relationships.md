@@ -3,14 +3,14 @@ id: FILE-REL
 type: file
 tags: [file]
 status: Active
-source: .kos/core-relationships.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-relationships.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-REL: Core Relationships
 
 **Status:** Active
-**Source:** `.kos/core-relationships.md`
+**Source:** `kos/core-relationships.md`
 
 ## Relationships
 

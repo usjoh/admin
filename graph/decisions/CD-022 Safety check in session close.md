@@ -3,14 +3,14 @@ id: CD-022
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-022.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-022.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-022: Safety check in session close
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-022.md`
+**Source:** `kos/decisions/CD-022.md`
 
 ## Relationships
 

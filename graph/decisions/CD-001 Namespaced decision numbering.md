@@ -3,14 +3,14 @@ id: CD-001
 type: decision
 tags: [decision]
 status: Active (amended by CD-041)
-source: .kos/decisions/CD-001.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-001.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-001: Namespaced decision numbering
 
 **Status:** Active (amended by CD-041)
-**Source:** `.kos/decisions/CD-001.md`
+**Source:** `kos/decisions/CD-001.md`
 
 ## Relationships
 

@@ -3,14 +3,14 @@ id: CD-012
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-012.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-012.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-012: Adopt Meridian KOS standard
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-012.md`
+**Source:** `kos/decisions/CD-012.md`
 
 ## Relationships
 

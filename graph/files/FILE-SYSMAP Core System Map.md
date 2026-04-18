@@ -3,14 +3,14 @@ id: FILE-SYSMAP
 type: file
 tags: [file]
 status: Validated
-source: .kos/core-system-map.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-system-map.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-SYSMAP: Core System Map
 
 **Status:** Validated
-**Source:** `.kos/core-system-map.md`
+**Source:** `kos/core-system-map.md`
 
 ## Relationships
 

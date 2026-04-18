@@ -3,14 +3,14 @@ id: FILE-COMPACTLDB
 type: file
 tags: [file]
 status: Active
-source: .kos/tools/compact-lancedb.js
-generated: 2026-04-18T12:13:27Z
+source: kos/tools/compact-lancedb.js
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-COMPACTLDB: LanceDB Compaction Tool
 
 **Status:** Active
-**Source:** `.kos/tools/compact-lancedb.js`
+**Source:** `kos/tools/compact-lancedb.js`
 
 ## Relationships
 

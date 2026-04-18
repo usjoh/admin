@@ -3,14 +3,14 @@ id: FILE-CODEMAP
 type: file
 tags: [file]
 status: Active
-source: .kos/code-map.md
-generated: 2026-04-18T12:13:27Z
+source: kos/code-map.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-CODEMAP: Code Map
 
 **Status:** Active
-**Source:** `.kos/code-map.md`
+**Source:** `kos/code-map.md`
 
 ## Relationships
 

@@ -3,15 +3,15 @@ id: FILE-CHANGELOG
 type: file
 tags: [file]
 status: Active
-source: .kos/CHANGELOG.md
-generated: 2026-04-18T12:13:27Z
+source: kos/CHANGELOG.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-CHANGELOG: Core Changelog
 
 **Status:** Active
-**Source:** `.kos/CHANGELOG.md`
+**Source:** `kos/CHANGELOG.md`
 
 ## Relationships
 
-**created-by:** [[CD-008 Developer Write Agent|Developer Write Agent]] (DWA decision established .kos/CHANGELOG.md as Core audit trail)
+**created-by:** [[CD-008 Developer Write Agent|Developer Write Agent]] (DWA decision established kos/CHANGELOG.md as Core audit trail)

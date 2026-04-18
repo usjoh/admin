@@ -3,14 +3,14 @@ id: CD-028
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-028.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-028.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-028: STA pivot to session awareness
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-028.md`
+**Source:** `kos/decisions/CD-028.md`
 
 ## Relationships
 

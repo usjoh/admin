@@ -3,14 +3,14 @@ id: CD-017
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-017.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-017.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-017: Core vision/identity as infrastructure
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-017.md`
+**Source:** `kos/decisions/CD-017.md`
 
 ## Relationships
 

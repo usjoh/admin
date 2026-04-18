@@ -3,14 +3,14 @@ id: CD-015
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-015.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-015.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-015: Auto-memory is platform feature
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-015.md`
+**Source:** `kos/decisions/CD-015.md`
 
 ## Relationships
 

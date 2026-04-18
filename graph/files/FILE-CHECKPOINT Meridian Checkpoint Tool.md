@@ -3,14 +3,14 @@ id: FILE-CHECKPOINT
 type: file
 tags: [file]
 status: Active
-source: .kos/tools/meridian-checkpoint.sh
-generated: 2026-04-18T12:13:27Z
+source: kos/tools/meridian-checkpoint.sh
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-CHECKPOINT: Meridian Checkpoint Tool
 
 **Status:** Active
-**Source:** `.kos/tools/meridian-checkpoint.sh`
+**Source:** `kos/tools/meridian-checkpoint.sh`
 
 ## Relationships
 

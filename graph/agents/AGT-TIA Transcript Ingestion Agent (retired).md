@@ -3,14 +3,14 @@ id: AGT-TIA
 type: agent
 tags: [agent]
 status: Retired (D-060)
-source: .kos/agents/tia-2.md
-generated: 2026-04-18T12:13:27Z
+source: kos/agents/tia-2.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # AGT-TIA: Transcript Ingestion Agent (retired)
 
 **Status:** Retired (D-060)
-**Source:** `.kos/agents/tia-2.md`
+**Source:** `kos/agents/tia-2.md`
 
 ## Relationships
 

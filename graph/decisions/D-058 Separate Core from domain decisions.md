@@ -3,14 +3,14 @@ id: D-058
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/D-058.md
-generated: 2026-04-12T23:17:25Z
+source: kos/decisions/D-058.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # D-058: Separate Core from domain decisions
 
 **Status:** Active
-**Source:** `.kos/decisions/D-058.md`
+**Source:** `kos/decisions/D-058.md`
 
 ## Relationships
 

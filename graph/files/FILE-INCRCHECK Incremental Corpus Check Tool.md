@@ -3,14 +3,14 @@ id: FILE-INCRCHECK
 type: file
 tags: [file]
 status: Active
-source: .kos/tools/incremental-corpus-check.sh
-generated: 2026-04-18T12:13:27Z
+source: kos/tools/incremental-corpus-check.sh
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-INCRCHECK: Incremental Corpus Check Tool
 
 **Status:** Active
-**Source:** `.kos/tools/incremental-corpus-check.sh`
+**Source:** `kos/tools/incremental-corpus-check.sh`
 
 ## Relationships
 

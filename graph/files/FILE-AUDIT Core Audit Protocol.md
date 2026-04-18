@@ -3,14 +3,14 @@ id: FILE-AUDIT
 type: file
 tags: [file]
 status: Active
-source: .kos/core-audit-protocol.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-audit-protocol.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-AUDIT: Core Audit Protocol
 
 **Status:** Active
-**Source:** `.kos/core-audit-protocol.md`
+**Source:** `kos/core-audit-protocol.md`
 
 ## Relationships
 

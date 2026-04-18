@@ -3,14 +3,14 @@ id: FILE-GRAPHGEN
 type: file
 tags: [file]
 status: Active
-source: .kos/tools/generate-graph.py
-generated: 2026-04-18T12:13:27Z
+source: kos/tools/generate-graph.py
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-GRAPHGEN: Graph Generator
 
 **Status:** Active
-**Source:** `.kos/tools/generate-graph.py`
+**Source:** `kos/tools/generate-graph.py`
 
 ## Relationships
 

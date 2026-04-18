@@ -3,14 +3,14 @@ id: CC-004
 type: concern
 tags: [concern]
 status: Resolved
-source: .kos/concerns/CC-004.md
-generated: 2026-04-18T12:13:27Z
+source: kos/concerns/CC-004.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CC-004: File contention
 
 **Status:** Resolved
-**Source:** `.kos/concerns/CC-004.md`
+**Source:** `kos/concerns/CC-004.md`
 
 ## Relationships
 

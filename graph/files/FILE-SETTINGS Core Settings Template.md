@@ -3,14 +3,14 @@ id: FILE-SETTINGS
 type: file
 tags: [file]
 status: Core-ready
-source: .kos/core-settings-template.json
-generated: 2026-04-18T12:13:27Z
+source: kos/core-settings-template.json
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-SETTINGS: Core Settings Template
 
 **Status:** Core-ready
-**Source:** `.kos/core-settings-template.json`
+**Source:** `kos/core-settings-template.json`
 
 ## Relationships
 

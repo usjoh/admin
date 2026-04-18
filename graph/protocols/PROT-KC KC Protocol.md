@@ -3,14 +3,14 @@ id: PROT-KC
 type: protocol
 tags: [protocol]
 status: Core-ready
-source: .kos/core-knowledge-capture.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-knowledge-capture.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # PROT-KC: KC Protocol
 
 **Status:** Core-ready
-**Source:** `.kos/core-knowledge-capture.md`
+**Source:** `kos/core-knowledge-capture.md`
 
 ## Relationships
 

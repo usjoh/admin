@@ -3,14 +3,14 @@ id: CD-035
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-035.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-035.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-035: Adopt shared credential convention
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-035.md`
+**Source:** `kos/decisions/CD-035.md`
 
 ## Relationships
 

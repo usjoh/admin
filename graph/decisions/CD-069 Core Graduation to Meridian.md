@@ -3,14 +3,14 @@ id: CD-069
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-069.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-069.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-069: Core Graduation to Meridian
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-069.md`
+**Source:** `kos/decisions/CD-069.md`
 
 ## Relationships
 
@@ -18,5 +18,5 @@ generated: 2026-04-18T12:13:27Z
 **depends-on:** [[CD-068 True Tool Surface for Meridian|True Tool Surface for Meridian]] (CD-068 formal body drafting unblocked by CD-069 resolution (Q4 dependency))
 **extends:** [[CD-066 Autonomous Execution Architecture|Autonomous Execution Architecture]] (Meridian as autonomous-execution substrate aligns with Autonomous Execution Architecture), [[CD-050 Five-Component Ambient Architecture|Five-Component Ambient Architecture]] (Hub-Primary working-memory survives compaction; aligns with Two-Surface memory model), [[CD-068 True Tool Surface for Meridian|True Tool Surface for Meridian]] (Lifts CD-068 Pydantic schema/Capability Registry pattern to Meridian-wide tool registry (Q13); adopts OB1 n-agentic-harnesses file 03 pattern)
 **references:** [[MO-301|MO-301]] (Tool contract discipline — Capability Registry (CD-069 Q13) operationalizes MO-301)
-**retires:** [[CD-013 Prototype kernel pattern|Prototype kernel pattern]] (Core-prototyped-in-consulting is a bootstrap artifact, not a principle; consulting becomes a Meridian subdomain), [[MO-270 Domain contamination — subdomain co-location leaks consulting perspective int...|Domain contamination — subdomain co-location leaks consulting perspective int...]] (Dual-presence pattern (consulting/Meridian overlap) replaced by uniform subdomains/ structure)
+**retires:** [[CD-013 Prototype kernel pattern|Prototype kernel pattern]] (Core-prototyped-in-consulting is a bootstrap artifact, not a principle; consulting becomes a Meridian subdomain), [[MO-270|MO-270]] (Dual-presence pattern (consulting/Meridian overlap) replaced by uniform subdomains/ structure)
 **implemented-by:** [[meridian-hub-MCP|meridian-hub MCP]] (POC vehicle from cc-20260417-1724 validates CD-069 direction)

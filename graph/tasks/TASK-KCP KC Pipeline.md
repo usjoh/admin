@@ -3,14 +3,14 @@ id: TASK-KCP
 type: task
 tags: [task]
 status: Core-ready
-source: .kos/tasks/kc-pipeline.md
-generated: 2026-04-18T12:13:27Z
+source: kos/tasks/kc-pipeline.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # TASK-KCP: KC Pipeline
 
 **Status:** Core-ready
-**Source:** `.kos/tasks/kc-pipeline.md`
+**Source:** `kos/tasks/kc-pipeline.md`
 
 ## Relationships
 

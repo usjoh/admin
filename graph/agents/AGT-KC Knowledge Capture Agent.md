@@ -3,14 +3,14 @@ id: AGT-KC
 type: agent
 tags: [agent]
 status: Core-ready
-source: .kos/agents/kc-5.md
-generated: 2026-04-18T12:13:27Z
+source: kos/agents/kc-5.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # AGT-KC: Knowledge Capture Agent
 
 **Status:** Core-ready
-**Source:** `.kos/agents/kc-5.md`
+**Source:** `kos/agents/kc-5.md`
 
 ## Relationships
 

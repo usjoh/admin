@@ -3,14 +3,14 @@ id: CD-030
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-030.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-030.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-030: Transcript archival during session close
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-030.md`
+**Source:** `kos/decisions/CD-030.md`
 
 ## Relationships
 

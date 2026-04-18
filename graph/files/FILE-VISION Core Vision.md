@@ -3,14 +3,14 @@ id: FILE-VISION
 type: file
 tags: [file]
 status: Validated
-source: .kos/core-vision.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-vision.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-VISION: Core Vision
 
 **Status:** Validated
-**Source:** `.kos/core-vision.md`
+**Source:** `kos/core-vision.md`
 
 ## Relationships
 

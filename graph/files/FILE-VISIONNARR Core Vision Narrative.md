@@ -3,15 +3,15 @@ id: FILE-VISIONNARR
 type: file
 tags: [file]
 status: Validated
-source: .kos/core-vision-narrative.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-vision-narrative.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-VISIONNARR: Core Vision Narrative
 
 **Status:** Validated
-**Source:** `.kos/core-vision-narrative.md`
+**Source:** `kos/core-vision-narrative.md`
 
 ## Relationships
 
-**created-by:** [[CD-021 Core-vision.md self-referential principle|Core-vision.md self-referential principle]] (Vision narrative separation — .kos/core-vision-narrative.md)
+**created-by:** [[CD-021 Core-vision.md self-referential principle|Core-vision.md self-referential principle]] (Vision narrative separation — kos/core-vision-narrative.md)

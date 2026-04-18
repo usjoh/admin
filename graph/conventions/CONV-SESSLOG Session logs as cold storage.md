@@ -4,7 +4,7 @@ type: convention
 tags: [convention]
 status: Active
 source: CLAUDE.md
-generated: 2026-04-18T12:13:27Z
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CONV-SESSLOG: Session logs as cold storage

@@ -3,14 +3,14 @@ id: CD-068
 type: decision
 tags: [decision]
 status: Draft
-source: .kos/decisions/CD-068.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-068.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-068: True Tool Surface for Meridian
 
 **Status:** Draft
-**Source:** `.kos/decisions/CD-068.md`
+**Source:** `kos/decisions/CD-068.md`
 
 ## Relationships
 

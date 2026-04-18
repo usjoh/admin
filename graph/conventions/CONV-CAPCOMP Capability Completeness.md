@@ -3,14 +3,14 @@ id: CONV-CAPCOMP
 type: convention
 tags: [convention]
 status: Active
-source: .kos/core-principles.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-principles.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CONV-CAPCOMP: Capability Completeness
 
 **Status:** Active
-**Source:** `.kos/core-principles.md`
+**Source:** `kos/core-principles.md`
 
 ## Relationships
 

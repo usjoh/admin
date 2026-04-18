@@ -3,14 +3,14 @@ id: CD-020
 type: decision
 tags: [decision]
 status: Active
-source: .kos/decisions/CD-020.md
-generated: 2026-04-18T12:13:27Z
+source: kos/decisions/CD-020.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # CD-020: Decision log status lifecycle
 
 **Status:** Active
-**Source:** `.kos/decisions/CD-020.md`
+**Source:** `kos/decisions/CD-020.md`
 
 ## Relationships
 

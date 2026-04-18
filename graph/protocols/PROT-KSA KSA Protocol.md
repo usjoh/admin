@@ -3,14 +3,14 @@ id: PROT-KSA
 type: protocol
 tags: [protocol]
 status: Core-ready
-source: .kos/core-knowledge-search.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-knowledge-search.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # PROT-KSA: KSA Protocol
 
 **Status:** Core-ready
-**Source:** `.kos/core-knowledge-search.md`
+**Source:** `kos/core-knowledge-search.md`
 
 ## Relationships
 

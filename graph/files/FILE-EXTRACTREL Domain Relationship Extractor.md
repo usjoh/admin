@@ -3,14 +3,14 @@ id: FILE-EXTRACTREL
 type: file
 tags: [file]
 status: Active
-source: .kos/tools/extract-domain-relationships.py
-generated: 2026-04-18T12:13:27Z
+source: kos/tools/extract-domain-relationships.py
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-EXTRACTREL: Domain Relationship Extractor
 
 **Status:** Active
-**Source:** `.kos/tools/extract-domain-relationships.py`
+**Source:** `kos/tools/extract-domain-relationships.py`
 
 ## Relationships
 

@@ -3,14 +3,14 @@ id: FILE-CURSTATE
 type: file
 tags: [file]
 status: Core-ready
-source: .kos/core-current-state.md
-generated: 2026-04-18T12:13:27Z
+source: kos/core-current-state.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # FILE-CURSTATE: Core Current State
 
 **Status:** Core-ready
-**Source:** `.kos/core-current-state.md`
+**Source:** `kos/core-current-state.md`
 
 ## Relationships
 

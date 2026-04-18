@@ -3,14 +3,14 @@ id: AGT-STA
 type: agent
 tags: [agent]
 status: Retired (CD-067)
-source: .kos/agents/sta-7.md
-generated: 2026-04-18T12:13:27Z
+source: kos/agents/sta-7.md
+generated: 2026-04-18T18:35:53Z
 ---
 
 # AGT-STA: Session Transcript Agent
 
 **Status:** Retired (CD-067)
-**Source:** `.kos/agents/sta-7.md`
+**Source:** `kos/agents/sta-7.md`
 
 ## Relationships
 
