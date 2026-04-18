@@ -5,7 +5,7 @@ tags: [observation, architecture]
 category: architecture
 status: Active
 source: current-state/observations/MO-105.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-105: Claude Code supports deliberate worktree re-entry (not just compaction)

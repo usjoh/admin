@@ -1,13 +1,13 @@
 ---
 type: index
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, and `current-state/observations/relationships.md`. Do not edit.
 
-**Entities:** 469 | **Relationships:** 716
+**Entities:** 460 | **Relationships:** 703
 
 ## Decisions (70)
 
@@ -79,7 +79,7 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - CD-066 — Autonomous Execution Architecture `Active`
 - CD-067 — Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files `Active`
 - CD-068 — True Tool Surface for Meridian `Draft`
-- CD-069 — Core Graduation to Meridian `Draft`
+- CD-069 — Core Graduation to Meridian `Active`
 - D-060 — Inter-session notification pattern `Active`
 
 ## Domain-Decisions (69)

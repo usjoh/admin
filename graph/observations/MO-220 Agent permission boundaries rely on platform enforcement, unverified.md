@@ -5,7 +5,7 @@ tags: [observation, concern]
 category: concern
 status: Active
 source: current-state/observations/MO-220.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-220: Agent permission boundaries rely on platform enforcement, unverified

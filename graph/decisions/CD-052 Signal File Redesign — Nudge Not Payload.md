@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: .kos/decisions/CD-052.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # CD-052: Signal File Redesign — Nudge Not Payload

@@ -5,7 +5,7 @@ tags: [observation, architecture-challenge]
 category: architecture-challenge
 status: Active
 source: current-state/observations/MO-214.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-214: Jones corpus validates Meridian architecture, challenges protocol weight — fi...

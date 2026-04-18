@@ -5,7 +5,7 @@ tags: [observation, bug]
 category: bug
 status: Active
 source: current-state/observations/MO-295.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-295: Hub Sleep Mode pipeline commit scope — pipeline committed only hub/notificati...

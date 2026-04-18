@@ -5,7 +5,7 @@ tags: [observation, architecture-evaluation]
 category: architecture-evaluation
 status: Active
 source: current-state/observations/MO-098.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-098: Core layer governance gap: LWA explicitly excludes .kos/ Core files, but Core...

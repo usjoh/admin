@@ -5,7 +5,7 @@ tags: [observation, architecture-validation]
 category: architecture-validation
 status: Active
 source: current-state/observations/MO-135.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-135: False premise corrected: agents DO have direct MCP tool access

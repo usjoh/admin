@@ -5,7 +5,7 @@ tags: [observation, bug]
 category: bug
 status: Active
 source: current-state/observations/MO-293.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-293: Working-memory ingest_data response bug — MCP server returns "Cannot read pro...

@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: .kos/core-relationships.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # FILE-REL: Core Relationships

@@ -2,14 +2,14 @@
 id: CD-069
 type: decision
 tags: [decision]
-status: Draft
+status: Active
 source: .kos/decisions/CD-069.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # CD-069: Core Graduation to Meridian
 
-**Status:** Draft
+**Status:** Active
 **Source:** `.kos/decisions/CD-069.md`
 
 ## Relationships

@@ -5,7 +5,7 @@ tags: [observation, vision]
 category: vision
 status: Active
 source: current-state/observations/MO-110.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-110: Design-layer vs construction-layer skill taxonomy

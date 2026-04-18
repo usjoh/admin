@@ -4,7 +4,7 @@ type: convention
 tags: [convention]
 status: Active
 source: .kos/core-principles.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # CONV-CAPCOMP: Capability Completeness

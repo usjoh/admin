@@ -5,7 +5,7 @@ tags: [observation, architecture-challenge]
 category: architecture-challenge
 status: Active
 source: current-state/observations/MO-231.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-231: KC pipeline design-out possibility — working memory + agent contracts may eli...

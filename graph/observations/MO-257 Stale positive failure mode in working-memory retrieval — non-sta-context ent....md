@@ -5,7 +5,7 @@ tags: [observation, gap]
 category: gap
 status: Resolved
 source: current-state/observations/MO-257.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-257: Stale positive failure mode in working-memory retrieval — non-sta-context ent...

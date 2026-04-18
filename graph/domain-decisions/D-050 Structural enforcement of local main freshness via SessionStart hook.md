@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Simplified by D-054
 source: entries/D-050.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # D-050: Structural enforcement of local main freshness via SessionStart hook

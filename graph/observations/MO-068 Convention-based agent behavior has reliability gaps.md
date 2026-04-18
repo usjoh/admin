@@ -5,7 +5,7 @@ tags: [observation, friction]
 category: friction
 status: Active
 source: current-state/observations/MO-068.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-068: Convention-based agent behavior has reliability gaps

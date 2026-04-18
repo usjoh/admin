@@ -5,7 +5,7 @@ tags: [observation, friction]
 category: friction
 status: Active
 source: current-state/observations/MO-174.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # MO-174: Background bash tasks launched by Claude Code are lost on context compaction...

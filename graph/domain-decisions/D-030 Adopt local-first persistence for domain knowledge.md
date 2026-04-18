@@ -4,7 +4,7 @@ type: domain-decision
 tags: [domain-decision]
 status: Amended by D-054 (gitignore mechanism removed, local-first write principle retained)
 source: entries/D-030.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-18T12:13:27Z
 ---
 
 # D-030: Adopt local-first persistence for domain knowledge
