@@ -1,15 +1,15 @@
 ---
 type: index
-generated: 2026-04-18T18:35:53Z
+generated: 2026-04-19T11:01:52Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, and `current-state/observations/relationships.md`. Do not edit.
 
-**Entities:** 113 | **Relationships:** 167
+**Entities:** 121 | **Relationships:** 172
 
-## Decisions (71)
+## Decisions (74)
 
 - CD-001 — Namespaced decision numbering `Active (amended by CD-041)`
 - CD-002 — Core/Domain separation `Active`
@@ -80,6 +80,9 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - CD-067 — Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files `Active`
 - CD-068 — True Tool Surface for Meridian `Draft`
 - CD-069 — Core Graduation to Meridian `Active`
+- CD-070 — Workspace as Tooled Surface `β skeleton`
+- CD-071 — Corpus Dispatcher `β skeleton`
+- CD-072 — Layer-Aware Graph Health `β skeleton`
 - D-058 — Separate Core from domain decisions `Active`
 - D-060 — Inter-session notification pattern `Active`
 
@@ -104,7 +107,7 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 
 - TASK-KCP — KC Pipeline `Core-ready`
 
-## Files (18)
+## Files (23)
 
 - FILE-AUDIT — Core Audit Protocol `Active`
 - FILE-CHANGELOG — Core Changelog `Active`
@@ -112,12 +115,17 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - FILE-CLAUDE — CLAUDE.md Entry Point `Core-ready`
 - FILE-CODEMAP — Code Map `Active`
 - FILE-COMPACTLDB — LanceDB Compaction Tool `Active`
+- FILE-CONTEXTSURF — Core Context Injection Surface `Active`
 - FILE-CURSTATE — Core Current State `Core-ready`
 - FILE-DECISIONS — Core Decisions `Core-ready`
 - FILE-DETECTUNCOMMITTED — Detect Uncommitted Work Tool `Active`
+- FILE-EVAL-CATALOG — Core Eval Catalog `Active`
+- FILE-EVAL-GOALS — Core Eval Health Goals `Active`
 - FILE-EXTRACTREL — Domain Relationship Extractor `Active`
 - FILE-GRAPHGEN — Graph Generator `Active`
 - FILE-INCRCHECK — Incremental Corpus Check Tool `Active`
+- FILE-IO-INTERFACE — Core I/O Interface Protocol `Active`
+- FILE-MOCAPTURE — Meridian Observation Capture Protocol `Active`
 - FILE-PRINCIPLES — Core Principles `Core-ready`
 - FILE-REL — Core Relationships `Active`
 - FILE-SETTINGS — Core Settings Template `Core-ready`

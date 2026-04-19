@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: kos/core-audit-protocol.md
-generated: 2026-04-18T18:35:53Z
+generated: 2026-04-19T11:01:52Z
 ---
 
 # FILE-AUDIT: Core Audit Protocol

@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-069.md
-generated: 2026-04-18T18:35:53Z
+generated: 2026-04-19T11:01:52Z
 ---
 
 # CD-069: Core Graduation to Meridian
@@ -15,6 +15,7 @@ generated: 2026-04-18T18:35:53Z
 ## Relationships
 
 **amends:** [[CD-067 Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files|Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files]] (Replaces Phase 8 (copy-based Core Sync propagation) with Meridian-reference model; all other CD-067 phases intact), [[CD-068 True Tool Surface for Meridian|True Tool Surface for Meridian]] (Reshapes Q2 (scope) and Q4 (versioning/deployment) under Meridian-resident MCP servers)
+**created:** [[FILE-MOCAPTURE Meridian Observation Capture Protocol|Meridian Observation Capture Protocol]] (Meridian Observation Capture promoted to Core protocol (Phase 2.5)), [[kos-capabilities--directory|kos/capabilities/ directory]] (Capability Registry directory — entity row deferred; natural-language target per C-2026-023 pattern)
 **depends-on:** [[CD-068 True Tool Surface for Meridian|True Tool Surface for Meridian]] (CD-068 formal body drafting unblocked by CD-069 resolution (Q4 dependency))
 **extends:** [[CD-066 Autonomous Execution Architecture|Autonomous Execution Architecture]] (Meridian as autonomous-execution substrate aligns with Autonomous Execution Architecture), [[CD-050 Five-Component Ambient Architecture|Five-Component Ambient Architecture]] (Hub-Primary working-memory survives compaction; aligns with Two-Surface memory model), [[CD-068 True Tool Surface for Meridian|True Tool Surface for Meridian]] (Lifts CD-068 Pydantic schema/Capability Registry pattern to Meridian-wide tool registry (Q13); adopts OB1 n-agentic-harnesses file 03 pattern)
 **references:** [[MO-301|MO-301]] (Tool contract discipline — Capability Registry (CD-069 Q13) operationalizes MO-301)

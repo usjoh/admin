@@ -4,7 +4,7 @@ type: concern
 tags: [concern]
 status: Resolved
 source: kos/concerns/CC-004.md
-generated: 2026-04-18T18:35:53Z
+generated: 2026-04-19T11:01:52Z
 ---
 
 # CC-004: File contention

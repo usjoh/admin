@@ -4,7 +4,7 @@ type: protocol
 tags: [protocol]
 status: Core-ready
 source: kos/core-knowledge-search.md
-generated: 2026-04-18T18:35:53Z
+generated: 2026-04-19T11:01:52Z
 ---
 
 # PROT-KSA: KSA Protocol
