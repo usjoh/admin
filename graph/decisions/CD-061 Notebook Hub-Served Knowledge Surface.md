@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-061.md
-generated: 2026-04-19T11:01:52Z
+generated: 2026-04-20T04:34:13Z
 ---
 
 # CD-061: Notebook Hub-Served Knowledge Surface
@@ -14,4 +14,4 @@ generated: 2026-04-19T11:01:52Z
 
 ## Relationships
 
-**governs:** [[Notebook-corpus-topology|Notebook corpus topology]] (Notebook as Hub-served knowledge surface)
+**governs:** [[[concept]-Notebook-corpus-topology|[concept] Notebook corpus topology]] (Notebook as Hub-served knowledge surface (concept target per CD-009 hybrid policy, amended 2026-04-19))

@@ -4,7 +4,7 @@ type: protocol
 tags: [protocol]
 status: Validated
 source: kos/core-session-lifecycle.md
-generated: 2026-04-19T11:01:52Z
+generated: 2026-04-20T04:34:13Z
 ---
 
 # PROT-LIFECYCLE: Session Lifecycle

@@ -1,13 +1,13 @@
 ---
 type: index
-generated: 2026-04-19T11:01:52Z
+generated: 2026-04-20T04:34:13Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, and `current-state/observations/relationships.md`. Do not edit.
 
-**Entities:** 121 | **Relationships:** 172
+**Entities:** 123 | **Relationships:** 172
 
 ## Decisions (74)
 
@@ -107,9 +107,10 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 
 - TASK-KCP — KC Pipeline `Core-ready`
 
-## Files (23)
+## Files (24)
 
 - FILE-AUDIT — Core Audit Protocol `Active`
+- FILE-CAPREG — Capability Registry `Active`
 - FILE-CHANGELOG — Core Changelog `Active`
 - FILE-CHECKPOINT — Meridian Checkpoint Tool `Active`
 - FILE-CLAUDE — CLAUDE.md Entry Point `Core-ready`
@@ -133,13 +134,14 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - FILE-VISION — Core Vision `Validated`
 - FILE-VISIONNARR — Core Vision Narrative `Validated`
 
-## Conventions (7)
+## Conventions (8)
 
 - CONV-CAPCOMP — Capability Completeness `Active`
 - CONV-CONSULT — Consult Before Solving `Active`
 - CONV-DLFMT — Decision log format `Active`
 - CONV-DLSTAT — Decision status lifecycle `Active`
 - CONV-KCSUMM — KC Summary as primary session artifact `Active`
+- CONV-ROW2 — Row 2 Checkpoint Pattern `Active`
 - CONV-SESSLOG — Session logs as cold storage `Active`
 - CROSS-DOMAIN-FEED — Cross-Domain Feed File Mechanism (retired) `Superseded`
 
