@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-069.md
-generated: 2026-04-20T04:34:13Z
+generated: 2026-04-21T02:19:02Z
 ---
 
 # CD-069: Core Graduation to Meridian

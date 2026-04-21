@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Core-ready
 source: kos/core-decisions.md
-generated: 2026-04-20T04:34:13Z
+generated: 2026-04-21T02:19:02Z
 ---
 
 # FILE-DECISIONS: Core Decisions

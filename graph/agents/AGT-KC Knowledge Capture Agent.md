@@ -4,7 +4,7 @@ type: agent
 tags: [agent]
 status: Core-ready
 source: kos/agents/kc-5.md
-generated: 2026-04-20T04:34:13Z
+generated: 2026-04-21T02:19:02Z
 ---
 
 # AGT-KC: Knowledge Capture Agent

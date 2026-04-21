@@ -4,7 +4,7 @@ type: convention
 tags: [convention]
 status: Active
 source: kos/core-system-map.md
-generated: 2026-04-20T04:34:13Z
+generated: 2026-04-21T02:19:02Z
 ---
 
 # CONV-ROW2: Row 2 Checkpoint Pattern
@@ -14,4 +14,4 @@ generated: 2026-04-20T04:34:13Z
 
 ## Relationships
 
-**implemented-by:** [[FILE-CHECKPOINT Meridian Checkpoint Tool|Meridian Checkpoint Tool]] (Canonical callable checkpoint mechanism (Row 2 #1, cc-20260417-0609). Target repointed to registered CONV-ROW2 entity cc-20260419-0708 per CD-009 hybrid policy amendment.)
+**implemented-by:** [[TOOL-MERIDIAN-CHECKPOINT|TOOL-MERIDIAN-CHECKPOINT]] (Canonical callable checkpoint mechanism (Row 2 #1, cc-20260417-0609). Target repointed to registered CONV-ROW2 entity cc-20260419-0708 per CD-009 hybrid policy amendment.)

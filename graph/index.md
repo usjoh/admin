@@ -1,15 +1,15 @@
 ---
 type: index
-generated: 2026-04-20T04:34:13Z
+generated: 2026-04-21T02:19:02Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, and `current-state/observations/relationships.md`. Do not edit.
 
-**Entities:** 123 | **Relationships:** 172
+**Entities:** 120 | **Relationships:** 168
 
-## Decisions (74)
+## Decisions (75)
 
 - CD-001 — Namespaced decision numbering `Active (amended by CD-041)`
 - CD-002 — Core/Domain separation `Active`
@@ -78,11 +78,12 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - CD-065 — I/O Interface Architecture `Active`
 - CD-066 — Autonomous Execution Architecture `Active`
 - CD-067 — Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files `Active`
-- CD-068 — True Tool Surface for Meridian `Draft`
+- CD-068 — True Tool Surface for Meridian `Active`
 - CD-069 — Core Graduation to Meridian `Active`
 - CD-070 — Workspace as Tooled Surface `β skeleton`
 - CD-071 — Corpus Dispatcher `β skeleton`
 - CD-072 — Layer-Aware Graph Health `β skeleton`
+- CD-073 — Operator-Data Separation `Active`
 - D-058 — Separate Core from domain decisions `Active`
 - D-060 — Inter-session notification pattern `Active`
 
@@ -107,30 +108,25 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 
 - TASK-KCP — KC Pipeline `Core-ready`
 
-## Files (24)
+## Files (19)
 
 - FILE-AUDIT — Core Audit Protocol `Active`
 - FILE-CAPREG — Capability Registry `Active`
 - FILE-CHANGELOG — Core Changelog `Active`
-- FILE-CHECKPOINT — Meridian Checkpoint Tool `Active`
 - FILE-CLAUDE — CLAUDE.md Entry Point `Core-ready`
 - FILE-CODEMAP — Code Map `Active`
-- FILE-COMPACTLDB — LanceDB Compaction Tool `Active`
 - FILE-CONTEXTSURF — Core Context Injection Surface `Active`
 - FILE-CURSTATE — Core Current State `Core-ready`
 - FILE-DECISIONS — Core Decisions `Core-ready`
-- FILE-DETECTUNCOMMITTED — Detect Uncommitted Work Tool `Active`
 - FILE-EVAL-CATALOG — Core Eval Catalog `Active`
 - FILE-EVAL-GOALS — Core Eval Health Goals `Active`
-- FILE-EXTRACTREL — Domain Relationship Extractor `Active`
-- FILE-GRAPHGEN — Graph Generator `Active`
-- FILE-INCRCHECK — Incremental Corpus Check Tool `Active`
 - FILE-IO-INTERFACE — Core I/O Interface Protocol `Active`
 - FILE-MOCAPTURE — Meridian Observation Capture Protocol `Active`
 - FILE-PRINCIPLES — Core Principles `Core-ready`
 - FILE-REL — Core Relationships `Active`
 - FILE-SETTINGS — Core Settings Template `Core-ready`
 - FILE-SYSMAP — Core System Map `Validated`
+- FILE-TOOL-ENTITIES — Tool Entities Registry `Active`
 - FILE-VISION — Core Vision `Validated`
 - FILE-VISIONNARR — Core Vision Narrative `Validated`
 
@@ -145,10 +141,11 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - CONV-SESSLOG — Session logs as cold storage `Active`
 - CROSS-DOMAIN-FEED — Cross-Domain Feed File Mechanism (retired) `Superseded`
 
-## Concerns (5)
+## Concerns (6)
 
 - CC-001 — Agent reasoning depth `Active`
 - CC-002 — Simpler interventions (CD-016) `Active`
 - CC-003 — Multi-agent architecture `Active`
 - CC-004 — File contention `Resolved`
 - CC-005 — Corpus Maintenance Agent `Active`
+- CC-006 — MaAM Parity Post-CD-069 `Active`

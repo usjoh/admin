@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: kos/core-relationships.md
-generated: 2026-04-20T04:34:13Z
+generated: 2026-04-21T02:19:02Z
 ---
 
 # FILE-REL: Core Relationships
@@ -15,4 +15,4 @@ generated: 2026-04-20T04:34:13Z
 ## Relationships
 
 **created-by:** [[CD-009 Core Entity-Relationship Graph|Core Entity-Relationship Graph]] (Core relationships)
-**depended-on-by:** [[FILE-AUDIT Core Audit Protocol|Core Audit Protocol]] (Protocol queries the relationship graph), [[FILE-GRAPHGEN Graph Generator|Graph Generator]] (Reads core-relationships.md as input)
+**depended-on-by:** [[FILE-AUDIT Core Audit Protocol|Core Audit Protocol]] (Protocol queries the relationship graph), [[TOOL-GENERATE-GRAPH|TOOL-GENERATE-GRAPH]] (Reads core-relationships.md as input)
