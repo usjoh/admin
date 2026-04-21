@@ -4,7 +4,7 @@ type: subscriber
 tags: [subscriber]
 status: Active
 source: subscribers/condo-board.md
-generated: 2026-04-18T03:47:27Z
+generated: 2026-04-21T18:13:58Z
 ---
 
 # SUB-CONDO_BOARD: condo-board

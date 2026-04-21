@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-016.md
-generated: 2026-04-21T05:23:29Z
+generated: 2026-04-21T18:13:58Z
 ---
 
 # CD-016: Simpler interventions before Agent SDK
@@ -16,3 +16,4 @@ generated: 2026-04-21T05:23:29Z
 
 **governs:** [[CC-001 Agent reasoning depth|Agent reasoning depth]] (Simpler interventions governs agent reasoning concern)
 **depended-on-by:** [[CC-001 Agent reasoning depth|Agent reasoning depth]] (Simpler interventions governs resolution path)
+**governed-by:** [[CP-002|CP-002]] (Platform Deference grounds "Simpler interventions before Agent SDK" — design-time preference for platform over protocol duplication (ms-20260421-0611))

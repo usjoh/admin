@@ -4,7 +4,7 @@ type: agent
 tags: [agent]
 status: Core-ready
 source: kos/agents/ksa-1.md
-generated: 2026-04-21T05:23:29Z
+generated: 2026-04-21T18:13:58Z
 ---
 
 # AGT-KSA: Knowledge Search Agent
@@ -17,4 +17,4 @@ generated: 2026-04-21T05:23:29Z
 **depends-on:** [[CD-032 Meridian-owned search via mcp-local-rag|Meridian-owned search via mcp-local-rag]] (mcp-local-rag search index)
 **implements:** [[PROT-KSA KSA Protocol|KSA Protocol]] (Cross-session search)
 **created-by:** [[CD-031 CSA-as-broker for KSA|CSA-as-broker for KSA]] (CSA-as-broker pattern)
-**governed-by:** [[CD-048 Unified Execution Pattern Skills and Agents as Deployment Modes|Unified Execution Pattern: Skills and Agents as Deployment Modes]] (Skills and agents as deployment modes of same execution pattern), [[CD-036 Thin orchestrator + formal agents|Thin orchestrator + formal agents]] (Thin orchestrator architecture), [[CD-032 Meridian-owned search via mcp-local-rag|Meridian-owned search via mcp-local-rag]] (mcp-local-rag search architecture governs KSA)
+**governed-by:** [[CD-048 Unified Execution Pattern Skills and Agents as Deployment Modes|Unified Execution Pattern: Skills and Agents as Deployment Modes]] (Skills and agents as deployment modes of same execution pattern), [[CD-036 Thin orchestrator + formal agents|Thin orchestrator + formal agents]] (Thin orchestrator architecture), [[CD-032 Meridian-owned search via mcp-local-rag|Meridian-owned search via mcp-local-rag]] (mcp-local-rag search architecture governs KSA), [[CP-004|CP-004]] (Agent File Ownership governs KSA working-memory write scope and search-result envelope ownership (ms-20260421-0611))

@@ -4,7 +4,7 @@ type: agent
 tags: [agent]
 status: Core-ready
 source: kos/agents/dwa-1.md
-generated: 2026-04-21T05:23:29Z
+generated: 2026-04-21T18:13:58Z
 ---
 
 # AGT-DWA: Developer Write Agent
@@ -17,4 +17,4 @@ generated: 2026-04-21T05:23:29Z
 **depends-on:** [[CD-036 Thin orchestrator + formal agents|Thin orchestrator + formal agents]] (Developer Mode gate)
 **implements:** [[PROT-LWA LWA Protocol|LWA Protocol]] (Same protocol, kos/ scope (CD-008))
 **created-by:** [[CD-008 Developer Write Agent|Developer Write Agent]] (Developer Write Agent)
-**governed-by:** [[CD-036 Thin orchestrator + formal agents|Thin orchestrator + formal agents]] (Thin orchestrator architecture)
+**governed-by:** [[CD-036 Thin orchestrator + formal agents|Thin orchestrator + formal agents]] (Thin orchestrator architecture), [[CP-004|CP-004]] (Agent File Ownership governs DWA kos/ file ownership — extension of the same topology-over-locking principle (ms-20260421-0611))

@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-069.md
-generated: 2026-04-21T05:23:29Z
+generated: 2026-04-21T18:13:58Z
 ---
 
 # CD-069: Core Graduation to Meridian
@@ -20,4 +20,5 @@ generated: 2026-04-21T05:23:29Z
 **extends:** [[CD-066 Autonomous Execution Architecture|Autonomous Execution Architecture]] (Meridian as autonomous-execution substrate aligns with Autonomous Execution Architecture), [[CD-050 Five-Component Ambient Architecture|Five-Component Ambient Architecture]] (Hub-Primary working-memory survives compaction; aligns with Two-Surface memory model), [[CD-068 True Tool Surface for Meridian|True Tool Surface for Meridian]] (Lifts CD-068 Pydantic schema/Capability Registry pattern to Meridian-wide tool registry (Q13); adopts OB1 n-agentic-harnesses file 03 pattern)
 **references:** [[MO-301|MO-301]] (Tool contract discipline — Capability Registry (CD-069 Q13) operationalizes MO-301)
 **retires:** [[CD-013 Prototype kernel pattern|Prototype kernel pattern]] (Core-prototyped-in-consulting is a bootstrap artifact, not a principle; consulting becomes a Meridian subdomain), [[MO-270|MO-270]] (Dual-presence pattern (consulting/Meridian overlap) replaced by uniform subdomains/ structure)
+**extended-by:** [[CD-071 Corpus Dispatcher|Corpus Dispatcher]] (Corpus Dispatcher β skeleton builds on CD-069 Hub-Primary substrate — Hub-owned MCP server routing per-domain LanceDB queries via `domain` argument (ms-20260421-0611))
 **implemented-by:** [[SVC-HUBMCP|SVC-HUBMCP]] (POC vehicle from cc-20260417-1724 validates CD-069 direction)

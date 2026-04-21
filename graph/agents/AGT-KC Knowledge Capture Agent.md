@@ -4,7 +4,7 @@ type: agent
 tags: [agent]
 status: Core-ready
 source: kos/agents/kc-5.md
-generated: 2026-04-21T05:23:29Z
+generated: 2026-04-21T18:13:58Z
 ---
 
 # AGT-KC: Knowledge Capture Agent
@@ -17,4 +17,4 @@ generated: 2026-04-21T05:23:29Z
 **implements:** [[PROT-KC KC Protocol|KC Protocol]] (Knowledge capture analysis)
 **created-by:** [[CD-036 Thin orchestrator + formal agents|Thin orchestrator + formal agents]] (Formal agent architecture)
 **depended-on-by:** [[TASK-KCP KC Pipeline|KC Pipeline]] (Pipeline spawns KC agent)
-**governed-by:** [[CD-048 Unified Execution Pattern Skills and Agents as Deployment Modes|Unified Execution Pattern: Skills and Agents as Deployment Modes]] (Skills and agents as deployment modes of same execution pattern), [[CD-036 Thin orchestrator + formal agents|Thin orchestrator + formal agents]] (Thin orchestrator architecture)
+**governed-by:** [[CD-048 Unified Execution Pattern Skills and Agents as Deployment Modes|Unified Execution Pattern: Skills and Agents as Deployment Modes]] (Skills and agents as deployment modes of same execution pattern), [[CD-036 Thin orchestrator + formal agents|Thin orchestrator + formal agents]] (Thin orchestrator architecture), [[CP-004|CP-004]] (Agent File Ownership governs KC artifact ownership (KC Summary artifacts + write-instruction envelopes) (ms-20260421-0611))

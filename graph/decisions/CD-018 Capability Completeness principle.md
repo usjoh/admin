@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-018.md
-generated: 2026-04-21T05:23:29Z
+generated: 2026-04-21T18:13:58Z
 ---
 
 # CD-018: Capability Completeness principle
@@ -14,5 +14,5 @@ generated: 2026-04-21T05:23:29Z
 
 ## Relationships
 
-**created:** [[CONV-CAPCOMP Capability Completeness|Capability Completeness]] (Established Capability Completeness convention)
-**governs:** [[CONV-CAPCOMP Capability Completeness|Capability Completeness]] (Capability Completeness principle)
+**created:** [[CONV-CAPCOMP Capability Completeness|Capability Completeness]] (Established Capability Completeness convention), [[CP-003|CP-003]] (CP-003 Capability Completeness promoted from CD-018 (mirrors existing `CD-018 created CONV-CAPCOMP`; CONV-CAPCOMP retirement deferred per CP-003 status note) (ms-20260421-0611))
+**governs:** [[CONV-CAPCOMP Capability Completeness|Capability Completeness]] (Capability Completeness principle), [[CP-003|CP-003]] (Principle body governed by CD-018 (mirrors existing `CD-018 governs CONV-CAPCOMP` edge) (ms-20260421-0611))

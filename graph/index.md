@@ -1,15 +1,15 @@
 ---
 type: index
-generated: 2026-04-21T05:23:29Z
+generated: 2026-04-21T18:13:58Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, and `current-state/observations/relationships.md`. Do not edit.
 
-**Entities:** 120 | **Relationships:** 169
+**Entities:** 130 | **Relationships:** 204
 
-## Decisions (75)
+## Decisions (76)
 
 - CD-001 — Namespaced decision numbering `Active (amended by CD-041)`
 - CD-002 — Core/Domain separation `Active`
@@ -80,10 +80,11 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - CD-067 — Workspace as Session Surface; Retire STA, Liveness Hooks, Signal Files `Active`
 - CD-068 — True Tool Surface for Meridian `Active`
 - CD-069 — Core Graduation to Meridian `Active`
-- CD-070 — Workspace as Tooled Surface `β skeleton`
-- CD-071 — Corpus Dispatcher `β skeleton`
-- CD-072 — Layer-Aware Graph Health `β skeleton`
+- CD-070 — Workspace as Tooled Surface `Active`
+- CD-071 — Corpus Dispatcher `Active`
+- CD-072 — Layer-Aware Graph Health Analysis `Active`
 - CD-073 — Operator-Data Separation `Active`
+- CD-075 — Test Coverage as Structural Requirement `β skeleton`
 - D-058 — Separate Core from domain decisions `Active`
 - D-060 — Inter-session notification pattern `Active`
 
