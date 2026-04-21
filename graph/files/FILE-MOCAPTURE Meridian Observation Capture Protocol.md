@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: kos/core-meridian-observation-capture.md
-generated: 2026-04-21T18:13:58Z
+generated: 2026-04-21T23:35:37Z
 ---
 
 # FILE-MOCAPTURE: Meridian Observation Capture Protocol
