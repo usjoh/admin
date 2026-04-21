@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-008.md
-generated: 2026-04-21T02:19:02Z
+generated: 2026-04-21T05:23:29Z
 ---
 
 # CD-008: Developer Write Agent

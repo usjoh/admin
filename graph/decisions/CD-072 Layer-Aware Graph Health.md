@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: β skeleton
 source: workspace/projects/CD Draft - Layer-Aware Graph Health Analysis (CD-072).md
-generated: 2026-04-21T02:19:02Z
+generated: 2026-04-21T05:23:29Z
 ---
 
 # CD-072: Layer-Aware Graph Health

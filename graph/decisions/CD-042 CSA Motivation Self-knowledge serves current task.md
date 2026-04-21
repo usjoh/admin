@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Superseded by CD-044
 source: kos/decisions/CD-042.md
-generated: 2026-04-21T02:19:02Z
+generated: 2026-04-21T05:23:29Z
 ---
 
 # CD-042: CSA Motivation: Self-knowledge serves current task

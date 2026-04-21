@@ -1,13 +1,13 @@
 ---
 type: index
-generated: 2026-04-21T02:19:02Z
+generated: 2026-04-21T05:23:29Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, and `current-state/observations/relationships.md`. Do not edit.
 
-**Entities:** 120 | **Relationships:** 168
+**Entities:** 120 | **Relationships:** 169
 
 ## Decisions (75)
 
