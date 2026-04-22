@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: kos/core-eval-catalog.md
-generated: 2026-04-21T23:35:37Z
+generated: 2026-04-22T23:27:40Z
 ---
 
 # FILE-EVAL-CATALOG: Core Eval Catalog

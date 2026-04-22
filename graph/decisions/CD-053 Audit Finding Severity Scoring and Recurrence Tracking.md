@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-053.md
-generated: 2026-04-21T23:35:37Z
+generated: 2026-04-22T23:27:40Z
 ---
 
 # CD-053: Audit Finding Severity Scoring and Recurrence Tracking

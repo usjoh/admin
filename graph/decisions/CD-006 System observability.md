@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Open
 source: kos/decisions/CD-006.md
-generated: 2026-04-21T23:35:37Z
+generated: 2026-04-22T23:27:40Z
 ---
 
 # CD-006: System observability
