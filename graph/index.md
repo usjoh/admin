@@ -1,13 +1,13 @@
 ---
 type: index
-generated: 2026-04-22T23:27:40Z
+generated: 2026-04-24T13:25:28Z
 ---
 
 # Meridian Graph
 
 Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, and `current-state/observations/relationships.md`. Do not edit.
 
-**Entities:** 130 | **Relationships:** 204
+**Entities:** 131 | **Relationships:** 204
 
 ## Decisions (76)
 
@@ -131,13 +131,14 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - FILE-VISION — Core Vision `Validated`
 - FILE-VISIONNARR — Core Vision Narrative `Validated`
 
-## Conventions (8)
+## Conventions (9)
 
 - CONV-CAPCOMP — Capability Completeness `Active`
 - CONV-CONSULT — Consult Before Solving `Active`
 - CONV-DLFMT — Decision log format `Active`
 - CONV-DLSTAT — Decision status lifecycle `Active`
 - CONV-KCSUMM — KC Summary as primary session artifact `Active`
+- CONV-MBACKLOG — Meridian backlog `Active`
 - CONV-ROW2 — Row 2 Checkpoint Pattern `Active`
 - CONV-SESSLOG — Session logs as cold storage `Active`
 - CROSS-DOMAIN-FEED — Cross-Domain Feed File Mechanism (retired) `Superseded`

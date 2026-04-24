@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-068.md
-generated: 2026-04-22T23:27:40Z
+generated: 2026-04-24T13:25:28Z
 ---
 
 # CD-068: True Tool Surface for Meridian

@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: kos/core-io-interface.md
-generated: 2026-04-22T23:27:40Z
+generated: 2026-04-24T13:25:28Z
 ---
 
 # FILE-IO-INTERFACE: Core I/O Interface Protocol
