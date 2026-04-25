@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/D-058.md
-generated: 2026-04-24T13:25:28Z
+generated: 2026-04-25T03:15:58Z
 ---
 
 # D-058: Separate Core from domain decisions

@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: kos/core-context-surface.md
-generated: 2026-04-24T13:25:28Z
+generated: 2026-04-25T03:15:58Z
 ---
 
 # FILE-CONTEXTSURF: Core Context Injection Surface

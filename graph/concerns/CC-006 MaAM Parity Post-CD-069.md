@@ -4,7 +4,7 @@ type: concern
 tags: [concern]
 status: Active
 source: kos/concerns/CC-006-maam-parity.md
-generated: 2026-04-24T13:25:28Z
+generated: 2026-04-25T03:15:58Z
 ---
 
 # CC-006: MaAM Parity Post-CD-069

@@ -4,7 +4,7 @@ type: protocol
 tags: [protocol]
 status: Core-ready
 source: kos/core-layer-writer.md
-generated: 2026-04-24T13:25:28Z
+generated: 2026-04-25T03:15:58Z
 ---
 
 # PROT-LWA: LWA Protocol
