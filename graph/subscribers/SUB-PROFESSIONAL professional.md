@@ -4,7 +4,7 @@ type: subscriber
 tags: [subscriber]
 status: Active
 source: subscribers/professional.md
-generated: 2026-04-26T17:24:29Z
+generated: 2026-04-26T20:47:42Z
 ---
 
 # SUB-PROFESSIONAL: professional

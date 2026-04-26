@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Validated
 source: kos/core-system-map.md
-generated: 2026-04-26T17:24:29Z
+generated: 2026-04-26T20:47:42Z
 ---
 
 # FILE-SYSMAP: Core System Map

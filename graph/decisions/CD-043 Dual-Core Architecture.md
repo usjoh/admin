@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-043.md
-generated: 2026-04-26T17:24:29Z
+generated: 2026-04-26T20:47:42Z
 ---
 
 # CD-043: Dual-Core Architecture

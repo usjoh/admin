@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Core-ready
 source: kos/core-principles.md
-generated: 2026-04-26T17:24:29Z
+generated: 2026-04-26T20:47:42Z
 ---
 
 # FILE-PRINCIPLES: Core Principles

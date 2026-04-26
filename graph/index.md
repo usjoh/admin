@@ -1,6 +1,6 @@
 ---
 type: index
-generated: 2026-04-26T17:24:29Z
+generated: 2026-04-26T20:47:42Z
 ---
 
 # Meridian Graph
@@ -84,7 +84,7 @@ Auto-generated from `core-relationships.md`, `decision-log/relationships.md`, an
 - CD-071 — Corpus Dispatcher `Active`
 - CD-072 — Layer-Aware Graph Health Analysis `Active`
 - CD-073 — Operator-Data Separation `Active`
-- CD-075 — Test Coverage as Structural Requirement `β skeleton`
+- CD-075 — Test Coverage as Structural Requirement `Active`
 - D-058 — Separate Core from domain decisions `Active`
 - D-060 — Inter-session notification pattern `Active`
 

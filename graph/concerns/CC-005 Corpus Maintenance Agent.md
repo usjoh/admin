@@ -4,7 +4,7 @@ type: concern
 tags: [concern]
 status: Active
 source: kos/concerns/CC-005.md
-generated: 2026-04-26T17:24:29Z
+generated: 2026-04-26T20:47:42Z
 ---
 
 # CC-005: Corpus Maintenance Agent

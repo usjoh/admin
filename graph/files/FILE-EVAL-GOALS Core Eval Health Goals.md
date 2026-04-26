@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: kos/core-eval-goals.md
-generated: 2026-04-26T17:24:29Z
+generated: 2026-04-26T20:47:42Z
 ---
 
 # FILE-EVAL-GOALS: Core Eval Health Goals
