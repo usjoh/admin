@@ -4,7 +4,7 @@ type: agent
 tags: [agent]
 status: Retired (D-060)
 source: kos/agents/tia-2.md
-generated: 2026-04-26T00:21:36Z
+generated: 2026-04-26T17:24:29Z
 ---
 
 # AGT-TIA: Transcript Ingestion Agent (retired)

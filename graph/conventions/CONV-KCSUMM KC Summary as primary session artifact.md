@@ -4,7 +4,7 @@ type: convention
 tags: [convention]
 status: Active
 source: kos/core-knowledge-capture.md
-generated: 2026-04-26T00:21:36Z
+generated: 2026-04-26T17:24:29Z
 ---
 
 # CONV-KCSUMM: KC Summary as primary session artifact

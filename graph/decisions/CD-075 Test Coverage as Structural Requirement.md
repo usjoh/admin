@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: β skeleton
 source: workspace/projects/CD Draft - Test Coverage as Structural Requirement (CD-075).md
-generated: 2026-04-26T00:21:36Z
+generated: 2026-04-26T17:24:29Z
 ---
 
 # CD-075: Test Coverage as Structural Requirement
