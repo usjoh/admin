@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: kos/capabilities/
-generated: 2026-04-27T00:12:43Z
+generated: 2026-04-27T00:41:01Z
 ---
 
 # FILE-CAPREG: Capability Registry

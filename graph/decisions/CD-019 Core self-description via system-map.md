@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-019.md
-generated: 2026-04-27T00:12:43Z
+generated: 2026-04-27T00:41:01Z
 ---
 
 # CD-019: Core self-description via system-map

@@ -4,7 +4,7 @@ type: protocol
 tags: [protocol]
 status: Core-ready
 source: kos/core-knowledge-capture.md
-generated: 2026-04-27T00:12:43Z
+generated: 2026-04-27T00:41:01Z
 ---
 
 # PROT-KC: KC Protocol

@@ -4,7 +4,7 @@ type: hub
 tags: [hub]
 status: Active
 source: /Users/usjoh/Projects/meridian
-generated: 2026-04-27T00:12:43Z
+generated: 2026-04-27T00:41:01Z
 ---
 
 # HUB: Meridian Services Hub
