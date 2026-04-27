@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-036.md
-generated: 2026-04-27T01:32:14Z
+generated: 2026-04-27T12:04:56Z
 ---
 
 # CD-036: Thin orchestrator + formal agents
