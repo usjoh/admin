@@ -4,7 +4,7 @@ type: concern
 tags: [concern]
 status: Active
 source: kos/concerns/CC-002.md
-generated: 2026-04-27T00:41:01Z
+generated: 2026-04-27T01:32:14Z
 ---
 
 # CC-002: Simpler interventions (CD-016)

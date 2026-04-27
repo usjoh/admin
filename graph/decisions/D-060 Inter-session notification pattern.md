@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/D-060.md
-generated: 2026-04-27T00:41:01Z
+generated: 2026-04-27T01:32:14Z
 ---
 
 # D-060: Inter-session notification pattern
