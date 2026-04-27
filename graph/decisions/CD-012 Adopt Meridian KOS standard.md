@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-012.md
-generated: 2026-04-27T12:04:56Z
+generated: 2026-04-27T15:30:38Z
 ---
 
 # CD-012: Adopt Meridian KOS standard

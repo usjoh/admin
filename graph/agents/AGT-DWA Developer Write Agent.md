@@ -4,7 +4,7 @@ type: agent
 tags: [agent]
 status: Core-ready
 source: kos/agents/dwa-1.md
-generated: 2026-04-27T12:04:56Z
+generated: 2026-04-27T15:30:38Z
 ---
 
 # AGT-DWA: Developer Write Agent

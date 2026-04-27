@@ -4,7 +4,7 @@ type: convention
 tags: [convention]
 status: Active
 source: CLAUDE.md
-generated: 2026-04-27T12:04:56Z
+generated: 2026-04-27T15:30:38Z
 ---
 
 # CONV-CONSULT: Consult Before Solving
