@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Validated
 source: kos/core-vision.md
-generated: 2026-04-26T20:47:42Z
+generated: 2026-04-27T00:12:43Z
 ---
 
 # FILE-VISION: Core Vision

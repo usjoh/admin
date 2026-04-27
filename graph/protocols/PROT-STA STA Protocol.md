@@ -4,7 +4,7 @@ type: protocol
 tags: [protocol]
 status: Retired (CD-067)
 source: kos/core-session-transcript.md
-generated: 2026-04-26T20:47:42Z
+generated: 2026-04-27T00:12:43Z
 ---
 
 # PROT-STA: STA Protocol

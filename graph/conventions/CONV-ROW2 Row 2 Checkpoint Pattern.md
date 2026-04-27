@@ -4,7 +4,7 @@ type: convention
 tags: [convention]
 status: Active
 source: kos/core-system-map.md
-generated: 2026-04-26T20:47:42Z
+generated: 2026-04-27T00:12:43Z
 ---
 
 # CONV-ROW2: Row 2 Checkpoint Pattern

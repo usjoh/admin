@@ -4,7 +4,7 @@ type: subscriber
 tags: [subscriber]
 status: Active
 source: subscribers/hub.md
-generated: 2026-04-26T20:47:42Z
+generated: 2026-04-27T00:12:43Z
 ---
 
 # SUB-HUB: hub
