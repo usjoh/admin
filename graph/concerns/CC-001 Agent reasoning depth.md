@@ -4,7 +4,7 @@ type: concern
 tags: [concern]
 status: Active
 source: kos/concerns/CC-001.md
-generated: 2026-04-27T15:30:38Z
+generated: 2026-04-27T21:50:26Z
 ---
 
 # CC-001: Agent reasoning depth

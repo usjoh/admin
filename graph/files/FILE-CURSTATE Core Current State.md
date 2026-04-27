@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Core-ready
 source: kos/core-current-state.md
-generated: 2026-04-27T15:30:38Z
+generated: 2026-04-27T21:50:26Z
 ---
 
 # FILE-CURSTATE: Core Current State

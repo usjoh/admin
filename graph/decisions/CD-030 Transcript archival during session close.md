@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-030.md
-generated: 2026-04-27T15:30:38Z
+generated: 2026-04-27T21:50:26Z
 ---
 
 # CD-030: Transcript archival during session close

@@ -4,7 +4,7 @@ type: decision
 tags: [decision]
 status: Active
 source: kos/decisions/CD-075.md
-generated: 2026-04-27T15:30:38Z
+generated: 2026-04-27T21:50:26Z
 ---
 
 # CD-075: Test Coverage as Structural Requirement
@@ -15,3 +15,4 @@ generated: 2026-04-27T15:30:38Z
 ## Relationships
 
 **governed-by:** [[CP-003|CP-003]] (Capability Completeness governs test-coverage requirement (CD-075 extends CP-003 into a fourth part — test — via β skeleton Q1 amendment vs standalone disposition, pending formal body) (ms-20260421-0611))
+**implemented-by:** [[TOOL-CAPREG-INVARIANTS-SUITE|TOOL-CAPREG-INVARIANTS-SUITE]] (Phase 1 anchor — first verification-surface instance under CP-003 amendment (ms-20260427-0914))

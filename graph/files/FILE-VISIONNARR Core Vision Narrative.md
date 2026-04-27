@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Validated
 source: kos/core-vision-narrative.md
-generated: 2026-04-27T15:30:38Z
+generated: 2026-04-27T21:50:26Z
 ---
 
 # FILE-VISIONNARR: Core Vision Narrative

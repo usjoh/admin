@@ -4,7 +4,7 @@ type: file
 tags: [file]
 status: Active
 source: kos/tool-entities.yaml
-generated: 2026-04-27T15:30:38Z
+generated: 2026-04-27T21:50:26Z
 ---
 
 # FILE-TOOL-ENTITIES: Tool Entities Registry
